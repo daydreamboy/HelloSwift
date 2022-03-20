@@ -18,6 +18,9 @@
 		4FA9572727E7071A0080983F /* Test_function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9572627E7071A0080983F /* Test_function.swift */; };
 		4FA9572927E7123B0080983F /* Test_class.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9572827E7123B0080983F /* Test_class.swift */; };
 		4FA9572B27E71A840080983F /* Test_enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9572A27E71A840080983F /* Test_enum.swift */; };
+		4FA9572D27E75AEF0080983F /* Test_error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9572C27E75AEF0080983F /* Test_error.swift */; };
+		4FA9572F27E75CC60080983F /* Test_keyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9572E27E75CC60080983F /* Test_keyword.swift */; };
+		4FA9573127E7624B0080983F /* Test_generic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9573027E7624B0080983F /* Test_generic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,9 @@
 		4FA9572627E7071A0080983F /* Test_function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_function.swift; sourceTree = "<group>"; };
 		4FA9572827E7123B0080983F /* Test_class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_class.swift; sourceTree = "<group>"; };
 		4FA9572A27E71A840080983F /* Test_enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_enum.swift; sourceTree = "<group>"; };
+		4FA9572C27E75AEF0080983F /* Test_error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_error.swift; sourceTree = "<group>"; };
+		4FA9572E27E75CC60080983F /* Test_keyword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_keyword.swift; sourceTree = "<group>"; };
+		4FA9573027E7624B0080983F /* Test_generic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_generic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +132,9 @@
 				4FA9572627E7071A0080983F /* Test_function.swift */,
 				4FA9572827E7123B0080983F /* Test_class.swift */,
 				4FA9572A27E71A840080983F /* Test_enum.swift */,
+				4FA9572C27E75AEF0080983F /* Test_error.swift */,
+				4FA9572E27E75CC60080983F /* Test_keyword.swift */,
+				4FA9573027E7624B0080983F /* Test_generic.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -274,6 +283,9 @@
 				4FA9572927E7123B0080983F /* Test_class.swift in Sources */,
 				4FA9572B27E71A840080983F /* Test_enum.swift in Sources */,
 				4FA9572727E7071A0080983F /* Test_function.swift in Sources */,
+				4FA9573127E7624B0080983F /* Test_generic.swift in Sources */,
+				4FA9572D27E75AEF0080983F /* Test_error.swift in Sources */,
+				4FA9572F27E75CC60080983F /* Test_keyword.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
