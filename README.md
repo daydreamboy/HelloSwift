@@ -17,6 +17,33 @@ Swift程序的入口，可以没有main函数，而且每个语句可以没有�
 
 
 
+#### a. 注释
+
+Swift中的注释使用`//`和`/**/`，但是`/**/`支持注释嵌套。举个例子，如下
+
+```swift
+/* This is the start of the first multiline comment.
+ /* This is the second, nested multiline comment. */
+This is the end of the first multiline comment. */
+```
+
+
+
+#### b. 分号
+
+每个语句后面的分号是可选的。但是如果多个语句在一行，则用分号来分隔。
+
+举个例子，如下
+
+```swift
+let cat = "🐱"; print(cat)
+// Prints "🐱"
+```
+
+
+
+
+
 ### (2) 定义变量
 
 #### a. var和let
@@ -32,6 +59,39 @@ Swift中使用var和let定义变量
 var myVariable = 42
 myVariable = 50
 let myConstant = 42
+```
+
+
+
+变量名可以包含Unicode字符[^2]。举个例子，如下
+
+```swift
+let π = 3.14159
+let 你好 = "你好世界"
+let 🐶🐮 = "dogcow"
+```
+
+但是不能包含空白符、数学符号、箭头、私有Unicode字符等，不能以数字开头。
+
+官方文档描述，如下
+
+> Constant and variable names can’t contain whitespace characters, mathematical symbols, arrows, private-use Unicode scalar values, or line- and box-drawing characters. Nor can they begin with a number, although numbers may be included elsewhere within the name.
+
+一旦定义好变量名和类型，就不能修改类型或者切换为constant/variable。
+
+如果变量名要使用Swift的关键词，则可以使用<code>`</code>来包住这个变量名。但是不推荐使用。
+
+官方文档描述，如下
+
+> If you need to give a constant or variable the same name as a reserved Swift keyword, surround the keyword with backticks (`) when using it as a name. However, avoid using keywords as names unless you have absolutely no choice.
+
+举个例子，如下
+
+```swift
+func test_variable_name_use_keyword() throws {
+    let `var`: String = "Use keyword as variable name"
+    print(`var`)
+}
 ```
 
 
@@ -64,6 +124,14 @@ let explicitDouble: Double = 70
 >
 > 这里width变量必须转成String类型，才能做字符串拼接
 
+变量类型，也称为类型注解(Type Annotation)。
+
+如果要声明多个变量，可以使用逗号分隔。举个例子，如下
+
+```swift
+var red, green, blue: Double
+```
+
 
 
 #### c. 可选变量
@@ -92,7 +160,495 @@ let sideLength = optionalSquare?.sideLength
 
 
 
-### (3) 字符串
+### (3) 数据类型
+
+#### a. 整型(Integer)
+
+Integer是没有分数部分的，分为有符号(正数、0和负数)和无符号(正数和0)两种
+
+Swift提供8、16、32和64位形式的整数。例如UInt8、Int32类型等。
+
+整型类型有min和max两个属性。举个例子，如下
+
+```swift
+let minValue = UInt8.min  // minValue is equal to 0, and is of type UInt8
+let maxValue = UInt8.max  // maxValue is equal to 255, and is of type UInt8
+```
+
+
+
+##### Int
+
+大多数情况下，代码中可以不用指定特定整型类型，而是使用Int类型。
+
+* 在32位平台上，Int和Int32是等价的
+* 在64位平台上，Int和Int64是等价的
+
+
+
+##### UInt
+
+和Int类型一样。UInt类型也是平台相关的。
+
+* 在32位平台上，UInt和UInt32是等价的
+* 在64位平台上，UInt和UInt64是等价的
+
+
+
+#### b. 浮点数(Float)
+
+浮点数是带分数部分的数字。在Swift中提供2种浮点类型
+
+* Double类型，代表64位浮点数
+* Float类型，代表32位浮点数
+
+说明
+
+> Double类型至少有小数点后15位的精度，Float类型有小数点后6位的精度。选取哪种类型，取决于代码中使用的场景和需要。如果两种都适合，优先使用Double类型。
+
+
+
+#### c. 类型安全和类型推断
+
+Swift是类型安全的语言，这个意味着变量类型定义好后，不能赋值给它其他类型的值。这个错误会在编译期检查出来。即使在变量定义时没有显示声明类型，编译器会进行类型推断，判断出变量的类型。
+
+一般来说，
+
+* 整型数字，会推断为Int
+* 浮点数字，会推断为Double
+
+* 整型数字和浮点数字，进行算术运算，也会推断为Double
+
+举个例子，如下
+
+```swift
+let meaningOfLife = 42
+// meaningOfLife is inferred to be of type Int
+
+let pi = 3.14159
+// pi is inferred to be of type Double
+
+let anotherPi = 3 + 0.14159
+// anotherPi is also inferred to be of type Double
+```
+
+
+
+#### d. 数字字面量(Numeric Literals)
+
+数字字面量，有下面几种
+
+* 十进制数字，没有前缀
+* 二进制数字，有0b前缀
+* 八进制数字，有0o前缀
+* 十六进制数字，有0x前缀
+
+举个例子，如下
+
+```swift
+let decimalInteger = 17
+let binaryInteger = 0b10001       // 17 in binary notation
+let octalInteger = 0o21           // 17 in octal notation
+let hexadecimalInteger = 0x11     // 17 in hexadecimal notation
+```
+
+说明
+
+> 浮点数字面量，可以是十进制或者十六进制
+
+
+
+十进制的浮点数，可以有指数形式，用大写或小写的e
+
+举个例子，如下
+
+- `1.25e2` means 1.25 x 102, or `125.0`.
+- `1.25e-2` means 1.25 x 10-2, or `0.0125`.
+
+
+
+十六进制的浮点数的指数形式，用大写或小写的p
+
+举个例子，如下
+
+- `0xFp2` means 15 x 22, or `60.0`.
+- `0xFp-2` means 15 x 2-2, or `3.75`.
+
+
+
+举个例子，下面表示都是十进制`12.1875`
+
+```swift
+let decimalDouble = 12.1875
+let exponentDouble = 1.21875e1
+let hexadecimalDouble = 0xC.3p0
+```
+
+
+
+数字字面量(Numeric Literals)，可以使用padding zero和下划线来增加可读性。
+
+举个例子，如下
+
+```swift
+let paddedDouble = 000123.456
+let oneMillion = 1_000_000
+let justOverOneMillion = 1_000_000.000_000_1
+```
+
+
+
+#### e. 数字类型转换
+
+数字类型转换，包含不同类型的数字转成其他类型的。
+
+##### 整型类型转换
+
+整型类型都有特定的值范围，需要case-by-case来决定转换的类型。举个例子，如下
+
+```swift
+let twoThousand: UInt16 = 2_000
+let one: UInt8 = 1
+let twoThousandAndOne = twoThousand + UInt16(one)
+```
+
+通过`SomeType(ofInitialValue)`来初始化一个新类型的对象。这里将one变量的UInt8转成UInt16，保证+号的左右操作数的类型是一致的。
+
+
+
+##### 整型和浮点数之间的转换
+
+整型和浮点数之间的转换，必须显式转换
+
+举个例子，如下
+
+```swift
+let three = 3
+let pointOneFourOneFiveNine = 0.14159
+let pi = Double(three) + pointOneFourOneFiveNine
+// pi equals 3.14159, and is inferred to be of type Double
+```
+
+另外，浮点数也可以转成整型。举个例子，如下
+
+```swift
+let integerPi = Int(pi)
+// integerPi equals 3, and is inferred to be of type Int
+```
+
+这里转换是取浮点数的整数部分，例如`4.75` 变成 `4`、  `-3.9`变成 `-3`
+
+
+
+#### f. 布尔类型
+
+Swift中的布尔类型，是Bool，提供true和false两个常量。
+
+举个例子，如下
+
+```swift
+let orangesAreOrange = true
+let turnipsAreDelicious = false
+```
+
+上面2个变量，被编译器会推断为Bool类型。
+
+在Swift中非布尔值不能替代布尔类型。
+
+举个例子，如下
+
+```swift
+let i = 1
+if i {
+    // this example will not compile, and will report an error
+}
+```
+
+正确写法，如下
+
+```swift
+let i = 1
+if i == 1 {
+    // this example will compile successfully
+}
+```
+
+这里i == 1的结果是Bool类型
+
+
+
+#### g. 元组类型(Tuple)
+
+元组类型(Tuple)，将多个值组合成一个复合的单值。元组中的每个值的类型可以都相同，或者不同。
+
+举个例子，如下
+
+```swift
+let http404Error = (404, "Not Found")
+// http404Error is of type (Int, String), and equals (404, "Not Found")
+```
+
+上面http404Error的类型，可以描述为，类型为(Int, String)的元组。
+
+获取分组的元素，有下面几种方式
+
+* 分解方式
+* 下标方式
+* 名字引用方式
+
+
+
+##### 分解方式
+
+分解一个元组，举个例子，如下
+
+```swift
+let (statusCode, statusMessage) = http404Error
+print("The status code is \(statusCode)")
+// Prints "The status code is 404"
+print("The status message is \(statusMessage)")
+// Prints "The status message is Not Found"
+```
+
+如果不需要元组中的某个值，则使用`_`。举个例子，如下
+
+```swift
+let (justTheStatusCode, _) = http404Error
+print("The status code is \(justTheStatusCode)")
+// Prints "The status code is 404"
+```
+
+
+
+##### 下标方式
+
+按照下标来访问元组变量中的特定元素。举个例子，如下
+
+```swift
+print("The status code is \(http404Error.0)")
+// Prints "The status code is 404"
+print("The status message is \(http404Error.1)")
+// Prints "The status message is Not Found"
+```
+
+
+
+##### 名字引用方式
+
+如果元组定义时，使用名字，则引用某个元素，也可以使用名字。举个例子，如下
+
+```swift
+let http200Status = (statusCode: 200, description: "OK")
+
+print("The status code is \(http200Status.statusCode)")
+// Prints "The status code is 200"
+print("The status message is \(http200Status.description)")
+// Prints "The status message is OK"
+```
+
+
+
+说明
+
+> 元组适合简单将几个值组合在一起。对于复杂的数据结构，建议使用结构体和类，而不是使用元组。
+
+
+
+#### h. 可选类型 (Optional)
+
+可选类型，代表值的两种情况
+
+* 值存在，可以unwrap可选类型获取这个值
+* 值不存在
+
+说明
+
+> 可选类型的概念，在C和Objective-C不存在。在Objective-C中接近这个概念的是某个方法返回nil，但是nil不适用于基本类型。如果枚举类型要返回nil，则需要定义一个缺省的枚举类型，在Swift中任何类型都可以定义为可选类型。
+
+举个例子，如下
+
+```swift
+let possibleNumber = "123"
+let convertedNumber = Int(possibleNumber)
+// convertedNumber is inferred to be of type "Int?", or "optional Int"
+```
+
+这里Int的初始化函数，实际签名，如下
+
+```swift
+init?(_ description: String)
+```
+
+可以将字符串转成整型。但是不是所有字符串都可以转成整型，因此Int的初始化函数的返回值类型，是可选类型。convertedNumber也被推断为可选类型。
+
+
+
+##### nil
+
+可以设置可选类型变量一个特殊值，即nil
+
+举个例子，如下
+
+```swift
+var serverResponseCode: Int? = 404
+// serverResponseCode contains an actual Int value of 404
+serverResponseCode = nil
+// serverResponseCode now contains no value
+
+var surveyAnswer: String?
+// surveyAnswer is automatically set to nil
+```
+
+nil不能和非可选类型一起使用。如果定义可选类型变量没有赋值，则编译器默认会赋值这个可选变量的值为nil。
+
+说明
+
+> Swift中nil和Objective-C中nil不一样。Objective-C的nil，是指向不存在对象的指针。而Swift中nil不是指针，而是可选类型的特定值，代表值不存在。
+
+
+
+在if语句中可以使用`==`或`!=`来和nil比较，用于判断可选变量是否有值。
+
+举个例子，如下
+
+```swift
+if convertedNumber != nil {
+    print("convertedNumber contains some integer value.")
+}
+// Prints "convertedNumber contains some integer value."
+
+if convertedNumber != nil {
+    print("convertedNumber has an integer value of \(convertedNumber!).")
+}
+// Prints "convertedNumber has an integer value of 123."
+```
+
+这里使用`!`来unwrap可选变量。
+
+注意
+
+> 使用`!`来unwrap可选变量，一定要保证变量值是非nil，否则在运行时会产生一个异常error
+
+
+
+##### 可选变量绑定 (Optional Binding)
+
+可选变量绑定 (Optional Binding)的含义是，判断可选变量是否有值，如果有值，则赋值给一个临时变量。
+
+官方文档描述，如下
+
+> You use *optional binding* to find out whether an optional contains a value, and if so, to make that value available as a temporary constant or variable. Optional binding can be used with `if` and `while` statements to check for a value inside an optional, and to extract that value into a constant or variable, as part of a single action.
+
+可选变量绑定，一般用于if和while语句中。
+
+举个例子，如下
+
+```swift
+if let actualNumber = Int(possibleNumber) {
+    print("The string \"\(possibleNumber)\" has an integer value of \(actualNumber)")
+} else {
+    print("The string \"\(possibleNumber)\" couldn't be converted to an integer")
+}
+// Prints "The string "123" has an integer value of 123"
+```
+
+这里使用常量actualNumber去绑定可选变量。也可以使用变量来绑定。举个例子，如下
+
+```swift
+if var actualNumber = Int(possibleNumber) {
+    actualNumber = 456
+
+    print("The string \"\(possibleNumber)\" has an integer value of \(actualNumber)")
+} else {
+    print("The string \"\(possibleNumber)\" couldn't be converted to an integer")
+}
+```
+
+
+
+在if语句中，可选变量绑定，还可以条件判断组合在一起，用逗号分隔这些条件。如果可选变量绑定为nil，或者条件判断为false，则if语句的整个条件为false。
+
+举个例子，如下
+
+```swift
+if let firstNumber = Int("4"), let secondNumber = Int("42"), firstNumber < secondNumber && secondNumber < 100 {
+    print("\(firstNumber) < \(secondNumber) < 100")
+}
+// Prints "4 < 42 < 100"
+
+if let firstNumber = Int("4") {
+    if let secondNumber = Int("42") {
+        if firstNumber < secondNumber && secondNumber < 100 {
+            print("\(firstNumber) < \(secondNumber) < 100")
+        }
+    }
+}
+// Prints "4 < 42 < 100"
+```
+
+另外，if语句有多个条件时，采用短路原则。遇到某个可选变量绑定为nil，或者条件为false，则余下的条件不会继续执行。举个例子，如下
+
+```swift
+func test_multiple_optional_binding_shorthand() throws {
+    if let firstNumber = Int("helloWorld"), let secondNumber = getNumber(), firstNumber < secondNumber && secondNumber < 100 {
+        print("\(firstNumber) < \(secondNumber) < 100")
+    }
+}
+
+func getNumber() -> Int? {
+    print("getNumber called")
+    return 42
+}
+```
+
+说明
+
+> 和if-let组合类似，还有guard语句。
+
+
+
+##### Implicitly Unwrapped Optionals
+
+Implicitly Unwrapped Optionals的含义是，某些情况下，可选变量总是有值的，那么移除每次检查可选变量是非常有用的。这些总是有值的可选变量就称为Implicitly Unwrapped Optionals。
+
+官方文档描述[^2]，如下
+
+> Sometimes it’s clear from a program’s structure that an optional will *always* have a value, after that value is first set. In these cases, it’s useful to remove the need to check and unwrap the optional’s value every time it’s accessed, because it can be safely assumed to have a value all of the time.
+>
+> These kinds of optionals are defined as *implicitly unwrapped optionals*.
+
+举个例子，如下
+
+```swift
+let possibleString: String? = "An optional string."
+let forcedString: String = possibleString! // requires an exclamation point
+
+let assumedString: String! = "An implicitly unwrapped optional string."
+let implicitString: String = assumedString // no need for an exclamation point
+
+let optionalString = assumedString
+// The type of optionalString is "String?" and assumedString isn't force-unwrapped.
+
+if assumedString != nil {
+    print(assumedString!)
+}
+// Prints "An implicitly unwrapped optional string."
+
+if let definiteString = assumedString {
+    print(definiteString)
+}
+// Prints "An implicitly unwrapped optional string."
+```
+
+
+
+// TODO
+
+https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html
+
+
+
+### (4) 字符串
 
 #### a. String interpolation
 
@@ -128,7 +684,7 @@ And then I said "I have \(apples + oranges) pieces of fruit."
 
 
 
-### (4) 容器类型(Array/Dictionary)
+### (5) 容器类型(Array/Dictionary/Set)
 
 Array和Dictionary都可以使用`[]`来定义，访问每个元素，使用下标index或者key。
 
@@ -167,7 +723,7 @@ occupations = [:]
 
 
 
-### (5) 控制流(Control Flow)
+### (6) 控制流(Control Flow)
 
  Swift支持的控制流语句，如下
 
@@ -335,7 +891,7 @@ print(m)
 
 
 
-### (6) 函数(Function)和闭包(Closure)
+### (7) 函数(Function)和闭包(Closure)
 
 在Swift中使用`func`声明一个函数，如果函数有返回值，则使用`-> ReturnType`来声明返回值类型。
 
@@ -531,7 +1087,7 @@ print(sortedNumbers)
 
 
 
-### (7) 对象(Object)和类(Class)
+### (8) 对象(Object)和类(Class)
 
 在Swift中使用`class`来定义一个类，类中的属性和函数，和变量、函数的定义，没有区别，除了这些变量和函数的上下文是一个类而已。
 
@@ -669,7 +1225,7 @@ TODO:https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html
 
 
 
-### (8) 枚举和结构体
+### (9) 枚举和结构体
 
 在Swift中使用`enum`定义枚举类型，和其他有名字的类型(类等)，枚举定义中可以定义函数。
 
@@ -776,7 +1332,7 @@ let threeOfSpadesDescription = threeOfSpades.simpleDescription()
 
 
 
-### (9) 协议(Protocol)和扩展(Extension)
+### (10) 协议(Protocol)和扩展(Extension)
 
 #### a. 协议(Protocol)
 
@@ -935,7 +1491,7 @@ print(7.simpleDescription)
 
 
 
-### (10) 泛型(Generics)
+### (11) 泛型(Generics)
 
 Swift也支持泛型，使用`<X>`来声明泛型。
 
@@ -1001,7 +1557,7 @@ anyCommonElements([1, 2, 3], [3])
 
 
 
-### (11) 关键词
+### (12) 关键词
 
 #### a. defer
 
@@ -1039,6 +1595,76 @@ print(fridgeIsOpen)
 
 
 
+#### b. typealias
+
+`typealias`用于定义现有类型的别名(Type Alias)。
+
+举个例子，如下
+
+```swift
+typealias AudioSample = UInt16
+var maxAmplitudeFound = AudioSample.min
+// maxAmplitudeFound is now 0
+```
+
+这里AudioSample调用min属性，实际上是UInt16调用min属性。
+
+
+
+
+
+### (13) 常用函数
+
+#### a. print
+
+print函数是一个全局函数。它的签名，如下
+
+```swift
+func print(_ items: Any..., separator: String = " ", terminator: String = "\n")
+```
+
+* Items，一个或多个输出对象
+* separator，分隔符。默认是一个空格
+* terminator，终止符。默认是\n
+
+注意：items的类型Any，即除了传入字符串类型，也可以传入其他类型。对于其他非字符串类型，print函数对每个item，进行String(item)转成字符串。
+
+举个例子，如下
+
+```swift
+func test_print() throws {
+    // Case 1: pass string
+    print("One two three four five")
+    // Prints "One two three four five"
+
+    // Case 2: pass range
+    print(1...5)
+    // Prints "1...5" string, not 1 2 3 4 5
+
+    // Case 3: pass Double
+    print(1.0, 2.0, 3.0, 4.0, 5.0)
+    // Prints "1.0 2.0 3.0 4.0 5.0"
+
+    // Case 4: use separator
+    print(1.0, 2.0, 3.0, 4.0, 5.0, separator: " ... ")
+    // Prints "1.0 ... 2.0 ... 3.0 ... 4.0 ... 5.0"
+
+    // Case 5: use terminator
+    for n in 1...5 {
+        print(n, terminator: "")
+    }
+    // Prints "12345"
+}
+```
+
+
+
+
+
+
+
 ## References
 
 [^1]: https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html
+[^2]:https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html
+
