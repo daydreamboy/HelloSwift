@@ -170,6 +170,10 @@ class TableViewCellItem {
 
 
 
+TODO
+
+https://stackoverflow.com/questions/24014045/does-swift-have-dynamic-dispatch-and-virtual-methods?spm=ata.21736010.0.0.51bd3710p2P0yp&answertab=votes#tab-top
+
 
 
 
