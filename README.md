@@ -1611,6 +1611,10 @@ var maxAmplitudeFound = AudioSample.min
 
 
 
+#### c. final
+
+https://stackoverflow.com/questions/25156377/what-is-the-difference-between-static-func-and-class-func-in-swift
+
 
 
 ### (13) 常用函数
@@ -1656,6 +1660,26 @@ func test_print() throws {
     // Prints "12345"
 }
 ```
+
+
+
+## 2、Swift和Objective-C混编
+
+a. 在Swift中使用Object
+
+
+
+Test-Bridging-Header.h
+
+```
+SWIFT_OBJC_BRIDGING_HEADER
+```
+
+
+
+TODO: https://stackoverflow.com/questions/24002369/how-do-i-call-objective-c-code-from-swift
+
+
 
 
 
