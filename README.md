@@ -1663,21 +1663,90 @@ func test_print() throws {
 
 
 
-## 2、Swift和Objective-C混编
+## 2、Swift和Objective-C混编[^3]
 
-a. 在Swift中使用Object
+### a. 在Swift中使用Objective-C代码
 
-
-
-Test-Bridging-Header.h
+在Swift中使用Objective-C类，需要一个bridge header文件。如果工程中没有这个文件，在第一次新建一个Objective-C类时，Xcode会提示是否需要创建这个文件。如果选择是，则按照下面的命名规则，生成一个h文件。
 
 ```
-SWIFT_OBJC_BRIDGING_HEADER
+<#YourTargetName#>-Bridging-Header.h
+```
+
+并且在Build Setting中有下面的设置
+
+```properties
+SWIFT_OBJC_BRIDGING_HEADER = path/to/<#YourTargetName#>-Bridging-Header.h
 ```
 
 
 
-TODO: https://stackoverflow.com/questions/24002369/how-do-i-call-objective-c-code-from-swift
+在Swift代码引用Objective-C类，不需要import头文件。提前编译好Objective-C类，方便Xcode自动提示能找到该类。
+
+示例代码，如下
+
+```swift
+class Test_use_OC_class_in_Swift: XCTestCase {
+
+    func test_WCSecurityTool_aes256Decrypt() throws {
+        var inputString: String;
+        var outputString: String?;
+        var data: Data?
+        var encryptedData: Data?
+        var decryptedData: Data?
+        
+        // Case 1
+        inputString = "Hello, world!"
+        data = inputString.data(using: String.Encoding.utf8)
+        encryptedData = WCSecurityTool.aes256Encrypt(with: data!, key: "123")
+        decryptedData = WCSecurityTool.aes256Decrypt(with: encryptedData!, key: "123")
+        outputString = String.init(data: decryptedData!, encoding: String.Encoding.utf8)
+        
+        XCTAssertEqual(outputString, inputString)
+    }
+}
+```
+
+> 示例代码，见Test_use_OC_class_in_Swift.swift
+
+注意
+
+> Objective-C方法在Swift代码中调用，该方法的命名是Xcode自动生成
+
+
+
+### b. 在Objective-C中使用Swift代码
+
+在Objective-C中使用Swift代码，比上面相对步骤多一些。几个步骤，如下
+
+* 新建Swift类，必须继承自NSObject。暴露给Objective-C的方法或属性，需要使用`@objc`标记
+
+* 导入头文件`#import "<target name>-Swift.h"`，这个头文件是Xcode自动生成的。需要使用Xcode编译Swift代码通过后才生成
+* Objective-C代码中使用Swift类的方法和属性。举个例子，如下
+
+```objective-c
+#import "Test-Swift.h"
+
+@implementation Test_use_Swift_class_in_OC
+
+- (void)test_MySwiftObject_someFunctionWithSomeArg {
+    // Case 1
+    MySwiftObject *object = [MySwiftObject new];
+    NSLog(@"MyOb.someProperty: %@", object.someProperty);
+    object.someProperty = @"Hello World";
+    NSLog(@"MyOb.someProperty: %@", object.someProperty);
+
+    // Case 2
+    NSString *returnedString = [object someFunctionWithSomeArg:@"an arg"];
+    NSLog(@"RetString: %@", returnedString);
+}
+
+@end
+```
+
+> 示例代码，见Test_use_Swift_class_in_OC.m
+
+
 
 
 
@@ -1691,4 +1760,6 @@ TODO: https://stackoverflow.com/questions/24002369/how-do-i-call-objective-c-cod
 
 [^1]: https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html
 [^2]:https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html
+
+[^3]:https://stackoverflow.com/questions/24002369/how-do-i-call-objective-c-code-from-swift
 
