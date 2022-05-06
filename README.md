@@ -1748,9 +1748,17 @@ class Test_use_OC_class_in_Swift: XCTestCase {
 
 
 
+## 3、Swift常见问题
 
+### (1) Swift代码的入口
 
+Objective-C代码的入口都是main函数，而Swift代码的入口可以自定义[^5]。比如
 
+* 在iOS工程中，入口是UIApplicationDelegate类，并使用`@UIApplicationMain`标记
+* 在MacApp工程中，入口是NSApplicationMain类，并使用`@NSApplicationMain`标记
+* 命令行工程中，入口是命名为main.swift文件
+
+在Swift 5.3上，可以使用`@main`标记入口[^4]
 
 
 
@@ -1762,4 +1770,7 @@ class Test_use_OC_class_in_Swift: XCTestCase {
 [^2]:https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html
 
 [^3]:https://stackoverflow.com/questions/24002369/how-do-i-call-objective-c-code-from-swift
+
+[^4]:https://stackoverflow.com/a/62251205
+[^5]:https://stackoverflow.com/a/24105730
 
