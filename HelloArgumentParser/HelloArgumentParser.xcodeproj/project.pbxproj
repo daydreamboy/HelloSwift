@@ -32,6 +32,11 @@
 		4F4D63CE283E2F46004DDF9B /* CharacterCount21.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D63CD283E2F46004DDF9B /* CharacterCount21.swift */; };
 		4F4D63D0283E3068004DDF9B /* CharacterCount22.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D63CF283E3068004DDF9B /* CharacterCount22.swift */; };
 		4F4D63D2283E3403004DDF9B /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D63D1283E3403004DDF9B /* Math.swift */; };
+		4F4D63D4283E4598004DDF9B /* CharacterCount23.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D63D3283E4598004DDF9B /* CharacterCount23.swift */; };
+		4F4D63D6283E46C7004DDF9B /* CharacterCount24.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D63D5283E46C7004DDF9B /* CharacterCount24.swift */; };
+		4F4D63D8283E4884004DDF9B /* CharacterCount25.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D63D7283E4884004DDF9B /* CharacterCount25.swift */; };
+		4F4D63DA283E49B1004DDF9B /* CharacterCount26.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D63D9283E49B1004DDF9B /* CharacterCount26.swift */; };
+		4F4D63DC283E4DA3004DDF9B /* Pokedex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D63DB283E4DA3004DDF9B /* Pokedex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -72,6 +77,11 @@
 		4F4D63CD283E2F46004DDF9B /* CharacterCount21.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCount21.swift; sourceTree = "<group>"; };
 		4F4D63CF283E3068004DDF9B /* CharacterCount22.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCount22.swift; sourceTree = "<group>"; };
 		4F4D63D1283E3403004DDF9B /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
+		4F4D63D3283E4598004DDF9B /* CharacterCount23.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCount23.swift; sourceTree = "<group>"; };
+		4F4D63D5283E46C7004DDF9B /* CharacterCount24.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCount24.swift; sourceTree = "<group>"; };
+		4F4D63D7283E4884004DDF9B /* CharacterCount25.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCount25.swift; sourceTree = "<group>"; };
+		4F4D63D9283E49B1004DDF9B /* CharacterCount26.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCount26.swift; sourceTree = "<group>"; };
+		4F4D63DB283E4DA3004DDF9B /* Pokedex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokedex.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,7 +138,12 @@
 				4F4D63CB283E2F05004DDF9B /* CharacterCount20.swift */,
 				4F4D63CD283E2F46004DDF9B /* CharacterCount21.swift */,
 				4F4D63CF283E3068004DDF9B /* CharacterCount22.swift */,
+				4F4D63D3283E4598004DDF9B /* CharacterCount23.swift */,
+				4F4D63D5283E46C7004DDF9B /* CharacterCount24.swift */,
+				4F4D63D7283E4884004DDF9B /* CharacterCount25.swift */,
+				4F4D63D9283E49B1004DDF9B /* CharacterCount26.swift */,
 				4F4D63D1283E3403004DDF9B /* Math.swift */,
+				4F4D63DB283E4DA3004DDF9B /* Pokedex.swift */,
 			);
 			path = HelloArgumentParser;
 			sourceTree = "<group>";
@@ -206,11 +221,16 @@
 				4F4D63C0283E2745004DDF9B /* CharacterCount14.swift in Sources */,
 				4F4D63B8283E259F004DDF9B /* CharacterCount10.swift in Sources */,
 				4F4D63CE283E2F46004DDF9B /* CharacterCount21.swift in Sources */,
+				4F4D63D6283E46C7004DDF9B /* CharacterCount24.swift in Sources */,
 				4F4D63A9283E068D004DDF9B /* CharacterCount5.swift in Sources */,
+				4F4D63DA283E49B1004DDF9B /* CharacterCount26.swift in Sources */,
 				4F4D63CA283E2E65004DDF9B /* CharacterCount19.swift in Sources */,
 				4F4D63B6283E2576004DDF9B /* CharacterCount9.swift in Sources */,
 				4F4D63A7283E05F8004DDF9B /* CharacterCount4.swift in Sources */,
 				4F4D63A3283E03A1004DDF9B /* CharacterCount3.swift in Sources */,
+				4F4D63DC283E4DA3004DDF9B /* Pokedex.swift in Sources */,
+				4F4D63D8283E4884004DDF9B /* CharacterCount25.swift in Sources */,
+				4F4D63D4283E4598004DDF9B /* CharacterCount23.swift in Sources */,
 				4F4D63B0283E16EB004DDF9B /* CharacterCount6.swift in Sources */,
 				4F4D63BC283E25F4004DDF9B /* CharacterCount12.swift in Sources */,
 				4F4D63B2283E1749004DDF9B /* CharacterCount7.swift in Sources */,

@@ -1762,6 +1762,16 @@ Objective-C代码的入口都是main函数，而Swift代码的入口可以自定
 
 
 
+### (2) No such module 'ArgumentParser'
+
+当打开xcworkspace，添加Swift Package。由于有多个target，需要在
+
+Project Settings -> General -> My Target -> `Frameworks, Libraries, and Embedded Content`
+
+手动指定下对应的Swift Package[^6]。
+
+
+
 
 
 ## References
@@ -1773,4 +1783,6 @@ Objective-C代码的入口都是main函数，而Swift代码的入口可以自定
 
 [^4]:https://stackoverflow.com/a/62251205
 [^5]:https://stackoverflow.com/a/24105730
+
+[^6]:https://stackoverflow.com/a/61939814
 

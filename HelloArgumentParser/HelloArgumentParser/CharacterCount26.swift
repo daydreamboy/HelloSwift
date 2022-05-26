@@ -1,5 +1,5 @@
 //
-//  CharacterCount22.swift
+//  CharacterCount26.swift
 //  HelloArgumentParser
 //
 //  Created by wesley_chen on 2022/5/25.
@@ -8,14 +8,16 @@
 import Foundation
 import ArgumentParser
 
-struct CharacterCount22: ParsableCommand {
+struct CharacterCount26: ParsableCommand {
     
     // Input:
-    // $ ./CharacterCount22 direct-string "Alice"
-    static let configuration = CommandConfiguration(subcommands: [DirectString.self])
-  
-    // Note: use EnumerableFlag instead of String, CaseIterable
-    // https://apple.github.io/swift-argument-parser/documentation/argumentparser/flag
+    // $ ./CharacterCount26 direct-string "Alice"
+    static let configuration = CommandConfiguration(
+        commandName: "CharacterCounter",
+        abstract: "Allows you to count the number of characters in a string",
+        discussion: "A string is a made up of multiple characters. A character can be human-readable or a control character. When counting characters, you may need to know if you want to consider control characters or not, as the results may vary.",
+        subcommands: [DirectString.self])
+    
     enum CountingConfiguration: EnumerableFlag /*String, CaseIterable*/ {
       case all
       case uppercaseOnly
@@ -31,7 +33,7 @@ struct CharacterCount22: ParsableCommand {
     }
 }
 
-extension CharacterCount22 {
+extension CharacterCount26 {
     struct DirectString: ParsableCommand {
         @Argument(help: "The string to count the characters of") var string: String
         

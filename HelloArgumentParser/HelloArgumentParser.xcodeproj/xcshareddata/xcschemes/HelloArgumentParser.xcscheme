@@ -52,7 +52,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "&quot;Pullip Al1ce&quot; --whitespace --numbers"
+            argument = "--help"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
