@@ -27,5 +27,9 @@ import Foundation
 //CharacterCount23.main()
 //CharacterCount24.main()
 //CharacterCount25.main()
-CharacterCount26.main()
+//CharacterCount26.main()
 //Pokedex.main()
+
+GetOriginalInputString.main()
+
+
