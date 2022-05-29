@@ -1772,6 +1772,18 @@ Project Settings -> General -> My Target -> `Frameworks, Libraries, and Embedded
 
 
 
+### (3) xcodebuild: error: Could not resolve package dependencies
+
+xcodebuild: error: Could not resolve package dependencies:
+
+Package.resolved file is corrupted or malformed; fix or delete the file to continue
+
+解决方法：删除xcworkspace下面的Package.resolved文件，重新打开Xcode，让其自动生成[^7]
+
+
+
+
+
 
 
 ## References
@@ -1785,4 +1797,6 @@ Project Settings -> General -> My Target -> `Frameworks, Libraries, and Embedded
 [^5]:https://stackoverflow.com/a/24105730
 
 [^6]:https://stackoverflow.com/a/61939814
+
+[^7]:https://stackoverflow.com/a/69389411
 
