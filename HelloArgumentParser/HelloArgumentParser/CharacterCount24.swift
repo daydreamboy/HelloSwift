@@ -37,6 +37,8 @@ struct CharacterCount24: ParsableCommand {
     }
 }
 
+// MARK: - DirectString subcommand
+
 extension CharacterCount24 {
     struct DirectString: ParsableCommand {
         @Argument(help: "The string to count the characters of") var string: String
@@ -65,6 +67,8 @@ extension CharacterCount24 {
     }
 }
 
+// MARK: - LocalFile subcommand
+
 extension CharacterCount24 {
   struct LocalFile: ParsableCommand {
     @Argument(help: "A path to a local file to count the characters of") var localFile: String
@@ -81,6 +85,8 @@ extension CharacterCount24 {
     }
   }
 }
+
+// MARK: - RemoteFile subcommand
 
 extension CharacterCount24 {
   struct RemoteFile: ParsableCommand {

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F09E222284A48F900B77CBC /* ComposableCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F09E221284A48F900B77CBC /* ComposableCommand.swift */; };
+		4F09E226284A512E00B77CBC /* runCommandByCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F09E225284A512E00B77CBC /* runCommandByCode.swift */; };
 		4F4D6397283DD5DF004DDF9B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D6396283DD5DF004DDF9B /* main.swift */; };
 		4F4D639F283DDB38004DDF9B /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 4F4D639E283DDB38004DDF9B /* ArgumentParser */; };
 		4F4D63A1283DDBC8004DDF9B /* CharacterCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D63A0283DDBC8004DDF9B /* CharacterCount.swift */; };
@@ -53,6 +55,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4F09E221284A48F900B77CBC /* ComposableCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposableCommand.swift; sourceTree = "<group>"; };
+		4F09E225284A512E00B77CBC /* runCommandByCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = runCommandByCode.swift; sourceTree = "<group>"; };
 		4F4D6393283DD5DF004DDF9B /* HelloArgumentParser */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HelloArgumentParser; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F4D6396283DD5DF004DDF9B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		4F4D63A0283DDBC8004DDF9B /* CharacterCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCount.swift; sourceTree = "<group>"; };
@@ -147,6 +151,8 @@
 				4F4D63D1283E3403004DDF9B /* Math.swift */,
 				4F4D63DB283E4DA3004DDF9B /* Pokedex.swift */,
 				4FAB34C8283FBAD300FECAF4 /* TrickPassOriginalInput.swift */,
+				4F09E221284A48F900B77CBC /* ComposableCommand.swift */,
+				4F09E225284A512E00B77CBC /* runCommandByCode.swift */,
 			);
 			path = HelloArgumentParser;
 			sourceTree = "<group>";
@@ -235,12 +241,14 @@
 				4F4D63DC283E4DA3004DDF9B /* Pokedex.swift in Sources */,
 				4F4D63D8283E4884004DDF9B /* CharacterCount25.swift in Sources */,
 				4F4D63D4283E4598004DDF9B /* CharacterCount23.swift in Sources */,
+				4F09E222284A48F900B77CBC /* ComposableCommand.swift in Sources */,
 				4F4D63B0283E16EB004DDF9B /* CharacterCount6.swift in Sources */,
 				4F4D63BC283E25F4004DDF9B /* CharacterCount12.swift in Sources */,
 				4F4D63B2283E1749004DDF9B /* CharacterCount7.swift in Sources */,
 				4F4D63D0283E3068004DDF9B /* CharacterCount22.swift in Sources */,
 				4F4D63C2283E28A4004DDF9B /* CharacterCount15.swift in Sources */,
 				4F4D63C4283E2A6E004DDF9B /* CharacterCount16.swift in Sources */,
+				4F09E226284A512E00B77CBC /* runCommandByCode.swift in Sources */,
 				4F4D6397283DD5DF004DDF9B /* main.swift in Sources */,
 				4F4D63A1283DDBC8004DDF9B /* CharacterCount.swift in Sources */,
 				4F4D63CC283E2F05004DDF9B /* CharacterCount20.swift in Sources */,

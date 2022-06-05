@@ -16,6 +16,7 @@ import Foundation
 //CharacterCount6.main()
 //CharacterCount7.main()
 //CharacterCount8.main()
+//CharacterCount13.main()
 //CharacterCount14.main()
 //CharacterCount15.main()
 //CharacterCount18.main()
@@ -23,13 +24,16 @@ import Foundation
 //CharacterCount20.main()
 //CharacterCount21.main()
 //Math.main()
-//CharacterCount22.main()
+CharacterCount22.main()
 //CharacterCount23.main()
 //CharacterCount24.main()
 //CharacterCount25.main()
 //CharacterCount26.main()
 //Pokedex.main()
 
-GetOriginalInputString.main()
+//GetOriginalInputString.main()
+//ComposableCommand.init().main()
+
+//runCommandByCode.init().main()
 
 

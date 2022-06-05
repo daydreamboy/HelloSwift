@@ -34,18 +34,17 @@ extension GetOriginalInputString {
             _ = runCommand(command: "surgeon", arguments: arguments)
             GetOriginalInputString.exit()
         }
+        
+        func runCommand(command: String, arguments: [String]) -> Int32 {
+            let task = Process()
+            task.launchPath = NSHomeDirectory() + "/8/DGSurgeonPatch/saas/test/v3.0.0/5/" + command
+            task.arguments = arguments
+            task.launch()
+            task.waitUntilExit()
+            return task.terminationStatus
+        }
     }
 }
-
-func runCommand(command: String, arguments: [String]) -> Int32 {
-    let task = Process()
-    task.launchPath = NSHomeDirectory() + "/8/DGSurgeonPatch/saas/test/v3.0.0/5/" + command
-    task.arguments = arguments
-    task.launch()
-    task.waitUntilExit()
-    return task.terminationStatus
-}
-
 
 
 
