@@ -7,5 +7,6 @@
 
 //import Foundation
 
-print("Hello, World!")
+
+readline_only_one_line()
 

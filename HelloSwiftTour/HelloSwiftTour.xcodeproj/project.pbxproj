@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F09E220284A305F00B77CBC /* Test_property_wrapper_basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F09E21F284A305F00B77CBC /* Test_property_wrapper_basic.swift */; };
+		4F09E224284A4CC900B77CBC /* Test_readline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F09E223284A4CC900B77CBC /* Test_readline.swift */; };
 		4F3F1FAA27EEF105007532A2 /* Test_variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3F1FA927EEF105007532A2 /* Test_variable.swift */; };
 		4F3F1FAC27EEF3CA007532A2 /* Test_print.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3F1FAB27EEF3CA007532A2 /* Test_print.swift */; };
 		4F3F1FAE27EF043D007532A2 /* Test_numeric_literal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3F1FAD27EF043D007532A2 /* Test_numeric_literal.swift */; };
@@ -16,6 +18,11 @@
 		4F4BF943281A3FB1003BDEAF /* WCSecurityTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4BF942281A3FB1003BDEAF /* WCSecurityTool.m */; };
 		4F55F80B281A8F8600F15B1F /* Test_use_Swift_class_in_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F55F80A281A8F8600F15B1F /* Test_use_Swift_class_in_OC.m */; };
 		4F55F80F281A902800F15B1F /* MySwiftObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F55F80E281A902800F15B1F /* MySwiftObject.swift */; };
+		4FA48115284C8C64005AB36E /* Test_property_wrapper_define_customized_initializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA48114284C8C64005AB36E /* Test_property_wrapper_define_customized_initializer.swift */; };
+		4FA48118284C95E3005AB36E /* Test_property_wrapper_projected_value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA48117284C95E3005AB36E /* Test_property_wrapper_projected_value.swift */; };
+		4FA4811A284C99A2005AB36E /* Test_property_wrapper_access_property_of_property_wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA48119284C99A2005AB36E /* Test_property_wrapper_access_property_of_property_wrapper.swift */; };
+		4FA4811C284C9DF6005AB36E /* Test_property_wrapper_static_subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA4811B284C9DF6005AB36E /* Test_property_wrapper_static_subscript.swift */; };
+		4FA4811E284CA292005AB36E /* Test_property_wrapper_attach_to_function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA4811D284CA292005AB36E /* Test_property_wrapper_attach_to_function.swift */; };
 		4FA956FB27E6FA890080983F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA956FA27E6FA890080983F /* AppDelegate.swift */; };
 		4FA956FD27E6FA890080983F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA956FC27E6FA890080983F /* SceneDelegate.swift */; };
 		4FA956FF27E6FA890080983F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA956FE27E6FA890080983F /* ViewController.swift */; };
@@ -55,6 +62,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4F09E21F284A305F00B77CBC /* Test_property_wrapper_basic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_property_wrapper_basic.swift; sourceTree = "<group>"; };
+		4F09E223284A4CC900B77CBC /* Test_readline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_readline.swift; sourceTree = "<group>"; };
 		4F3F1FA927EEF105007532A2 /* Test_variable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_variable.swift; sourceTree = "<group>"; };
 		4F3F1FAB27EEF3CA007532A2 /* Test_print.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_print.swift; sourceTree = "<group>"; };
 		4F3F1FAD27EF043D007532A2 /* Test_numeric_literal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_numeric_literal.swift; sourceTree = "<group>"; };
@@ -66,6 +75,11 @@
 		4F4BF942281A3FB1003BDEAF /* WCSecurityTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCSecurityTool.m; sourceTree = "<group>"; };
 		4F55F80A281A8F8600F15B1F /* Test_use_Swift_class_in_OC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_use_Swift_class_in_OC.m; sourceTree = "<group>"; };
 		4F55F80E281A902800F15B1F /* MySwiftObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySwiftObject.swift; sourceTree = "<group>"; };
+		4FA48114284C8C64005AB36E /* Test_property_wrapper_define_customized_initializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_property_wrapper_define_customized_initializer.swift; sourceTree = "<group>"; };
+		4FA48117284C95E3005AB36E /* Test_property_wrapper_projected_value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_property_wrapper_projected_value.swift; sourceTree = "<group>"; };
+		4FA48119284C99A2005AB36E /* Test_property_wrapper_access_property_of_property_wrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_property_wrapper_access_property_of_property_wrapper.swift; sourceTree = "<group>"; };
+		4FA4811B284C9DF6005AB36E /* Test_property_wrapper_static_subscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_property_wrapper_static_subscript.swift; sourceTree = "<group>"; };
+		4FA4811D284CA292005AB36E /* Test_property_wrapper_attach_to_function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_property_wrapper_attach_to_function.swift; sourceTree = "<group>"; };
 		4FA956F727E6FA890080983F /* HelloSwiftTour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloSwiftTour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FA956FA27E6FA890080983F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FA956FC27E6FA890080983F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +188,12 @@
 				4F4BF93B281A30B9003BDEAF /* Test_keyword_final.swift */,
 				4F4BF93D281A3F7E003BDEAF /* Test_use_OC_class_in_Swift.swift */,
 				4F55F80A281A8F8600F15B1F /* Test_use_Swift_class_in_OC.m */,
+				4F09E21F284A305F00B77CBC /* Test_property_wrapper_basic.swift */,
+				4FA48114284C8C64005AB36E /* Test_property_wrapper_define_customized_initializer.swift */,
+				4FA48117284C95E3005AB36E /* Test_property_wrapper_projected_value.swift */,
+				4FA48119284C99A2005AB36E /* Test_property_wrapper_access_property_of_property_wrapper.swift */,
+				4FA4811B284C9DF6005AB36E /* Test_property_wrapper_static_subscript.swift */,
+				4FA4811D284CA292005AB36E /* Test_property_wrapper_attach_to_function.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -182,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				4FA9572127E6FAE80080983F /* main.swift */,
+				4F09E223284A4CC900B77CBC /* Test_readline.swift */,
 			);
 			path = HelloSwiftCLI;
 			sourceTree = "<group>";
@@ -323,14 +344,20 @@
 				4FA9572927E7123B0080983F /* Test_class.swift in Sources */,
 				4FA9572B27E71A840080983F /* Test_enum.swift in Sources */,
 				4F3F1FB027EF1762007532A2 /* Test_optional.swift in Sources */,
+				4FA4811E284CA292005AB36E /* Test_property_wrapper_attach_to_function.swift in Sources */,
+				4FA48118284C95E3005AB36E /* Test_property_wrapper_projected_value.swift in Sources */,
 				4F3F1FAA27EEF105007532A2 /* Test_variable.swift in Sources */,
 				4F4BF943281A3FB1003BDEAF /* WCSecurityTool.m in Sources */,
 				4FA9572727E7071A0080983F /* Test_function.swift in Sources */,
 				4F55F80F281A902800F15B1F /* MySwiftObject.swift in Sources */,
 				4F3F1FAE27EF043D007532A2 /* Test_numeric_literal.swift in Sources */,
 				4F4BF93E281A3F7E003BDEAF /* Test_use_OC_class_in_Swift.swift in Sources */,
+				4FA4811C284C9DF6005AB36E /* Test_property_wrapper_static_subscript.swift in Sources */,
+				4F09E220284A305F00B77CBC /* Test_property_wrapper_basic.swift in Sources */,
+				4FA48115284C8C64005AB36E /* Test_property_wrapper_define_customized_initializer.swift in Sources */,
 				4FA9573127E7624B0080983F /* Test_generic.swift in Sources */,
 				4F55F80B281A8F8600F15B1F /* Test_use_Swift_class_in_OC.m in Sources */,
+				4FA4811A284C99A2005AB36E /* Test_property_wrapper_access_property_of_property_wrapper.swift in Sources */,
 				4F4BF93C281A30B9003BDEAF /* Test_keyword_final.swift in Sources */,
 				4FA9572D27E75AEF0080983F /* Test_error.swift in Sources */,
 				4F3F1FAC27EEF3CA007532A2 /* Test_print.swift in Sources */,
@@ -343,6 +370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FA9572227E6FAE80080983F /* main.swift in Sources */,
+				4F09E224284A4CC900B77CBC /* Test_readline.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,6 +590,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wc.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG UserDefaultType5";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Test/Tools/Test-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
