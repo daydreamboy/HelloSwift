@@ -2,23 +2,16 @@
 //  ViewController.swift
 //  HelloString
 //
-//  Created by wesley_chen on 2022/5/26.
+//  Created by wesley_chen on 2022/6/6.
 //
 
-import Cocoa
+import UIKit
 
-class ViewController: NSViewController {
+class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
-    }
-
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
     }
 
 

@@ -8,28 +8,26 @@
 import XCTest
 
 class Test: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func test_URLEscapedString() throws {
+        XCTAssertEqual(WCStringTool.URLEscapedString(":"), "%3A")
+        XCTAssertEqual(WCStringTool.URLEscapedString("/"), "%2F")
+        XCTAssertEqual(WCStringTool.URLEscapedString("?"), "%3F")
+        XCTAssertEqual(WCStringTool.URLEscapedString("&"), "%26")
+        XCTAssertEqual(WCStringTool.URLEscapedString("="), "%3D")
+        XCTAssertEqual(WCStringTool.URLEscapedString(";"), "%3B")
+        XCTAssertEqual(WCStringTool.URLEscapedString("+"), "%2B")
+        XCTAssertEqual(WCStringTool.URLEscapedString("!"), "%21")
+        XCTAssertEqual(WCStringTool.URLEscapedString("@"), "%40")
+        XCTAssertEqual(WCStringTool.URLEscapedString("#"), "%23")
+        XCTAssertEqual(WCStringTool.URLEscapedString("$"), "%24")
+        XCTAssertEqual(WCStringTool.URLEscapedString("("), "%28")
+        XCTAssertEqual(WCStringTool.URLEscapedString(")"), "%29")
+        XCTAssertEqual(WCStringTool.URLEscapedString("'"), "%27")
+        XCTAssertEqual(WCStringTool.URLEscapedString(","), "%2C")
+        XCTAssertEqual(WCStringTool.URLEscapedString("*"), "%2A")
+        XCTAssertEqual(WCStringTool.URLEscapedString("["), "%5B")
+        XCTAssertEqual(WCStringTool.URLEscapedString("]"), "%5D")
+        XCTAssertEqual(WCStringTool.URLEscapedString("{"), "%7B")
+        XCTAssertEqual(WCStringTool.URLEscapedString("}"), "%7D")
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }
