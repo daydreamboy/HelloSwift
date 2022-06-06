@@ -1225,6 +1225,12 @@ TODO:https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html
 
 
 
+TODO:https://stackoverflow.com/questions/29636633/static-vs-class-functions-variables-in-swift-classes
+
+
+
+
+
 ### (9) 枚举和结构体
 
 在Swift中使用`enum`定义枚举类型，和其他有名字的类型(类等)，枚举定义中可以定义函数。
