@@ -176,6 +176,34 @@ https://stackoverflow.com/questions/24014045/does-swift-have-dynamic-dispatch-an
 
 
 
+```
+#if os(iOS) || os(watchOS) || os(tvOS)
+    let color = UIColor.red
+#elseif os(macOS)
+    let color = NSColor.red
+#else
+    println("OMG, it's that mythical new Apple product!!!")
+#endif
+```
+
+https://stackoverflow.com/questions/24065017/how-to-determine-device-type-from-swift-os-x-or-ios
+
+
+
+
+
+TODO
+
+check instance type
+
+https://stackoverflow.com/questions/24091882/checking-if-an-object-is-a-given-type-in-swift
+
+
+
+unicode literal
+
+https://stackoverflow.com/questions/37111849/swift-string-literal-for-unicode-character-is-wrong
+
 
 
 ## Reference

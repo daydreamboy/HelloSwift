@@ -5,7 +5,14 @@
 //  Created by wesley_chen on 2022/6/27.
 //
 
+// @see https://stackoverflow.com/a/24065534
+#if os(iOS) || os(watchOS) || os(tvOS)
 import UIKit
+#elseif os(macOS)
+import Cocoa
+#else
+#error("Unknown platform")
+#endif
 
 /**
  A  reader for reading text file by stream style
