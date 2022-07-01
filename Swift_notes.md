@@ -206,4 +206,16 @@ https://stackoverflow.com/questions/37111849/swift-string-literal-for-unicode-ch
 
 
 
+
+
+string subscript
+
+// @see https://stackoverflow.com/a/58913649
+
+
+
+
+
+
+
 ## Reference
