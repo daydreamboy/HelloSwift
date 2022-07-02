@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F1F382E2870658600CB61AE /* Test_WCAttributedStringTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1F382D2870658600CB61AE /* Test_WCAttributedStringTool.swift */; };
 		4F6CDC1F284DE48500A0A325 /* WCStringTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6CDC1D284DE48500A0A325 /* WCStringTool.swift */; };
 		4F6CDC20284DE48500A0A325 /* WCStringTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6CDC1D284DE48500A0A325 /* WCStringTool.swift */; };
 		4F6CDC28284DEA0100A0A325 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6CDC27284DEA0100A0A325 /* AppDelegate.swift */; };
@@ -25,6 +26,8 @@
 		4FAB34B7283FB0CA00FECAF4 /* WCColoredString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAB34A8283FB0B800FECAF4 /* WCColoredString.swift */; };
 		4FAB34BF283FB10100FECAF4 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAB34BE283FB10100FECAF4 /* main.swift */; };
 		4FAB34C3283FB10E00FECAF4 /* WCColoredString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAB34A8283FB0B800FECAF4 /* WCColoredString.swift */; };
+		4FEA3F23286EE42B003035BA /* WCAttributedStringTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA3F22286EE42B003035BA /* WCAttributedStringTool.swift */; };
+		4FEA3F24286EE42B003035BA /* WCAttributedStringTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA3F22286EE42B003035BA /* WCAttributedStringTool.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4F1F382D2870658600CB61AE /* Test_WCAttributedStringTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_WCAttributedStringTool.swift; sourceTree = "<group>"; };
 		4F6CDC1D284DE48500A0A325 /* WCStringTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCStringTool.swift; sourceTree = "<group>"; };
 		4F6CDC25284DEA0100A0A325 /* HelloString.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloString.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F6CDC27284DEA0100A0A325 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +72,7 @@
 		4FAB34B0283FB0C400FECAF4 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		4FAB34BC283FB10100FECAF4 /* ColoredString */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ColoredString; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FAB34BE283FB10100FECAF4 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		4FEA3F22286EE42B003035BA /* WCAttributedStringTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCAttributedStringTool.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +150,7 @@
 			children = (
 				4FAB34A8283FB0B800FECAF4 /* WCColoredString.swift */,
 				4F6CDC1D284DE48500A0A325 /* WCStringTool.swift */,
+				4FEA3F22286EE42B003035BA /* WCAttributedStringTool.swift */,
 				4FA8C9FB2869D2D400FFD63D /* WCStringStreamReader.swift */,
 			);
 			path = WCStringTool;
@@ -155,6 +161,7 @@
 			children = (
 				4FAB34B0283FB0C400FECAF4 /* Test.swift */,
 				4F85AF6C2869E6FF0023713A /* Test_WCStringStreamReader.swift */,
+				4F1F382D2870658600CB61AE /* Test_WCAttributedStringTool.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -292,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F6CDC2C284DEA0100A0A325 /* ViewController.swift in Sources */,
+				4FEA3F24286EE42B003035BA /* WCAttributedStringTool.swift in Sources */,
 				4F6CDC28284DEA0100A0A325 /* AppDelegate.swift in Sources */,
 				4F85AF6B2869E5C50023713A /* WCStringStreamReader.swift in Sources */,
 				4F6CDC2A284DEA0100A0A325 /* SceneDelegate.swift in Sources */,
@@ -304,8 +312,10 @@
 			files = (
 				4F85AF6D2869E6FF0023713A /* Test_WCStringStreamReader.swift in Sources */,
 				4FAB34B1283FB0C400FECAF4 /* Test.swift in Sources */,
+				4FEA3F23286EE42B003035BA /* WCAttributedStringTool.swift in Sources */,
 				4FA8C9FC2869D2D400FFD63D /* WCStringStreamReader.swift in Sources */,
 				4F6CDC1F284DE48500A0A325 /* WCStringTool.swift in Sources */,
+				4F1F382E2870658600CB61AE /* Test_WCAttributedStringTool.swift in Sources */,
 				4FAB34B7283FB0CA00FECAF4 /* WCColoredString.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
