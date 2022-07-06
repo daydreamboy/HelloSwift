@@ -7,12 +7,38 @@
 
 import XCTest
 
+extension Array where Element:Equatable {
+    func uniqued() -> [Element] {
+        var result = [Element]()
+
+        for value in self {
+            if result.contains(value) == false {
+                result.append(value)
+            }
+        }
+
+        return result
+    }
+}
+
+class SomeClass: NSObject {
+    public var restrictedSteamWords: [String]? {
+        // @see https://stackoverflow.com/a/24334029
+        didSet {
+            if restrictedSteamWords != nil {
+                restrictedSteamWords = restrictedSteamWords!.uniqued()
+            }
+        }
+    }
+}
+
 class Test: XCTestCase {
     func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+        let o = SomeClass()
+        o.restrictedSteamWords = nil
+        print(o.restrictedSteamWords as Any)
+        
+        o.restrictedSteamWords = [ "a", "b", "a" ]
+        print(o.restrictedSteamWords as Any)
     }
 }
