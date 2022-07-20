@@ -1823,11 +1823,54 @@ debugDescription的例子[^10]，如下
 
 ### (2) 打印对象
 
+打印对象，目前有两种方式
+
+* 打印上下文中的变量
+* 直接打印内存地址
 
 
 
+#### a. 打印上下文中的变量
+
+如果在lldb上下文环境中，存在对应的变量，则直接使用po命令
+
+举个例子，如下
+
+```shell
+(lldb) po o
+<Test_description_SomeClass: 0x0000600001e682f0, foo = 2>
+```
 
 
+
+#### b. 直接打印内存地址
+
+如果知道对象的内存地址，使用po命令，不能直接打印对象，需要将内存地址转成对应类型的对象。
+
+在Swift中不能像Objective-C那样类型强制转换，需要使用unsafeBitCast函数，来完成地址转成对象。
+
+举个例子[^11]，如下
+
+```shell
+(lldb) expression -lswift -- unsafeBitCast(0x0000600001e682f0, to: NSObject.self)
+(Test.Test_description_SomeClass) $R4 = 0x0000600001e682f0 {
+  ObjectiveC.NSObject = {
+    isa = Test.Test_description_SomeClass
+  }
+}
+(lldb) expression -lswift -O -- unsafeBitCast(0x0000600001e682f0, to: NSObject.self)
+<Test_description_SomeClass: 0x0000600001e682f0, foo = 2>
+```
+
+说明
+
+> 为了简化上面的输入，可以自定义一个paddr命令，配置代码，如下
+>
+> ```python
+> command regex paddr -h "Print memory address in Swift code" -s "paddr 0x123" -- 's/(.+)/expression -lswift -O -- unsafeBitCast(%1, to: NSObject.self)/'
+> ```
+>
+> 具体参考lldb_scripts工程的lldb_commands.txt配置
 
 
 
@@ -1850,4 +1893,5 @@ debugDescription的例子[^10]，如下
 [^8]:https://stackoverflow.com/a/24108931
 [^9]:https://stackoverflow.com/a/41666807
 [^10]:https://www.hackingwithswift.com/example-code/language/how-to-create-a-custom-debug-description
+[^11]:https://stackoverflow.com/questions/29441418/lldb-swift-casting-raw-address-into-usable-type
 
