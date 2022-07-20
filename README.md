@@ -1788,6 +1788,47 @@ Package.resolved file is corrupted or malformed; fix or delete the file to conti
 
 
 
+## 4、Swift在LLDB中调试
+
+### (1) 重写description属性和debugDescription属性
+
+Objective-C的description方法和debugDescription方法，在Swift 5.0中变成description属性和debugDescription属性。
+
+description的例子[^8][^9]，如下
+
+```swift
+    override var description: String {
+        return "<\(type(of: self)): \(Unmanaged.passUnretained(self).toOpaque()), foo = \(1)>"
+    }
+```
+
+
+
+debugDescription的例子[^10]，如下
+
+```swift
+    override var debugDescription: String {
+        return "<\(type(of: self)): \(Unmanaged.passUnretained(self).toOpaque()), foo = \(2)>"
+    }
+```
+
+说明
+
+> 1. print函数打印对象，是调用description属性
+> 2. lldb中打印对象，是调用debugDescription属性，如果debugDescription没有实现，则调用description属性
+
+> 示例代码，见Test_description.swift
+
+
+
+### (2) 打印对象
+
+
+
+
+
+
+
 
 
 
@@ -1805,4 +1846,8 @@ Package.resolved file is corrupted or malformed; fix or delete the file to conti
 [^6]:https://stackoverflow.com/a/61939814
 
 [^7]:https://stackoverflow.com/a/69389411
+
+[^8]:https://stackoverflow.com/a/24108931
+[^9]:https://stackoverflow.com/a/41666807
+[^10]:https://www.hackingwithswift.com/example-code/language/how-to-create-a-custom-debug-description
 
