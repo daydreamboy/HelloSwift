@@ -78,6 +78,8 @@ class WCStringTool: NSObject {
         return nil
     }
     
+    // MARK: String to File
+    
     /// Write string to file under the temporary folder
     /// - Parameters:
     ///   - string: the content of the file
@@ -94,6 +96,60 @@ class WCStringTool: NSObject {
             return fileURL
         } catch  {
             return nil
+        }
+    }
+    
+    // MARK: Regex Match
+    
+    
+    /// Get the matched strings or the strings from capture groups
+    /// - Parameters:
+    ///   - string: the original string
+    ///   - pattern: the pattern
+    /// - Returns: the matched strings or the strings from capture groups
+    static func matchedStringWithString(string: String, pattern: String) -> [String]? {
+        if pattern.range(of: "(") != nil && pattern.range(of: ")") != nil {
+            do {
+                var matchedStrings: [String] = []
+                let regex = try NSRegularExpression(pattern: pattern)
+                let matches: [NSTextCheckingResult] = regex.matches(in: string, range: NSRange(string.startIndex..., in: string))
+                for match in matches {
+                    for i in (1..<match.numberOfRanges) {
+                        let rangeBounds = match.range(at: i)
+                        if let range = Range(rangeBounds, in: string) {
+                            // Note: https://stackoverflow.com/a/46617119
+                            matchedStrings.append(String(string[range]))
+                        }
+                    }
+                }
+                
+                return matchedStrings
+            } catch let error {
+                #if DEBUG
+                print("invalid regex: \(error.localizedDescription)")
+                #endif
+                return []
+            }
+        }
+        else {
+            do {
+                var matchedStrings: [String] = []
+                let regex = try NSRegularExpression(pattern: pattern)
+                let matches: [NSTextCheckingResult] = regex.matches(in: string, range: NSRange(string.startIndex..., in: string))
+                for match in matches {
+                    let rangeBounds = match.range(at: 0)
+                    if let range = Range(rangeBounds, in: string) {
+                        matchedStrings.append(String(string[range]))
+                    }
+                }
+                
+                return matchedStrings
+            } catch let error {
+                #if DEBUG
+                print("invalid regex: \(error.localizedDescription)")
+                #endif
+                return []
+            }
         }
     }
 }

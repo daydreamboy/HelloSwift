@@ -30,4 +30,21 @@ class Test: XCTestCase {
         XCTAssertEqual(WCStringTool.URLEscapedString("{"), "%7B")
         XCTAssertEqual(WCStringTool.URLEscapedString("}"), "%7D")
     }
+    
+    func test_matchedStringWithString() throws {
+        var string: String
+        var output: String?
+        
+        // Case 1
+        string = "2022-06-27 09:18:54.657 [0x28298f900] 11288: [DG] DGATLog [vcDisAppear]  DGConversationListViewController"
+        output = WCStringTool.matchedStringWithString(string: string, pattern: "\\[vcDisAppear\\]")?.first
+        XCTAssertEqual(output, "[vcDisAppear]")
+        print(output as Any)
+        
+        // Case 2
+        string = "2022-06-27 09:18:54.657 [0x28298f900] 11288: [DG] DGATLog [vcDisAppear]  DGConversationListViewController"
+        output = WCStringTool.matchedStringWithString(string: string, pattern: "\\[vcDisAppear\\]  ([a-zA-Z]+)")?.first
+        XCTAssertEqual(output, "DGConversationListViewController")
+        print(output as Any)
+    }
 }
