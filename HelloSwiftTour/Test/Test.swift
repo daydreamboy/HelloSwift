@@ -41,4 +41,12 @@ class Test: XCTestCase {
         o.restrictedSteamWords = [ "a", "b", "a" ]
         print(o.restrictedSteamWords as Any)
     }
+    
+    func test_date() throws {
+        let formatter = DateFormatter()
+        formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale
+        formatter.dateFormat = "YYYY-MM-dd HH:mm:ss.SSS"
+        var date = formatter.date(from: "2022-06-27 09:10:53.426")
+        print(date)
+    }
 }

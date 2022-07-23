@@ -1788,6 +1788,12 @@ Package.resolved file is corrupted or malformed; fix or delete the file to conti
 
 
 
+TODO: static var in function
+
+https://stackoverflow.com/a/25354915
+
+
+
 ## 4、Swift在LLDB中调试
 
 ### (1) 重写description属性和debugDescription属性
