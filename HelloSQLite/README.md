@@ -681,11 +681,27 @@ SQLite3常见函数，归纳如下
 
 ## 5、SQLite3 Swift Wrapper
 
+在上面已经介绍SQLite3是基于C API的库，使用起来不是很方便。[SQLite.swift](https://github.com/stephencelis/SQLite.swift)这个库，采用面向对象的方式，封装了SQLite3。
+
+TODO
+
+
+
+## 6、源码使用SQLite3库
+
+TODO
+
+
+
+## 7、SQLite3常见任务
+
+### (1) 查询SQLite3版本
 
 
 
 
-## 6、SQLite3常用工具
+
+## 8、SQLite3常用工具
 
 ### (1) DB Browser for SQLite[^7]
 

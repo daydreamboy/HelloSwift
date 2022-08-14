@@ -1,6 +1,6 @@
 //
-//  Test.swift
-//  Test
+//  Test_tutorial.swift
+//  Test_tutorial
 //
 //  Created by wesley_chen on 2022/8/13.
 //
@@ -32,7 +32,7 @@ private func destroyDatabase(db: DatabaseDemo) {
     }
 }
 
-class Test: XCTestCase {
+class Test_tutorial: XCTestCase {
     var db: OpaquePointer?
     
     // MARK: Operate DB
