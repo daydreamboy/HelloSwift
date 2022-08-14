@@ -1882,6 +1882,22 @@ debugDescription的例子[^10]，如下
 
 
 
+## TODO
+
+swift documentation
+
+https://nshipster.com/swift-documentation/
+
+
+
+assert vs precondition
+
+https://stackoverflow.com/questions/29673027/difference-between-precondition-and-assert-in-swift
+
+
+
+
+
 ## References
 
 [^1]: https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html
