@@ -697,7 +697,30 @@ TODO
 
 ### (1) 查询SQLite3版本
 
+iOS系统默认带SQLite3库，但是它的版本可能是相对旧一些。为了清楚知道系统用的是哪个版本[^10]，可以使用代码查询version，如下
 
+```swift
+func test_check_SQLite3_version() throws {
+    print("SQLITE_VERSION = \(SQLITE_VERSION)")
+    print("SQLITE_VERSION_NUMBER = \(SQLITE_VERSION_NUMBER)")
+    print("SQLITE_SOURCE_ID = \(SQLITE_SOURCE_ID)")
+
+    print("sqlite3_libversion() = \(String.init(cString: sqlite3_libversion()))")
+    print("sqlite3_sourceid() = \(String.init(cString: sqlite3_sourceid()))")
+    print("sqlite3_libversion_number() = \(sqlite3_libversion_number())")
+}
+```
+
+打印如下
+
+```shell
+SQLITE_VERSION = 3.37.0
+SQLITE_VERSION_NUMBER = 3037000
+SQLITE_SOURCE_ID = 2021-12-09 01:34:53 9ff244ce0739f8ee52a3e9671adb4ee54c83c640b02e3f9d185fd2f9a179aapl
+sqlite3_libversion() = 3.37.0
+sqlite3_sourceid() = 2021-12-09 01:34:53 9ff244ce0739f8ee52a3e9671adb4ee54c83c640b02e3f9d185fd2f9a179aapl
+sqlite3_libversion_number() = 3037000
+```
 
 
 
@@ -726,4 +749,5 @@ GUI查询SQLite数据库，支持MacOS系统
 [^7]:https://sqlitebrowser.org/
 [^8]:https://www.sqlite.org/c3ref/bind_blob.html
 [^9]:https://sqlite.org/c3ref/reset.html
+[^10]:https://stackoverflow.com/questions/14288128/what-version-of-sqlite-does-ios-provide
 

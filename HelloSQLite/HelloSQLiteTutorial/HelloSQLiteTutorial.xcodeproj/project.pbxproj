@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F38F43D28A8FD8A00A833DC /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38F43C28A8FD8A00A833DC /* Test.swift */; };
 		4FC4429E28A7DB50006D720E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC4429D28A7DB50006D720E /* AppDelegate.swift */; };
 		4FC442A028A7DB50006D720E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC4429F28A7DB50006D720E /* SceneDelegate.swift */; };
 		4FC442A228A7DB50006D720E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC442A128A7DB50006D720E /* ViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4F38F43C28A8FD8A00A833DC /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		4FC4429A28A7DB50006D720E /* HelloSQLiteTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloSQLiteTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FC4429D28A7DB50006D720E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FC4429F28A7DB50006D720E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				4FC442B728A7DB65006D720E /* Test_tutorial.swift */,
+				4F38F43C28A8FD8A00A833DC /* Test.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FC442B828A7DB65006D720E /* Test_tutorial.swift in Sources */,
+				4F38F43D28A8FD8A00A833DC /* Test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
