@@ -644,23 +644,28 @@ sqlite3_errmsg函数，用于返回错误信息字符串
 
 SQLite3常见函数，归纳如下
 
-| 函数                  | 作用                                   | 说明                                                      |
-| --------------------- | -------------------------------------- | --------------------------------------------------------- |
-|                       |                                        |                                                           |
-| `sqlite3_open`        | 打开数据库                             | 如果数据库不存在，则创建一个新的数据库                    |
-| `sqlite3_close`       | 关闭数据库                             |                                                           |
-|                       |                                        |                                                           |
-| `sqlite3_prepare_v2`  | 创建语句                               | 如果创建成功返回`SQLITE_OK`                               |
-| `sqlite3_step`        | 执行语句                               | 执行查询语句时返回`SQLITE_ROW`，其他情况返回`SQLITE_DONE` |
-| `sqlite3_finalize`    | 销毁语句                               | 如果语句不再使用，调用这个函数                            |
-|                       |                                        |                                                           |
-| `sqlite3_bind_int`    | 查询语句中绑定int类型                  |                                                           |
-| `sqlite3_bind_text`   | 查询语句中绑定char *类型               |                                                           |
-| `sqlite3_reset`       | 多次查询时，重置查询语句，用于重新绑定 |                                                           |
-| `sqlite3_column_int`  | 查询语句中读取某个列int值              |                                                           |
-| `sqlite3_column_text` | 查询语句中读取某个列char *值           |                                                           |
-|                       |                                        |                                                           |
-| `sqlite3_errmsg`      | 返回错误信息字符串                     |                                                           |
+| 函数                     | 作用                                                         | 说明                                                      |
+| ------------------------ | ------------------------------------------------------------ | --------------------------------------------------------- |
+|                          |                                                              |                                                           |
+| `sqlite3_open`           | 打开数据库                                                   | 如果数据库不存在，则创建一个新的数据库                    |
+| `sqlite3_close`          | 关闭数据库                                                   |                                                           |
+|                          |                                                              |                                                           |
+| `sqlite3_prepare_v2`     | 创建语句                                                     | 如果创建成功返回`SQLITE_OK`                               |
+| `sqlite3_step`           | 执行语句                                                     | 执行查询语句时返回`SQLITE_ROW`，其他情况返回`SQLITE_DONE` |
+| `sqlite3_finalize`       | 销毁语句                                                     | 如果语句不再使用，调用这个函数                            |
+|                          |                                                              |                                                           |
+| `sqlite3_bind_int`       | 查询语句中绑定int类型                                        |                                                           |
+| `sqlite3_bind_text`      | 查询语句中绑定char *类型                                     |                                                           |
+| `sqlite3_reset`          | 多次查询时，重置查询语句，用于重新绑定                       |                                                           |
+| `sqlite3_column_int`     | 查询语句中读取某个列int值                                    |                                                           |
+| `sqlite3_column_text`    | 查询语句中读取某个列char *值                                 |                                                           |
+|                          |                                                              |                                                           |
+| `sqlite3_errmsg`         | 返回错误信息字符串                                           |                                                           |
+|                          |                                                              |                                                           |
+| `sqlite3_exec`           | 便利函数，包装了`sqlite3_prepare_v2()`、`sqlite3_step()`和`sqlite3_finalize()` |                                                           |
+| `sqlite3_wal_checkpoint` | 触发checkpoint，使wal文件合并到sqlite文件中                  |                                                           |
+| `sqlite3_free`           | 释放特定指针指向的内存                                       |                                                           |
+|                          |                                                              |                                                           |
 
 
 
