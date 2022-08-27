@@ -729,7 +729,21 @@ sqlite3_libversion_number() = 3037000
 
 
 
-## 8、SQLite3常用工具
+## 8、SQLite3常见术语
+
+### (1) Checkpoint
+
+Checkpoint是指将wal文件的内容合并到原始的数据库文件中，这个操作称为Checkpoint。
+
+官方文档描述[^11]，如下
+
+> Of course, one wants to eventually transfer all the transactions that are appended in the WAL file back into the original database. Moving the WAL file transactions back into the database is called a "*checkpoint*".
+
+
+
+
+
+## 9、SQLite3常用工具
 
 ### (1) DB Browser for SQLite[^7]
 
@@ -755,4 +769,6 @@ GUI查询SQLite数据库，支持MacOS系统
 [^8]:https://www.sqlite.org/c3ref/bind_blob.html
 [^9]:https://sqlite.org/c3ref/reset.html
 [^10]:https://stackoverflow.com/questions/14288128/what-version-of-sqlite-does-ios-provide
+
+[^11]:https://sqlite.org/wal.html
 
