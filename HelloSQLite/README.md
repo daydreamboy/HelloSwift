@@ -698,7 +698,13 @@ TODO
 
 
 
-## 7、SQLite3常见任务
+## 7、VFS
+
+TODO：https://sqlite.org/vfs.html
+
+
+
+## 8、SQLite3常见任务
 
 ### (1) 查询SQLite3版本
 
@@ -729,7 +735,7 @@ sqlite3_libversion_number() = 3037000
 
 
 
-## 8、SQLite3常见术语
+## 9、SQLite3常见术语
 
 ### (1) Checkpoint
 
@@ -743,7 +749,7 @@ Checkpoint是指将wal文件的内容合并到原始的数据库文件中，这�
 
 
 
-## 9、SQLite3常用工具
+## 10、SQLite3常用工具
 
 ### (1) DB Browser for SQLite[^7]
 
