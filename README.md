@@ -1882,6 +1882,20 @@ debugDescription的例子[^10]，如下
 
 
 
+## 5、Swift的相关开源
+
+### (1) Foundation库
+
+Swift版本的Foundation库，已经在https://github.com/apple/swift-corelibs-foundation开源
+
+说明
+
+> Swift版本的Foundation库，实际是基于C代码的CoreFoundation。CoreFoundation代码，也可以在https://github.com/apple/swift-corelibs-foundation查看
+
+
+
+
+
 ## TODO
 
 swift documentation
