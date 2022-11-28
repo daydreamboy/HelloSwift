@@ -8,6 +8,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+    var metric: WCAppDiagnosticMetric = WCAppDiagnosticMetric.init()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white

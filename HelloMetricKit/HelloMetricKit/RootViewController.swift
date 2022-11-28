@@ -17,11 +17,13 @@ class RootViewController: UITableViewController {
         
         self.titles = [
             "Demo1ViewController's title",
+            "Issues",
             "call a test method",
         ]
         
         self.classes = [
             ViewController.self,
+            IssueRemoveSubscriberCauseCrashViewController.self,
             "testMethod",
         ];
         
