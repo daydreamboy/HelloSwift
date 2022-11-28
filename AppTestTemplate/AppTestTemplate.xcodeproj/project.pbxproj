@@ -35,6 +35,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F1AFC8F2934B49C00DD7CD7 /* AppTestDemos */ = {
+			isa = PBXGroup;
+			children = (
+				4FE8DE31281575AF00437B30 /* ViewController.swift */,
+			);
+			path = AppTestDemos;
+			sourceTree = "<group>";
+		};
 		4FE8DE21281575AF00437B30 = {
 			isa = PBXGroup;
 			children = (
@@ -54,9 +62,9 @@
 		4FE8DE2C281575AF00437B30 /* AppTestTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				4F1AFC8F2934B49C00DD7CD7 /* AppTestDemos */,
 				4FE8DE2D281575AF00437B30 /* AppDelegate.swift */,
 				4F3A473028163EED008EBA25 /* RootViewController.swift */,
-				4FE8DE31281575AF00437B30 /* ViewController.swift */,
 				4FE8DE36281575B100437B30 /* Assets.xcassets */,
 				4FE8DE38281575B100437B30 /* LaunchScreen.storyboard */,
 				4FE8DE3B281575B100437B30 /* Info.plist */,
