@@ -1,5 +1,5 @@
 //
-//  WCAppDiagnosticMetric.swift
+//  WCAppMetricSubscriber.swift
 //  HelloMetricKit
 //
 //  Created by wesley_chen on 2022/11/28.
@@ -8,7 +8,7 @@
 import UIKit
 import MetricKit
 
-class WCAppDiagnosticMetric: NSObject, MXMetricManagerSubscriber {
+class WCAppMetricSubscriber: NSObject, MXMetricManagerSubscriber {
     func receiveReports() {
        let shared = MXMetricManager.shared
        shared.add(self)

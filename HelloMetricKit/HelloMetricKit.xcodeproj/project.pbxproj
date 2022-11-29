@@ -12,7 +12,7 @@
 		4F1AFC862934B31500DD7CD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F1AFC842934B31500DD7CD7 /* LaunchScreen.storyboard */; };
 		4F1AFC8E2934B45600DD7CD7 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1AFC8D2934B45600DD7CD7 /* RootViewController.swift */; };
 		4F1AFC922934B4BF00DD7CD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1AFC912934B4BF00DD7CD7 /* ViewController.swift */; };
-		4F1AFC942934BA9100DD7CD7 /* WCAppDiagnosticMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1AFC932934BA9100DD7CD7 /* WCAppDiagnosticMetric.swift */; };
+		4F1AFC942934BA9100DD7CD7 /* WCAppMetricSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1AFC932934BA9100DD7CD7 /* WCAppMetricSubscriber.swift */; };
 		4F1AFC982934D1A000DD7CD7 /* IssueRemoveSubscriberCauseCrashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F1AFC972934D1A000DD7CD7 /* IssueRemoveSubscriberCauseCrashViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +24,7 @@
 		4F1AFC872934B31500DD7CD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F1AFC8D2934B45600DD7CD7 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		4F1AFC912934B4BF00DD7CD7 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4F1AFC932934BA9100DD7CD7 /* WCAppDiagnosticMetric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCAppDiagnosticMetric.swift; sourceTree = "<group>"; };
+		4F1AFC932934BA9100DD7CD7 /* WCAppMetricSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCAppMetricSubscriber.swift; sourceTree = "<group>"; };
 		4F1AFC952934D19F00DD7CD7 /* HelloMetricKit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HelloMetricKit-Bridging-Header.h"; sourceTree = "<group>"; };
 		4F1AFC962934D1A000DD7CD7 /* IssueRemoveSubscriberCauseCrashViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IssueRemoveSubscriberCauseCrashViewController.h; sourceTree = "<group>"; };
 		4F1AFC972934D1A000DD7CD7 /* IssueRemoveSubscriberCauseCrashViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IssueRemoveSubscriberCauseCrashViewController.m; sourceTree = "<group>"; };
@@ -75,7 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				4F1AFC912934B4BF00DD7CD7 /* ViewController.swift */,
-				4F1AFC932934BA9100DD7CD7 /* WCAppDiagnosticMetric.swift */,
+				4F1AFC932934BA9100DD7CD7 /* WCAppMetricSubscriber.swift */,
 				4F1AFC962934D1A000DD7CD7 /* IssueRemoveSubscriberCauseCrashViewController.h */,
 				4F1AFC972934D1A000DD7CD7 /* IssueRemoveSubscriberCauseCrashViewController.m */,
 			);
@@ -156,7 +156,7 @@
 				4F1AFC7A2934B31300DD7CD7 /* AppDelegate.swift in Sources */,
 				4F1AFC922934B4BF00DD7CD7 /* ViewController.swift in Sources */,
 				4F1AFC982934D1A000DD7CD7 /* IssueRemoveSubscriberCauseCrashViewController.m in Sources */,
-				4F1AFC942934BA9100DD7CD7 /* WCAppDiagnosticMetric.swift in Sources */,
+				4F1AFC942934BA9100DD7CD7 /* WCAppMetricSubscriber.swift in Sources */,
 				4F1AFC8E2934B45600DD7CD7 /* RootViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
