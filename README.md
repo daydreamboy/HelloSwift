@@ -1894,6 +1894,18 @@ Swift版本的Foundation库，已经在https://github.com/apple/swift-corelibs-f
 
 
 
+## 6、Swift编译原理
+
+TODO：
+
+https://www.swift.org/swift-compiler/
+
+https://trinhngocthuyen.github.io/posts/tech/how-a-swift-file-is-compiled/
+
+
+
+
+
 
 
 ## TODO
