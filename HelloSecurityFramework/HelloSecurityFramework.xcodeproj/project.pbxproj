@@ -29,7 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4F6524E028182DFA009C3349 /* HelloSecurity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloSecurity.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F6524E028182DFA009C3349 /* HelloSecurityFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloSecurityFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F6524E328182DFA009C3349 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F6524E728182DFA009C3349 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4F6524EC28182DFD009C3349 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -64,7 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				4F65250628182E78009C3349 /* WCSecurityTool */,
-				4F6524E228182DFA009C3349 /* HelloSecurity */,
+				4F6524E228182DFA009C3349 /* HelloSecurityFramework */,
 				4F6524FE28182E6F009C3349 /* Test */,
 				4F6524E128182DFA009C3349 /* Products */,
 			);
@@ -73,13 +73,13 @@
 		4F6524E128182DFA009C3349 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4F6524E028182DFA009C3349 /* HelloSecurity.app */,
+				4F6524E028182DFA009C3349 /* HelloSecurityFramework.app */,
 				4F6524FD28182E6F009C3349 /* Test.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4F6524E228182DFA009C3349 /* HelloSecurity */ = {
+		4F6524E228182DFA009C3349 /* HelloSecurityFramework */ = {
 			isa = PBXGroup;
 			children = (
 				4F6524E328182DFA009C3349 /* AppDelegate.swift */,
@@ -89,7 +89,7 @@
 				4F6524EE28182DFD009C3349 /* LaunchScreen.storyboard */,
 				4F6524F128182DFD009C3349 /* Info.plist */,
 			);
-			path = HelloSecurity;
+			path = HelloSecurityFramework;
 			sourceTree = "<group>";
 		};
 		4F6524FE28182E6F009C3349 /* Test */ = {
@@ -120,9 +120,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4F6524DF28182DFA009C3349 /* HelloSecurity */ = {
+		4F6524DF28182DFA009C3349 /* HelloSecurityFramework */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4F6524F428182DFD009C3349 /* Build configuration list for PBXNativeTarget "HelloSecurity" */;
+			buildConfigurationList = 4F6524F428182DFD009C3349 /* Build configuration list for PBXNativeTarget "HelloSecurityFramework" */;
 			buildPhases = (
 				4F6524DC28182DFA009C3349 /* Sources */,
 				4F6524DD28182DFA009C3349 /* Frameworks */,
@@ -132,9 +132,9 @@
 			);
 			dependencies = (
 			);
-			name = HelloSecurity;
+			name = HelloSecurityFramework;
 			productName = HelloSecurity;
-			productReference = 4F6524E028182DFA009C3349 /* HelloSecurity.app */;
+			productReference = 4F6524E028182DFA009C3349 /* HelloSecurityFramework.app */;
 			productType = "com.apple.product-type.application";
 		};
 		4F6524FC28182E6F009C3349 /* Test */ = {
@@ -174,7 +174,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4F6524DB28182DFA009C3349 /* Build configuration list for PBXProject "HelloSecurity" */;
+			buildConfigurationList = 4F6524DB28182DFA009C3349 /* Build configuration list for PBXProject "HelloSecurityFramework" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -187,7 +187,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4F6524DF28182DFA009C3349 /* HelloSecurity */,
+				4F6524DF28182DFA009C3349 /* HelloSecurityFramework */,
 				4F6524FC28182E6F009C3349 /* Test */,
 			);
 		};
@@ -239,7 +239,7 @@
 /* Begin PBXTargetDependency section */
 		4F65250228182E6F009C3349 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4F6524DF28182DFA009C3349 /* HelloSecurity */;
+			target = 4F6524DF28182DFA009C3349 /* HelloSecurityFramework */;
 			targetProxy = 4F65250128182E6F009C3349 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -378,7 +378,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = HelloSecurity/Info.plist;
+				INFOPLIST_FILE = HelloSecurityFramework/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -404,7 +404,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = HelloSecurity/Info.plist;
+				INFOPLIST_FILE = HelloSecurityFramework/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -436,7 +436,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HelloSecurity.app/HelloSecurity";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HelloSecurityFramework.app/HelloSecurityFramework";
 			};
 			name = Debug;
 		};
@@ -454,14 +454,14 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HelloSecurity.app/HelloSecurity";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HelloSecurityFramework.app/HelloSecurityFramework";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4F6524DB28182DFA009C3349 /* Build configuration list for PBXProject "HelloSecurity" */ = {
+		4F6524DB28182DFA009C3349 /* Build configuration list for PBXProject "HelloSecurityFramework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4F6524F228182DFD009C3349 /* Debug */,
@@ -470,7 +470,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4F6524F428182DFD009C3349 /* Build configuration list for PBXNativeTarget "HelloSecurity" */ = {
+		4F6524F428182DFD009C3349 /* Build configuration list for PBXNativeTarget "HelloSecurityFramework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4F6524F528182DFD009C3349 /* Debug */,
