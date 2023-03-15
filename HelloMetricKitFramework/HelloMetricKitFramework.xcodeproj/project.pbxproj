@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4F1AFC762934B31300DD7CD7 /* HelloMetricKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloMetricKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F1AFC762934B31300DD7CD7 /* HelloMetricKitFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloMetricKitFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F1AFC792934B31300DD7CD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F1AFC822934B31500DD7CD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F1AFC852934B31500DD7CD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -44,7 +44,7 @@
 		4F1AFC6D2934B31300DD7CD7 = {
 			isa = PBXGroup;
 			children = (
-				4F1AFC782934B31300DD7CD7 /* HelloMetricKit */,
+				4F1AFC782934B31300DD7CD7 /* HelloMetricKitFramework */,
 				4F1AFC772934B31300DD7CD7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,12 +52,12 @@
 		4F1AFC772934B31300DD7CD7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4F1AFC762934B31300DD7CD7 /* HelloMetricKit.app */,
+				4F1AFC762934B31300DD7CD7 /* HelloMetricKitFramework.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4F1AFC782934B31300DD7CD7 /* HelloMetricKit */ = {
+		4F1AFC782934B31300DD7CD7 /* HelloMetricKitFramework */ = {
 			isa = PBXGroup;
 			children = (
 				4F1AFC902934B4BF00DD7CD7 /* AppTestDemos */,
@@ -68,7 +68,7 @@
 				4F1AFC842934B31500DD7CD7 /* LaunchScreen.storyboard */,
 				4F1AFC872934B31500DD7CD7 /* Info.plist */,
 			);
-			path = HelloMetricKit;
+			path = HelloMetricKitFramework;
 			sourceTree = "<group>";
 		};
 		4F1AFC902934B4BF00DD7CD7 /* AppTestDemos */ = {
@@ -85,9 +85,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4F1AFC752934B31300DD7CD7 /* HelloMetricKit */ = {
+		4F1AFC752934B31300DD7CD7 /* HelloMetricKitFramework */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4F1AFC8A2934B31500DD7CD7 /* Build configuration list for PBXNativeTarget "HelloMetricKit" */;
+			buildConfigurationList = 4F1AFC8A2934B31500DD7CD7 /* Build configuration list for PBXNativeTarget "HelloMetricKitFramework" */;
 			buildPhases = (
 				4F1AFC722934B31300DD7CD7 /* Sources */,
 				4F1AFC732934B31300DD7CD7 /* Frameworks */,
@@ -97,9 +97,9 @@
 			);
 			dependencies = (
 			);
-			name = HelloMetricKit;
+			name = HelloMetricKitFramework;
 			productName = HelloMetricKit;
-			productReference = 4F1AFC762934B31300DD7CD7 /* HelloMetricKit.app */;
+			productReference = 4F1AFC762934B31300DD7CD7 /* HelloMetricKitFramework.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -118,7 +118,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4F1AFC712934B31300DD7CD7 /* Build configuration list for PBXProject "HelloMetricKit" */;
+			buildConfigurationList = 4F1AFC712934B31300DD7CD7 /* Build configuration list for PBXProject "HelloMetricKitFramework" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -131,7 +131,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4F1AFC752934B31300DD7CD7 /* HelloMetricKit */,
+				4F1AFC752934B31300DD7CD7 /* HelloMetricKitFramework */,
 			);
 		};
 /* End PBXProject section */
@@ -298,7 +298,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U7337LU6F2;
-				INFOPLIST_FILE = HelloMetricKit/Info.plist;
+				INFOPLIST_FILE = HelloMetricKitFramework/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -311,7 +311,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.wc.HelloMetricKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "HelloMetricKit/HelloMetricKit-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "HelloMetricKitFramework/HelloMetricKit-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -327,7 +327,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U7337LU6F2;
-				INFOPLIST_FILE = HelloMetricKit/Info.plist;
+				INFOPLIST_FILE = HelloMetricKitFramework/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -340,7 +340,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.wc.HelloMetricKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "HelloMetricKit/HelloMetricKit-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "HelloMetricKitFramework/HelloMetricKit-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -349,7 +349,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4F1AFC712934B31300DD7CD7 /* Build configuration list for PBXProject "HelloMetricKit" */ = {
+		4F1AFC712934B31300DD7CD7 /* Build configuration list for PBXProject "HelloMetricKitFramework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4F1AFC882934B31500DD7CD7 /* Debug */,
@@ -358,7 +358,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4F1AFC8A2934B31500DD7CD7 /* Build configuration list for PBXNativeTarget "HelloMetricKit" */ = {
+		4F1AFC8A2934B31500DD7CD7 /* Build configuration list for PBXNativeTarget "HelloMetricKitFramework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4F1AFC8B2934B31500DD7CD7 /* Debug */,
