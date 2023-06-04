@@ -262,8 +262,8 @@ let hexadecimalInteger = 0x11     // 17 in hexadecimal notation
 
 举个例子，如下
 
-- `1.25e2` means 1.25 x 102, or `125.0`.
-- `1.25e-2` means 1.25 x 10-2, or `0.0125`.
+- `1.25e2` means 1.25 * 10^2, or `125.0`.
+- `1.25e-2` means 1.25 * 10^-2, or `0.0125`.
 
 
 
@@ -271,8 +271,8 @@ let hexadecimalInteger = 0x11     // 17 in hexadecimal notation
 
 举个例子，如下
 
-- `0xFp2` means 15 x 22, or `60.0`.
-- `0xFp-2` means 15 x 2-2, or `3.75`.
+- `0xFp2` means 15 * 2^2, or `60.0`.
+- `0xFp-2` means 15 * 2^-2, or `3.75`.
 
 
 
