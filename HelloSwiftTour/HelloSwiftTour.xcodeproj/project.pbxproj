@@ -38,6 +38,12 @@
 		4FA9572D27E75AEF0080983F /* Test_error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9572C27E75AEF0080983F /* Test_error.swift */; };
 		4FA9572F27E75CC60080983F /* Test_keyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9572E27E75CC60080983F /* Test_keyword.swift */; };
 		4FA9573127E7624B0080983F /* Test_generic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9573027E7624B0080983F /* Test_generic.swift */; };
+		4FC38CAD2A3033AF00BE5CF2 /* OCStaticLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FC38CAC2A3033AF00BE5CF2 /* OCStaticLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4FC38CB02A3033AF00BE5CF2 /* OCStaticLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC38CAA2A3033AF00BE5CF2 /* OCStaticLibrary.framework */; };
+		4FC38CB82A30340B00BE5CF2 /* WCDummyTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FC38CB62A30340B00BE5CF2 /* WCDummyTool.h */; };
+		4FC38CB92A30340B00BE5CF2 /* WCDummyTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC38CB72A30340B00BE5CF2 /* WCDummyTool.m */; };
+		4FC38CBB2A3035BB00BE5CF2 /* Test_runtime_call_OC_method.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC38CBA2A3035BB00BE5CF2 /* Test_runtime_call_OC_method.swift */; };
+		4FC38CBD2A30428F00BE5CF2 /* OCStaticLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC38CAA2A3033AF00BE5CF2 /* OCStaticLibrary.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +53,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 4FA956F627E6FA890080983F;
 			remoteInfo = HelloSwiftTour;
+		};
+		4FC38CAE2A3033AF00BE5CF2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4FA956EF27E6FA890080983F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4FC38CA92A3033AE00BE5CF2;
+			remoteInfo = OCStaticLibrary;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -59,6 +72,16 @@
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 1;
+		};
+		4FC38CB22A3033AF00BE5CF2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -100,6 +123,11 @@
 		4FA9572C27E75AEF0080983F /* Test_error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_error.swift; sourceTree = "<group>"; };
 		4FA9572E27E75CC60080983F /* Test_keyword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_keyword.swift; sourceTree = "<group>"; };
 		4FA9573027E7624B0080983F /* Test_generic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_generic.swift; sourceTree = "<group>"; };
+		4FC38CAA2A3033AF00BE5CF2 /* OCStaticLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OCStaticLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FC38CAC2A3033AF00BE5CF2 /* OCStaticLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCStaticLibrary.h; sourceTree = "<group>"; };
+		4FC38CB62A30340B00BE5CF2 /* WCDummyTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCDummyTool.h; sourceTree = "<group>"; };
+		4FC38CB72A30340B00BE5CF2 /* WCDummyTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCDummyTool.m; sourceTree = "<group>"; };
+		4FC38CBA2A3035BB00BE5CF2 /* Test_runtime_call_OC_method.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_runtime_call_OC_method.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +135,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FC38CB02A3033AF00BE5CF2 /* OCStaticLibrary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,10 +143,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FC38CBD2A30428F00BE5CF2 /* OCStaticLibrary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		4FA9571C27E6FAE80080983F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FC38CA72A3033AE00BE5CF2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -144,7 +181,9 @@
 				4FA956F927E6FA890080983F /* HelloSwiftTour */,
 				4FA9571327E6FA970080983F /* Test */,
 				4FA9572027E6FAE80080983F /* HelloSwiftCLI */,
+				4FC38CAB2A3033AF00BE5CF2 /* OCStaticLibrary */,
 				4FA956F827E6FA890080983F /* Products */,
+				4FC38CBC2A30428F00BE5CF2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -154,6 +193,7 @@
 				4FA956F727E6FA890080983F /* HelloSwiftTour.app */,
 				4FA9571227E6FA970080983F /* Test.xctest */,
 				4FA9571F27E6FAE80080983F /* HelloSwiftCLI */,
+				4FC38CAA2A3033AF00BE5CF2 /* OCStaticLibrary.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -192,6 +232,7 @@
 				4FA48114284C8C64005AB36E /* Test_property_wrapper_define_customized_initializer.swift */,
 				4FA48117284C95E3005AB36E /* Test_property_wrapper_projected_value.swift */,
 				4FA4811B284C9DF6005AB36E /* Test_property_wrapper_static_subscript.swift */,
+				4FC38CBA2A3035BB00BE5CF2 /* Test_runtime_call_OC_method.swift */,
 				4F4BF93D281A3F7E003BDEAF /* Test_use_OC_class_in_Swift.swift */,
 				4F55F80A281A8F8600F15B1F /* Test_use_Swift_class_in_OC.m */,
 				4F3F1FA927EEF105007532A2 /* Test_variable.swift */,
@@ -210,7 +251,36 @@
 			path = HelloSwiftCLI;
 			sourceTree = "<group>";
 		};
+		4FC38CAB2A3033AF00BE5CF2 /* OCStaticLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				4FC38CAC2A3033AF00BE5CF2 /* OCStaticLibrary.h */,
+				4FC38CB62A30340B00BE5CF2 /* WCDummyTool.h */,
+				4FC38CB72A30340B00BE5CF2 /* WCDummyTool.m */,
+			);
+			path = OCStaticLibrary;
+			sourceTree = "<group>";
+		};
+		4FC38CBC2A30428F00BE5CF2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		4FC38CA52A3033AE00BE5CF2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FC38CB82A30340B00BE5CF2 /* WCDummyTool.h in Headers */,
+				4FC38CAD2A3033AF00BE5CF2 /* OCStaticLibrary.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		4FA956F627E6FA890080983F /* HelloSwiftTour */ = {
@@ -220,10 +290,12 @@
 				4FA956F327E6FA890080983F /* Sources */,
 				4FA956F427E6FA890080983F /* Frameworks */,
 				4FA956F527E6FA890080983F /* Resources */,
+				4FC38CB22A3033AF00BE5CF2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4FC38CAF2A3033AF00BE5CF2 /* PBXTargetDependency */,
 			);
 			name = HelloSwiftTour;
 			productName = HelloSwiftTour;
@@ -265,6 +337,24 @@
 			productReference = 4FA9571F27E6FAE80080983F /* HelloSwiftCLI */;
 			productType = "com.apple.product-type.tool";
 		};
+		4FC38CA92A3033AE00BE5CF2 /* OCStaticLibrary */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4FC38CB52A3033AF00BE5CF2 /* Build configuration list for PBXNativeTarget "OCStaticLibrary" */;
+			buildPhases = (
+				4FC38CA52A3033AE00BE5CF2 /* Headers */,
+				4FC38CA62A3033AE00BE5CF2 /* Sources */,
+				4FC38CA72A3033AE00BE5CF2 /* Frameworks */,
+				4FC38CA82A3033AE00BE5CF2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OCStaticLibrary;
+			productName = OCStaticLibrary;
+			productReference = 4FC38CAA2A3033AF00BE5CF2 /* OCStaticLibrary.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -286,6 +376,9 @@
 					4FA9571E27E6FAE80080983F = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
+					4FC38CA92A3033AE00BE5CF2 = {
+						CreatedOnToolsVersion = 14.3;
+					};
 				};
 			};
 			buildConfigurationList = 4FA956F227E6FA890080983F /* Build configuration list for PBXProject "HelloSwiftTour" */;
@@ -304,6 +397,7 @@
 				4FA956F627E6FA890080983F /* HelloSwiftTour */,
 				4FA9571127E6FA970080983F /* Test */,
 				4FA9571E27E6FAE80080983F /* HelloSwiftCLI */,
+				4FC38CA92A3033AE00BE5CF2 /* OCStaticLibrary */,
 			);
 		};
 /* End PBXProject section */
@@ -320,6 +414,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		4FA9571027E6FA970080983F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FC38CA82A3033AE00BE5CF2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -352,6 +453,7 @@
 				4F3F1FAA27EEF105007532A2 /* Test_variable.swift in Sources */,
 				4F4BF943281A3FB1003BDEAF /* WCSecurityTool.m in Sources */,
 				4FA9572727E7071A0080983F /* Test_function.swift in Sources */,
+				4FC38CBB2A3035BB00BE5CF2 /* Test_runtime_call_OC_method.swift in Sources */,
 				4F55F80F281A902800F15B1F /* MySwiftObject.swift in Sources */,
 				4F3F1FAE27EF043D007532A2 /* Test_numeric_literal.swift in Sources */,
 				4F4BF93E281A3F7E003BDEAF /* Test_use_OC_class_in_Swift.swift in Sources */,
@@ -378,6 +480,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4FC38CA62A3033AE00BE5CF2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FC38CB92A30340B00BE5CF2 /* WCDummyTool.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -385,6 +495,11 @@
 			isa = PBXTargetDependency;
 			target = 4FA956F627E6FA890080983F /* HelloSwiftTour */;
 			targetProxy = 4FA9571627E6FA970080983F /* PBXContainerItemProxy */;
+		};
+		4FC38CAF2A3033AF00BE5CF2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4FC38CA92A3033AE00BE5CF2 /* OCStaticLibrary */;
+			targetProxy = 4FC38CAE2A3033AF00BE5CF2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -543,6 +658,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wc.HelloSwiftTour;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -570,6 +686,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wc.HelloSwiftTour;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -650,6 +767,74 @@
 			};
 			name = Release;
 		};
+		4FC38CB32A3033AF00BE5CF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wc.OCStaticLibrary;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4FC38CB42A3033AF00BE5CF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wc.OCStaticLibrary;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -685,6 +870,15 @@
 			buildConfigurations = (
 				4FA9572427E6FAE80080983F /* Debug */,
 				4FA9572527E6FAE80080983F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4FC38CB52A3033AF00BE5CF2 /* Build configuration list for PBXNativeTarget "OCStaticLibrary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FC38CB32A3033AF00BE5CF2 /* Debug */,
+				4FC38CB42A3033AF00BE5CF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

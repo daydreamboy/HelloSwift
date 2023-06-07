@@ -1669,6 +1669,14 @@ func test_print() throws {
 
 
 
+### (14) 闭包(Closure)
+
+TODO: https://docs.swift.org/swift-book/documentation/the-swift-programming-language/closures
+
+
+
+
+
 ## 2、Swift和Objective-C混编[^3]
 
 ### a. 在Swift中使用Objective-C代码
@@ -1785,6 +1793,14 @@ xcodebuild: error: Could not resolve package dependencies:
 Package.resolved file is corrupted or malformed; fix or delete the file to continue
 
 解决方法：删除xcworkspace下面的Package.resolved文件，重新打开Xcode，让其自动生成[^7]
+
+
+
+### (4) 纯Swift工程依赖OC静态库，找不到类符号
+
+纯Swift工程依赖OC静态库，没有导入OC头文件，运行时执行NSClassFromString函数找不到OC类，需要设置`OTHER_LDFLAGS`为`-ObjC`
+
+
 
 
 
