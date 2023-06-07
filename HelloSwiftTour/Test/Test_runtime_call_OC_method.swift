@@ -20,7 +20,7 @@ final class Test_runtime_call_OC_method: XCTestCase {
             // Note: use @convention(block) indicates it's an Objective-C block, not swift closure
             // https://stackoverflow.com/questions/55340270/how-to-pass-closure-as-a-parameter-in-performselector-withobject
             let completion: @convention(block) (Bool, NSError) -> Void = { (succes: Bool, error: NSError?) -> Void in
-                print("success: \(succes), error: \(String(describing: error))")
+                print("success: \(succes), error: \(error?.localizedFailureReason ?? "<nil>")")
             }
             if WCDummyToolClass.responds(to: Selector(sel)) {
                 WCDummyToolClass.perform(Selector(sel), with: path, with: completion)
