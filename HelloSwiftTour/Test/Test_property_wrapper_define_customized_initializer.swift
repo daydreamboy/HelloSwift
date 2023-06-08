@@ -64,7 +64,7 @@ extension UserDefaults {
     static var yearOfBirth: Int?
 }
 
-private class Test_property_wrapper_define_customized_initializer: XCTestCase {
+class Test_property_wrapper_define_customized_initializer: XCTestCase {
     func test_customized_initializer() throws {
         UserDefaults.yearOfBirth = 1990
         print(UserDefaults.yearOfBirth as Any) // Prints: 1990

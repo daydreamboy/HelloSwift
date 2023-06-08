@@ -7,7 +7,7 @@
 
 import XCTest
 
-private class Test_optional: XCTestCase {
+class Test_optional: XCTestCase {
     func test_optional_binding() throws {
         let possibleNumber = "123"
         

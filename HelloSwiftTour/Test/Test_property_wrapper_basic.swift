@@ -35,7 +35,7 @@ extension UserDefaults {
     static var hasSeenAppIntroduction: Bool
 }
 
-private class Test_property_wrapper_basic: XCTestCase {
+class Test_property_wrapper_basic: XCTestCase {
 
     func test_use_property_wrapper() throws {
         UserDefaults.hasSeenAppIntroduction = false

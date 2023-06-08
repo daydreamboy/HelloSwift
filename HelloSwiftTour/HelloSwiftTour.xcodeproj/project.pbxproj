@@ -25,9 +25,6 @@
 		4FA4811C284C9DF6005AB36E /* Test_property_wrapper_static_subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA4811B284C9DF6005AB36E /* Test_property_wrapper_static_subscript.swift */; };
 		4FA4811E284CA292005AB36E /* Test_property_wrapper_attach_to_function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA4811D284CA292005AB36E /* Test_property_wrapper_attach_to_function.swift */; };
 		4FA956FB27E6FA890080983F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA956FA27E6FA890080983F /* AppDelegate.swift */; };
-		4FA956FD27E6FA890080983F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA956FC27E6FA890080983F /* SceneDelegate.swift */; };
-		4FA956FF27E6FA890080983F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA956FE27E6FA890080983F /* ViewController.swift */; };
-		4FA9570227E6FA890080983F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FA9570027E6FA890080983F /* Main.storyboard */; };
 		4FA9570427E6FA8B0080983F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FA9570327E6FA8B0080983F /* Assets.xcassets */; };
 		4FA9570727E6FA8B0080983F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FA9570527E6FA8B0080983F /* LaunchScreen.storyboard */; };
 		4FA9571527E6FA970080983F /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9571427E6FA970080983F /* Test.swift */; };
@@ -38,6 +35,8 @@
 		4FA9572D27E75AEF0080983F /* Test_error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9572C27E75AEF0080983F /* Test_error.swift */; };
 		4FA9572F27E75CC60080983F /* Test_keyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9572E27E75CC60080983F /* Test_keyword.swift */; };
 		4FA9573127E7624B0080983F /* Test_generic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9573027E7624B0080983F /* Test_generic.swift */; };
+		4FAAD9D62A32111B0069877A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAAD9D42A32111B0069877A /* ViewController.swift */; };
+		4FAAD9D72A32111B0069877A /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAAD9D52A32111B0069877A /* RootViewController.swift */; };
 		4FC38CAD2A3033AF00BE5CF2 /* OCStaticLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FC38CAC2A3033AF00BE5CF2 /* OCStaticLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4FC38CB02A3033AF00BE5CF2 /* OCStaticLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC38CAA2A3033AF00BE5CF2 /* OCStaticLibrary.framework */; };
 		4FC38CB82A30340B00BE5CF2 /* WCPrivateTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FC38CB62A30340B00BE5CF2 /* WCPrivateTool.h */; };
@@ -107,9 +106,6 @@
 		4FA4811D284CA292005AB36E /* Test_property_wrapper_attach_to_function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_property_wrapper_attach_to_function.swift; sourceTree = "<group>"; };
 		4FA956F727E6FA890080983F /* HelloSwiftTour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloSwiftTour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FA956FA27E6FA890080983F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4FA956FC27E6FA890080983F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4FA956FE27E6FA890080983F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4FA9570127E6FA890080983F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4FA9570327E6FA8B0080983F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4FA9570627E6FA8B0080983F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4FA9570827E6FA8B0080983F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -123,6 +119,8 @@
 		4FA9572C27E75AEF0080983F /* Test_error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_error.swift; sourceTree = "<group>"; };
 		4FA9572E27E75CC60080983F /* Test_keyword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_keyword.swift; sourceTree = "<group>"; };
 		4FA9573027E7624B0080983F /* Test_generic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_generic.swift; sourceTree = "<group>"; };
+		4FAAD9D42A32111B0069877A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4FAAD9D52A32111B0069877A /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		4FC38CAA2A3033AF00BE5CF2 /* OCStaticLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OCStaticLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FC38CAC2A3033AF00BE5CF2 /* OCStaticLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCStaticLibrary.h; sourceTree = "<group>"; };
 		4FC38CB62A30340B00BE5CF2 /* WCPrivateTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCPrivateTool.h; sourceTree = "<group>"; };
@@ -201,10 +199,9 @@
 		4FA956F927E6FA890080983F /* HelloSwiftTour */ = {
 			isa = PBXGroup;
 			children = (
+				4FAAD9D32A32111B0069877A /* AppTestDemos */,
+				4FAAD9D52A32111B0069877A /* RootViewController.swift */,
 				4FA956FA27E6FA890080983F /* AppDelegate.swift */,
-				4FA956FC27E6FA890080983F /* SceneDelegate.swift */,
-				4FA956FE27E6FA890080983F /* ViewController.swift */,
-				4FA9570027E6FA890080983F /* Main.storyboard */,
 				4FA9570327E6FA8B0080983F /* Assets.xcassets */,
 				4FA9570527E6FA8B0080983F /* LaunchScreen.storyboard */,
 				4FA9570827E6FA8B0080983F /* Info.plist */,
@@ -249,6 +246,14 @@
 				4F09E223284A4CC900B77CBC /* Test_readline.swift */,
 			);
 			path = HelloSwiftCLI;
+			sourceTree = "<group>";
+		};
+		4FAAD9D32A32111B0069877A /* AppTestDemos */ = {
+			isa = PBXGroup;
+			children = (
+				4FAAD9D42A32111B0069877A /* ViewController.swift */,
+			);
+			path = AppTestDemos;
 			sourceTree = "<group>";
 		};
 		4FC38CAB2A3033AF00BE5CF2 /* OCStaticLibrary */ = {
@@ -409,7 +414,6 @@
 			files = (
 				4FA9570727E6FA8B0080983F /* LaunchScreen.storyboard in Resources */,
 				4FA9570427E6FA8B0080983F /* Assets.xcassets in Resources */,
-				4FA9570227E6FA890080983F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,9 +438,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FA956FF27E6FA890080983F /* ViewController.swift in Sources */,
+				4FAAD9D62A32111B0069877A /* ViewController.swift in Sources */,
 				4FA956FB27E6FA890080983F /* AppDelegate.swift in Sources */,
-				4FA956FD27E6FA890080983F /* SceneDelegate.swift in Sources */,
+				4FAAD9D72A32111B0069877A /* RootViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,14 +508,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		4FA9570027E6FA890080983F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4FA9570127E6FA890080983F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4FA9570527E6FA8B0080983F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -574,7 +570,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -629,7 +625,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -650,7 +646,6 @@
 				INFOPLIST_FILE = HelloSwiftTour/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -678,7 +673,6 @@
 				INFOPLIST_FILE = HelloSwiftTour/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -781,7 +775,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -815,7 +808,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

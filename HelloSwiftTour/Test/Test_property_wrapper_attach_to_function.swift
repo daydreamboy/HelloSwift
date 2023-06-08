@@ -30,7 +30,7 @@ struct Debuggable<Value> {
     }
 }
 
-private class Test_property_wrapper_attach_to_function: XCTestCase {
+class Test_property_wrapper_attach_to_function: XCTestCase {
     func runAnimation(@Debuggable(description: "Duration") withDuration duration: Double) {
         UIView.animate(withDuration: duration) {
             // ..

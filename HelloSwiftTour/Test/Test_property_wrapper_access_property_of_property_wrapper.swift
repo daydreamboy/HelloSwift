@@ -52,7 +52,7 @@ extension UserDefaults {
     }
 }
 
-private class Test_property_wrapper_access_property_of_property_wrapper: XCTestCase {
+class Test_property_wrapper_access_property_of_property_wrapper: XCTestCase {
     func test_access_property_of_property_wrapper() throws {
         UserDefaults.printPrivateProperties()
     }
