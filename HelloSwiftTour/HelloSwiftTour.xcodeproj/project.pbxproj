@@ -40,8 +40,8 @@
 		4FA9573127E7624B0080983F /* Test_generic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9573027E7624B0080983F /* Test_generic.swift */; };
 		4FC38CAD2A3033AF00BE5CF2 /* OCStaticLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FC38CAC2A3033AF00BE5CF2 /* OCStaticLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4FC38CB02A3033AF00BE5CF2 /* OCStaticLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC38CAA2A3033AF00BE5CF2 /* OCStaticLibrary.framework */; };
-		4FC38CB82A30340B00BE5CF2 /* WCDummyTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FC38CB62A30340B00BE5CF2 /* WCDummyTool.h */; };
-		4FC38CB92A30340B00BE5CF2 /* WCDummyTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC38CB72A30340B00BE5CF2 /* WCDummyTool.m */; };
+		4FC38CB82A30340B00BE5CF2 /* WCPrivateTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FC38CB62A30340B00BE5CF2 /* WCPrivateTool.h */; };
+		4FC38CB92A30340B00BE5CF2 /* WCPrivateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC38CB72A30340B00BE5CF2 /* WCPrivateTool.m */; };
 		4FC38CBB2A3035BB00BE5CF2 /* Test_runtime_call_OC_method.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC38CBA2A3035BB00BE5CF2 /* Test_runtime_call_OC_method.swift */; };
 		4FC38CBD2A30428F00BE5CF2 /* OCStaticLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC38CAA2A3033AF00BE5CF2 /* OCStaticLibrary.framework */; };
 /* End PBXBuildFile section */
@@ -125,8 +125,8 @@
 		4FA9573027E7624B0080983F /* Test_generic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_generic.swift; sourceTree = "<group>"; };
 		4FC38CAA2A3033AF00BE5CF2 /* OCStaticLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OCStaticLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FC38CAC2A3033AF00BE5CF2 /* OCStaticLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCStaticLibrary.h; sourceTree = "<group>"; };
-		4FC38CB62A30340B00BE5CF2 /* WCDummyTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCDummyTool.h; sourceTree = "<group>"; };
-		4FC38CB72A30340B00BE5CF2 /* WCDummyTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCDummyTool.m; sourceTree = "<group>"; };
+		4FC38CB62A30340B00BE5CF2 /* WCPrivateTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCPrivateTool.h; sourceTree = "<group>"; };
+		4FC38CB72A30340B00BE5CF2 /* WCPrivateTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCPrivateTool.m; sourceTree = "<group>"; };
 		4FC38CBA2A3035BB00BE5CF2 /* Test_runtime_call_OC_method.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_runtime_call_OC_method.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -255,8 +255,8 @@
 			isa = PBXGroup;
 			children = (
 				4FC38CAC2A3033AF00BE5CF2 /* OCStaticLibrary.h */,
-				4FC38CB62A30340B00BE5CF2 /* WCDummyTool.h */,
-				4FC38CB72A30340B00BE5CF2 /* WCDummyTool.m */,
+				4FC38CB62A30340B00BE5CF2 /* WCPrivateTool.h */,
+				4FC38CB72A30340B00BE5CF2 /* WCPrivateTool.m */,
 			);
 			path = OCStaticLibrary;
 			sourceTree = "<group>";
@@ -275,7 +275,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FC38CB82A30340B00BE5CF2 /* WCDummyTool.h in Headers */,
+				4FC38CB82A30340B00BE5CF2 /* WCPrivateTool.h in Headers */,
 				4FC38CAD2A3033AF00BE5CF2 /* OCStaticLibrary.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -484,7 +484,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FC38CB92A30340B00BE5CF2 /* WCDummyTool.m in Sources */,
+				4FC38CB92A30340B00BE5CF2 /* WCPrivateTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

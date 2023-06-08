@@ -1,13 +1,13 @@
 //
-//  WCDummyTool.m
+//  WCPrivateTool.m
 //  OCStaticLibrary
 //
 //  Created by wesley_chen on 2023/6/7.
 //
 
-#import "WCDummyTool.h"
+#import "WCPrivateTool.h"
 
-@implementation WCDummyTool
+@implementation WCPrivateTool
 
 + (void)doSomethingWithVideoAtPath:(NSString *)path completion:(void (^)(BOOL success, NSError *error))completion {
     NSLog(@"%@ called", NSStringFromSelector(_cmd));
