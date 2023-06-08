@@ -1802,6 +1802,18 @@ Package.resolved file is corrupted or malformed; fix or delete the file to conti
 
 
 
+### (5) Xcode支持多版本的Swift编译器
+
+在官方网站https://www.swift.org/download/#releases，下载对应版本号的Swift工具包。例如5.7.1版本，找到Platform为Xcode 14，Architecture为Universal，点击“Universal”链接，下载安装包为swift-5.7.1-RELEASE-osx.pkg
+
+安装pkg后，重启Xcode，Xcode会多出一个Toolchain的菜单项，如下
+
+<img src="images/01_show_Toolchains.png" style="zoom:50%; float:left;" />
+
+
+
+
+
 
 
 TODO: static var in function
@@ -1909,6 +1921,22 @@ Swift版本的Foundation库，已经在https://github.com/apple/swift-corelibs-f
 说明
 
 > Swift版本的Foundation库，实际是基于C代码的CoreFoundation。CoreFoundation代码，也可以在https://github.com/apple/swift-corelibs-foundation查看
+
+
+
+
+
+## 6、Swift相关命令行工具
+
+* swift
+* swiftc
+
+* swift-demangle
+* swift-frontend
+
+最好使用xcrun来执行上面的命令
+
+
 
 
 
