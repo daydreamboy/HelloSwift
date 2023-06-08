@@ -7,7 +7,7 @@
 
 import XCTest
 
-class Test_print: XCTestCase {
+private class Test_print: XCTestCase {
     func test_print() throws {
         // Case 1: pass string
         print("One two three four five")

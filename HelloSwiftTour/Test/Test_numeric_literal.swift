@@ -7,7 +7,7 @@
 
 import XCTest
 
-class Test_numeric_literal: XCTestCase {
+private class Test_numeric_literal: XCTestCase {
 
     func test_numeric_literal_with_padding_zeros() throws {
         let paddedDouble1 = 000123.456

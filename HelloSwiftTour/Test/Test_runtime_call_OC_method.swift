@@ -7,7 +7,7 @@
 
 import XCTest
 
-final class Test_runtime_call_OC_method: XCTestCase {
+final private class Test_runtime_call_OC_method: XCTestCase {
     
     func test_runtime_call_OC_method() throws {
         if let classType = NSClassFromString("WCDummyTool") {

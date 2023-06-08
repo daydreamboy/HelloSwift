@@ -33,7 +33,7 @@ enum ServerResponse {
     case failure(String)
 }
 
-class Test_enum: XCTestCase {
+private class Test_enum: XCTestCase {
     func test_enum() throws {
         let ace = Rank.ace
         print(ace)

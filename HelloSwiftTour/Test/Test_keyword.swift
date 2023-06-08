@@ -7,7 +7,7 @@
 
 import XCTest
 
-class Test_keyword: XCTestCase {
+private class Test_keyword: XCTestCase {
     func test_defer() throws {
         var fridgeIsOpen = false
         let fridgeContent = ["milk", "eggs", "leftovers"]

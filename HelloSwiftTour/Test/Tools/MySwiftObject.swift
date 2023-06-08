@@ -17,4 +17,8 @@ class MySwiftObject: NSObject {
     @objc func someFunction(someArg: Any) -> NSString {
         return "You sent me \(someArg)" as NSString
     }
+    
+    func anotherFunction() {
+        print("anotherFunction called")
+    }
 }

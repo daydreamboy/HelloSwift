@@ -7,7 +7,7 @@
 
 import XCTest
 
-class Test_description_SomeClass: NSObject {    
+private class Test_description_SomeClass: NSObject {    
     // @see https://stackoverflow.com/a/24108931
     // @see https://stackoverflow.com/a/41666807
     override var description: String {
@@ -20,7 +20,7 @@ class Test_description_SomeClass: NSObject {
     }
 }
 
-class Test_description: XCTestCase {
+private class Test_description: XCTestCase {
 
     func test_description() throws {
         let o = Test_description_SomeClass()

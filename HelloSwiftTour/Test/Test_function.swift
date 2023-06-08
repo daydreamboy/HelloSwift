@@ -7,7 +7,7 @@
 
 import XCTest
 
-class Test_function: XCTestCase {
+private class Test_function: XCTestCase {
     // Note: use default label
     func greet(person: String, day: String) -> String {
         return "Hello \(person), today is \(day)."

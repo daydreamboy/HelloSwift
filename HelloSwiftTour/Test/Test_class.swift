@@ -38,7 +38,7 @@ class Square: NamedShape {
     }
 }
 
-class Test_class: XCTestCase {
+private class Test_class: XCTestCase {
     func test_create_an_instance() throws {
         let object = NamedShape(name: "Square")
         print(object)

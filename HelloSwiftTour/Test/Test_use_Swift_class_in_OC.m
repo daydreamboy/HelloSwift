@@ -26,6 +26,9 @@
     // Case 2
     NSString *returnedString = [object someFunctionWithSomeArg:@"an arg"];
     NSLog(@"RetString: %@", returnedString);
+    
+    // Case 3
+    //[object anotherFunction];
 }
 
 @end

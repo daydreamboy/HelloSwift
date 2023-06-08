@@ -48,7 +48,7 @@ final class Preferences {
     var hasSeenAppIntroduction: Bool
 }
 
-class Test_property_wrapper_static_subscript: XCTestCase {
+private class Test_property_wrapper_static_subscript: XCTestCase {
 
     func test_static_subscript() throws {
         Preferences.init().hasSeenAppIntroduction = true

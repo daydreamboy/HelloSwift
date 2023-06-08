@@ -32,7 +32,7 @@ class SomeClass: NSObject {
     }
 }
 
-class Test: XCTestCase {
+private class Test: XCTestCase {
     func testExample() throws {
         let o = SomeClass()
         o.restrictedSteamWords = nil

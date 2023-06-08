@@ -14,7 +14,7 @@ enum PrinterError: Error {
     case onFire
 }
 
-class Test_error: XCTestCase {
+private class Test_error: XCTestCase {
     func send(job: Int, toPrinter printerName: String) throws -> String {
         if printerName == "Never Has Toner" {
             throw PrinterError.noToner

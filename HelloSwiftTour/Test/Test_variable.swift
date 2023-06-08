@@ -7,7 +7,7 @@
 
 import XCTest
 
-class Test_variable: XCTestCase {
+private class Test_variable: XCTestCase {
     func test_variable_name_use_keyword() throws {
         let `var`: String = "Use keyword as variable name"
         print(`var`)

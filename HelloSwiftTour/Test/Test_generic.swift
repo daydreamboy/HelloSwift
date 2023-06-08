@@ -7,7 +7,7 @@
 
 import XCTest
 
-class Test_generic: XCTestCase {
+private class Test_generic: XCTestCase {
     func anyCommonElements<T: Sequence, U: Sequence>(_ lhs: T, _ rhs: U) -> Bool
         where T.Element: Equatable, T.Element == U.Element
     {

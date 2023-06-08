@@ -55,7 +55,7 @@ extension UserDefaults {
     static var username: String
 }
 
-class Test_property_wrapper_projected_value: XCTestCase {
+private class Test_property_wrapper_projected_value: XCTestCase {
     func test_use_projected_value() throws {
         _ = UserDefaults.$username.sink { username in
             print("New username: \(username)")

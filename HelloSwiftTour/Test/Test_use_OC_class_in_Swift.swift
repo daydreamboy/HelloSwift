@@ -8,7 +8,7 @@
 import XCTest
 
 // example: https://stackoverflow.com/a/24005242
-class Test_use_OC_class_in_Swift: XCTestCase {
+private class Test_use_OC_class_in_Swift: XCTestCase {
 
     func test_WCSecurityTool_aes256Decrypt() throws {
         var inputString: String;
