@@ -1,5 +1,5 @@
 //
-//  WCPrivateTool.h
+//  OCPrivateTool.h
 //  OCStaticLibrary
 //
 //  Created by wesley_chen on 2023/6/7.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WCPrivateTool : NSObject
+@interface OCPrivateTool : NSObject
 
 + (void)doSomethingWithVideoAtPath:(NSString *)path completion:(void (^)(BOOL success, NSError *error))completion;
 

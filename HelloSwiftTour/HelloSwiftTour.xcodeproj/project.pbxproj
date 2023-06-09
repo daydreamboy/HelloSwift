@@ -10,8 +10,8 @@
 		4F09E220284A305F00B77CBC /* Test_property_wrapper_basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F09E21F284A305F00B77CBC /* Test_property_wrapper_basic.swift */; };
 		4F09E224284A4CC900B77CBC /* Test_readline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F09E223284A4CC900B77CBC /* Test_readline.swift */; };
 		4F1BB10328879D930025ADDE /* Test_description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1BB10228879D930025ADDE /* Test_description.swift */; };
-		4F3CBDC62A32D34700200089 /* WCPublicTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F3CBDC42A32D34700200089 /* WCPublicTool.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4F3CBDC72A32D34700200089 /* WCPublicTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3CBDC52A32D34700200089 /* WCPublicTool.m */; };
+		4F3CBDC62A32D34700200089 /* OCPublicTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F3CBDC42A32D34700200089 /* OCPublicTool.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F3CBDC72A32D34700200089 /* OCPublicTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3CBDC52A32D34700200089 /* OCPublicTool.m */; };
 		4F3CBDC92A3312EF00200089 /* Test_call_OC_method_via_interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3CBDC82A3312EF00200089 /* Test_call_OC_method_via_interface.swift */; };
 		4F3F1FAA27EEF105007532A2 /* Test_variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3F1FA927EEF105007532A2 /* Test_variable.swift */; };
 		4F3F1FAC27EEF3CA007532A2 /* Test_print.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3F1FAB27EEF3CA007532A2 /* Test_print.swift */; };
@@ -42,8 +42,8 @@
 		4FAAD9D72A32111B0069877A /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAAD9D52A32111B0069877A /* RootViewController.swift */; };
 		4FC38CAD2A3033AF00BE5CF2 /* OCStaticLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FC38CAC2A3033AF00BE5CF2 /* OCStaticLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4FC38CB02A3033AF00BE5CF2 /* OCStaticLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC38CAA2A3033AF00BE5CF2 /* OCStaticLibrary.framework */; };
-		4FC38CB82A30340B00BE5CF2 /* WCPrivateTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FC38CB62A30340B00BE5CF2 /* WCPrivateTool.h */; };
-		4FC38CB92A30340B00BE5CF2 /* WCPrivateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC38CB72A30340B00BE5CF2 /* WCPrivateTool.m */; };
+		4FC38CB82A30340B00BE5CF2 /* OCPrivateTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FC38CB62A30340B00BE5CF2 /* OCPrivateTool.h */; };
+		4FC38CB92A30340B00BE5CF2 /* OCPrivateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC38CB72A30340B00BE5CF2 /* OCPrivateTool.m */; };
 		4FC38CBB2A3035BB00BE5CF2 /* Test_call_OC_method_via_runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC38CBA2A3035BB00BE5CF2 /* Test_call_OC_method_via_runtime.swift */; };
 		4FC38CBD2A30428F00BE5CF2 /* OCStaticLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC38CAA2A3033AF00BE5CF2 /* OCStaticLibrary.framework */; };
 /* End PBXBuildFile section */
@@ -91,8 +91,8 @@
 		4F09E21F284A305F00B77CBC /* Test_property_wrapper_basic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_property_wrapper_basic.swift; sourceTree = "<group>"; };
 		4F09E223284A4CC900B77CBC /* Test_readline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_readline.swift; sourceTree = "<group>"; };
 		4F1BB10228879D930025ADDE /* Test_description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_description.swift; sourceTree = "<group>"; };
-		4F3CBDC42A32D34700200089 /* WCPublicTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCPublicTool.h; sourceTree = "<group>"; };
-		4F3CBDC52A32D34700200089 /* WCPublicTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCPublicTool.m; sourceTree = "<group>"; };
+		4F3CBDC42A32D34700200089 /* OCPublicTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCPublicTool.h; sourceTree = "<group>"; };
+		4F3CBDC52A32D34700200089 /* OCPublicTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCPublicTool.m; sourceTree = "<group>"; };
 		4F3CBDC82A3312EF00200089 /* Test_call_OC_method_via_interface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_call_OC_method_via_interface.swift; sourceTree = "<group>"; };
 		4F3F1FA927EEF105007532A2 /* Test_variable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_variable.swift; sourceTree = "<group>"; };
 		4F3F1FAB27EEF3CA007532A2 /* Test_print.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_print.swift; sourceTree = "<group>"; };
@@ -129,8 +129,8 @@
 		4FAAD9D52A32111B0069877A /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		4FC38CAA2A3033AF00BE5CF2 /* OCStaticLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OCStaticLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FC38CAC2A3033AF00BE5CF2 /* OCStaticLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCStaticLibrary.h; sourceTree = "<group>"; };
-		4FC38CB62A30340B00BE5CF2 /* WCPrivateTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCPrivateTool.h; sourceTree = "<group>"; };
-		4FC38CB72A30340B00BE5CF2 /* WCPrivateTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCPrivateTool.m; sourceTree = "<group>"; };
+		4FC38CB62A30340B00BE5CF2 /* OCPrivateTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCPrivateTool.h; sourceTree = "<group>"; };
+		4FC38CB72A30340B00BE5CF2 /* OCPrivateTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCPrivateTool.m; sourceTree = "<group>"; };
 		4FC38CBA2A3035BB00BE5CF2 /* Test_call_OC_method_via_runtime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_call_OC_method_via_runtime.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -267,10 +267,10 @@
 			isa = PBXGroup;
 			children = (
 				4FC38CAC2A3033AF00BE5CF2 /* OCStaticLibrary.h */,
-				4FC38CB62A30340B00BE5CF2 /* WCPrivateTool.h */,
-				4FC38CB72A30340B00BE5CF2 /* WCPrivateTool.m */,
-				4F3CBDC42A32D34700200089 /* WCPublicTool.h */,
-				4F3CBDC52A32D34700200089 /* WCPublicTool.m */,
+				4FC38CB62A30340B00BE5CF2 /* OCPrivateTool.h */,
+				4FC38CB72A30340B00BE5CF2 /* OCPrivateTool.m */,
+				4F3CBDC42A32D34700200089 /* OCPublicTool.h */,
+				4F3CBDC52A32D34700200089 /* OCPublicTool.m */,
 			);
 			path = OCStaticLibrary;
 			sourceTree = "<group>";
@@ -289,8 +289,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FC38CB82A30340B00BE5CF2 /* WCPrivateTool.h in Headers */,
-				4F3CBDC62A32D34700200089 /* WCPublicTool.h in Headers */,
+				4FC38CB82A30340B00BE5CF2 /* OCPrivateTool.h in Headers */,
+				4F3CBDC62A32D34700200089 /* OCPublicTool.h in Headers */,
 				4FC38CAD2A3033AF00BE5CF2 /* OCStaticLibrary.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -499,8 +499,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F3CBDC72A32D34700200089 /* WCPublicTool.m in Sources */,
-				4FC38CB92A30340B00BE5CF2 /* WCPrivateTool.m in Sources */,
+				4F3CBDC72A32D34700200089 /* OCPublicTool.m in Sources */,
+				4FC38CB92A30340B00BE5CF2 /* OCPrivateTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

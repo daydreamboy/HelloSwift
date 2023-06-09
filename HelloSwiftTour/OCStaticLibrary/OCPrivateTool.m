@@ -1,15 +1,15 @@
 //
-//  WCPublicTool.m
+//  OCPrivateTool.m
 //  OCStaticLibrary
 //
-//  Created by wesley_chen on 2023/6/9.
+//  Created by wesley_chen on 2023/6/7.
 //
 
-#import "WCPublicTool.h"
+#import "OCPrivateTool.h"
 
-@implementation WCPublicTool
+@implementation OCPrivateTool
 
-+ (void)doSomethingWithImageAtPath:(NSString *)path completion:(void (^)(BOOL success, NSError * _Nullable error))completion {
++ (void)doSomethingWithVideoAtPath:(NSString *)path completion:(void (^)(BOOL success, NSError *error))completion {
     NSLog(@"%@ called", NSStringFromSelector(_cmd));
     
     if (![path isKindOfClass:[NSString class]] || path.length == 0) {

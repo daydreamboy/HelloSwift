@@ -10,7 +10,7 @@ import XCTest
 final class Test_runtime_call_OC_method: XCTestCase {
     
     func test_runtime_call_OC_method() throws {
-        if let classType = NSClassFromString("WCPrivateTool") {
+        if let classType = NSClassFromString("OCPrivateTool") {
             let cls = classType as! NSObject.Type
             let sel = "doSomethingWithVideoAtPath:completion:"
             

@@ -11,12 +11,12 @@ import OCStaticLibrary
 final class Test_call_OC_method_via_interface: XCTestCase {
     func test_call_OC_method_1() throws {
         // Case 1
-        WCPublicTool.doSomethingWithImage(atPath: "") { succes, error in
+        OCPublicTool.doSomethingWithImage(atPath: "") { succes, error in
             print("succes: \(succes), error: \(error?.localizedDescription ?? "no error")")
         }
         
         // Case 2
-        WCPublicTool.doSomethingWithImage(atPath: "path/to/image") { succes, error in
+        OCPublicTool.doSomethingWithImage(atPath: "path/to/image") { succes, error in
             print("succes: \(succes), error: \(error?.localizedDescription ?? "no error")")
         }
     }
@@ -29,7 +29,7 @@ final class Test_call_OC_method_via_interface: XCTestCase {
         do {
             let path = ""
             //let path = "path/to/image"
-            let result = try await WCPublicTool.doSomethingWithImage(atPath: path)
+            let result = try await OCPublicTool.doSomethingWithImage(atPath: path)
             print(result)
         } catch {
             print(error)
