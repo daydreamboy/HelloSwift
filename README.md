@@ -1675,6 +1675,12 @@ TODO: https://docs.swift.org/swift-book/documentation/the-swift-programming-lang
 
 
 
+### (15) 并发(Concurrency)
+
+TODO: https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency/
+
+
+
 
 
 ## 2、Swift和Objective-C混编[^3]
@@ -2013,6 +2019,59 @@ SWIFT_CLASS("_TtC4Test9SomeClass")
 说明
 
 > 默认情况下，编译器会将所有能编译swift文件中，swift类转成OC类，并生成在xxx-swift.h中。使用private标记Swift类或者Swift函数，则该符号不会被转成OC符号，xxx-swift.h中不会存在该OC接口。
+
+
+
+### c. Swift使用OC静态库
+
+Swift使用OC静态库，需要下面几个步骤
+
+* OC静态库编译时设置DEFINES_MODULE=YES（可能现在Xcode默认为YES）
+  * 如果不开启，这个静态库不是Clang Module，无法在Swift中使用`import <module>`
+* OC静态库的umbrella头文件，配置公开的头文件，并把对应头文件设置为public
+* 在Swift中导入module，`import <module>`
+* 使用编译器自动生成的Swift接口
+
+举个例子，如下
+
+```swift
+func test_call_OC_method_1() throws {
+    // Case 1
+    WCPublicTool.doSomethingWithImage(atPath: "") { succes, error in
+        print("succes: \(succes), error: \(error?.localizedDescription ?? "no error")")
+    }
+
+    // Case 2
+    WCPublicTool.doSomethingWithImage(atPath: "path/to/image") { succes, error in
+        print("succes: \(succes), error: \(error?.localizedDescription ?? "no error")")
+    }
+}
+
+@available(iOS 13.0.0, *)
+func test_call_OC_method_2() async throws {
+    // Case 3
+    do {
+        let path = ""
+        //let path = "path/to/image"
+        let result = try await WCPublicTool.doSomethingWithImage(atPath: path)
+        print(result)
+    } catch {
+        print(error)
+    }
+}
+```
+
+值得说明的是，公开的OC接口，一定需要额外注意方法签名，编译器生成的Swift接口会进行转换。
+
+* `_Nullable`对应Swift的可选类型Optional
+* block参数对应Swift的closure类型。该closure类型，应该有`@convention(block)`标记，不是普通的closure类型
+* 有可能会变成异步函数(async function)形式，例如上面的Case 3
+
+
+
+### d. OC使用Swift静态库
+
+
 
 
 
