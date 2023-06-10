@@ -1,5 +1,5 @@
 //
-//  Test_keyword.swift
+//  Test_keyword_defer.swift
 //  Test
 //
 //  Created by wesley_chen on 2022/3/20.
@@ -7,7 +7,7 @@
 
 import XCTest
 
-class Test_keyword: XCTestCase {
+class Test_keyword_defer: XCTestCase {
     func test_defer() throws {
         var fridgeIsOpen = false
         let fridgeContent = ["milk", "eggs", "leftovers"]
