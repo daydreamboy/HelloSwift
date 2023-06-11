@@ -1857,6 +1857,84 @@ func processFile(filename: String) throws {
 
 
 
+### (17) 断言和预设条件(Assertions and Preconditions)
+
+断言和预设条件(Assertions and Preconditions)，用于运行时检查。不同上面的错误处理，它们用于不确定的错误，而且是不可恢复的错误。当断言和预设条件满足false条件，会导致app中止运行。
+
+断言和预设条件的区别是，前者用于开发环境，后者用于生产环境。断言在生产环境是无效的，而预设条件在开发和生产环境都是有效的
+
+官方文档描述[^12]，如下
+
+> Assertions help you find mistakes and incorrect assumptions during development, and preconditions help you detect issues in production.
+>
+> The difference between assertions and preconditions is in when they’re checked: Assertions are checked only in debug builds, but preconditions are checked in both debug and production builds. In production builds, the condition inside an assertion isn’t evaluated. This means you can use as many assertions as you want during your development process, without impacting performance in production.
+
+
+
+#### a. 断言(Assertions)
+
+断言有下面几种函数
+
+```swift
+func assert(_ condition: @autoclosure () -> Bool, _ message: @autoclosure () -> String = String(), file: StaticString = #file, line: UInt = #line)
+func assertionFailure(_ message: @autoclosure () -> String = String(), file: StaticString = #file, line: UInt = #line)
+```
+
+举个例子，如下
+
+```swift
+// Case 1
+let age = -3
+assert(age >= 0, "A person's age can't be less than zero.")
+// This assertion fails because -3 isn't >= 0.
+
+// Case 2
+assert(age >= 0)
+
+// Case 3
+if age > 10 {
+    print("You can ride the roller-coaster or the ferris wheel.")
+} else if age >= 0 {
+    print("You can ride the ferris wheel.")
+} else {
+    assertionFailure("A person's age can't be less than zero.")
+}
+```
+
+
+
+#### b. 预设条件(Preconditions)
+
+预设条件有下面几种函数
+
+```swift
+func precondition(_ condition: @autoclosure () -> Bool, _ message: @autoclosure () -> String = String(), file: StaticString = #file, line: UInt = #line)
+func preconditionFailure(_ message: @autoclosure () -> String = String(), file: StaticString = #file, line: UInt = #line) -> Never
+```
+
+举个例子，如下
+
+```swift
+// In the implementation of a subscript...
+precondition(index > 0, "Index must be greater than zero.")
+```
+
+说明
+
+> 当编译器设置unchecked模式（-Ounchecked），precondition将不起作用，总是true，代码会被编译器优化掉。因此，可以考虑换成fatalError(_:file:line:)函数，它不同于assertions和preconditions，不会被代码优化。它的签名如下
+>
+> ```swift
+> func fatalError(_ message: @autoclosure () -> String = String(), file: StaticString = #file, line: UInt = #line) -> Never
+> ```
+>
+> 
+
+
+
+
+
+
+
 ## 2、Swift关键词
 
 Swift关键词，列表如下
@@ -1869,19 +1947,19 @@ Swift关键词，列表如下
 | defer     | 用于defer语句                  |
 | do        | 用于do-catch语句               |
 | enum      | 定义枚举类型                   |
+| extension |                                |
 | final     |                                |
 | func      | 声明函数                       |
 | import    | 用于导入module                 |
 | is        | 用于is语句                     |
 | let       | 用于定义常量                   |
 | override  |                                |
+| protocol  |                                |
 | throw     | 用于throw语句                  |
 | throws    | 定义函数时，标记函数会抛出错误 |
 | try       | 调用函数时，标记函数会抛出错误 |
 | typealias | 定义类型的别名                 |
 | var       | 用于定义变量                   |
-
-
 
 
 
@@ -2581,10 +2659,19 @@ Swift版本的Foundation库，已经在https://github.com/apple/swift-corelibs-f
 ## 10、Swift和Objective-C差异
 
 * Error处理机制
+  * 使用throw和do-catch机制来传递错误信息，而不是使用NSError参数方式传递错误信息
+* 增强协议(Protocol)的能力
+  * 可以使用extension扩展，向protocol添加方法实现。在OC中只能添加方法声明
+
+
+
+### (1) Error处理机制
 
 TODO
 
 https://developer.apple.com/documentation/swift/handling-cocoa-errors-in-swift
+
+
 
 
 
