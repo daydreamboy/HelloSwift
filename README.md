@@ -648,9 +648,13 @@ if let definiteString = assumedString {
 
 
 
+### (4) 基本操作符(Basic Operators)
+
+TODO: https://docs.swift.org/swift-book/documentation/the-swift-programming-language/basicoperators
 
 
-### (4) 字符串
+
+### (5) 字符串(Strings and Characters)
 
 #### a. String interpolation
 
@@ -686,7 +690,9 @@ And then I said "I have \(apples + oranges) pieces of fruit."
 
 
 
-### (5) 容器类型(Array/Dictionary/Set)
+### (6) 容器类型(Collection Types)
+
+容器类型(Array/Dictionary/Set)
 
 Array和Dictionary都可以使用`[]`来定义，访问每个元素，使用下标index或者key。
 
@@ -725,7 +731,7 @@ occupations = [:]
 
 
 
-### (6) 控制流(Control Flow)
+### (7) 控制流(Control Flow)
 
  Swift支持的控制流语句，如下
 
@@ -893,7 +899,7 @@ print(m)
 
 
 
-### (7) 函数(Function)和闭包(Closure)
+### (8) 函数(Functions)
 
 在Swift中使用`func`声明一个函数，如果函数有返回值，则使用`-> ReturnType`来声明返回值类型。
 
@@ -1089,7 +1095,15 @@ print(sortedNumbers)
 
 
 
-### (8) 对象(Object)和类(Class)
+### (9) 闭包(Closures)
+
+
+
+### (10) 枚举(Enumerations)
+
+
+
+### (11) 结构体和类(Structures and Classes)
 
 在Swift中使用`class`来定义一个类，类中的属性和函数，和变量、函数的定义，没有区别，除了这些变量和函数的上下文是一个类而已。
 
@@ -1233,7 +1247,7 @@ TODO:https://stackoverflow.com/questions/29636633/static-vs-class-functions-vari
 
 
 
-### (9) 枚举和结构体
+#### 枚举和结构体
 
 在Swift中使用`enum`定义枚举类型，和其他有名字的类型(类等)，枚举定义中可以定义函数。
 
@@ -1340,7 +1354,25 @@ let threeOfSpadesDescription = threeOfSpades.simpleDescription()
 
 
 
-### (10) 协议(Protocol)和扩展(Extension)
+### (10) 属性(Properties)
+
+
+
+### (11) 方法(Methods)
+
+
+
+### (12) 下标(Subscripts)
+
+
+
+### (13) 继承(Inheritance)
+
+
+
+
+
+### (11) 协议(Protocol)和扩展(Extension)
 
 #### a. 协议(Protocol)
 
