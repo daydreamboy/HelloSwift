@@ -98,7 +98,11 @@ func test_variable_name_use_keyword() throws {
 
 #### b. 变量类型
 
-Swift中定义变量，可以不用写类型，编译器会推断变量的类型
+Swift中定义变量，如果初始化有值，可以不用写类型，编译器会根据初始化值的类型，推断变量的类型。
+
+官方文档描述[^12]，如下
+
+> It’s rare that you need to write type annotations in practice. If you provide an initial value for a constant or variable at the point that it’s defined, Swift can almost always infer the type to be used for that constant or variable, as described in [Type Safety and Type Inference](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/thebasics#Type-Safety-and-Type-Inference).
 
 示例代码，如下
 
@@ -124,7 +128,7 @@ let explicitDouble: Double = 70
 >
 > 这里width变量必须转成String类型，才能做字符串拼接
 
-变量类型，也称为类型注解(Type Annotation)。
+定义变量，标记变量类型，也称为**类型注解**(Type Annotation)。
 
 如果要声明多个变量，可以使用逗号分隔。举个例子，如下
 
@@ -208,9 +212,9 @@ let maxValue = UInt8.max  // maxValue is equal to 255, and is of type UInt8
 
 
 
-#### c. 类型安全和类型推断
+#### c. 类型安全(Type Safety)和类型推断(Type Inference)
 
-Swift是类型安全的语言，这个意味着变量类型定义好后，不能赋值给它其他类型的值。这个错误会在编译期检查出来。即使在变量定义时没有显示声明类型，编译器会进行类型推断，判断出变量的类型。
+Swift是类型安全的语言，这个意味着变量类型定义好后，不能赋值给它其他类型的值。这个错误会在编译期检查出来。即使在变量定义时没有显示声明类型，编译器会根据初始化值的类型，进行类型推断，判断出变量的类型。
 
 一般来说，
 
@@ -340,7 +344,7 @@ let integerPi = Int(pi)
 
 
 
-#### f. 布尔类型
+#### f. 布尔类型(Bool)
 
 Swift中的布尔类型，是Bool，提供true和false两个常量。
 
@@ -607,7 +611,7 @@ func getNumber() -> Int? {
 
 
 
-##### Implicitly Unwrapped Optionals
+##### 隐式Unwrapped可选变量(Implicitly Unwrapped Optionals)
 
 Implicitly Unwrapped Optionals的含义是，某些情况下，可选变量总是有值的，那么移除每次检查可选变量是非常有用的。这些总是有值的可选变量就称为Implicitly Unwrapped Optionals。
 
@@ -640,11 +644,9 @@ if let definiteString = assumedString {
 // Prints "An implicitly unwrapped optional string."
 ```
 
+上面assumedString变量是一个隐式Unwrapped可选变量，对于这种特殊的可选变量，可以按照可选变量来处理，比如和nil比较，使用if-let绑定可选变量等
 
 
-// TODO
-
-https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html
 
 
 
@@ -1563,9 +1565,197 @@ anyCommonElements([1, 2, 3], [3])
 
 
 
-### (12) 关键词
 
-#### a. defer
+
+### (14) 闭包(Closure)
+
+TODO: https://docs.swift.org/swift-book/documentation/the-swift-programming-language/closures
+
+
+
+### (15) 并发(Concurrency)
+
+TODO: https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency/
+
+
+
+### (16) 错误处理(Error Handling)
+
+在Swift中错误处理，用于响应程序执行过程的错误情况。Swift提供下面几种错误处理的方式：
+
+* 抛出错误(throwing)
+* 捕获错误(catching)
+* 传递错误(propagating)
+* 操作可恢复的错误(manipulating recoverable errors)
+
+在Swift中，符合`Error`协议的值类型，都可以用于错误处理。实际上，`Error`协议是一个空的协议。
+
+常见的用法，使用enum类型实现Error协议，举个例子，如下
+
+```swift
+enum VendingMachineError: Error {
+    case invalidSelection
+    case insufficientFunds(coinsNeeded: Int)
+    case outOfStock
+}
+```
+
+然后使用`throw`抛出这个错误，如下
+
+```swift
+throw VendingMachineError.insufficientFunds(coinsNeeded: 5)
+```
+
+如果这个throw语句在函数中，则需要`throws`关键词标记函数，如下
+
+```swift
+func canThrowAnError() throws {
+    // this function may or may not throw an error
+}
+```
+
+调用这个canThrowAnError函数，也需要额外使用`try`关键词标记，如下
+
+```swift
+do {
+    try canThrowAnError()
+    // no error was thrown
+} catch {
+    // an error was thrown
+}
+```
+
+如果要捕获错误，则使用do-catch语句，像上面这样
+
+实际上，官方文档提供4种处理错误的方式，如下
+
+* 传递错误给调用者
+* 使用do-catch语句
+* 处理错误为可选值
+* 使用assert判断错误不会发生
+
+文档描述[^13]，如下
+
+> There are four ways to handle errors in Swift. You can propagate the error from a function to the code that calls that function, handle the error using a `do`-`catch` statement, handle the error as an optional value, or assert that the error will not occur. 
+
+
+
+#### a. 传递错误(Propagating Errors)
+
+在函数声明时，使用`throws`关键词标记，举个例子
+
+```swift
+func canThrowErrors() throws -> String
+func cannotThrowErrors() -> String
+```
+
+如果没有标记`throws`的函数，它内部必须处理掉所有可能抛出的错误。
+
+使用throw语句来抛出错误，举个例子，如下
+
+```swift
+struct Item {
+    var price: Int
+    var count: Int
+}
+
+class VendingMachine {
+    var inventory = [
+        "Candy Bar": Item(price: 12, count: 7),
+        "Chips": Item(price: 10, count: 4),
+        "Pretzels": Item(price: 7, count: 11)
+    ]
+    var coinsDeposited = 0
+
+    func vend(itemNamed name: String) throws {
+        guard let item = inventory[name] else {
+            throw VendingMachineError.invalidSelection
+        }
+
+        guard item.count > 0 else {
+            throw VendingMachineError.outOfStock
+        }
+
+        guard item.price <= coinsDeposited else {
+            throw VendingMachineError.insufficientFunds(coinsNeeded: item.price - coinsDeposited)
+        }
+
+        coinsDeposited -= item.price
+
+        var newItem = item
+        newItem.count -= 1
+        inventory[name] = newItem
+
+        print("Dispensing \(name)")
+    }
+}
+```
+
+上面有三个throw语句，分别抛出不同类型的错误
+
+例如下面函数buyFavoriteSnack作为调用者，可以标记throws，不处理错误，让错误继续传递
+
+```swift
+let favoriteSnacks = [
+    "Alice": "Chips",
+    "Bob": "Licorice",
+    "Eve": "Pretzels",
+]
+func buyFavoriteSnack(person: String, vendingMachine: VendingMachine) throws {
+    let snackName = favoriteSnacks[person] ?? "Candy Bar"
+    try vendingMachine.vend(itemNamed: snackName)
+}
+```
+
+初始化函数作为调用者，也可以标记throws，例如
+
+```swift
+struct PurchasedSnack {
+    let name: String
+    init(name: String, vendingMachine: VendingMachine) throws {
+        try vendingMachine.vend(itemNamed: name)
+        self.name = name
+    }
+}
+```
+
+调用throws函数，需要使用try标记。try标记有两种变体：try?和try!
+
+根据上面官方例子，可以看到传递error，实际是使用`throw`语句，结合`throws`和`try`，在编译期确定错误抛出路径。
+
+
+
+#### b. 处理错误(Handling Errors)
+
+TODO
+
+
+
+
+
+## 2、Swift关键词
+
+Swift关键词，列表如下
+
+| keyword   | 作用                           |
+| --------- | ------------------------------ |
+| case      | 定义枚举类型的枚举值           |
+| catch     | 用于do-catch语句               |
+| defer     |                                |
+| do        | 用于do-catch语句               |
+| enum      | 定义枚举类型                   |
+| final     |                                |
+| func      | 声明函数                       |
+| throw     | 用于throw语句                  |
+| throws    | 定义函数时，标记函数会抛出错误 |
+| try       | 调用函数时，标记函数会抛出错误 |
+| typealias | 定义类型的别名                 |
+
+
+
+
+
+### (1) defer
 
 `defer`关键词用于标记一段代码块，这个代码块在函数返回之前执行。简单理解，就是函数返回语句调用之前，会执行defer标记的代码块。
 
@@ -1601,7 +1791,7 @@ print(fridgeIsOpen)
 
 
 
-#### b. typealias
+### (2) typealias
 
 `typealias`用于定义现有类型的别名(Type Alias)。
 
@@ -1617,15 +1807,27 @@ var maxAmplitudeFound = AudioSample.min
 
 
 
-#### c. final
+### (3) final
 
 https://stackoverflow.com/questions/25156377/what-is-the-difference-between-static-func-and-class-func-in-swift
 
 
 
-### (13) 常用函数
 
-#### a. print
+
+## 3、Swift的`#`标记(# mark)
+
+`#`标记，用下面几种用法
+
+```swift
+
+```
+
+
+
+## 4、Swift常用函数
+
+### (1) print
 
 print函数是一个全局函数。它的签名，如下
 
@@ -1669,34 +1871,11 @@ func test_print() throws {
 
 
 
-### (14) 闭包(Closure)
-
-TODO: https://docs.swift.org/swift-book/documentation/the-swift-programming-language/closures
 
 
+## 5、Swift和Objective-C混编[^3]
 
-### (15) 并发(Concurrency)
-
-TODO: https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency/
-
-
-
-`#`标记
-
-`#`标记，用下面几种用法
-
-```swift
-
-
-```
-
-
-
-
-
-## 2、Swift和Objective-C混编[^3]
-
-### a. 在Swift中使用Objective-C代码
+### (1) 在Swift中使用Objective-C代码
 
 在Swift中使用Objective-C类，需要一个bridge header文件。如果工程中没有这个文件，在第一次新建一个Objective-C类时，Xcode会提示是否需要创建这个文件。如果选择是，则按照下面的命名规则，生成一个h文件。
 
@@ -1760,7 +1939,7 @@ class Test_use_OC_class_in_Swift: XCTestCase {
 
 
 
-### b. 在Objective-C中使用Swift代码
+### (2) 在Objective-C中使用Swift代码
 
 在Objective-C中使用Swift代码，比上面相对步骤多一些。几个步骤，如下
 
@@ -2033,7 +2212,7 @@ SWIFT_CLASS("_TtC4Test9SomeClass")
 
 
 
-### c. Swift使用OC静态库
+### (3) Swift使用OC静态库
 
 Swift使用OC静态库，需要下面几个步骤
 
@@ -2080,7 +2259,7 @@ func test_call_OC_method_2() async throws {
 
 
 
-### d. OC使用Swift静态库
+### (4) OC使用Swift静态库
 
 
 
@@ -2088,7 +2267,7 @@ func test_call_OC_method_2() async throws {
 
 
 
-## 3、Swift常见问题
+## 6、Swift常见问题
 
 ### (1) Swift代码的入口
 
@@ -2148,7 +2327,7 @@ https://stackoverflow.com/a/25354915
 
 
 
-## 4、Swift在LLDB中调试
+## 7、Swift在LLDB中调试
 
 ### (1) 重写description属性和debugDescription属性
 
@@ -2238,7 +2417,7 @@ TODO: https://andela.com/insights/the-complete-guide-to-debug-swift-code-with-ll
 
 
 
-## 5、Swift的相关开源
+## 8、Swift的相关开源
 
 ### (1) Foundation库
 
@@ -2252,7 +2431,7 @@ Swift版本的Foundation库，已经在https://github.com/apple/swift-corelibs-f
 
 
 
-## 6、Swift相关命令行工具
+## 9、Swift相关命令行工具
 
 * swift
 * swiftc
@@ -2266,7 +2445,19 @@ Swift版本的Foundation库，已经在https://github.com/apple/swift-corelibs-f
 
 
 
-## 6、Swift编译原理
+## 10、Swift和Objective-C差异
+
+* Error处理机制
+
+TODO
+
+https://developer.apple.com/documentation/swift/handling-cocoa-errors-in-swift
+
+
+
+
+
+## 11、Swift编译原理
 
 TODO：
 
@@ -2314,4 +2505,7 @@ https://stackoverflow.com/questions/29673027/difference-between-precondition-and
 [^9]:https://stackoverflow.com/a/41666807
 [^10]:https://www.hackingwithswift.com/example-code/language/how-to-create-a-custom-debug-description
 [^11]:https://stackoverflow.com/questions/29441418/lldb-swift-casting-raw-address-into-usable-type
+
+[^12]:https://docs.swift.org/swift-book/documentation/the-swift-programming-language/thebasics
+[^13]:https://docs.swift.org/swift-book/documentation/the-swift-programming-language/errorhandling
 
