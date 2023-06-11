@@ -39,4 +39,28 @@ final class Test: XCTestCase {
         numbers = []
         XCTAssertTrue(numbers.endIndex == 0)
     }
+    
+    // Note: arr[index] is call subscript function
+    func test_subscript() throws {
+        // Case1: read
+        var streets = ["Adams", "Bryant", "Channing", "Douglas", "Evarts"]
+        XCTAssertEqual(streets[1], "Bryant")
+        
+        // Case2: write
+        streets[1] = "Butler"
+        print(streets[1])
+        XCTAssertEqual(streets[1], "Butler")
+        
+        // Case3: index out of bound
+        //streets[5] = "Butler2" // Fatal error: Index out of range
+        
+        // Case 4: do-catch can't catch the error
+        /*
+        do {
+            try streets[5] = "Butler2"
+        } catch {
+            print(error)
+        }
+         */
+    }
 }

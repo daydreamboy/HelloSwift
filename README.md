@@ -1721,15 +1721,139 @@ struct PurchasedSnack {
 
 调用throws函数，需要使用try标记。try标记有两种变体：try?和try!
 
-根据上面官方例子，可以看到传递error，实际是使用`throw`语句，结合`throws`和`try`，在编译期确定错误抛出路径。
+根据上面官方例子，可以看到传递error，实际是使用`throw`语句，结合`throws`和`try`，在编译期确定错误抛出路径。相比于Objective-C的NSError参数方式，把运行时的错误变成编译期的错误，代码上对错误的处理更加清晰，可读性更好。
 
 
 
 #### b. 处理错误(Handling Errors)
 
-TODO
+使用do-catch语句用于处理错误，示例如下
+
+```swift
+do {
+    try <#expression#>
+    <#statements#>
+} catch <#pattern 1#> {
+    <#statements#>
+} catch <#pattern 2#> where <#condition#> {
+    <#statements#>
+} catch <#pattern 3#>, <#pattern 4#> where <#condition#> {
+    <#statements#>
+} catch {
+    <#statements#>
+}
+```
+
+举个例子，如下
+
+```swift
+var vendingMachine = VendingMachine()
+vendingMachine.coinsDeposited = 8
+do {
+    try buyFavoriteSnack(person: "Alice", vendingMachine: vendingMachine)
+    print("Success! Yum.")
+} catch VendingMachineError.invalidSelection {
+    print("Invalid Selection.")
+} catch VendingMachineError.outOfStock {
+    print("Out of Stock.")
+} catch VendingMachineError.insufficientFunds(let coinsNeeded) {
+    print("Insufficient funds. Please insert an additional \(coinsNeeded) coins.")
+} catch {
+    print("Unexpected error: \(error).")
+}
+```
+
+catch语句部分，默认会有一个本地变量error。
+
+除了catch语句匹配对应错误类型，还可以使用is语句，举个例子，如下
+
+```swift
+func nourish(with item: String) throws {
+    do {
+        try vendingMachine.vend(itemNamed: item)
+    } catch is VendingMachineError {
+        print("Couldn't buy that from the vending machine.")
+    }
+}
+```
 
 
+
+#### c. 转换错误成可选值(Converting Errors to Optional Values)
+
+使用`try?`可以将一个可能会抛出错误的表达式转成一个nil值。
+
+官方文档描述[^13]，如下
+
+> You use `try?` to handle an error by converting it to an optional value. If an error is thrown while evaluating the `try?` expression, the value of the expression is `nil`.
+
+举个例子，如下
+
+```swift
+func someThrowingFunction() throws -> Int {
+    // ...
+}
+
+let x = try? someThrowingFunction()
+
+let y: Int?
+do {
+    y = try someThrowingFunction()
+} catch {
+    y = nil
+}
+```
+
+上面可选变量y和可选变量x，效果是一样的，但是使用`try?`标记，更加简洁。
+
+再举个例子，如下
+
+```swift
+func fetchData() -> Data? {
+    if let data = try? fetchDataFromDisk() { return data }
+    if let data = try? fetchDataFromServer() { return data }
+    return nil
+}
+```
+
+
+
+#### d. 禁止错误传递(Disabling Error Propagation)
+
+使用`try!`标记，则禁止错误传递。用法和C中assert类似，明确期望不要有错误出现。
+
+举个例子，如下
+
+```swift
+let photo = try! loadImage(atPath: "./Resources/John Appleseed.jpg")
+```
+
+上面例子中，如果图片资源不存在，则会出现一个Runtime Error。
+
+
+
+#### e. 抛出错误结合defer语句
+
+由于抛出异常，会导致函数提前退出，因此可能影响一些函数结束才执行的操作，例如调用析构函数、关闭文件句柄等。
+
+因此，抛出错误结合defer语句，是一个不错的最佳实践。举个例子，如下
+
+```swift
+func processFile(filename: String) throws {
+    if exists(filename) {
+        let file = open(filename)
+        defer {
+            close(file)
+        }
+        while let line = try file.readline() {
+            // Work with the file.
+        }
+        // close(file) is called here, at the end of the scope.
+    }
+}
+```
+
+上面readline函数可能会抛出错误，导致open和close无法配对，在defer语句中调用close函数，保证函数退出时一定会调用close函数。
 
 
 
@@ -1741,15 +1865,21 @@ Swift关键词，列表如下
 | --------- | ------------------------------ |
 | case      | 定义枚举类型的枚举值           |
 | catch     | 用于do-catch语句               |
-| defer     |                                |
+| class     | 用于定义类                     |
+| defer     | 用于defer语句                  |
 | do        | 用于do-catch语句               |
 | enum      | 定义枚举类型                   |
 | final     |                                |
 | func      | 声明函数                       |
+| import    | 用于导入module                 |
+| is        | 用于is语句                     |
+| let       | 用于定义常量                   |
+| override  |                                |
 | throw     | 用于throw语句                  |
 | throws    | 定义函数时，标记函数会抛出错误 |
 | try       | 调用函数时，标记函数会抛出错误 |
 | typealias | 定义类型的别名                 |
+| var       | 用于定义变量                   |
 
 
 
@@ -1779,13 +1909,16 @@ print(fridgeIsOpen)
 // Prints "false"
 ```
 
+> 示例代码，见Test_keyword_defer.swfit
+
 这里在返回result之前，会调用defer block将fridgeIsOpen设置成false。
 
 说明
 
-> 函数体中允许多个defer block。按照定义的顺序，根据FILO规则被执行，即最后定义的defer block会被第一个执行。
+> 1. 函数体中允许多个defer block。按照定义的顺序，根据FILO规则被执行，即最后定义的defer block会被第一个执行。
+> 2. defer语句也常用于错误处理，防止抛出错误导致close文件句柄无法配对
 
-> 示例代码，见Test_keyword.swfit
+
 
 
 
