@@ -1894,7 +1894,7 @@ swapTwoValues(&someString, &anotherString)
 
 #### b. 可以支持泛型的类型
 
-函数、类、枚举和结构体都支持泛型。
+函数、类、枚举和结构体，以及下标(subscript)都支持泛型。
 
 * 泛型函数
 
@@ -1922,6 +1922,8 @@ enum OptionalValue<Wrapped> {
 var possibleInteger: OptionalValue<Int> = .none
 possibleInteger = .some(100)
 ```
+
+
 
 
 
@@ -2003,6 +2005,12 @@ anyCommonElements([1, 2, 3], [3])
 
 
 #### d. 关联类型(Associated Types)
+
+
+
+#### e. 泛型的where语句(Generic Where Clauses)
+
+
 
 
 
@@ -2126,6 +2134,7 @@ Swift关键词，列表如下
 | extension      |                                                              |
 | final          |                                                              |
 | func           | 声明函数                                                     |
+| get            |                                                              |
 | import         | 用于导入module                                               |
 | inout          | [In-Out Parameters](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/functions#In-Out-Parameters) |
 | is             | 用于is语句                                                   |
@@ -2136,6 +2145,7 @@ Swift关键词，列表如下
 | public         |                                                              |
 | rethrows       |                                                              |
 | struct         | 用于定义结构体                                               |
+| subscript      |                                                              |
 | throw          | 用于throw语句                                                |
 | throws         | 定义函数时，标记函数会抛出错误                               |
 | try            | 调用函数时，标记函数会抛出错误                               |
