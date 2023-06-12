@@ -8,6 +8,29 @@
 import XCTest
 
 class Test_generic: XCTestCase {
+    func swapTwoValues<T>(_ a: inout T, _ b: inout T) {
+        let temporaryA = a
+        a = b
+        b = temporaryA
+    }
+    
+    func test_swapTwoValues() throws {
+        var someInt = 3
+        var anotherInt = 107
+        swapTwoValues(&someInt, &anotherInt)
+        // someInt is now 107, and anotherInt is now 3
+        XCTAssertEqual(someInt, 107)
+        XCTAssertEqual(anotherInt, 3)
+
+        var someString = "hello"
+        var anotherString = "world"
+        swapTwoValues(&someString, &anotherString)
+        // someString is now "world", and anotherString is now "hello"
+        XCTAssertEqual(someString, "world")
+        XCTAssertEqual(anotherString, "hello")
+    }
+    
+    
     func anyCommonElements<T: Sequence, U: Sequence>(_ lhs: T, _ rhs: U) -> Bool
         where T.Element: Equatable, T.Element == U.Element
     {

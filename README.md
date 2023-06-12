@@ -1843,9 +1843,60 @@ print(7.simpleDescription)
 
 ### (24) 泛型(Generics)
 
-Swift也支持泛型，使用`<X>`来声明泛型。
+在Swift中泛型(Generics)，用于按照类型复用特定的代码，例如函数等，特定的代码有一定约束，比如执行某项特定逻辑。
+
+官方文档对泛型(Generics)的描述，如下
+
+> Write code that works for multiple types and specify requirements for those types.
+
+泛型(Generics)的作用，如下
+
+> *Generic code* enables you to write flexible, reusable functions and types that can work with any type, subject to requirements that you define. You can write code that avoids duplication and expresses its intent in a clear, abstracted manner.
 
 举个例子，如下
+
+```swift
+func swapTwoValues<T>(_ a: inout T, _ b: inout T) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+
+var someInt = 3
+var anotherInt = 107
+swapTwoValues(&someInt, &anotherInt)
+// someInt is now 107, and anotherInt is now 3
+
+var someString = "hello"
+var anotherString = "world"
+swapTwoValues(&someString, &anotherString)
+// someString is now "world", and anotherString is now "hello"
+```
+
+上面定义泛型函数swapTwoValues，使用`<X>`来声明泛型。编译器会自动根据泛型函数的入参，推断T的类型，而这个泛型函数完成特定的约束，即交换两个变量的值。
+
+因此，泛型实际有两个条件
+
+* 按照类型来实例化对应的代码
+  * 例如上面泛型函数swapTwoValues，支持Int、String、Double等泛型
+* 所有泛化的类型，都满足特定的模板代码
+  * 例如上面泛型函数swapTwoValues，完成的是交换变量的值，这个特殊逻辑，那么能支持这个逻辑的泛型有Int、String、Double等
+
+
+
+#### a. 类型参数(Type Parameters)
+
+在上面泛型函数swapTwoValues的例子中，它的类型参数(Type Parameters)是`<T>`。`<>`中可以有多个类型，用逗号分隔。
+
+一般来说，如果类型参数使用有含义的命名，则称为有名类型参数(Naming Type Parameters)，例如`Dictionary<Key, Value>`和`Array<Element>`，它们的Key、Value和Element都属于有名类型参数。也可以使用没有含义的类型参数，例如`T`、`U`和`V`，它们仅用于占位符。
+
+
+
+#### b. 可以支持泛型的类型
+
+函数、类、枚举和结构体都支持泛型。
+
+* 泛型函数
 
 ```swift
 func makeArray<Item>(repeating item: Item, numberOfTimes: Int) -> [Item] {
@@ -1858,9 +1909,9 @@ func makeArray<Item>(repeating item: Item, numberOfTimes: Int) -> [Item] {
 makeArray(repeating: "knock", numberOfTimes: 4)
 ```
 
-函数、类、枚举和结构体都支持泛型。
 
-举个枚举有泛型的例子，如下
+
+* 泛型枚举
 
 ```swift
 // Reimplement the Swift standard library's optional type
@@ -1874,7 +1925,51 @@ possibleInteger = .some(100)
 
 
 
-在泛型声明中可以使用`where`关键词来定义一个约束条件列表。
+#### c. 约束类型参数
+
+泛型的类型参数，有时候不能是任意类型，因此在声明泛型的类型参数时，可以追加一个约束。它的语法格式，如下
+
+```swift
+func someFunction<T: SomeClass, U: SomeProtocol>(someT: T, someU: U) {
+    // function body goes here
+}
+```
+
+使用`:`，后面跟着类或者协议，表示这个类型参数符合这个类或者协议。
+
+举个例子，如下
+
+```swift
+// Not good
+func findIndex<T>(of valueToFind: T, in array:[T]) -> Int? {
+    for (index, value) in array.enumerated() {
+        if value == valueToFind {
+            return index
+        }
+    }
+    return nil
+}
+
+// better
+func findIndex<T: Equatable>(of valueToFind: T, in array:[T]) -> Int? {
+    for (index, value) in array.enumerated() {
+        if value == valueToFind {
+            return index
+        }
+    }
+    return nil
+}
+```
+
+上面第二个泛型函数，更加健壮一些，因为它约束类型参数需要符合Equatable协议。由于这个函数内部，符合T类型的元素都使用`==`比较，而Equatable协议中声明这种比较，因此约束类型参数符合Equatable协议。
+
+说明
+
+> Equatable协议，不仅声明`==(_:_:)`函数，也声明其他函数，例如`!=(_:_:)`等
+
+
+
+在泛型声明中也可以使用`where`关键词来定义一个约束条件列表。
 
 举个例子，如下
 
@@ -1904,6 +1999,14 @@ anyCommonElements([1, 2, 3], [3])
 > `<T: Equatable>`的写法，实际和`<T> ... where T: Equatable`是一样的。
 
 > 示例代码，见Test_generic.swift
+
+
+
+#### d. 关联类型(Associated Types)
+
+
+
+
 
 
 
@@ -2011,32 +2114,34 @@ precondition(index > 0, "Index must be greater than zero.")
 
 Swift关键词，列表如下
 
-| keyword        | 作用                           |
-| -------------- | ------------------------------ |
-| associatedtype |                                |
-| case           | 定义枚举类型的枚举值           |
-| catch          | 用于do-catch语句               |
-| class          | 用于定义类                     |
-| defer          | 用于defer语句                  |
-| do             | 用于do-catch语句               |
-| enum           | 定义枚举类型                   |
-| extension      |                                |
-| final          |                                |
-| func           | 声明函数                       |
-| import         | 用于导入module                 |
-| is             | 用于is语句                     |
-| let            | 用于定义常量                   |
-| mutating       |                                |
-| override       |                                |
-| protocol       |                                |
-| public         |                                |
-| rethrows       |                                |
-| throw          | 用于throw语句                  |
-| throws         | 定义函数时，标记函数会抛出错误 |
-| try            | 调用函数时，标记函数会抛出错误 |
-| typealias      | 定义类型的别名                 |
-| var            | 用于定义变量                   |
-| where          |                                |
+| keyword        | 作用                                                         |
+| -------------- | ------------------------------------------------------------ |
+| associatedtype |                                                              |
+| case           | 定义枚举类型的枚举值                                         |
+| catch          | 用于do-catch语句                                             |
+| class          | 用于定义类                                                   |
+| defer          | 用于defer语句                                                |
+| do             | 用于do-catch语句                                             |
+| enum           | 定义枚举类型                                                 |
+| extension      |                                                              |
+| final          |                                                              |
+| func           | 声明函数                                                     |
+| import         | 用于导入module                                               |
+| inout          | [In-Out Parameters](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/functions#In-Out-Parameters) |
+| is             | 用于is语句                                                   |
+| let            | 用于定义常量                                                 |
+| mutating       |                                                              |
+| override       |                                                              |
+| protocol       |                                                              |
+| public         |                                                              |
+| rethrows       |                                                              |
+| struct         | 用于定义结构体                                               |
+| throw          | 用于throw语句                                                |
+| throws         | 定义函数时，标记函数会抛出错误                               |
+| try            | 调用函数时，标记函数会抛出错误                               |
+| typealias      | 定义类型的别名                                               |
+| var            | 用于定义变量                                                 |
+| where          |                                                              |
 
 
 
