@@ -1370,248 +1370,19 @@ let threeOfSpadesDescription = threeOfSpades.simpleDescription()
 
 
 
+### (14) 初始化(Initialization)
 
 
-### (11) 协议(Protocol)和扩展(Extension)
 
-#### a. 协议(Protocol)
+### (15) 析构(Deinitialization)
 
-在Swift中使用`protocol`定义一个协议。
 
-举个例子，如下
 
-```swift
-protocol ExampleProtocol {
-    var simpleDescription: String { get }
-    mutating func adjust()
-}
-```
+### (16) 可选链(Optional Chaining)
 
-类、枚举和结构体都可以遵循某个协议。
 
-举个例子，如下
 
-```swift
-class SimpleClass: ExampleProtocol {
-    var simpleDescription: String = "A very simple class."
-    var anotherProperty: Int = 69105
-    func adjust() {
-        simpleDescription += "  Now 100% adjusted."
-    }
-}
-var a = SimpleClass()
-a.adjust()
-let aDescription = a.simpleDescription
-
-struct SimpleStructure: ExampleProtocol {
-    var simpleDescription: String = "A simple structure"
-    mutating func adjust() {
-        simpleDescription += " (adjusted)"
-    }
-}
-var b = SimpleStructure()
-b.adjust()
-let bDescription = b.simpleDescription
-```
-
-说明
-
-> 在SimpleStructure中使用`mutating`表示这个方法会修改结构体对象，而在SimpleClass中对应的方法没有使用`mutating`，因为Swift默认类中方法都是`mutating`。
-
-
-
-使用协议可以作为某个变量类型。举个例子，如下
-
-```swift
-let protocolValue: ExampleProtocol = a
-print(protocolValue.simpleDescription)
-// Prints "A very simple class.  Now 100% adjusted."
-// print(protocolValue.anotherProperty)  // Uncomment to see the error
-```
-
-这里protocolValue变量在运行时是SimpleClass类型，但是编译器把它当成ExampleProtocol类型。
-
-
-
-枚举协议也采用某个协议。举个例子，如下
-
-```swift
-enum PrinterError: Error {
-    case outOfPaper
-    case noToner
-    case onFire
-}
-```
-
-使用`throw`用于抛出一个error，以及使用`throws`来表示方法可能会抛出error。
-
-举个例子，如下
-
-```swift
-func send(job: Int, toPrinter printerName: String) throws -> String {
-    if printerName == "Never Has Toner" {
-        throw PrinterError.noToner
-    }
-    return "Job sent"
-}
-```
-
-
-
-有几种方式可以处理抛出的error。
-
-* 使用do-catch
-* 使用`try?`
-
-
-
-##### 使用do-catch
-
-某个函数可能会抛出error，则它的调用处使用`try`标记。举个例子，如下
-
-```swift
-do {
-    let printerResponse = try send(job: 1040, toPrinter: "Bi Sheng")
-    print(printerResponse)
-} catch {
-    print(error)
-}
-// Prints "Job sent"
-```
-
-可以有多个catch，用于处理多种error类型。举个例子，如下
-
-```swift
-do {
-    let printerResponse = try send(job: 1440, toPrinter: "Gutenberg")
-    print(printerResponse)
-} catch PrinterError.onFire {
-    print("I'll just put this over here, with the rest of the fire.")
-} catch let printerError as PrinterError {
-    print("Printer error: \(printerError).")
-} catch {
-    print(error)
-}
-// Prints "Job sent"
-```
-
-
-
-##### 使用`try?`
-
-使用`try?`简化error的处理，将可能抛出error的方法，如果有error抛出，则忽略error，并返回nil。
-
-举个例子，如下
-
-```swift
-let printerSuccess = try? send(job: 1884, toPrinter: "Mergenthaler")
-let printerFailure = try? send(job: 1885, toPrinter: "Never Has Toner")
-```
-
-
-
-#### b. 扩展(Extension)
-
-在Swift中使用`extension`，可以向现有类型添加功能，比如新方法或者属性等。
-
-另外extension可以采用某个协议。举个例子，如下
-
-```swift
-extension Int: ExampleProtocol {
-    var simpleDescription: String {
-        return "The number \(self)"
-    }
-    mutating func adjust() {
-        self += 42
-    }
-}
-print(7.simpleDescription)
-// Prints "The number 7"
-```
-
-
-
-### (11) 泛型(Generics)
-
-Swift也支持泛型，使用`<X>`来声明泛型。
-
-举个例子，如下
-
-```swift
-func makeArray<Item>(repeating item: Item, numberOfTimes: Int) -> [Item] {
-    var result: [Item] = []
-    for _ in 0..<numberOfTimes {
-        result.append(item)
-    }
-    return result
-}
-makeArray(repeating: "knock", numberOfTimes: 4)
-```
-
-函数、类、枚举和结构体都支持泛型。
-
-举个枚举有泛型的例子，如下
-
-```swift
-// Reimplement the Swift standard library's optional type
-enum OptionalValue<Wrapped> {
-    case none
-    case some(Wrapped)
-}
-var possibleInteger: OptionalValue<Int> = .none
-possibleInteger = .some(100)
-```
-
-
-
-在泛型声明中可以使用`where`关键词来定义一个约束条件列表。
-
-举个例子，如下
-
-```swift
-func anyCommonElements<T: Sequence, U: Sequence>(_ lhs: T, _ rhs: U) -> Bool
-    where T.Element: Equatable, T.Element == U.Element
-{
-    for lhsItem in lhs {
-        for rhsItem in rhs {
-            if lhsItem == rhsItem {
-                return true
-            }
-        }
-    }
-    return false
-}
-anyCommonElements([1, 2, 3], [3])
-```
-
-这里where定义的约束条件，如下
-
-* 泛型T的元素必须符合Equatable协议
-* 泛型T的元素和泛型U的元素，必须是同一种类型，或者有相同的父类
-
-说明
-
-> `<T: Equatable>`的写法，实际和`<T> ... where T: Equatable`是一样的。
-
-> 示例代码，见Test_generic.swift
-
-
-
-
-
-### (14) 闭包(Closure)
-
-TODO: https://docs.swift.org/swift-book/documentation/the-swift-programming-language/closures
-
-
-
-### (15) 并发(Concurrency)
-
-TODO: https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency/
-
-
-
-### (16) 错误处理(Error Handling)
+### (17) 错误处理(Error Handling)
 
 在Swift中错误处理，用于响应程序执行过程的错误情况。Swift提供下面几种错误处理的方式：
 
@@ -1889,7 +1660,276 @@ func processFile(filename: String) throws {
 
 
 
-### (17) 断言和预设条件(Assertions and Preconditions)
+### (18) 并发(Concurrency)
+
+TODO: https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency/
+
+
+
+### (19) 宏(Macros)
+
+
+
+### (20) 类型强制转换(Type Casting)
+
+
+
+### (21) 嵌套类型(Nested Types)
+
+
+
+### (22) 扩展(Extensions)
+
+
+
+### (23) 协议(Protocols)
+
+#### a. 协议(Protocol)
+
+在Swift中使用`protocol`定义一个协议。
+
+举个例子，如下
+
+```swift
+protocol ExampleProtocol {
+    var simpleDescription: String { get }
+    mutating func adjust()
+}
+```
+
+类、枚举和结构体都可以遵循某个协议。
+
+举个例子，如下
+
+```swift
+class SimpleClass: ExampleProtocol {
+    var simpleDescription: String = "A very simple class."
+    var anotherProperty: Int = 69105
+    func adjust() {
+        simpleDescription += "  Now 100% adjusted."
+    }
+}
+var a = SimpleClass()
+a.adjust()
+let aDescription = a.simpleDescription
+
+struct SimpleStructure: ExampleProtocol {
+    var simpleDescription: String = "A simple structure"
+    mutating func adjust() {
+        simpleDescription += " (adjusted)"
+    }
+}
+var b = SimpleStructure()
+b.adjust()
+let bDescription = b.simpleDescription
+```
+
+说明
+
+> 在SimpleStructure中使用`mutating`表示这个方法会修改结构体对象，而在SimpleClass中对应的方法没有使用`mutating`，因为Swift默认类中方法都是`mutating`。
+
+
+
+使用协议可以作为某个变量类型。举个例子，如下
+
+```swift
+let protocolValue: ExampleProtocol = a
+print(protocolValue.simpleDescription)
+// Prints "A very simple class.  Now 100% adjusted."
+// print(protocolValue.anotherProperty)  // Uncomment to see the error
+```
+
+这里protocolValue变量在运行时是SimpleClass类型，但是编译器把它当成ExampleProtocol类型。
+
+
+
+枚举协议也采用某个协议。举个例子，如下
+
+```swift
+enum PrinterError: Error {
+    case outOfPaper
+    case noToner
+    case onFire
+}
+```
+
+使用`throw`用于抛出一个error，以及使用`throws`来表示方法可能会抛出error。
+
+举个例子，如下
+
+```swift
+func send(job: Int, toPrinter printerName: String) throws -> String {
+    if printerName == "Never Has Toner" {
+        throw PrinterError.noToner
+    }
+    return "Job sent"
+}
+```
+
+
+
+有几种方式可以处理抛出的error。
+
+* 使用do-catch
+* 使用`try?`
+
+
+
+##### 使用do-catch
+
+某个函数可能会抛出error，则它的调用处使用`try`标记。举个例子，如下
+
+```swift
+do {
+    let printerResponse = try send(job: 1040, toPrinter: "Bi Sheng")
+    print(printerResponse)
+} catch {
+    print(error)
+}
+// Prints "Job sent"
+```
+
+可以有多个catch，用于处理多种error类型。举个例子，如下
+
+```swift
+do {
+    let printerResponse = try send(job: 1440, toPrinter: "Gutenberg")
+    print(printerResponse)
+} catch PrinterError.onFire {
+    print("I'll just put this over here, with the rest of the fire.")
+} catch let printerError as PrinterError {
+    print("Printer error: \(printerError).")
+} catch {
+    print(error)
+}
+// Prints "Job sent"
+```
+
+
+
+##### 使用`try?`
+
+使用`try?`简化error的处理，将可能抛出error的方法，如果有error抛出，则忽略error，并返回nil。
+
+举个例子，如下
+
+```swift
+let printerSuccess = try? send(job: 1884, toPrinter: "Mergenthaler")
+let printerFailure = try? send(job: 1885, toPrinter: "Never Has Toner")
+```
+
+
+
+#### b. 扩展(Extension)
+
+在Swift中使用`extension`，可以向现有类型添加功能，比如新方法或者属性等。
+
+另外extension可以采用某个协议。举个例子，如下
+
+```swift
+extension Int: ExampleProtocol {
+    var simpleDescription: String {
+        return "The number \(self)"
+    }
+    mutating func adjust() {
+        self += 42
+    }
+}
+print(7.simpleDescription)
+// Prints "The number 7"
+```
+
+
+
+### (24) 泛型(Generics)
+
+Swift也支持泛型，使用`<X>`来声明泛型。
+
+举个例子，如下
+
+```swift
+func makeArray<Item>(repeating item: Item, numberOfTimes: Int) -> [Item] {
+    var result: [Item] = []
+    for _ in 0..<numberOfTimes {
+        result.append(item)
+    }
+    return result
+}
+makeArray(repeating: "knock", numberOfTimes: 4)
+```
+
+函数、类、枚举和结构体都支持泛型。
+
+举个枚举有泛型的例子，如下
+
+```swift
+// Reimplement the Swift standard library's optional type
+enum OptionalValue<Wrapped> {
+    case none
+    case some(Wrapped)
+}
+var possibleInteger: OptionalValue<Int> = .none
+possibleInteger = .some(100)
+```
+
+
+
+在泛型声明中可以使用`where`关键词来定义一个约束条件列表。
+
+举个例子，如下
+
+```swift
+func anyCommonElements<T: Sequence, U: Sequence>(_ lhs: T, _ rhs: U) -> Bool
+    where T.Element: Equatable, T.Element == U.Element
+{
+    for lhsItem in lhs {
+        for rhsItem in rhs {
+            if lhsItem == rhsItem {
+                return true
+            }
+        }
+    }
+    return false
+}
+anyCommonElements([1, 2, 3], [3])
+```
+
+这里where定义的约束条件，如下
+
+* 泛型T的元素必须符合Equatable协议
+* 泛型T的元素和泛型U的元素，必须是同一种类型，或者有相同的父类
+
+说明
+
+> `<T: Equatable>`的写法，实际和`<T> ... where T: Equatable`是一样的。
+
+> 示例代码，见Test_generic.swift
+
+
+
+### (25) 不可见类型和包装类型(Opaque and Boxed Types)
+
+
+
+### (26) 自动引用计数(Automatic Reference Counting)
+
+
+
+### (27) 内存安全(Memory Safety)
+
+
+
+### (28) 访问控制(Access Control)
+
+
+
+### (29) 高级操作符(Advanced Operators)
+
+
+
+## 2、Swift其他话题
+
+### (1) 断言和预设条件(Assertions and Preconditions)
 
 断言和预设条件(Assertions and Preconditions)，用于运行时检查。不同上面的错误处理，它们用于不确定的错误，而且是不可恢复的错误。当断言和预设条件满足false条件，会导致app中止运行。
 
@@ -1967,31 +2007,36 @@ precondition(index > 0, "Index must be greater than zero.")
 
 
 
-## 2、Swift关键词
+## 3、Swift关键词
 
 Swift关键词，列表如下
 
-| keyword   | 作用                           |
-| --------- | ------------------------------ |
-| case      | 定义枚举类型的枚举值           |
-| catch     | 用于do-catch语句               |
-| class     | 用于定义类                     |
-| defer     | 用于defer语句                  |
-| do        | 用于do-catch语句               |
-| enum      | 定义枚举类型                   |
-| extension |                                |
-| final     |                                |
-| func      | 声明函数                       |
-| import    | 用于导入module                 |
-| is        | 用于is语句                     |
-| let       | 用于定义常量                   |
-| override  |                                |
-| protocol  |                                |
-| throw     | 用于throw语句                  |
-| throws    | 定义函数时，标记函数会抛出错误 |
-| try       | 调用函数时，标记函数会抛出错误 |
-| typealias | 定义类型的别名                 |
-| var       | 用于定义变量                   |
+| keyword        | 作用                           |
+| -------------- | ------------------------------ |
+| associatedtype |                                |
+| case           | 定义枚举类型的枚举值           |
+| catch          | 用于do-catch语句               |
+| class          | 用于定义类                     |
+| defer          | 用于defer语句                  |
+| do             | 用于do-catch语句               |
+| enum           | 定义枚举类型                   |
+| extension      |                                |
+| final          |                                |
+| func           | 声明函数                       |
+| import         | 用于导入module                 |
+| is             | 用于is语句                     |
+| let            | 用于定义常量                   |
+| mutating       |                                |
+| override       |                                |
+| protocol       |                                |
+| public         |                                |
+| rethrows       |                                |
+| throw          | 用于throw语句                  |
+| throws         | 定义函数时，标记函数会抛出错误 |
+| try            | 调用函数时，标记函数会抛出错误 |
+| typealias      | 定义类型的别名                 |
+| var            | 用于定义变量                   |
+| where          |                                |
 
 
 
@@ -2058,17 +2103,39 @@ https://stackoverflow.com/questions/25156377/what-is-the-difference-between-stat
 
 
 
-## 3、Swift的`#`标记(# mark)
+## 4、Swift的标记
 
-`#`标记，用下面几种用法
+### (1) `#`标记
 
-```swift
+| `#`标记   | 作用 |
+| --------- | ---- |
+| #column   |      |
+| #error    |      |
+| #file     |      |
+| #function |      |
+| #line     |      |
+| #selector |      |
+| #warning  |      |
 
-```
+
+
+### (2) `@`标记
+
+| `@`标记                  | 作用 |
+| ------------------------ | ---- |
+| @available               |      |
+| @discardableResult       |      |
+| @frozen                  |      |
+| @inlinable               |      |
+| @warn_unqualified_access |      |
 
 
 
-## 4、Swift常用函数
+
+
+
+
+## 5、Swift常用函数
 
 ### (1) print
 
@@ -2116,7 +2183,7 @@ func test_print() throws {
 
 
 
-## 5、Swift和Objective-C混编[^3]
+## 6、Swift和Objective-C混编[^3]
 
 ### (1) 在Swift中使用Objective-C代码
 
@@ -2510,7 +2577,7 @@ func test_call_OC_method_2() async throws {
 
 
 
-## 6、Swift常见问题
+## 7、Swift常见问题
 
 ### (1) Swift代码的入口
 
@@ -2570,7 +2637,7 @@ https://stackoverflow.com/a/25354915
 
 
 
-## 7、Swift在LLDB中调试
+## 8、Swift在LLDB中调试
 
 ### (1) 重写description属性和debugDescription属性
 
@@ -2660,7 +2727,7 @@ TODO: https://andela.com/insights/the-complete-guide-to-debug-swift-code-with-ll
 
 
 
-## 8、Swift的相关开源
+## 9、Swift的相关开源
 
 ### (1) Foundation库
 
@@ -2674,7 +2741,7 @@ Swift版本的Foundation库，已经在https://github.com/apple/swift-corelibs-f
 
 
 
-## 9、Swift相关命令行工具
+## 10、Swift相关命令行工具
 
 * swift
 * swiftc
@@ -2688,7 +2755,7 @@ Swift版本的Foundation库，已经在https://github.com/apple/swift-corelibs-f
 
 
 
-## 10、Swift和Objective-C差异
+## 11、Swift和Objective-C差异
 
 * Error处理机制
   * 使用throw和do-catch机制来传递错误信息，而不是使用NSError参数方式传递错误信息
@@ -2709,7 +2776,7 @@ https://developer.apple.com/documentation/swift/handling-cocoa-errors-in-swift
 
 
 
-## 11、Swift编译原理
+## 12、Swift编译原理
 
 TODO：
 
