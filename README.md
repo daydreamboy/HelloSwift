@@ -1894,7 +1894,7 @@ swapTwoValues(&someString, &anotherString)
 
 #### b. 可以支持泛型的类型
 
-函数、类、枚举和结构体，以及下标(subscript)都支持泛型。
+函数、类、枚举和结构体，以及协议和下标(subscript)都支持泛型。
 
 * 泛型函数
 
@@ -1924,6 +1924,19 @@ possibleInteger = .some(100)
 ```
 
 
+
+* 泛型协议
+
+```swift
+protocol Container {
+    associatedtype Item
+    mutating func append(_ item: Item)
+    var count: Int { get }
+    subscript(i: Int) -> Item { get }
+}
+```
+
+泛型协议(Generic Protocol)和其他有点不同，它使用`associatedtype`关键词来声明一个占位类型，而不是使用`<T>`的语法。
 
 
 
@@ -1971,46 +1984,369 @@ func findIndex<T: Equatable>(of valueToFind: T, in array:[T]) -> Int? {
 
 
 
+##### 使用`where`语句
+
 在泛型声明中也可以使用`where`关键词来定义一个约束条件列表。
 
 举个例子，如下
 
 ```swift
-func anyCommonElements<T: Sequence, U: Sequence>(_ lhs: T, _ rhs: U) -> Bool
-    where T.Element: Equatable, T.Element == U.Element
-{
-    for lhsItem in lhs {
-        for rhsItem in rhs {
-            if lhsItem == rhsItem {
-                return true
-            }
+func allItemsMatch<C1: Container, C2: Container>
+        (_ someContainer: C1, _ anotherContainer: C2) -> Bool
+        where C1.Item == C2.Item, C1.Item: Equatable {
+
+    // Check that both containers contain the same number of items.
+    if someContainer.count != anotherContainer.count {
+        return false
+    }
+
+    // Check each pair of items to see if they're equivalent.
+    for i in 0..<someContainer.count {
+        if someContainer[i] != anotherContainer[i] {
+            return false
         }
     }
-    return false
+
+    // All items match, so return true.
+    return true
 }
-anyCommonElements([1, 2, 3], [3])
 ```
 
 这里where定义的约束条件，如下
 
-* 泛型T的元素必须符合Equatable协议
-* 泛型T的元素和泛型U的元素，必须是同一种类型，或者有相同的父类
+* 泛型C1的元素和泛型C2的元素，必须是同一种类型，或者有相同的父类
+
+* 泛型C1的元素必须符合Equatable协议
 
 说明
 
 > `<T: Equatable>`的写法，实际和`<T> ... where T: Equatable`是一样的。
 
-> 示例代码，见Test_generic.swift
+上面allItemsMatch函数的作用是判断两个容器C1和C2的元素是否都是相同的。
 
 
 
 #### d. 关联类型(Associated Types)
 
+使用associatedtype关键词可以标记一个关联类型(Associated Types)，它用于协议中声明某个占位的类型。
+
+举个例子，如下
+
+```swift
+protocol Container {
+    associatedtype Item
+    mutating func append(_ item: Item)
+    var count: Int { get }
+    subscript(i: Int) -> Item { get }
+}
+```
+
+上面Container协议中声明一个关联类型Item，在协议中其他函数就可以使用这个关联类型。
+
+可见，使用关联类型(Associated Types)，可以将一个协议泛化，变成带泛型的协议。
+
+如果使用这个泛型的协议，有两种方式
+
+* 按照普通的协议使用，即实现这个协议的所有required函数，并把泛型类型换成特定的类型
+* 继续定义泛型，将实现这个协议的类，也变成泛型
+
+前者举个例子，如下
+
+```swift
+struct IntStack: Container {
+    // original IntStack implementation
+    var items: [Int] = []
+    mutating func push(_ item: Int) {
+        items.append(item)
+    }
+    mutating func pop() -> Int {
+        return items.removeLast()
+    }
+    // conformance to the Container protocol
+    typealias Item = Int
+    mutating func append(_ item: Int) {
+        self.push(item)
+    }
+    var count: Int {
+        return items.count
+    }
+    subscript(i: Int) -> Int {
+        return items[i]
+    }
+}
+```
+
+上面将泛型协议实例化成支持Int类型的Stack，在泛型协议中函数占位类型Item都替换成Int类型。
+
+说明
+
+> 某些情况下，直接实例化泛型协议就完成目的，但是上面这种情况，实际上还要实现String、Double等Stack，因此按照普通协议实现，是不合适的，采用继续定义泛型是比较好的做法。
+
+后者举个例子，如下
+
+```swift
+struct Stack<Element>: Container {
+    // original Stack<Element> implementation
+    var items: [Element] = []
+    mutating func push(_ item: Element) {
+        items.append(item)
+    }
+    mutating func pop() -> Element {
+        return items.removeLast()
+    }
+    // conformance to the Container protocol
+    mutating func append(_ item: Element) {
+        self.push(item)
+    }
+    var count: Int {
+        return items.count
+    }
+    subscript(i: Int) -> Element {
+        return items[i]
+    }
+}
+```
+
+上面Stack类型不是具体某个类型，也是支持泛型的类，因此它同时适用于Int、String、Double等的实例化。
+
+总结上面两种使用泛型协议的方式，如下
+
+* 泛型协议 > 实例化类
+* 泛型协议 > 泛型类 > 实例化类
 
 
-#### e. 泛型的where语句(Generic Where Clauses)
+
+##### 关联类型添加约束
+
+对于关联类型，也可以添加约束。使用`:`或者`where`语句来约束。
+
+举个例子，如下
+
+```swift
+protocol Container {
+    associatedtype Item: Equatable
+    ...
+}
+```
+
+由于Item添加约束，在上面继续泛化的泛型类`Stack<Element>`，也需要添加约束，如下
+
+```swift
+struct Stack<Element>: Container where Element: Equatable {
+  ...
+}
+```
+
+另一种写法，如下
+
+```swift
+struct Stack<Element: Equatable>: Container {
+  ...
+}
+```
 
 
+
+##### 向现有类型添加关联类型(Extending an Existing Type to Specify an Associated Type)
+
+在上面allItemsMatch函数，官方提供一个使用的例子，如下
+
+```swift
+var stackOfStrings = Stack<String>()
+stackOfStrings.push("uno")
+stackOfStrings.push("dos")
+stackOfStrings.push("tres")
+
+var arrayOfStrings = ["uno", "dos", "tres"]
+
+if allItemsMatch(stackOfStrings, arrayOfStrings) {
+    print("All items match.")
+} else {
+    print("Not all items match.")
+}
+// Prints "All items match."
+```
+
+实际编译会提示“Instance method 'allItemsMatch' requires that '[String]' conform to 'Container'”，意思是arrayOfStrings这个变量是[String]类型，但是它不符合Container协议。
+
+这里再回顾下Container协议的内容，如下
+
+```swift
+protocol Container {
+    associatedtype Item: Equatable
+    mutating func append(_ item: Item)
+    var count: Int { get }
+    subscript(i: Int) -> Item { get }
+}
+```
+
+实际上Array类型都实现了这三个函数，因此可以向现有类型Array添加关联类型。
+
+举个例子，如下
+
+```swift
+extension Array: Container {}
+```
+
+由于Container协议中Item有约束，需要符合Equatable协议，因此扩展Array时也需要明确添加约束，如下
+
+```swift
+extension Array: Container where Array.Element: Equatable {}
+```
+
+
+
+##### 使用`where`语句
+
+关联类型，也可以使用`where`语句添加约束。
+
+举个例子，如下
+
+```swift
+protocol Container {
+    ...
+    associatedtype Iterator: IteratorProtocol where Iterator.Element == Item
+    func makeIterator() -> Iterator
+}
+```
+
+
+
+
+
+#### e. 扩展泛型
+
+扩展泛型的目的是在原有协议的基础上，添加新的函数声明或实现。
+
+根据泛型的对象不同，有不同的扩展方式
+
+* 泛型类，则扩展这个泛型类
+* 扩展泛型协议
+* 声明泛型协议的子协议。声明新的泛型子协议，然后使用扩展，实现这个子协议
+
+
+
+##### 扩展泛型类
+
+举个例子，如下
+
+```swift
+extension Stack where Element: Equatable {
+    func isTop(_ item: Element) -> Bool {
+        guard let topItem = items.last else {
+            return false
+        }
+        return topItem == item
+    }
+}
+```
+
+上面Stack已经是泛型类，这里使用扩展新增一个泛型函数isTop。
+
+
+
+##### 扩展泛型协议
+
+扩展泛型协议，不再是声明函数，而是定义函数。符合协议的类型，都拥有这些函数。
+
+举个例子，如下
+
+```swift
+extension Container {
+    func average() -> Double where Item == Int {
+        var sum = 0.0
+        for index in 0..<count {
+            sum += Double(self[index])
+        }
+        return sum / Double(count)
+    }
+    func endsWith(_ item: Item) -> Bool where Item: Equatable {
+        return count >= 1 && self[count-1] == item
+    }
+}
+```
+
+说明
+
+> 这种在函数定义或声明中使用`where`语句，官方文档称为Contextual Where Clauses，即有上下文的where语句，因为这里Item占位类型，是引用原始Container协议中关联类型Item，带有上下文语义。
+
+使用的例子，如下
+
+```swift
+let numbers = [1260, 1200, 98, 37]
+print(numbers.average())
+// Prints "648.75"
+print(numbers.endsWith(37))
+// Prints "true"
+```
+
+这里numbers是Array类型，但是Array已有扩展符合Container协议，因此Array的实例，也可以使用average函数和endsWith函数。
+
+
+
+##### 声明泛型协议的子协议
+
+声明泛型协议的子协议。声明新的泛型子协议，然后使用扩展，实现这个子协议。
+
+这个做法，相当于在"泛型协议 > 被泛型的对象(指类等)" 之间，插入一个子协议，变成"泛型协议 > 泛型子协议 > 被泛型的对象(指类等)的扩展"。
+
+举个例子，如下
+
+```swift
+protocol SuffixableContainer: Container {
+    associatedtype Suffix: SuffixableContainer where Suffix.Item == Item
+    func suffix(_ size: Int) -> Suffix
+}
+
+extension Stack: SuffixableContainer {
+    func suffix(_ size: Int) -> Stack {
+        var result = Stack()
+        for index in (count-size)..<count {
+            result.append(self[index])
+        }
+        return result
+    }
+    // Inferred that Suffix is Stack.
+}
+```
+
+上面新声明一个协议SuffixableContainer，它继承自Container，提供一个新的函数suffix。
+
+值得说明的是suffix函数返回值是一个关联类型，这个关联类型符合SuffixableContainer协议本身，而且Suffix.Item==Item
+
+* 第一个Suffix.Item，是Suffix: SuffixableContainer: Container，让Suffix自身有一个Item类型
+* 第二个Item，应该是通过继承获取到的Container.Item，省略了Container
+
+通过扩展Stack，并实现SuffixableContainer协议，实现suffix函数，注意suffix函数泛型中的Suffix占位类型，变成Stack类型。
+
+使用的例子，如下
+
+```swift
+var stackOfInts = Stack<Int>()
+stackOfInts.append(10)
+stackOfInts.append(20)
+stackOfInts.append(30)
+let suffix = stackOfInts.suffix(2)
+print(suffix)
+// suffix contains 20 and 30
+```
+
+使用泛型子协议好处，是这个声明可以复用，也是一种约束形式。
+
+上面IntStack类，也可以通过扩展实现SuffixableContainer协议，举个例子，如下
+
+```swift
+extension IntStack: SuffixableContainer {
+    func suffix(_ size: Int) -> Stack<Int> {
+        var result = Stack<Int>()
+        for index in (count-size)..<count {
+            result.append(self[index])
+        }
+        return result
+    }
+    // Inferred that Suffix is Stack<Int>.
+}
+```
 
 
 
@@ -2144,6 +2480,7 @@ Swift关键词，列表如下
 | protocol       |                                                              |
 | public         |                                                              |
 | rethrows       |                                                              |
+| some           |                                                              |
 | struct         | 用于定义结构体                                               |
 | subscript      |                                                              |
 | throw          | 用于throw语句                                                |
