@@ -912,11 +912,11 @@ func greet(person: String, day: String) -> String {
 greet(person: "Bob", day: "Tuesday")
 ```
 
-定义函数的参数列表，默认把变量名做一个label。上面greet函数的参数有person和day这2个label。label的作用是调用函数时，方便代码自解释。
+定义函数的参数列表，默认使用变量名作为它的标号(label)。上面greet函数的参数有person和day这2个label。label是函数签名的一部分，例如greet函数的签名是`greet(persion:day:)`。将标号和形参区分的好处是调用函数时，方便代码自解释，同时函数签名不和形参名绑定。
 
 注意
 
-> label也是函数符号的一部分。按照label传实参的顺序不能乱。比如greet(day: "Tuesday", person: "Bob")，则编译器会报错。
+> label也是函数签名的一部分。按照label传实参的顺序不能乱。比如greet(day: "Tuesday", person: "Bob")，则编译器会报错。
 
 
 
@@ -928,6 +928,12 @@ func greet(_ person: String, on day: String) -> String {
 }
 greet("John", on: "Wednesday")
 ```
+
+第一个形参person，它没有标号，使用`_`占位。
+
+第二个形参day，它不实用默认标号，重新定义它的标号为on
+
+这里的greet函数的签名是`greet(_:on:)`，和上面`greet(persion:day:)`是两个不同函数
 
 说明
 
@@ -977,25 +983,39 @@ print(statistics.2)
 
 
 
-#### b. 函数嵌套
+#### b. 隐式返回值
 
-Swift中允许函数嵌套。
+Swift函数可以不使用return语句，根据函数体中最后一个表达式的值作为返回值。
 
 举个例子，如下
 
 ```swift
-func returnFifteen() -> Int {
-    var y = 10
-    func add() {
-        y += 5
-    }
-    add()
-    return y
+func greeting(for person: String) -> String {
+    "Hello, " + person + "!"
 }
-returnFifteen()
+print(greeting(for: "Dave"))
+// Prints "Hello, Dave!"
+
+func anotherGreeting(for person: String) -> String {
+    return "Hello, " + person + "!"
+}
+print(anotherGreeting(for: "Dave"))
+// Prints "Hello, Dave!"
 ```
 
-被嵌套的函数可以访问外部函数中的定义的变量。这里在add函数中使用returnFifteen函数定义的变量y。
+上面greet函数，没有return语句，直接使用字符串`"Hello, " + person + "!"`作为返回值
+
+注意
+
+> 如果函数体最后一个表达式，无法评估出值，例如
+>
+> ```swift
+> func greeting(for person: String) -> String {
+>     print("Hello, " + person + "!")
+> }
+> ```
+>
+> 这种情况，编译器会编译报错
 
 
 
@@ -1020,7 +1040,130 @@ increment(7)
 
 
 
-#### d. 函数作为参数
+#### d. 默认参数
+
+Swift函数的形参可以设置默认值，在调用函数可以省略传入实参，改用默认值。
+
+举个例子，如下
+
+```swift
+func defaultParametersBehind(parameterWithoutDefault: Int, parameterWithDefault: Int = 12) {
+    // If you omit the second argument when calling this function, then
+    // the value of parameterWithDefault is 12 inside the function body.
+}
+
+func defaultParametersAhead(parameterWithDefault: Int = 12, parameterWithoutDefault: Int) {
+    // If you omit the second argument when calling this function, then
+    // the value of parameterWithDefault is 12 inside the function body.
+}
+
+func test_default_parameter() throws {
+    defaultParametersBehind(parameterWithoutDefault: 3, parameterWithDefault: 6) // parameterWithDefault is 6
+    defaultParametersBehind(parameterWithoutDefault: 4) // parameterWithDefault is 12
+
+    defaultParametersAhead(parameterWithoutDefault: 5)
+    defaultParametersAhead(parameterWithDefault: 6, parameterWithoutDefault: 5)
+}
+```
+
+理论上，默认参数可以在参数列表的任意位置，调用函数时编译按照实参顺序，和函数的形参一一做匹配。
+
+但是官方文档推荐，总是把默认参数放在非默认参数后面，方便函数调用时的传参。
+
+官方文档描述[^14]，如下
+
+> Place parameters that don’t have default values at the beginning of a function’s parameter list, before the parameters that have default values. Parameters that don’t have default values are usually more important to the function’s meaning — writing them first makes it easier to recognize that the same function is being called, regardless of whether any default parameters are omitted.
+
+
+
+#### e. 可变参数(Variadic Parameters)
+
+在Swift中使用`...`标记可变参数，它用于形参的类型后面，表示接受这个类型的参数，有0个或者多个。
+
+官方文档描述[^14]，如下
+
+> A variadic parameter accepts zero or more values of a specified type. You use a variadic parameter to specify that the parameter can be passed a varying number of input values when the function is called. Write variadic parameters by inserting three period characters (`...`) after the parameter’s type name.
+
+举个例子，如下
+
+```swift
+func arithmeticMean(_ numbers: Double...) -> Double {
+    var total: Double = 0
+    for number in numbers {
+        total += number
+    }
+    return total / Double(numbers.count)
+}
+arithmeticMean(1, 2, 3, 4, 5)
+// returns 3.0, which is the arithmetic mean of these five numbers
+arithmeticMean(3, 8.25, 18.75)
+// returns 10.0, which is the arithmetic mean of these three numbers
+arithmeticMean()
+// return NAN
+```
+
+上面numbers参数是一个可变参数，在函数体中numbers会转成[Double]类型，是个数组。
+
+说明
+
+> 函数的形参可以有多个可变参数，但是可变参数后面的第一个参数，必须要求有标号，防止可变参数传入多个参数导致调用存在歧义。
+>
+> 官方文档描述[^14]，如下
+>
+> > A function can have multiple variadic parameters. The first parameter that comes after a variadic parameter must have an argument label. The argument label makes it unambiguous which arguments are passed to the variadic parameter and which arguments are passed to the parameters that come after the variadic parameter.
+
+
+
+#### f. In-Out参数
+
+Swift函数的形参默认是常量，在函数体中是不能修改它的值。
+
+官方文档描述[^14]，如下
+
+> Function parameters are constants by default. Trying to change the value of a function parameter from within the body of that function results in a compile-time error.
+
+举个例子，如下
+
+```swift
+func passInt(_ a: Int) {
+    //a = 10 // Compile Error: Cannot assign to value: 'a' is a 'let' constant
+}
+```
+
+在形参类型前面，使用`inout`关键词标记形参，用于表示这个形参可能在函数体中修改值，并将这个值影响到调用函数的实参。
+
+官方文档描述[^14]，如下
+
+> You write an in-out parameter by placing the `inout` keyword right before a parameter’s type. An in-out parameter has a value that’s passed *in* to the function, is modified by the function, and is passed back *out* of the function to replace the original value. 
+
+举个例子，如下
+
+```swift
+func swapTwoInts(_ a: inout Int, _ b: inout Int) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+
+var someInt = 3
+var anotherInt = 107
+swapTwoInts(&someInt, &anotherInt)
+//swapTwoInts(someInt, anotherInt) // Compile Error: Passing value of type 'Int' to an inout parameter requires explicit '&'
+print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
+// Prints "someInt is now 107, and anotherInt is now 3"
+```
+
+说明
+
+> 1. 标记inout的形参，要求传入实参，必须在变量前加`&`符号
+>
+> 2. inout形参不能有默认值。可变参数也不能使用inout标记
+>
+>    > In-out parameters can’t have default values, and variadic parameters can’t be marked as `inout`.
+
+
+
+#### g. 函数作为参数
 
 Swift中允许函数作为参数。
 
@@ -1046,7 +1189,29 @@ hasAnyMatches(list: numbers, condition: lessThanTen)
 
 
 
-#### e. 闭包(Closure)
+#### h. 函数嵌套
+
+Swift中允许函数嵌套。
+
+举个例子，如下
+
+```swift
+func returnFifteen() -> Int {
+    var y = 10
+    func add() {
+        y += 5
+    }
+    add()
+    return y
+}
+returnFifteen()
+```
+
+被嵌套的函数可以访问外部函数中的定义的变量。这里在add函数中使用returnFifteen函数定义的变量y。
+
+
+
+#### i. 闭包(Closure)
 
 在Swift中闭包是没有函数名的代码块，使用`in`来分隔函数参数和函数体。
 
@@ -2472,7 +2637,7 @@ Swift关键词，列表如下
 | func           | 声明函数                                                     |
 | get            |                                                              |
 | import         | 用于导入module                                               |
-| inout          | [In-Out Parameters](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/functions#In-Out-Parameters) |
+| inout          | 用于标记inout形参，文档：[In-Out Parameters](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/functions#In-Out-Parameters) |
 | is             | 用于is语句                                                   |
 | let            | 用于定义常量                                                 |
 | mutating       |                                                              |
@@ -3025,11 +3190,17 @@ func test_call_OC_method_2() async throws {
 
 
 
+## 7、Swift和C++混编
+
+https://www.swift.org/documentation/cxx-interop/
+
+https://developer.apple.com/videos/play/wwdc2023/10172/
+
+https://github.com/apple/swift/blob/main/docs/CppInteroperability/CppInteroperabilityStatus.md
 
 
 
-
-## 7、Swift常见问题
+## 8、Swift常见问题
 
 ### (1) Swift代码的入口
 
@@ -3089,7 +3260,7 @@ https://stackoverflow.com/a/25354915
 
 
 
-## 8、Swift在LLDB中调试
+## 9、Swift在LLDB中调试
 
 ### (1) 重写description属性和debugDescription属性
 
@@ -3179,7 +3350,7 @@ TODO: https://andela.com/insights/the-complete-guide-to-debug-swift-code-with-ll
 
 
 
-## 9、Swift的相关开源
+## 10、Swift的相关开源
 
 ### (1) Foundation库
 
@@ -3193,7 +3364,7 @@ Swift版本的Foundation库，已经在https://github.com/apple/swift-corelibs-f
 
 
 
-## 10、Swift相关命令行工具
+## 11、Swift相关命令行工具
 
 * swift
 * swiftc
@@ -3207,7 +3378,7 @@ Swift版本的Foundation库，已经在https://github.com/apple/swift-corelibs-f
 
 
 
-## 11、Swift和Objective-C差异
+## 12、Swift和Objective-C差异
 
 * Error处理机制
   * 使用throw和do-catch机制来传递错误信息，而不是使用NSError参数方式传递错误信息
@@ -3228,7 +3399,7 @@ https://developer.apple.com/documentation/swift/handling-cocoa-errors-in-swift
 
 
 
-## 12、Swift编译原理
+## 13、Swift编译原理
 
 TODO：
 
@@ -3279,4 +3450,6 @@ https://stackoverflow.com/questions/29673027/difference-between-precondition-and
 
 [^12]:https://docs.swift.org/swift-book/documentation/the-swift-programming-language/thebasics
 [^13]:https://docs.swift.org/swift-book/documentation/the-swift-programming-language/errorhandling
+
+[^14]:https://docs.swift.org/swift-book/documentation/the-swift-programming-language/functions/
 
