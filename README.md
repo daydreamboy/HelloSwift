@@ -1163,9 +1163,49 @@ print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
 
 
 
-#### g. 函数作为参数
+#### g. 函数类型(Function Types)
 
-Swift中允许函数作为参数。
+每个Swift函数都有对应的函数类型(Function Types)，它是由形参类型和返回值类型构成。
+
+官方文档描述[^14]，如下
+
+> Every function has a specific *function type*, made up of the parameter types and the return type of the function.
+
+举个例子，如下
+
+```swift
+func addTwoInts(_ a: Int, _ b: Int) -> Int {
+    return a + b
+}
+func multiplyTwoInts(_ a: Int, _ b: Int) -> Int {
+    return a * b
+}
+func printHelloWorld() {
+    print("hello, world")
+}
+```
+
+第一个和第二个函数的函数类型都是`(Int, Int) -> Int`，第三个函数的函数类型是`() -> Void`。
+
+函数类型(Function Types)可以用于定义变量，类似C中的函数指针，用这个变量来调用函数。
+
+举个例子，如下
+
+```swift
+var mathFunction: (Int, Int) -> Int = addTwoInts
+print("Result: \(mathFunction(2, 3))")
+// Prints "Result: 5"
+
+mathFunction = multiplyTwoInts
+print("Result: \(mathFunction(2, 3))")
+// Prints "Result: 6"
+```
+
+上面将addTwoInts函数和multiplyTwoInts函数，都赋值给mathFunction变量。这个变量可以当成函数调用。
+
+
+
+* 函数类型也可以作为形参类型。
 
 举个例子，如下
 
@@ -1189,9 +1229,47 @@ hasAnyMatches(list: numbers, condition: lessThanTen)
 
 
 
+* 函数类型也可以作为返回值类型。
+
+举个例子，如下
+
+```swift
+func stepForward(_ input: Int) -> Int {
+    return input + 1
+}
+func stepBackward(_ input: Int) -> Int {
+    return input - 1
+}
+func chooseStepFunction(backward: Bool) -> (Int) -> Int {
+    return backward ? stepBackward : stepForward
+}
+
+var currentValue = 3
+let moveNearerToZero = chooseStepFunction(backward: currentValue > 0)
+// moveNearerToZero now refers to the stepBackward() function
+
+print("Counting to zero:")
+// Counting to zero:
+while currentValue != 0 {
+    print("\(currentValue)... ")
+    currentValue = moveNearerToZero(currentValue)
+}
+print("zero!")
+// 3...
+// 2...
+// 1...
+// zero!
+```
+
+
+
 #### h. 函数嵌套
 
-Swift中允许函数嵌套。
+Swift中允许函数嵌套。被内嵌的函数默认对外不可见的，但是对包含它的函数可见的
+
+官方文档描述[^14]，如下
+
+> Nested functions are hidden from the outside world by default, but can still be called and used by their enclosing function.
 
 举个例子，如下
 
@@ -1209,11 +1287,68 @@ returnFifteen()
 
 被嵌套的函数可以访问外部函数中的定义的变量。这里在add函数中使用returnFifteen函数定义的变量y。
 
+内嵌函数的另一个用法，是将内嵌函数作为返回值提供给外部使用。
+
+举个例子，如下
+
+```swift
+func chooseStepFunction(backward: Bool) -> (Int) -> Int {
+    func stepForward(input: Int) -> Int { return input + 1 }
+    func stepBackward(input: Int) -> Int { return input - 1 }
+    return backward ? stepBackward : stepForward
+}
+var currentValue = -4
+let moveNearerToZero = chooseStepFunction(backward: currentValue > 0)
+// moveNearerToZero now refers to the nested stepForward() function
+while currentValue != 0 {
+    print("\(currentValue)... ")
+    currentValue = moveNearerToZero(currentValue)
+}
+print("zero!")
+// -4...
+// -3...
+// -2...
+// -1...
+// zero!
+```
 
 
-#### i. 闭包(Closure)
 
-在Swift中闭包是没有函数名的代码块，使用`in`来分隔函数参数和函数体。
+### (9) 闭包(Closures)
+
+在Swift中闭包(Closures)是没有函数名的代码块，类似Objective-C的block，以及C++中lambda表达式。
+
+广义上讲，全局函数、内嵌函数都是闭包的特例
+
+* 全局函数是一种特殊闭包，有名称，不捕获任何变量
+* 内嵌函数是一种特殊闭包，有名称，能捕获包含它的函数中的变量
+* 闭包表达式是没有命名的闭包，能在上下文中捕获变量
+
+官方文档描述[^15]，如下
+
+> Global and nested functions, as introduced in [Functions](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/functions), are actually special cases of closures. Closures take one of three forms:
+>
+> - Global functions are closures that have a name and don’t capture any values.
+> - Nested functions are closures that have a name and can capture values from their enclosing function.
+> - Closure expressions are unnamed closures written in a lightweight syntax that can capture values from their surrounding context.
+
+
+
+#### a. 闭包表达式(Closure Expressions)
+
+
+
+```swift
+{ (<#parameters#>) -> <#return type#> in
+   <#statements#>
+}
+```
+
+
+
+
+
+Swift的闭包(Closures)使用`in`来分隔形参列表和函数体。
 
 官方文档描述[^1]，如下
 
@@ -1257,10 +1392,6 @@ let sortedNumbers = numbers.sorted { $0 > $1 }
 print(sortedNumbers)
 // Prints "[20, 19, 12, 7]"
 ```
-
-
-
-### (9) 闭包(Closures)
 
 
 
@@ -3453,3 +3584,4 @@ https://stackoverflow.com/questions/29673027/difference-between-precondition-and
 
 [^14]:https://docs.swift.org/swift-book/documentation/the-swift-programming-language/functions/
 
+[^15]:https://docs.swift.org/swift-book/documentation/the-swift-programming-language/closures
