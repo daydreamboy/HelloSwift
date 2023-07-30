@@ -3319,6 +3319,114 @@ func test_call_OC_method_2() async throws {
 
 ### (4) OC使用Swift静态库
 
+OC使用Swift静态库，需要两部分的准备：
+
+* Swift侧：编译带有XXX-Swift.h的静态framework，该头文件必须提供OC的API
+* OC侧：OC代码所在的工程，至少有一个Swift文件编译
+
+其中，Swift提供OC公开API，需要一些特殊处理
+
+* Swift代码中class必须继承自NSObject，才能将这个类暴露给OC
+* Swift代码中属性或方法，必须使用@objc标记，才能生成对应OC的API
+
+举个例子，如下
+
+```swift
+// Step1: swift class must inherits from NSObject to expose the class to OC
+public class SWPublicToolForOC: NSObject {
+    
+    // Step2: use @objc to mark properties or functions to expose to OC
+    @objc
+    public static func doSomething(videoPath: String, completion: @escaping (Bool, Error) -> Void) -> Void {
+        //print("\(#function) called")
+        NSLog("SWPublicToolForOC: %@ called", #function)
+    }
+}
+```
+
+编译好的静态framework中，会多出一个`<StaticFramework>-Swift.h`，它包含上面Swift代码对应的OC接口，如下
+
+```objective-c
+#if defined(__OBJC__)
+@class NSString;
+
+SWIFT_CLASS("_TtC15SWStaticLibrary17SWPublicToolForOC")
+@interface SWPublicToolForOC : NSObject
++ (void)doSomethingWithVideoPath:(NSString * _Nonnull)videoPath completion:(void (^ _Nonnull)(BOOL, NSError * _Nonnull))completion;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+#endif
+```
+
+在OC所在工程中，导入这个静态framework，并且在代码中导入`<StaticFramework>-Swift.h`，如下
+
+```objective-c
+#import <SWStaticLibrary/SWStaticLibrary-Swift.h>
+
+@implementation Test_call_swift_function_from_static_library_in_OC
+
+- (void)test_call_swift_function_from_static_library_in_OC {
+    [SWPublicToolForOC doSomethingWithVideoPath:@"" completion:^(BOOL success, NSError * _Nonnull error) {
+        NSLog(@"success: %@, error: %@", @(success), error);
+    }];
+}
+
+@end
+```
+
+需要注意在OC所在工程，需要有Swift代码参与编译，在Build Settings中搜索`SWIFT_VERSION`是否存在，如果没有，那么链接这个包含Swift代码的静态库时，会报下面的链接错误
+
+```shell
+Undefined symbols for architecture x86_64:
+  "_$sBOWV", referenced from:
+      _$s17MyStaticFramework0A12SwiftManagerCMf in MyStaticFramework(MySwiftManager.o)
+  "_$sSS19stringInterpolationSSs013DefaultStringB0V_tcfC", referenced from:
+      _$s17MyStaticFramework0A12SwiftManagerC11doSomething3argS2S_tF in MyStaticFramework(MySwiftManager.o)
+  "_$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC", referenced from:
+      _$s17MyStaticFramework0A12SwiftManagerC11doSomething3argS2S_tF in MyStaticFramework(MySwiftManager.o)
+  "_$sSSN", referenced from:
+      _$s17MyStaticFramework0A12SwiftManagerC11doSomething3argS2S_tF in MyStaticFramework(MySwiftManager.o)
+  "_$sSSs20TextOutputStreamablesWP", referenced from:
+      _$s17MyStaticFramework0A12SwiftManagerC11doSomething3argS2S_tF in MyStaticFramework(MySwiftManager.o)
+  "_$sSSs23CustomStringConvertiblesWP", referenced from:
+      _$s17MyStaticFramework0A12SwiftManagerC11doSomething3argS2S_tF in MyStaticFramework(MySwiftManager.o)
+  "_$ss26DefaultStringInterpolationV06appendC0yyxs06CustomB11ConvertibleRzs20TextOutputStreamableRzlF", referenced from:
+      _$s17MyStaticFramework0A12SwiftManagerC11doSomething3argS2S_tF in MyStaticFramework(MySwiftManager.o)
+  "_$ss26DefaultStringInterpolationV13appendLiteralyySSF", referenced from:
+      _$s17MyStaticFramework0A12SwiftManagerC11doSomething3argS2S_tF in MyStaticFramework(MySwiftManager.o)
+  "_$ss26DefaultStringInterpolationV15literalCapacity18interpolationCountABSi_SitcfC", referenced from:
+      _$s17MyStaticFramework0A12SwiftManagerC11doSomething3argS2S_tF in MyStaticFramework(MySwiftManager.o)
+  "__swift_FORCE_LOAD_$_swiftCoreFoundation", referenced from:
+      __swift_FORCE_LOAD_$_swiftCoreFoundation_$_MyStaticFramework in MyStaticFramework(MySwiftManager.o)
+     (maybe you meant: __swift_FORCE_LOAD_$_swiftCoreFoundation_$_MyStaticFramework)
+  "__swift_FORCE_LOAD_$_swiftDarwin", referenced from:
+      __swift_FORCE_LOAD_$_swiftDarwin_$_MyStaticFramework in MyStaticFramework(MySwiftManager.o)
+     (maybe you meant: __swift_FORCE_LOAD_$_swiftDarwin_$_MyStaticFramework)
+  "__swift_FORCE_LOAD_$_swiftDispatch", referenced from:
+      __swift_FORCE_LOAD_$_swiftDispatch_$_MyStaticFramework in MyStaticFramework(MySwiftManager.o)
+     (maybe you meant: __swift_FORCE_LOAD_$_swiftDispatch_$_MyStaticFramework)
+  "__swift_FORCE_LOAD_$_swiftObjectiveC", referenced from:
+      __swift_FORCE_LOAD_$_swiftObjectiveC_$_MyStaticFramework in MyStaticFramework(MySwiftManager.o)
+     (maybe you meant: __swift_FORCE_LOAD_$_swiftObjectiveC_$_MyStaticFramework)
+  "_swift_bridgeObjectRelease", referenced from:
+      _$s17MyStaticFramework0A12SwiftManagerC11doSomething3argS2S_tF in MyStaticFramework(MySwiftManager.o)
+      _$ss26DefaultStringInterpolationVWOh in MyStaticFramework(MySwiftManager.o)
+      _$s17MyStaticFramework0A12SwiftManagerC11doSomething3argS2S_tFTo in MyStaticFramework(MySwiftManager.o)
+  "_swift_bridgeObjectRetain", referenced from:
+      _$s17MyStaticFramework0A12SwiftManagerC11doSomething3argS2S_tF in MyStaticFramework(MySwiftManager.o)
+  "_swift_getObjCClassMetadata", referenced from:
+      _$s17MyStaticFramework0A12SwiftManagerC06sharedE0ACvgZTo in MyStaticFramework(MySwiftManager.o)
+  "_swift_once", referenced from:
+      _$s17MyStaticFramework0A12SwiftManagerC06sharedE0ACvau in MyStaticFramework(MySwiftManager.o)
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+```
+
+上面的符号，都不是自己写的Swift代码中的符号，可能编译静态库时，编译器加入了上面一些符号，但是OC工程中根本没有链接Swift相关系统库。简单的解决方法是：在OC工程新增一个Swift文件（这里命名为Dummy.swift）和XXX-Bridge-Header.h，这样在Build Settings中可以搜索到`SWIFT_VERSION`。再次编译链接，没有上面的链接错误。
+
+
+
 
 
 ## 7、Swift和C++混编
