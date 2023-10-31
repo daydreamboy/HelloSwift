@@ -13,7 +13,21 @@
 		4F7961462AF0B07A00A72FF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F7961442AF0B07A00A72FF7 /* Main.storyboard */; };
 		4F7961482AF0B07C00A72FF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F7961472AF0B07C00A72FF7 /* Assets.xcassets */; };
 		4F79614B2AF0B07C00A72FF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F7961492AF0B07C00A72FF7 /* LaunchScreen.storyboard */; };
+		4F7961592AF0D19E00A72FF7 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7961582AF0D19E00A72FF7 /* main.swift */; };
+		4F79615F2AF0D50C00A72FF7 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 4F79615E2AF0D50C00A72FF7 /* ArgumentParser */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4F7961542AF0D19E00A72FF7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4F79613B2AF0B07A00A72FF7 /* HelloURL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloURL.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,6 +38,8 @@
 		4F7961472AF0B07C00A72FF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F79614A2AF0B07C00A72FF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F79614C2AF0B07C00A72FF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F7961562AF0D19E00A72FF7 /* alias_tool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = alias_tool; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F7961582AF0D19E00A72FF7 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +50,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4F7961532AF0D19E00A72FF7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F79615F2AF0D50C00A72FF7 /* ArgumentParser in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -41,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				4F79613D2AF0B07A00A72FF7 /* HelloURL */,
+				4F7961572AF0D19E00A72FF7 /* alias_tool */,
 				4F79613C2AF0B07A00A72FF7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				4F79613B2AF0B07A00A72FF7 /* HelloURL.app */,
+				4F7961562AF0D19E00A72FF7 /* alias_tool */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -65,6 +91,14 @@
 				4F79614C2AF0B07C00A72FF7 /* Info.plist */,
 			);
 			path = HelloURL;
+			sourceTree = "<group>";
+		};
+		4F7961572AF0D19E00A72FF7 /* alias_tool */ = {
+			isa = PBXGroup;
+			children = (
+				4F7961582AF0D19E00A72FF7 /* main.swift */,
+			);
+			path = alias_tool;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -87,6 +121,26 @@
 			productReference = 4F79613B2AF0B07A00A72FF7 /* HelloURL.app */;
 			productType = "com.apple.product-type.application";
 		};
+		4F7961552AF0D19E00A72FF7 /* alias_tool */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F79615A2AF0D19E00A72FF7 /* Build configuration list for PBXNativeTarget "alias_tool" */;
+			buildPhases = (
+				4F7961522AF0D19E00A72FF7 /* Sources */,
+				4F7961532AF0D19E00A72FF7 /* Frameworks */,
+				4F7961542AF0D19E00A72FF7 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = alias_tool;
+			packageProductDependencies = (
+				4F79615E2AF0D50C00A72FF7 /* ArgumentParser */,
+			);
+			productName = alias_tool;
+			productReference = 4F7961562AF0D19E00A72FF7 /* alias_tool */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -100,6 +154,9 @@
 					4F79613A2AF0B07A00A72FF7 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
+					4F7961552AF0D19E00A72FF7 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
 				};
 			};
 			buildConfigurationList = 4F7961362AF0B07A00A72FF7 /* Build configuration list for PBXProject "HelloURL" */;
@@ -111,11 +168,15 @@
 				Base,
 			);
 			mainGroup = 4F7961322AF0B07A00A72FF7;
+			packageReferences = (
+				4F79615D2AF0D50C00A72FF7 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+			);
 			productRefGroup = 4F79613C2AF0B07A00A72FF7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				4F79613A2AF0B07A00A72FF7 /* HelloURL */,
+				4F7961552AF0D19E00A72FF7 /* alias_tool */,
 			);
 		};
 /* End PBXProject section */
@@ -141,6 +202,14 @@
 				4F7961432AF0B07A00A72FF7 /* ViewController.swift in Sources */,
 				4F79613F2AF0B07A00A72FF7 /* AppDelegate.swift in Sources */,
 				4F7961412AF0B07A00A72FF7 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F7961522AF0D19E00A72FF7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F7961592AF0D19E00A72FF7 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +403,28 @@
 			};
 			name = Release;
 		};
+		4F79615B2AF0D19E00A72FF7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		4F79615C2AF0D19E00A72FF7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -355,7 +446,35 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		4F79615A2AF0D19E00A72FF7 /* Build configuration list for PBXNativeTarget "alias_tool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F79615B2AF0D19E00A72FF7 /* Debug */,
+				4F79615C2AF0D19E00A72FF7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4F79615D2AF0D50C00A72FF7 /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.2.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4F79615E2AF0D50C00A72FF7 /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4F79615D2AF0D50C00A72FF7 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4F7961332AF0B07A00A72FF7 /* Project object */;
 }
