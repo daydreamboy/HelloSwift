@@ -22,7 +22,7 @@ struct AliasTool : ParsableCommand {
     static let configuration = CommandConfiguration(
         commandName: "alias_tool",
         abstract: "Convert MacOS alias path into real path",
-        discussion: "If convert successfully, output is a real path with status code(0), or the input path if failed",
+        discussion: "If convert successfully, output is a real path, or the original input path if failed",
         version: versionString)
     
     @Argument(help: "The alias path to file or folder") var aliasPath: String
