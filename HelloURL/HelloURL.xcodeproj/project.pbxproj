@@ -15,6 +15,7 @@
 		4F79614B2AF0B07C00A72FF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F7961492AF0B07C00A72FF7 /* LaunchScreen.storyboard */; };
 		4F7961592AF0D19E00A72FF7 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7961582AF0D19E00A72FF7 /* main.swift */; };
 		4F79615F2AF0D50C00A72FF7 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 4F79615E2AF0D50C00A72FF7 /* ArgumentParser */; };
+		4FD80EEB2AF79E7A001D7CE5 /* AliasToolCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD80EEA2AF79E7A001D7CE5 /* AliasToolCommand.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,6 +41,7 @@
 		4F79614C2AF0B07C00A72FF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F7961562AF0D19E00A72FF7 /* alias_tool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = alias_tool; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F7961582AF0D19E00A72FF7 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		4FD80EEA2AF79E7A001D7CE5 /* AliasToolCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliasToolCommand.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				4F7961582AF0D19E00A72FF7 /* main.swift */,
+				4FD80EEA2AF79E7A001D7CE5 /* AliasToolCommand.swift */,
 			);
 			path = alias_tool;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FD80EEB2AF79E7A001D7CE5 /* AliasToolCommand.swift in Sources */,
 				4F7961592AF0D19E00A72FF7 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
