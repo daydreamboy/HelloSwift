@@ -8,10 +8,12 @@
 import Foundation
 import ArgumentParser
 
-let version = "1.0"
+let appVersion = "1.0"
+/// Keep same as `MACOSX_DEPLOYMENT_TARGET` in Build Settings
+let minimumMacOSVersion: String = "11.0"
 
-let timestamp: String = currentFileTimestamp()
-let versionString: String = "\(version) (build time: \(timestamp))"
+let timestamp: String = currentExecutableTimestamp()
+let versionString: String = "\(appVersion) (build time: \(timestamp), minimumOSVer: \(minimumMacOSVersion))"
 
 /**
  A tool can convert alias path into real path
@@ -36,7 +38,7 @@ struct AliasTool : ParsableCommand {
             let bookmarkData = try URL.bookmarkData(withContentsOf: fileURL)
             let values = URL.resourceValues(forKeys: [ .pathKey ], fromBookmarkData: bookmarkData)
             if let path = values?.path {
-                print(path)
+                print(path, terminator: "")
             }
             else {
                 if debug {
@@ -48,19 +50,21 @@ struct AliasTool : ParsableCommand {
                 print("[Debug] \(error)")
             }
             
-            print(aliasPath)
+            print(aliasPath, terminator: "")
         }
     }
 }
 
-fileprivate func currentFileTimestamp() -> String {
+fileprivate func currentExecutableTimestamp() -> String {
     do {
-        let fileAttributes = try FileManager.default.attributesOfItem(atPath: #file)
-        if let modificationDate = fileAttributes[.modificationDate] as? Date {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            let formattedDate = dateFormatter.string(from: modificationDate)
-            return formattedDate
+        if let executablePath = Bundle.main.executablePath {
+            let fileAttributes = try FileManager.default.attributesOfItem(atPath: executablePath)
+            if let modificationDate = fileAttributes[.creationDate] as? Date {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                let formattedDate = dateFormatter.string(from: modificationDate)
+                return formattedDate
+            }
         }
     } catch {
     }

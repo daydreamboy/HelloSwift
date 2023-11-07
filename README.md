@@ -2855,15 +2855,15 @@ https://stackoverflow.com/questions/25156377/what-is-the-difference-between-stat
 
 ### (1) `#`标记
 
-| `#`标记   | 作用 |
-| --------- | ---- |
-| #column   |      |
-| #error    |      |
-| #file     |      |
-| #function |      |
-| #line     |      |
-| #selector |      |
-| #warning  |      |
+| `#`标记   | 作用               |
+| --------- | ------------------ |
+| #column   |                    |
+| #error    |                    |
+| #file     | 当前文件的绝对路径 |
+| #function |                    |
+| #line     |                    |
+| #selector |                    |
+| #warning  |                    |
 
 
 

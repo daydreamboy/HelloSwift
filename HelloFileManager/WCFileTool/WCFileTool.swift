@@ -25,3 +25,21 @@ fileprivate func currentFileTimestamp() -> String {
     }
     return "Unkown time"
 }
+
+// @see https://stackoverflow.com/a/65529392
+fileprivate func currentExecutableTimestamp() -> String {
+    do {
+        if let executablePath = Bundle.main.executablePath {
+            let fileAttributes = try FileManager.default.attributesOfItem(atPath: executablePath)
+            if let modificationDate = fileAttributes[.creationDate] as? Date {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                let formattedDate = dateFormatter.string(from: modificationDate)
+                return formattedDate
+            }
+        }
+    } catch {
+    }
+    return "Unkown time"
+}
+
