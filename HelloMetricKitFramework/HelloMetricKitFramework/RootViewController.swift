@@ -16,13 +16,13 @@ class RootViewController: UITableViewController {
         self.title = "AppTest"
         
         self.titles = [
-            "Demo1ViewController's title",
+            "Use WCAppMetricSubscriber",
             "Issues",
             "call a test method",
         ]
         
         self.classes = [
-            ViewController.self,
+            UseWCAppMetricSubscriberViewController.self,
             IssueRemoveSubscriberCauseCrashViewController.self,
             "testMethod",
         ];

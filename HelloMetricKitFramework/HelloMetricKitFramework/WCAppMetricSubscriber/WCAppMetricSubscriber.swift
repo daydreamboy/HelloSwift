@@ -23,7 +23,7 @@ class WCAppMetricSubscriber: NSObject, MXMetricManagerSubscriber {
     func didReceive(_ payloads: [MXMetricPayload]) {
         // Process metrics.
         for payload in payloads {
-            print(payload)
+            print("[WCAppMetricSubscriber] MXMetricPayload = \(payload)")
         }
     }
 
@@ -32,7 +32,16 @@ class WCAppMetricSubscriber: NSObject, MXMetricManagerSubscriber {
     func didReceive(_ payloads: [MXDiagnosticPayload]) {
         // Process diagnostics.
         for payload in payloads {
-            print(payload)
+            //#define SignalLogFileName @"Signal_Log.txt"
+            //#define SignalLogFilePath ([NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0] stringByAppendingPathComponent:SignalLogFileName])
+            let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            let fileURL = documentDirectory.appendingPathComponent("test.txt")
+            do {
+                try "some test text".data(using: .utf8)?.write(to: fileURL)
+            } catch {
+                print(error)
+            }
+            print("[WCAppMetricSubscriber] MXDiagnosticPayload = \(payload)")
         }
     }
 }

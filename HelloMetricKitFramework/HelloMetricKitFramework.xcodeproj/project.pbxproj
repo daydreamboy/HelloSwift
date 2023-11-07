@@ -11,9 +11,10 @@
 		4F1AFC832934B31500DD7CD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F1AFC822934B31500DD7CD7 /* Assets.xcassets */; };
 		4F1AFC862934B31500DD7CD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F1AFC842934B31500DD7CD7 /* LaunchScreen.storyboard */; };
 		4F1AFC8E2934B45600DD7CD7 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1AFC8D2934B45600DD7CD7 /* RootViewController.swift */; };
-		4F1AFC922934B4BF00DD7CD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1AFC912934B4BF00DD7CD7 /* ViewController.swift */; };
+		4F1AFC922934B4BF00DD7CD7 /* UseWCAppMetricSubscriberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1AFC912934B4BF00DD7CD7 /* UseWCAppMetricSubscriberViewController.swift */; };
 		4F1AFC942934BA9100DD7CD7 /* WCAppMetricSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1AFC932934BA9100DD7CD7 /* WCAppMetricSubscriber.swift */; };
 		4F1AFC982934D1A000DD7CD7 /* IssueRemoveSubscriberCauseCrashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F1AFC972934D1A000DD7CD7 /* IssueRemoveSubscriberCauseCrashViewController.m */; };
+		4F9281722AF9E85400A74002 /* DisplayTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9281702AF9E85400A74002 /* DisplayTextViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,11 +24,14 @@
 		4F1AFC852934B31500DD7CD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F1AFC872934B31500DD7CD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F1AFC8D2934B45600DD7CD7 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		4F1AFC912934B4BF00DD7CD7 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4F1AFC912934B4BF00DD7CD7 /* UseWCAppMetricSubscriberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseWCAppMetricSubscriberViewController.swift; sourceTree = "<group>"; };
 		4F1AFC932934BA9100DD7CD7 /* WCAppMetricSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCAppMetricSubscriber.swift; sourceTree = "<group>"; };
 		4F1AFC952934D19F00DD7CD7 /* HelloMetricKit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HelloMetricKit-Bridging-Header.h"; sourceTree = "<group>"; };
 		4F1AFC962934D1A000DD7CD7 /* IssueRemoveSubscriberCauseCrashViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IssueRemoveSubscriberCauseCrashViewController.h; sourceTree = "<group>"; };
 		4F1AFC972934D1A000DD7CD7 /* IssueRemoveSubscriberCauseCrashViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IssueRemoveSubscriberCauseCrashViewController.m; sourceTree = "<group>"; };
+		4F9281702AF9E85400A74002 /* DisplayTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayTextViewController.m; sourceTree = "<group>"; };
+		4F9281712AF9E85400A74002 /* DisplayTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayTextViewController.h; sourceTree = "<group>"; };
+		4F9281742AF9E89900A74002 /* WCMacroTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCMacroTool.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,7 @@
 		4F1AFC782934B31300DD7CD7 /* HelloMetricKitFramework */ = {
 			isa = PBXGroup;
 			children = (
+				4F92816E2AF9E35500A74002 /* WCAppMetricSubscriber */,
 				4F1AFC902934B4BF00DD7CD7 /* AppTestDemos */,
 				4F1AFC8D2934B45600DD7CD7 /* RootViewController.swift */,
 				4F1AFC792934B31300DD7CD7 /* AppDelegate.swift */,
@@ -74,12 +79,38 @@
 		4F1AFC902934B4BF00DD7CD7 /* AppTestDemos */ = {
 			isa = PBXGroup;
 			children = (
-				4F1AFC912934B4BF00DD7CD7 /* ViewController.swift */,
-				4F1AFC932934BA9100DD7CD7 /* WCAppMetricSubscriber.swift */,
+				4F9281732AF9E87800A74002 /* Tools */,
+				4F92816F2AF9E82F00A74002 /* Utility */,
+				4F1AFC912934B4BF00DD7CD7 /* UseWCAppMetricSubscriberViewController.swift */,
 				4F1AFC962934D1A000DD7CD7 /* IssueRemoveSubscriberCauseCrashViewController.h */,
 				4F1AFC972934D1A000DD7CD7 /* IssueRemoveSubscriberCauseCrashViewController.m */,
 			);
 			path = AppTestDemos;
+			sourceTree = "<group>";
+		};
+		4F92816E2AF9E35500A74002 /* WCAppMetricSubscriber */ = {
+			isa = PBXGroup;
+			children = (
+				4F1AFC932934BA9100DD7CD7 /* WCAppMetricSubscriber.swift */,
+			);
+			path = WCAppMetricSubscriber;
+			sourceTree = "<group>";
+		};
+		4F92816F2AF9E82F00A74002 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				4F9281712AF9E85400A74002 /* DisplayTextViewController.h */,
+				4F9281702AF9E85400A74002 /* DisplayTextViewController.m */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		4F9281732AF9E87800A74002 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				4F9281742AF9E89900A74002 /* WCMacroTool.h */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,7 +185,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F1AFC7A2934B31300DD7CD7 /* AppDelegate.swift in Sources */,
-				4F1AFC922934B4BF00DD7CD7 /* ViewController.swift in Sources */,
+				4F1AFC922934B4BF00DD7CD7 /* UseWCAppMetricSubscriberViewController.swift in Sources */,
+				4F9281722AF9E85400A74002 /* DisplayTextViewController.m in Sources */,
 				4F1AFC982934D1A000DD7CD7 /* IssueRemoveSubscriberCauseCrashViewController.m in Sources */,
 				4F1AFC942934BA9100DD7CD7 /* WCAppMetricSubscriber.swift in Sources */,
 				4F1AFC8E2934B45600DD7CD7 /* RootViewController.swift in Sources */,
