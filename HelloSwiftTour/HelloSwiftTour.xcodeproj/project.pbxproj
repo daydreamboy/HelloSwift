@@ -29,6 +29,10 @@
 		4F5485CA2A765C98009EA59C /* Test_call_swift_function_from_static_library_in_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5485C92A765C98009EA59C /* Test_call_swift_function_from_static_library_in_OC.m */; };
 		4F55F80B281A8F8600F15B1F /* Test_use_Swift_class_in_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F55F80A281A8F8600F15B1F /* Test_use_Swift_class_in_OC.m */; };
 		4F55F80F281A902800F15B1F /* MySwiftObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F55F80E281A902800F15B1F /* MySwiftObject.swift */; };
+		4F8AE73E2AFB228700528D9C /* Test_AnyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8AE73D2AFB228700528D9C /* Test_AnyObject.swift */; };
+		4F8AE73F2AFB287F00528D9C /* WCDumpTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9281A72AFA5EC200A74002 /* WCDumpTool.swift */; };
+		4F8AE7412AFB3A2100528D9C /* Test_WCDumpTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8AE7402AFB3A2100528D9C /* Test_WCDumpTool.swift */; };
+		4F9281A82AFA5EC200A74002 /* WCDumpTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9281A72AFA5EC200A74002 /* WCDumpTool.swift */; };
 		4FA48115284C8C64005AB36E /* Test_property_wrapper_define_customized_initializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA48114284C8C64005AB36E /* Test_property_wrapper_define_customized_initializer.swift */; };
 		4FA48118284C95E3005AB36E /* Test_property_wrapper_projected_value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA48117284C95E3005AB36E /* Test_property_wrapper_projected_value.swift */; };
 		4FA4811A284C99A2005AB36E /* Test_property_wrapper_access_property_of_property_wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA48119284C99A2005AB36E /* Test_property_wrapper_access_property_of_property_wrapper.swift */; };
@@ -126,6 +130,9 @@
 		4F5485C92A765C98009EA59C /* Test_call_swift_function_from_static_library_in_OC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_call_swift_function_from_static_library_in_OC.m; sourceTree = "<group>"; };
 		4F55F80A281A8F8600F15B1F /* Test_use_Swift_class_in_OC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_use_Swift_class_in_OC.m; sourceTree = "<group>"; };
 		4F55F80E281A902800F15B1F /* MySwiftObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySwiftObject.swift; sourceTree = "<group>"; };
+		4F8AE73D2AFB228700528D9C /* Test_AnyObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_AnyObject.swift; sourceTree = "<group>"; };
+		4F8AE7402AFB3A2100528D9C /* Test_WCDumpTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_WCDumpTool.swift; sourceTree = "<group>"; };
+		4F9281A72AFA5EC200A74002 /* WCDumpTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCDumpTool.swift; sourceTree = "<group>"; };
 		4FA48114284C8C64005AB36E /* Test_property_wrapper_define_customized_initializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_property_wrapper_define_customized_initializer.swift; sourceTree = "<group>"; };
 		4FA48117284C95E3005AB36E /* Test_property_wrapper_projected_value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_property_wrapper_projected_value.swift; sourceTree = "<group>"; };
 		4FA48119284C99A2005AB36E /* Test_property_wrapper_access_property_of_property_wrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_property_wrapper_access_property_of_property_wrapper.swift; sourceTree = "<group>"; };
@@ -217,9 +224,18 @@
 			path = Tools;
 			sourceTree = "<group>";
 		};
+		4F9281A62AFA5EA600A74002 /* WCDumpTool */ = {
+			isa = PBXGroup;
+			children = (
+				4F9281A72AFA5EC200A74002 /* WCDumpTool.swift */,
+			);
+			path = WCDumpTool;
+			sourceTree = "<group>";
+		};
 		4FA956EE27E6FA890080983F = {
 			isa = PBXGroup;
 			children = (
+				4F9281A62AFA5EA600A74002 /* WCDumpTool */,
 				4FA956F927E6FA890080983F /* HelloSwiftTour */,
 				4FA9571327E6FA970080983F /* Test */,
 				4FA9572027E6FAE80080983F /* HelloSwiftCLI */,
@@ -258,6 +274,7 @@
 		4FA9571327E6FA970080983F /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				4F8AE73D2AFB228700528D9C /* Test_AnyObject.swift */,
 				4FA9572827E7123B0080983F /* Test_class.swift */,
 				4FC38CBA2A3035BB00BE5CF2 /* Test_call_OC_method_via_runtime.swift */,
 				4F3CBDC82A3312EF00200089 /* Test_call_OC_method_via_interface.swift */,
@@ -283,6 +300,7 @@
 				4F4BF93D281A3F7E003BDEAF /* Test_use_OC_class_in_Swift.swift */,
 				4F55F80A281A8F8600F15B1F /* Test_use_Swift_class_in_OC.m */,
 				4F3F1FA927EEF105007532A2 /* Test_variable.swift */,
+				4F8AE7402AFB3A2100528D9C /* Test_WCDumpTool.swift */,
 				4FA9571427E6FA970080983F /* Test.swift */,
 				4F4BF93F281A3F95003BDEAF /* Tools */,
 			);
@@ -539,6 +557,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FAAD9D62A32111B0069877A /* ViewController.swift in Sources */,
+				4F9281A82AFA5EC200A74002 /* WCDumpTool.swift in Sources */,
 				4FA956FB27E6FA890080983F /* AppDelegate.swift in Sources */,
 				4FAAD9D72A32111B0069877A /* RootViewController.swift in Sources */,
 			);
@@ -550,10 +569,13 @@
 			files = (
 				4F4998822A348B1E00F8E92F /* Test_sign_hash.swift in Sources */,
 				4FA9571527E6FA970080983F /* Test.swift in Sources */,
+				4F8AE7412AFB3A2100528D9C /* Test_WCDumpTool.swift in Sources */,
 				4FA9572927E7123B0080983F /* Test_class.swift in Sources */,
+				4F8AE73E2AFB228700528D9C /* Test_AnyObject.swift in Sources */,
 				4FA9572B27E71A840080983F /* Test_enum.swift in Sources */,
 				4F5485CA2A765C98009EA59C /* Test_call_swift_function_from_static_library_in_OC.m in Sources */,
 				4F3F1FB027EF1762007532A2 /* Test_optional.swift in Sources */,
+				4F8AE73F2AFB287F00528D9C /* WCDumpTool.swift in Sources */,
 				4F4998842A34CB8400F8E92F /* Test_call_swift_function_from_static_library_in_Swift.swift in Sources */,
 				4FA4811E284CA292005AB36E /* Test_property_wrapper_attach_to_function.swift in Sources */,
 				4FA48118284C95E3005AB36E /* Test_property_wrapper_projected_value.swift in Sources */,

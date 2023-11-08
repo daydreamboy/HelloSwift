@@ -2841,6 +2841,14 @@ var maxAmplitudeFound = AudioSample.min
 
 这里AudioSample调用min属性，实际上是UInt16调用min属性。
 
+`typealias`也可以仅声明别名，不定义别名。例如Swift系统提供的AnyObject类型，它的声明[^16]如下
+
+```swift
+typealias AnyObject
+```
+
+
+
 
 
 ### (3) final
@@ -3489,6 +3497,38 @@ Package.resolved file is corrupted or malformed; fix or delete the file to conti
 
 
 
+### (6) 比较AnyObject/AnyClass
+
+#### a. AnyObject
+
+AnyObject实际是一个别名的声明，Swift默认将所有类的对象都符合这个类型，可以认为它是一个协议。
+
+```swift
+typealias AnyObject
+```
+
+官方文档描述[^16]，如下
+
+> The protocol to which all classes implicitly conform.
+
+一般使用AnyObject类型，有下面几个用途
+
+* AnyObject类型作为通用参数类型，接收任意对象，即concrete类型对象转AnyObject类型。AnyObject类型对象转concrete类型对象
+
+  > 这里concrete类型是指某个具体类型，例如NSString
+
+* 
+
+
+
+#### b. AnyClass
+
+https://developer.apple.com/documentation/swift/anyclass
+
+
+
+
+
 
 
 
@@ -3693,3 +3733,4 @@ https://stackoverflow.com/questions/29673027/difference-between-precondition-and
 [^14]:https://docs.swift.org/swift-book/documentation/the-swift-programming-language/functions/
 
 [^15]:https://docs.swift.org/swift-book/documentation/the-swift-programming-language/closures
+[^16]:https://developer.apple.com/documentation/swift/anyobject#
