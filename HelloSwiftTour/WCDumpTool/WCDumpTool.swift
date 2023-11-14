@@ -7,11 +7,15 @@
 
 import Foundation
 
+/// Dump Any type object
+///
+/// - Parameter object: the `Any` type
+///
 func dump_object(_ object: Any) {
     switch object {
     case let anyObject as AnyObject:
-        print("(\(type(of: object))) \(Unmanaged.passUnretained(anyObject).toOpaque()) = \"\(anyObject)\"")
+        print("(\(type(of: object))) \(Unmanaged.passUnretained(anyObject).toOpaque()) = `\(anyObject)`")
     default:
-        print("(\(type(of: object))) Unknown = \"\(object)\"")
+        print("(\(type(of: object))) Unknown = `\(object)`")
     }
 }

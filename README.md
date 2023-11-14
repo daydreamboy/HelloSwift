@@ -2756,6 +2756,7 @@ Swift关键词，列表如下
 
 | keyword        | 作用                                                         |
 | -------------- | ------------------------------------------------------------ |
+| any            | Swift5.6新增关键词[^19]。用于修饰Protocol类型                |
 | associatedtype |                                                              |
 | case           | 定义枚举类型的枚举值                                         |
 | catch          | 用于do-catch语句                                             |
@@ -3497,7 +3498,7 @@ Package.resolved file is corrupted or malformed; fix or delete the file to conti
 
 
 
-### (6) 比较AnyObject/AnyClass
+### (6) 比较AnyObject/AnyClass/Any/any
 
 #### a. AnyObject
 
@@ -3513,19 +3514,265 @@ typealias AnyObject
 
 一般使用AnyObject类型，有下面几个用途
 
-* AnyObject类型作为通用参数类型，接收任意对象，即concrete类型对象转AnyObject类型。AnyObject类型对象转concrete类型对象
+* AnyObject类型作为通用参数类型，引用任意对象，即concrete类型对象转AnyObject类型。适用场景：方法的实参、AnyObject类型的数组
 
   > 这里concrete类型是指某个具体类型，例如NSString
 
-* 
+* 配合`@objc`方法实现动态方法调用
+
+
+
+##### AnyObject类型作为通用参数类型
+
+举个例子，如下
+
+```swift
+func test_concrete_object_convert_to_AnyObject_type() throws {
+    let s: AnyObject = "This is a bridged string." as NSString
+    let v: AnyObject = 100 as NSNumber
+
+    let mixedArray: [AnyObject] = [s, v]
+    for object in mixedArray {
+        switch object {
+        case let x as String:
+            print("'\(x)' is a String")
+        default:
+            print("'\(object)' is not a String")
+        }
+    }
+}
+```
+
+这里定义AnyObject类型的数组，用于存放不同类型的对象。
+
+
+
+##### 配合@objc方法实现动态方法调用
+
+举个例子，如下
+
+```swift
+class IntegerRef {
+    let value: Int
+    init(_ value: Int) {
+        self.value = value
+    }
+
+    @objc func getIntegerValue() -> Int {
+        return value
+    }
+}
+
+func getObject() -> AnyObject {
+    return IntegerRef(100)
+}
+
+func test_dynamic_dispatch_with_objc_method() throws {
+    let obj: AnyObject = getObject()
+    let possibleValue = obj.getIntegerValue?()
+    print(possibleValue as Any) // Prints "Optional(100)"
+
+    let certainValue = obj.getIntegerValue()
+    print(certainValue) // Prints "100"
+}
+```
+
+* AnyObject类型对象，可以使用任意的`@objc`方法或者Objective-C方法。参考下面官方描述[^16]，如下
+
+> When you use `AnyObject` as a concrete type, you have at your disposal every `@objc` method and property—that is, methods and properties imported from Objective-C or marked with the `@objc` attribute. 
+
+因此，这里obj.getIntegerValue()可以直接调用getIntegerValue方法，因为obj是AnyObject类型。
+
+* `@objc`同时标记方法和属性为可选的，参考下面官方描述[^16]，如下
+
+> these `@objc` symbols are available as implicitly unwrapped optional methods and properties, respectively.
+
+因此，obj.getIntegerValue?()调用返回一个可选值。
+
+对于使用AnyObject进行动态调用，需要安全判断AnyObject对象。举个例子，如下
+
+```swift
+class IntegerRef2 {
+    let value: Int
+    init(_ value: Int) {
+        self.value = value
+    }
+
+    @objc func getIntegerValue2() -> Int {
+        return value
+    }
+}
+```
+
+再定义一个IntegerRef2类，并且里面定义getIntegerValue2方法。由于AnyObject对象可以调用任意`@objc`方法，则可以出现下面的错误调用，如下
+
+```swift
+func test_issue1_dynamic_dispatch_with_objc_method() throws {
+    let obj: AnyObject = getObject()
+    let possibleValue = obj.getIntegerValue2?() // Ok, obj as IntegerRef type, has no getIntegerValue2 method, get a nil
+    print(possibleValue as Any) // Prints nil
+
+    let certainValue = obj.getIntegerValue2() // Crash: obj as IntegerRef type, has no getIntegerValue2 method, not found getIntegerValue2 method
+    print(certainValue) // Prints "100"
+}
+```
+
+编译是可以通过。在运行时obj.getIntegerValue2?()会返回nil，而obj.getIntegerValue2()则会出现crash。
+
+
+
+##### 如何安全使用AnyObject对象调用方法
+
+官方文档给出了一个例子[^16]，如下
+
+```swift
+func test_issue1_fixed_dynamic_dispatch_with_objc_method() throws {
+    let obj: AnyObject = getObject()
+    if let f = obj.getIntegerValue {
+        print("The value of 'obj' is \(f())")
+    } else {
+        print("'obj' does not have a 'getIntegerValue()' method")
+    }
+    // Prints "The value of 'obj' is 100"
+
+    // Style1: do optional bind for methods, then call f() safely
+    if let f = obj.getIntegerValue2 {
+        print("The value of 'obj' is \(f())")
+    } else {
+        print("'obj' does not have a 'getIntegerValue()' method")
+    }
+    // Prints "'obj' does not have a 'getIntegerValue()' method"
+
+    // Style2: use optional methods
+    let possibleValue = obj.getIntegerValue2?() // Ok, obj as IntegerRef type, has no getIntegerValue2 method, get a nil
+    print(possibleValue as Any) // Prints nil
+}
+```
+
+目前有两种方式：
+
+* 使用可选方法绑定，即使用if-let语句获取方法对象，然后用这个方法对象调用对应的方法
+  * 这种方式，可以判断方法是否存在
+* 直接调用可选方法，Swift可以安全的返回nil
+  * 这种方式，不能判断方法是否存在
 
 
 
 #### b. AnyClass
 
-https://developer.apple.com/documentation/swift/anyclass
+AnyClass是一个别名[^17]，定义如下
+
+```swift
+typealias AnyClass = AnyObject.Type
+```
+
+官方文档描述[^17]，如下
+
+> The protocol to which all class types implicitly conform.
+
+意思是所有类隐式遵循的协议。和AnyObject别名对比来看：
+
+* AnyObject是所有对象隐式遵循的协议
+* AnyClass是所有类隐式遵循的协议
+
+根据上面别名的定义，也能看出两者的关系。
+
+一般使用AnyClass类型的用途，和AnyObject是一样的，如下
+
+* 作为通用的类的类型
+* 配合`@objc`实现动态方法调用
+
+针对第二点，这里举一个例子[^17]，如下
+
+```swift
+func getDefaultValue(_ c: AnyClass) -> Int? {
+    return c.getDefaultValue?()
+}
+
+final class Test_AnyClass: XCTestCase {
+    class IntegerRef {
+        @objc class func getDefaultValue() -> Int {
+            return 42
+        }
+    }
+
+    func test_dynamic_dispatch_with_objc_method() throws {
+        print(getDefaultValue(IntegerRef.self) as Any) // Prints "Optional(42)"
+        print(getDefaultValue(NSString.self) as Any) // Prints "nil"
+    }
+}
+```
+
+getDefaultValue函数，会调用对应类的getDefaultValue?()方法，即c.getDefaultValue?()。注意这个是可选方法调用的形式。
+
+* 对于IntegerRef.self传参，IntegerRef已经有对应方法，会返回一个可选值
+* 对于NSString.self传参，系统类NSString没有对应方法，会返回一个nil。由于采用可选方法调用，即使对应方法不存在，也能安全返回nil
 
 
+
+#### c. Any
+
+Any类型，可以认为AnyObject、AnyClass类型更大范围的类型，包括函数类型[^18]。而且它兼容AnyObject和AnyObject类型。
+
+最常用的print函数的第一个参数就是Any类型，如下
+
+```swift
+func print(_ items: Any..., separator: String = " ", terminator: String = "\n")
+```
+
+举个使用Any类型的例子，如下
+
+```swift
+func test_use_as_generic_type() throws {
+    let arrayOfAny: [Any] = [
+        0,
+        "string",
+        { (message: String) -> Void in print(message) },
+        String.self
+    ]
+    print(arrayOfAny)
+}
+```
+
+
+
+#### d. any关键词
+
+any关键词，仅用于标记协议或者协议组合等，不能标记具体的类型（比如类、函数等类型）。
+
+举个例子[^20]，如下
+
+```swift
+protocol P {}
+protocol Q {}
+struct S: P, Q {}
+
+let p1: P = S() // 'P' in this context is an existential type
+let p2: any P = S() // 'any P' is an explicit existential type
+
+let pq1: P & Q = S() // 'P & Q' in this context is an existential type
+let pq2: any P & Q = S() // 'any P & Q' is an explicit existential type
+```
+
+另外一个例子[^20]，如下
+
+```swift
+struct S {}
+
+let s: any S = S() // error: 'any' has no effect on concrete type 'S'
+
+func generic<T>(t: T) {
+  let x: any T = t // error: 'any' has no effect on type parameter 'T'
+}
+
+let f: any ((Int) -> Void) = generic // error: 'any' has no effect on concrete typ
+```
+
+
+
+参考这篇文章的介绍[^19]，any关键词在Swift5.6引入，主要为了解决动态方法调用的性能问题，如下
+
+> Swift 5.6 introduces a new `any` keyword for use with existential types, so that we’re explicitly acknowledging the impact of existentials in our code. In Swift 5.6 this new behavior is enabled and works, but in future Swift versions failing to use it will generate warnings, and from Swift 6 onwards the plan is to issue errors – you will be *required* to mark existential types using `any`.
 
 
 
@@ -3734,3 +3981,8 @@ https://stackoverflow.com/questions/29673027/difference-between-precondition-and
 
 [^15]:https://docs.swift.org/swift-book/documentation/the-swift-programming-language/closures
 [^16]:https://developer.apple.com/documentation/swift/anyobject#
+[^17]:https://developer.apple.com/documentation/swift/anyclass
+[^18]:https://www.avanderlee.com/swift/anyobject-any/
+[^19]:https://www.hackingwithswift.com/swift/5.6/existential-any
+[^20]:https://byby.dev/swift-any-types
+

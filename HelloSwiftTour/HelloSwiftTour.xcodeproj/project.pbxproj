@@ -29,6 +29,9 @@
 		4F5485CA2A765C98009EA59C /* Test_call_swift_function_from_static_library_in_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5485C92A765C98009EA59C /* Test_call_swift_function_from_static_library_in_OC.m */; };
 		4F55F80B281A8F8600F15B1F /* Test_use_Swift_class_in_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F55F80A281A8F8600F15B1F /* Test_use_Swift_class_in_OC.m */; };
 		4F55F80F281A902800F15B1F /* MySwiftObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F55F80E281A902800F15B1F /* MySwiftObject.swift */; };
+		4F6B354F2B03B4C9000B9606 /* Test_AnyClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6B354E2B03B4C9000B9606 /* Test_AnyClass.swift */; };
+		4F6B35512B03B90B000B9606 /* Test_Any.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6B35502B03B90B000B9606 /* Test_Any.swift */; };
+		4F6B35532B03C213000B9606 /* Test_keyword_any.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6B35522B03C213000B9606 /* Test_keyword_any.swift */; };
 		4F8AE73E2AFB228700528D9C /* Test_AnyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8AE73D2AFB228700528D9C /* Test_AnyObject.swift */; };
 		4F8AE73F2AFB287F00528D9C /* WCDumpTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9281A72AFA5EC200A74002 /* WCDumpTool.swift */; };
 		4F8AE7412AFB3A2100528D9C /* Test_WCDumpTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8AE7402AFB3A2100528D9C /* Test_WCDumpTool.swift */; };
@@ -130,6 +133,9 @@
 		4F5485C92A765C98009EA59C /* Test_call_swift_function_from_static_library_in_OC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_call_swift_function_from_static_library_in_OC.m; sourceTree = "<group>"; };
 		4F55F80A281A8F8600F15B1F /* Test_use_Swift_class_in_OC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_use_Swift_class_in_OC.m; sourceTree = "<group>"; };
 		4F55F80E281A902800F15B1F /* MySwiftObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySwiftObject.swift; sourceTree = "<group>"; };
+		4F6B354E2B03B4C9000B9606 /* Test_AnyClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_AnyClass.swift; sourceTree = "<group>"; };
+		4F6B35502B03B90B000B9606 /* Test_Any.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_Any.swift; sourceTree = "<group>"; };
+		4F6B35522B03C213000B9606 /* Test_keyword_any.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_keyword_any.swift; sourceTree = "<group>"; };
 		4F8AE73D2AFB228700528D9C /* Test_AnyObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_AnyObject.swift; sourceTree = "<group>"; };
 		4F8AE7402AFB3A2100528D9C /* Test_WCDumpTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_WCDumpTool.swift; sourceTree = "<group>"; };
 		4F9281A72AFA5EC200A74002 /* WCDumpTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCDumpTool.swift; sourceTree = "<group>"; };
@@ -274,6 +280,8 @@
 		4FA9571327E6FA970080983F /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				4F6B35502B03B90B000B9606 /* Test_Any.swift */,
+				4F6B354E2B03B4C9000B9606 /* Test_AnyClass.swift */,
 				4F8AE73D2AFB228700528D9C /* Test_AnyObject.swift */,
 				4FA9572827E7123B0080983F /* Test_class.swift */,
 				4FC38CBA2A3035BB00BE5CF2 /* Test_call_OC_method_via_runtime.swift */,
@@ -285,6 +293,7 @@
 				4FA9572C27E75AEF0080983F /* Test_error.swift */,
 				4FA9572627E7071A0080983F /* Test_function.swift */,
 				4FA9573027E7624B0080983F /* Test_generic.swift */,
+				4F6B35522B03C213000B9606 /* Test_keyword_any.swift */,
 				4F4BF93B281A30B9003BDEAF /* Test_keyword_final.swift */,
 				4FA9572E27E75CC60080983F /* Test_keyword_defer.swift */,
 				4F3F1FAF27EF1762007532A2 /* Test_optional.swift */,
@@ -569,15 +578,18 @@
 			files = (
 				4F4998822A348B1E00F8E92F /* Test_sign_hash.swift in Sources */,
 				4FA9571527E6FA970080983F /* Test.swift in Sources */,
+				4F6B35532B03C213000B9606 /* Test_keyword_any.swift in Sources */,
 				4F8AE7412AFB3A2100528D9C /* Test_WCDumpTool.swift in Sources */,
 				4FA9572927E7123B0080983F /* Test_class.swift in Sources */,
 				4F8AE73E2AFB228700528D9C /* Test_AnyObject.swift in Sources */,
 				4FA9572B27E71A840080983F /* Test_enum.swift in Sources */,
 				4F5485CA2A765C98009EA59C /* Test_call_swift_function_from_static_library_in_OC.m in Sources */,
+				4F6B35512B03B90B000B9606 /* Test_Any.swift in Sources */,
 				4F3F1FB027EF1762007532A2 /* Test_optional.swift in Sources */,
 				4F8AE73F2AFB287F00528D9C /* WCDumpTool.swift in Sources */,
 				4F4998842A34CB8400F8E92F /* Test_call_swift_function_from_static_library_in_Swift.swift in Sources */,
 				4FA4811E284CA292005AB36E /* Test_property_wrapper_attach_to_function.swift in Sources */,
+				4F6B354F2B03B4C9000B9606 /* Test_AnyClass.swift in Sources */,
 				4FA48118284C95E3005AB36E /* Test_property_wrapper_projected_value.swift in Sources */,
 				4F3F1FAA27EEF105007532A2 /* Test_variable.swift in Sources */,
 				4F4BF943281A3FB1003BDEAF /* WCSecurityTool.m in Sources */,
