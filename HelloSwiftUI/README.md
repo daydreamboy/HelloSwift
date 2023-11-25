@@ -47,14 +47,15 @@ Tutorial系列之SwiftUI概念：https://developer.apple.com/tutorials/swiftui-c
 
 SwiftUI控件类列表，如下
 
-| 控件类      | 作用 |
-| ----------- | ---- |
-| App         |      |
-| Image       |      |
-| Scene       |      |
-| Text        |      |
-| View        |      |
-| WindowGroup |      |
+| 控件类              | 作用 |
+| ------------------- | ---- |
+| App                 |      |
+| Image               |      |
+| NavigationSplitView |      |
+| Scene               |      |
+| Text                |      |
+| View                |      |
+| WindowGroup         |      |
 
 
 
@@ -62,12 +63,15 @@ SwiftUI控件类列表，如下
 
 布局类，如下
 
-| 布局类 | 作用 |
-| ------ | ---- |
-| HStack |      |
-| Spacer |      |
-| VStack |      |
-| ZStack |      |
+| 布局类  | 作用 |
+| ------- | ---- |
+| ForEach |      |
+| Group   |      |
+| HStack  |      |
+| List    |      |
+| Spacer  |      |
+| VStack  |      |
+| ZStack  |      |
 
 
 
@@ -76,6 +80,10 @@ SwiftUI控件类列表，如下
 
 
 ### (4) SwiftUI交互
+
+| 类             | 作用 |
+| -------------- | ---- |
+| NavigationLink |      |
 
 
 
@@ -91,7 +99,7 @@ https://www.swiftbysundell.com/tips/swiftui-mix-and-match/
 
 ## 4、与SwiftUI相关的Xcode工具
 
-### (1) Editor > Canvas
+### (1) Canvas
 
 在Xcode中Editor > Canvas，可以显示SwiftUI的画布。Canvas有三种模式
 
