@@ -64,9 +64,12 @@ SwiftUI控件类列表，如下
 | 控件类              | 作用 |
 | ------------------- | ---- |
 | App                 |      |
+| Button              |      |
 | Image               |      |
+| Label               |      |
 | NavigationSplitView |      |
 | Scene               |      |
+| ScrollView          |      |
 | Text                |      |
 | View                |      |
 | WindowGroup         |      |
@@ -104,6 +107,21 @@ SwiftUI控件类列表，如下
 custom view init
 
 TODO: https://stackoverflow.com/questions/56910854/swiftui-views-with-a-custom-init
+
+
+
+### (5) SwiftUI property wrapper
+
+
+
+| property wrapper   | 作用 |
+| ------------------ | ---- |
+| @Binding           |      |
+| @State             |      |
+| @Environment       |      |
+| @EnvironmentObject |      |
+
+
 
 
 
