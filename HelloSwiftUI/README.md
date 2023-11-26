@@ -25,13 +25,27 @@
 
 ### (2) SwiftUI常用文档
 
-SwiftUI官方文档：https://developer.apple.com/documentation/swiftui
+#### a. SwiftUI官方文档
 
-和UIKit混合使用文档：https://developer.apple.com/tutorials/swiftui/interfacing-with-uikit
+https://developer.apple.com/documentation/swiftui
 
-Tutorial系列之SwiftUI入门：https://developer.apple.com/tutorials/swiftui
 
-Tutorial系列之SwiftUI概念：https://developer.apple.com/tutorials/swiftui-concepts/
+
+#### b. Tutorial系列之SwiftUI入门
+
+https://developer.apple.com/tutorials/swiftui
+
+
+
+#### c. Tutorial系列之SwiftUI概念
+
+https://developer.apple.com/tutorials/swiftui-concepts/
+
+
+
+#### d. 和UIKit混合使用文档
+
+https://developer.apple.com/tutorials/swiftui/interfacing-with-uikit
 
 
 
@@ -86,6 +100,10 @@ SwiftUI控件类列表，如下
 | NavigationLink |      |
 
 
+
+custom view init
+
+TODO: https://stackoverflow.com/questions/56910854/swiftui-views-with-a-custom-init
 
 
 
