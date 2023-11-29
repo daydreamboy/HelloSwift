@@ -23,6 +23,38 @@
 
 
 
+一个UI框架应该具备以下能力：
+
+布局和渲染：能够定义和管理视图的布局，并将其渲染到屏幕上。
+
+事件处理：能够捕捉和处理用户的交互事件，如点击、滑动、拖拽等。
+
+响应式设计：能够根据数据的变化自动更新视图，使用户界面保持同步。
+
+组件化和复用：能够将界面划分为独立的组件，以便在应用程序中进行复用和组合。
+
+动画和过渡效果：能够实现平滑的动画和过渡效果，以增强用户体验。
+
+样式和主题：能够定义和应用样式和主题，以保持应用程序的一致性和可定制性。
+
+响应式布局：能够根据屏幕尺寸和方向自适应地调整和布局视图。
+
+多平台支持：能够在不同的平台（如iOS、macOS、watchOS和tvOS）上构建和运行应用程序。
+
+图形和绘图：能够绘制和操作图形元素，如图标、图片、形状等。
+
+层级和导航：能够组织和管理视图的层级关系，并支持导航和页面之间的转换。
+
+数据绑定和状态管理：能够将数据绑定到视图上，并提供一种机制来管理视图的状态。
+
+国际化和本地化：能够支持多语言和不同地区的本地化需求。
+
+可访问性：能够提供可访问性支持，以确保应用程序能够被视觉障碍用户等特殊用户群体使用。
+
+性能和优化：能够提供性能优化的功能和技术，以确保应用程序的流畅运行和响应。
+
+
+
 ### (2) SwiftUI常用文档
 
 #### a. SwiftUI官方文档
@@ -71,6 +103,7 @@ SwiftUI控件类列表，如下
 | Scene               |      |
 | ScrollView          |      |
 | Text                |      |
+| Toggle              |      |
 | View                |      |
 | WindowGroup         |      |
 
@@ -92,10 +125,6 @@ SwiftUI控件类列表，如下
 
 
 
-
-
-
-
 ### (4) SwiftUI交互
 
 | 类             | 作用 |
@@ -110,30 +139,41 @@ TODO: https://stackoverflow.com/questions/56910854/swiftui-views-with-a-custom-i
 
 
 
-### (5) SwiftUI property wrapper
+### (5) SwiftUI绘图
 
 
 
-| property wrapper   | 作用 |
-| ------------------ | ---- |
-| @Binding           |      |
-| @State             |      |
-| @Environment       |      |
-| @EnvironmentObject |      |
+### (6) SwiftUI动画
 
 
 
 
 
+## 3、SwiftUI常用编程模式 
+
+### (1) 特有property wrapper
+
+| property wrapper   | 作用                                                         |
+| ------------------ | ------------------------------------------------------------ |
+| @Binding           | 数据绑定，子视图可以直接使用这个属性                         |
+| @State             | 数据绑定，子视图不能直接使用这个属性，需要传递Binding类型变量 |
+| @StateObject       | 数据绑定，和@State作用一样，适用于对象类型                   |
+| @Environment       |                                                              |
+| @EnvironmentObject |                                                              |
 
 
-## 3、SwiftUI和UIKit/AppKit混合使用
+
+
+
+
+
+## 4、SwiftUI和UIKit/AppKit混合使用
 
 https://www.swiftbysundell.com/tips/swiftui-mix-and-match/
 
 
 
-## 4、与SwiftUI相关的Xcode工具
+## 5、与SwiftUI相关的Xcode工具
 
 ### (1) Canvas
 
