@@ -151,7 +151,27 @@ TODO: https://stackoverflow.com/questions/56910854/swiftui-views-with-a-custom-i
 
 ## 3、SwiftUI常用编程模式 
 
-### (1) 特有property wrapper
+### (1) Single source of truth
+
+Single source of truth是SwiftUI中使用的一个概念，表示UI呈现的数据都来自单一数据源。在声明式UI上，Apple遵循Single source of truth来保证UI上的数据一致性。
+
+这篇文章介绍了Single source of truth的定义[^3]，个人觉得比较靠谱。
+
+> **What is the Source of Truth?**
+>
+> Source of truth is a key concept in SwiftUI, and if you watch Apple’s Worldwide Developer Conference videos, you’ll hear them reiterate this concept over and over. They are essentially saying you need to decide upon a single place to store a piece of data, and have everywhere else read the same piece of data — hence the single source of truth.
+
+在编写SwiftUI代码时，了解Single source of truth，有助于按照Apple的规范，设计自己的app数据流。同时，SwiftUI文档经常直接提到source of truth，方便理解Apple文档的含义。
+
+说明
+
+> 1. 不同于UIKit的命令式UI，UI的数据可能在代码中，也可能在xib中，因此UIKit是不符合Single source of truth的。
+>
+> 2. 命令式UI，UI的数据在代码中，也会细分为Model、ViewModel等，开发者要处理这些数据转换。相比下，Single source of truth的设计，要简化很多。
+
+
+
+### (2) 特有property wrapper
 
 | property wrapper   | 作用                                                         |
 | ------------------ | ------------------------------------------------------------ |
@@ -163,6 +183,163 @@ TODO: https://stackoverflow.com/questions/56910854/swiftui-views-with-a-custom-i
 
 
 
+#### a. @Binding
+
+SwiftUI文档描述[^5]，如下
+
+* @Binding是一个property wrapper，用于读写变量
+
+  > A property wrapper type that can read and write a value owned by a source oftruth.
+
+* @Binding，顾名思义，它是用于绑定其他变量，自身不存储数据
+
+  > A binding connects a property to a source of truth stored elsewhere, instead of storing data directly.
+
+容易混淆@Binding和@State的使用。举个例子说明，如下
+
+```swift
+struct PlayButtonWithBinding: View {
+    @Binding var isPlaying: Bool // Play button now receives a binding.
+
+    var body: some View {
+        Button(isPlaying ? "Pause" : "Play") {
+            isPlaying.toggle()
+        }.border(.red)
+    }
+}
+```
+
+上面声明一个@Binding变量isPlaying，使用PlayButtonWithBinding，如下
+
+```swift
+struct PlayerView: View {
+    @State private var isPlaying: Bool = false // Create the state here now.
+
+    var body: some View {
+        VStack {
+            PlayButtonWithBinding(isPlaying: $isPlaying) // Pass a binding.
+        }
+    }
+}
+```
+
+这里传递$isPlaying，相当于传递PlayerView中@State变量isPlaying的引用。
+
+如果将PlayButtonWithBinding的@Binding变量isPlaying换成@State变量，如下
+
+```swift
+struct PlayButtonWithNotBinding: View {
+    @State var isPlaying: Bool // Play button with its own state
+
+    var body: some View {
+        Button(isPlaying ? "Pause" : "Play") {
+            isPlaying.toggle()
+        }.border(.red)
+    }
+}
+```
+
+那么初始化PlayButtonWithNotBinding，只能按照值传递的方式，如下
+
+```swift
+struct PlayerView: View {
+    @State private var isPlaying: Bool = false // Create the state here now.
+
+    var body: some View {
+        VStack {
+            PlayButtonWithBinding(isPlaying: $isPlaying) // Pass a binding.
+            PlayButtonWithNotBinding(isPlaying: isPlaying ? true : false) // Not pass a binding.
+        }
+    }
+}
+```
+
+> 示例代码，见HelloDataFlow/UseBinding
+
+可以简单理解为
+
+* @Binding，用于引用其他变量
+* @State，用于管理View自己的状态
+
+
+
+#### b. @State
+
+SwiftUI文档描述[^4]，如下
+
+* @State是一个property wrapper，用于读写变量
+
+  > A property wrapper type that can read and write a value managed by SwiftUI.
+
+* 在视图层级中，可以使用@State作为单一数据源存储数据
+
+  > Use state as the single source of truth for a given value type that you store in a view hierarchy. 
+
+一般来说在View中使用@State声明的变量，那么这个变量的值就属于这个View的，举个例子，如下
+
+```swift
+struct PlayButtonWithPrivateState: View {
+    @State private var isPlaying: Bool = false // Create the state.
+
+    var body: some View {
+        Button(isPlaying ? "Pause" : "Play") { // Read the state.
+            isPlaying.toggle() // Write the state.
+        }.border(.red)
+    }
+}
+```
+
+这里使用private修饰，主要避免和系统SwiftUI声明的变量冲突。
+
+> Declare state as private to prevent setting it in a memberwise initializer, which can conflict with the storage management that SwiftUI provides
+
+如何使用这个自定义View，如下
+
+```swift
+struct ContentView: View {
+    var body: some View {
+        VStack {
+            PlayButtonWithPrivateState()
+        }
+    }
+}
+```
+
+由于PlayButtonWithPrivateState的成员变量是private，因此PlayButtonWithPrivateState的初始化函数没有任何参数。
+
+
+
+再举个@State是public修饰的例子，如下
+
+```swift
+struct PlayButtonWithPublicState: View {
+    @State var isPlaying: Bool // Create the state.
+
+    var body: some View {
+        Button(isPlaying ? "Pause" : "Play") { // Read the state.
+            isPlaying.toggle() // Write the state.
+        }.border(.red)
+    }
+}
+```
+
+使用方式，如下
+
+```swift
+struct ContentView: View {
+    var body: some View {
+        VStack {
+            PlayButtonWithPrivateState()
+            PlayButtonWithPublicState(isPlaying: true)
+        }
+    }
+}
+```
+
+由于变量isPlaying是public，编译器默认为PlayButtonWithPublicState创建一个带参数的初始化函数。
+
+> 示例代码，见HelloDataFlow/UseState
+
 
 
 
@@ -170,6 +347,8 @@ TODO: https://stackoverflow.com/questions/56910854/swiftui-views-with-a-custom-i
 ## 4、SwiftUI和UIKit/AppKit混合使用
 
 https://www.swiftbysundell.com/tips/swiftui-mix-and-match/
+
+
 
 
 
@@ -202,4 +381,8 @@ https://www.swiftbysundell.com/tips/swiftui-mix-and-match/
 
 [^1]:https://www.hackingwithswift.com/quick-start/swiftui/what-is-swiftui
 [^2]:https://developer.apple.com/xcode/swiftui/
+
+[^3]:https://purple.telstra.com/blog/swiftui-source-of-truth
+[^4]:https://developer.apple.com/documentation/swiftui/state#
+[^5]:https://developer.apple.com/documentation/swiftui/binding#
 
