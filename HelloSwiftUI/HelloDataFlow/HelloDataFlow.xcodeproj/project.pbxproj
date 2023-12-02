@@ -155,8 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				4FBE2B892B1368DA005BBC43 /* HelloDataFlow */,
-				4F0B7C512B1B5CB000445039 /* UseState */,
 				4F0B7C672B1B618300445039 /* UseBinding */,
+				4F0B7C512B1B5CB000445039 /* UseState */,
 				4FBE2B882B1368DA005BBC43 /* Products */,
 			);
 			sourceTree = "<group>";

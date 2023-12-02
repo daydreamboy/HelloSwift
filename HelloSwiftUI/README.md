@@ -342,6 +342,12 @@ struct ContentView: View {
 
 
 
+#### c. @StateObject
+
+@StateObject作用和@State一样，只能用于修饰对象类型。
+
+
+
 
 
 ## 4、SwiftUI和UIKit/AppKit混合使用
