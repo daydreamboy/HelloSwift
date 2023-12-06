@@ -2938,6 +2938,55 @@ func test_print() throws {
 
 
 
+### (2) dump
+
+dump函数是一个全局函数，而且是泛型函数。它的签名，如下
+
+```swift
+@discardableResult func dump<T>(_ value: T, name: String? = nil, indent: Int = 0, maxDepth: Int = .max, maxItems: Int = .max) -> T
+```
+
+* value，需要dump的对象
+* name，标号，用于标记dump的对象。默认是nil
+* indent，缩进的宽度。默认是0
+* maxDepth，如果dump的对象有层级，最大遍历深度。默认是最大。
+* maxItems，dump对象输出的每个元素的个数。默认是最大。
+
+举个例子，如下
+
+```swift
+// dump string
+dump("This is a string")
+// dump string with a label
+dump("This is a string", name: "test")
+// dump string with a label and indent
+dump("This is a string", name: "test", indent: 4)
+// dump view
+let view = UIView.init(frame: CGRect(x: 1, y: 2, width: 3, height: 4))
+dump(view)
+```
+
+输出日志，如下
+
+```
+- "This is a string"
+- test: "This is a string"
+    - test: "This is a string"
+- <UIView: 0x10dd25c40; frame = (1 2; 3 4); layer = <CALayer: 0x600000274460>> #0
+  - super: UIResponder
+    - super: NSObject
+```
+
+
+
+### (3) MemoryLayout
+
+
+
+https://nalexn.github.io/swiftui-unit-testing/
+
+
+
 
 
 ## 6、Swift和Objective-C混编[^3]

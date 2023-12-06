@@ -1,5 +1,5 @@
 //
-//  Test_print.swift
+//  Test_func_print.swift
 //  Test
 //
 //  Created by wesley_chen on 2022/3/26.
@@ -7,7 +7,7 @@
 
 import XCTest
 
-class Test_print: XCTestCase {
+class Test_func_print: XCTestCase {
     func test_print() throws {
         // Case 1: pass string
         print("One two three four five")

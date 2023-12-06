@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import UIKit
 
 class Test_WCDumpTool_DummyClass {
     
@@ -34,5 +35,9 @@ final class Test_WCDumpTool: XCTestCase {
         
         // tuple
         dump_object((3.0, 5.0))
+        
+        // dump view
+        let view = UIView.init(frame: CGRect(x: 1, y: 2, width: 3, height: 4))
+        dump_object(view)
     }
 }

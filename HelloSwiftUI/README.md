@@ -173,13 +173,14 @@ Single source of truth是SwiftUI中使用的一个概念，表示UI呈现的数�
 
 ### (2) 特有property wrapper
 
-| property wrapper   | 作用                                                         |
-| ------------------ | ------------------------------------------------------------ |
-| @Binding           | 数据绑定，子视图可以直接使用这个属性                         |
-| @State             | 数据绑定，子视图不能直接使用这个属性，需要传递Binding类型变量 |
-| @StateObject       | 数据绑定，和@State作用一样，适用于对象类型                   |
-| @Environment       |                                                              |
-| @EnvironmentObject |                                                              |
+| property wrapper   | 作用                                                         | 起始版本  |
+| ------------------ | ------------------------------------------------------------ | --------- |
+| @Binding           | 数据绑定，子视图可以直接使用这个变量                         | iOS 13.0+ |
+| @State             | 数据绑定，属于当前视图，子视图不能直接使用这个变量，需要传递Binding类型变量 | iOS 13.0+ |
+| @StateObject       | 数据绑定，和@State作用一样，适用于ObservableObject类型       | iOS 14.0+ |
+| @Environment       |                                                              |           |
+| @EnvironmentObject |                                                              |           |
+| @Published         |                                                              |           |
 
 
 
@@ -254,9 +255,11 @@ struct PlayerView: View {
 }
 ```
 
+这里使用`$`来获取isPlaying变量的Binding类型，即@Binding，这样才能传参到PlayButtonWithBinding的初始化函数。
+
 > 示例代码，见HelloDataFlow/UseBinding
 
-可以简单理解为
+区分@Binding和@State，可以简单理解为
 
 * @Binding，用于引用其他变量
 * @State，用于管理View自己的状态
@@ -344,7 +347,15 @@ struct ContentView: View {
 
 #### c. @StateObject
 
-@StateObject作用和@State一样，只能用于修饰对象类型。
+@StateObject作用和@State一样，只能用于修饰ObservableObject类型。
+
+官方文档描述[^6]，如下
+
+> A property wrapper type that instantiates an observable object.
+
+@State是用于存值类型，例如结构体、字符串、整型等。
+
+> If you need to store a value type, like a structure, string, or integer, use the [`State`](https://developer.apple.com/documentation/swiftui/state) property wrapper instead.
 
 
 
@@ -392,3 +403,4 @@ https://www.swiftbysundell.com/tips/swiftui-mix-and-match/
 [^4]:https://developer.apple.com/documentation/swiftui/state#
 [^5]:https://developer.apple.com/documentation/swiftui/binding#
 
+[^6]:https://developer.apple.com/documentation/swiftui/stateobject#
