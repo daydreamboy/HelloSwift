@@ -33,6 +33,7 @@
 		4F6B354F2B03B4C9000B9606 /* Test_AnyClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6B354E2B03B4C9000B9606 /* Test_AnyClass.swift */; };
 		4F6B35512B03B90B000B9606 /* Test_Any.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6B35502B03B90B000B9606 /* Test_Any.swift */; };
 		4F6B35532B03C213000B9606 /* Test_keyword_any.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6B35522B03C213000B9606 /* Test_keyword_any.swift */; };
+		4F7A5FBD2B20252F006DF5CC /* Test_memory_MemoryLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7A5FBC2B20252F006DF5CC /* Test_memory_MemoryLayout.swift */; };
 		4F8AE73E2AFB228700528D9C /* Test_AnyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8AE73D2AFB228700528D9C /* Test_AnyObject.swift */; };
 		4F8AE73F2AFB287F00528D9C /* WCDumpTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9281A72AFA5EC200A74002 /* WCDumpTool.swift */; };
 		4F8AE7412AFB3A2100528D9C /* Test_WCDumpTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8AE7402AFB3A2100528D9C /* Test_WCDumpTool.swift */; };
@@ -138,6 +139,7 @@
 		4F6B354E2B03B4C9000B9606 /* Test_AnyClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_AnyClass.swift; sourceTree = "<group>"; };
 		4F6B35502B03B90B000B9606 /* Test_Any.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_Any.swift; sourceTree = "<group>"; };
 		4F6B35522B03C213000B9606 /* Test_keyword_any.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_keyword_any.swift; sourceTree = "<group>"; };
+		4F7A5FBC2B20252F006DF5CC /* Test_memory_MemoryLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_memory_MemoryLayout.swift; sourceTree = "<group>"; };
 		4F8AE73D2AFB228700528D9C /* Test_AnyObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_AnyObject.swift; sourceTree = "<group>"; };
 		4F8AE7402AFB3A2100528D9C /* Test_WCDumpTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_WCDumpTool.swift; sourceTree = "<group>"; };
 		4F9281A72AFA5EC200A74002 /* WCDumpTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCDumpTool.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				4FA48114284C8C64005AB36E /* Test_property_wrapper_define_customized_initializer.swift */,
 				4FA48117284C95E3005AB36E /* Test_property_wrapper_projected_value.swift */,
 				4FA4811B284C9DF6005AB36E /* Test_property_wrapper_static_subscript.swift */,
+				4F7A5FBC2B20252F006DF5CC /* Test_memory_MemoryLayout.swift */,
 				4F3F1FAD27EF043D007532A2 /* Test_numeric_literal.swift */,
 				4F4998812A348B1E00F8E92F /* Test_sign_hash.swift */,
 				4F4BF93D281A3F7E003BDEAF /* Test_use_OC_class_in_Swift.swift */,
@@ -614,6 +617,7 @@
 				4F3F1FAC27EEF3CA007532A2 /* Test_func_print.swift in Sources */,
 				4FA9572F27E75CC60080983F /* Test_keyword_defer.swift in Sources */,
 				4F3CBDC92A3312EF00200089 /* Test_call_OC_method_via_interface.swift in Sources */,
+				4F7A5FBD2B20252F006DF5CC /* Test_memory_MemoryLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
