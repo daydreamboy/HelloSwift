@@ -3825,6 +3825,50 @@ let f: any ((Int) -> Void) = generic // error: 'any' has no effect on concrete t
 
 
 
+### (7) 查看Xcode中swift的版本号
+
+查看Xcode中swift的版本号，需要两个步骤：
+
+* 确定当前使用的Xcode版本。因为本地可能存在多个Xcode.app
+* 使用`xcrun swift --version`打印swift的版本号
+
+举个例子，如下
+
+```shell
+# 查看当前Xcode的路径
+$ xcode-select -p
+/Applications/Xcode.app/Contents/Developer
+# 查看Swift版本号
+$ xcrun swift --version
+swift-driver version: 1.87.3 Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)
+Target: x86_64-apple-macosx13.0
+# 切换Xcode版本
+$ sudo xcode-select -s ~/Applications/Xcode.app
+# 查看Swift版本号
+$ xcrun swift --version
+swift-driver version: 1.75.2 Apple Swift version 5.8.1 (swiftlang-5.8.0.124.5 clang-1403.0.22.11.100)
+Target: x86_64-apple-macosx13.0
+```
+
+查看Swift版本号，可以在条件编译时指定Swift的版本号。举个例子，如下
+
+```swift
+// Note: Xcode15 provide Swift 5.9+
+#if swift(>=5.9)
+#Preview {
+    ContentView()
+}
+#else
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+#endif
+```
+
+在Xcode15开始提供`#Preview`宏，但是之前版本的Xcode不支持这个宏，因此查看Xcode15.0的swift版本号，使用条件编译。
+
 
 
 
