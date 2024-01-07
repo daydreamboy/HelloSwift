@@ -11,7 +11,7 @@ struct DemoPage3: View, DemoPage {
     @Binding var title: String
 
     var body: some View {
-        Text("This is demo3").navigationBarTitle(title).navigationBarTitleDisplayMode(.inline)
+        Text("This is demo3")
     }
     
     // MARK: DemoPage

@@ -8,8 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    let pageItems: [(title: String, pageType: any DemoPage.Type)] = [
+        (title: "Use NavigationSplitView", pageType: UseNavigationSplitView.self),
+    ]
+    
     var body: some View {
-        ListView()
+        NavigationView {
+            List {
+                // Note: use ForEach to traverse pageItems
+                ForEach(pageItems, id: \.title) { item in
+                    NavigationLink(item.title, destination: AnyView(item.pageType.createPage(withTitle: .constant(item.title))).navigationBarTitle(item.title).navigationBarTitleDisplayMode(.inline))
+                }
+            }
+            //.navigationTitle("Navigation Demos")
+            .navigationTitle("Demos")
+
+            Text("Select a demo") // A placeholder to show before selection.
+        }
     }
 }
 

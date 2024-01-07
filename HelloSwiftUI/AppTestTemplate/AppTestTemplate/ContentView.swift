@@ -19,7 +19,7 @@ struct ContentView: View {
             List {
                 // Note: use ForEach to traverse pageItems
                 ForEach(pageItems, id: \.title) { item in
-                    NavigationLink(item.title, destination: AnyView(item.pageType.createPage(withTitle: .constant(item.title))))
+                    NavigationLink(item.title, destination: AnyView(item.pageType.createPage(withTitle: .constant(item.title))).navigationBarTitle(item.title).navigationBarTitleDisplayMode(.inline))
                 }
             }
             .navigationTitle("Demos")

@@ -1,5 +1,5 @@
 //
-//  ListView.swift
+//  UseNavigationSplitView.swift
 //  HelloNavigation
 //
 //  Created by wesley_chen on 2023/11/26.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ListView: View {
+struct UseNavigationSplitView: View, DemoPage {
     var body: some View {
         NavigationSplitView {
             List(landmarks) { landmark in
@@ -22,10 +22,15 @@ struct ListView: View {
             Text("Select a Landmark")
         }
     }
+    
+    // MARK: DemoPage
+    static func createPage(withTitle title: Binding<String>) -> some View {
+        UseNavigationSplitView().navigationBarTitleDisplayMode(.inline)
+    }
 }
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        ListView()
+        UseNavigationSplitView()
     }
 }
