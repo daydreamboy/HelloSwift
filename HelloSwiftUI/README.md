@@ -143,11 +143,11 @@ TODO: https://stackoverflow.com/questions/56910854/swiftui-views-with-a-custom-i
 
 ### (5) SwiftUI绘图
 
-| 类             | 作用 |
-| -------------- | ---- |
-| Angle          |      |
-| GeometryReader |      |
-| Path           |      |
+| 类             | 作用                         |
+| -------------- | ---------------------------- |
+| Angle          |                              |
+| GeometryReader | 创建一个自适应屏幕的view容器 |
+| Path           |                              |
 
 
 
