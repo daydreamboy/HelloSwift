@@ -8,14 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    let pageItems: [(title: String, pageType: any DemoPage.Type)] = [
+        (title: "Show badge", pageType: ShowBadge.self),
+        (title: "Show badge symbol", pageType: ShowBadgeSymbol.self),
+        (title: "Show badge background", pageType: ShowBadgeBackground.self),
+        (title: "Show rotated badge symbol", pageType: ShowRotatedBadgeSymbol.self),
+    ]
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            List {
+                // Note: use ForEach to traverse pageItems
+                ForEach(pageItems, id: \.title) { item in
+                    NavigationLink(item.title, destination: AnyView(item.pageType.createPage(withTitle: .constant(item.title))).navigationBarTitle(item.title).navigationBarTitleDisplayMode(.inline))
+                }
+            }
+            .navigationTitle("Demos")
+
+            Text("Select a demo") // A placeholder to show before selection.
         }
-        .padding()
     }
 }
 
