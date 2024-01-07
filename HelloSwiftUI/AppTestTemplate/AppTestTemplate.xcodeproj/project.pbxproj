@@ -7,18 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F7E9D782B4AC70900147FAB /* DemoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7E9D772B4AC70900147FAB /* DemoPage.swift */; };
 		4FAA41792B120F7C00D6E6AE /* AppTestTemplateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAA41782B120F7C00D6E6AE /* AppTestTemplateApp.swift */; };
 		4FAA417B2B120F7C00D6E6AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAA417A2B120F7C00D6E6AE /* ContentView.swift */; };
 		4FAA417D2B120F7E00D6E6AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FAA417C2B120F7E00D6E6AE /* Assets.xcassets */; };
 		4FAA41802B120F7E00D6E6AE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FAA417F2B120F7E00D6E6AE /* Preview Assets.xcassets */; };
+		4FBB3CA72B4AA3E30053C661 /* DemoPage1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBB3CA62B4AA3E20053C661 /* DemoPage1.swift */; };
+		4FBB3CA92B4AA7C00053C661 /* DemoPage2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBB3CA82B4AA7C00053C661 /* DemoPage2.swift */; };
+		4FBB3CAD2B4AB1B40053C661 /* DemoPage3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBB3CAC2B4AB1B40053C661 /* DemoPage3.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F7E9D772B4AC70900147FAB /* DemoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPage.swift; sourceTree = "<group>"; };
 		4FAA41752B120F7C00D6E6AE /* AppTestTemplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppTestTemplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FAA41782B120F7C00D6E6AE /* AppTestTemplateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTestTemplateApp.swift; sourceTree = "<group>"; };
 		4FAA417A2B120F7C00D6E6AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4FAA417C2B120F7E00D6E6AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4FAA417F2B120F7E00D6E6AE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4FBB3CA62B4AA3E20053C661 /* DemoPage1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPage1.swift; sourceTree = "<group>"; };
+		4FBB3CA82B4AA7C00053C661 /* DemoPage2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPage2.swift; sourceTree = "<group>"; };
+		4FBB3CAC2B4AB1B40053C661 /* DemoPage3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPage3.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +59,10 @@
 		4FAA41772B120F7C00D6E6AE /* AppTestTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				4FBB3CA52B4AA3710053C661 /* AppTestDemos */,
 				4FAA41782B120F7C00D6E6AE /* AppTestTemplateApp.swift */,
 				4FAA417A2B120F7C00D6E6AE /* ContentView.swift */,
+				4F7E9D772B4AC70900147FAB /* DemoPage.swift */,
 				4FAA417C2B120F7E00D6E6AE /* Assets.xcassets */,
 				4FAA417E2B120F7E00D6E6AE /* Preview Content */,
 			);
@@ -65,6 +75,16 @@
 				4FAA417F2B120F7E00D6E6AE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4FBB3CA52B4AA3710053C661 /* AppTestDemos */ = {
+			isa = PBXGroup;
+			children = (
+				4FBB3CA62B4AA3E20053C661 /* DemoPage1.swift */,
+				4FBB3CA82B4AA7C00053C661 /* DemoPage2.swift */,
+				4FBB3CAC2B4AB1B40053C661 /* DemoPage3.swift */,
+			);
+			path = AppTestDemos;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +157,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FBB3CA72B4AA3E30053C661 /* DemoPage1.swift in Sources */,
 				4FAA417B2B120F7C00D6E6AE /* ContentView.swift in Sources */,
+				4FBB3CA92B4AA7C00053C661 /* DemoPage2.swift in Sources */,
+				4FBB3CAD2B4AB1B40053C661 /* DemoPage3.swift in Sources */,
 				4FAA41792B120F7C00D6E6AE /* AppTestTemplateApp.swift in Sources */,
+				4F7E9D782B4AC70900147FAB /* DemoPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

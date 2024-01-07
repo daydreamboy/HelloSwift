@@ -93,19 +93,21 @@ https://developer.apple.com/tutorials/swiftui/interfacing-with-uikit
 
 SwiftUI控件类列表，如下
 
-| 控件类              | 作用 |
-| ------------------- | ---- |
-| App                 |      |
-| Button              |      |
-| Image               |      |
-| Label               |      |
-| NavigationSplitView |      |
-| Scene               |      |
-| ScrollView          |      |
-| Text                |      |
-| Toggle              |      |
-| View                |      |
-| WindowGroup         |      |
+| 控件类              | 作用         |
+| ------------------- | ------------ |
+| App                 |              |
+| Button              |              |
+| Color               | 符合View协议 |
+| Image               |              |
+| Label               |              |
+| NavigationSplitView |              |
+| NavigationView      |              |
+| Scene               |              |
+| ScrollView          |              |
+| Text                |              |
+| Toggle              |              |
+| View                |              |
+| WindowGroup         |              |
 
 
 
@@ -140,6 +142,14 @@ TODO: https://stackoverflow.com/questions/56910854/swiftui-views-with-a-custom-i
 
 
 ### (5) SwiftUI绘图
+
+| 类             | 作用 |
+| -------------- | ---- |
+| Angle          |      |
+| GeometryReader |      |
+| Path           |      |
+
+
 
 
 
