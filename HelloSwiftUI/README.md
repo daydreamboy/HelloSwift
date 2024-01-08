@@ -369,6 +369,16 @@ struct ContentView: View {
 
 
 
+### (3) ViewModifier
+
+ViewModifier协议
+
+
+
+### (4) ViewBuilder
+
+
+
 
 
 ## 4、SwiftUI和UIKit/AppKit混合使用
@@ -393,6 +403,16 @@ https://www.swiftbysundell.com/tips/swiftui-mix-and-match/
 * Variants mode
 
 
+
+## 6、iOS 17版本变化
+
+### (1) 从ObservableObject协议迁移到@Observable宏
+
+
+
+
+
+https://developer.apple.com/documentation/swiftui/migrating-from-the-observable-object-protocol-to-the-observable-macro?language=objc
 
 
 

@@ -2039,7 +2039,7 @@ print(protocolValue.simpleDescription)
 
 
 
-枚举协议也采用某个协议。举个例子，如下
+枚举协议也可以采用某个协议。举个例子，如下
 
 ```swift
 enum PrinterError: Error {
