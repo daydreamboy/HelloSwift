@@ -93,21 +93,22 @@ https://developer.apple.com/tutorials/swiftui/interfacing-with-uikit
 
 SwiftUI控件类列表，如下
 
-| 控件类              | 作用         |
-| ------------------- | ------------ |
-| App                 |              |
-| Button              |              |
-| Color               | 符合View协议 |
-| Image               |              |
-| Label               |              |
-| NavigationSplitView |              |
-| NavigationView      |              |
-| Scene               |              |
-| ScrollView          |              |
-| Text                |              |
-| Toggle              |              |
-| View                |              |
-| WindowGroup         |              |
+| 控件类              | 作用                                         |
+| ------------------- | -------------------------------------------- |
+| App                 |                                              |
+| Button              |                                              |
+| Color               | 符合View协议                                 |
+| EmptyView           |                                              |
+| Image               |                                              |
+| Label               |                                              |
+| NavigationSplitView |                                              |
+| NavigationView      | iOS16.4已经废弃，推荐使用NavigationSplitView |
+| Scene               |                                              |
+| ScrollView          |                                              |
+| Text                |                                              |
+| Toggle              |                                              |
+| View                |                                              |
+| WindowGroup         |                                              |
 
 
 
@@ -115,15 +116,15 @@ SwiftUI控件类列表，如下
 
 布局类，如下
 
-| 布局类  | 作用 |
-| ------- | ---- |
-| ForEach |      |
-| Group   |      |
-| HStack  |      |
-| List    |      |
-| Spacer  |      |
-| VStack  |      |
-| ZStack  |      |
+| 布局类  | 作用                                                         |
+| ------- | ------------------------------------------------------------ |
+| ForEach |                                                              |
+| Group   | 组合多个View成为一个单独控件，用于统一设置ViewModifier或者包装if-else显示逻辑 |
+| HStack  |                                                              |
+| List    |                                                              |
+| Spacer  |                                                              |
+| VStack  |                                                              |
+| ZStack  |                                                              |
 
 
 
@@ -154,6 +155,12 @@ TODO: https://stackoverflow.com/questions/56910854/swiftui-views-with-a-custom-i
 
 
 ### (6) SwiftUI动画
+
+| 类        | 作用 |
+| --------- | ---- |
+| Animation |      |
+|           |      |
+|           |      |
 
 
 
@@ -381,7 +388,9 @@ ViewModifier协议
 
 
 
-## 4、SwiftUI和UIKit/AppKit混合使用
+## 4、常见问题
+
+### (1) SwiftUI和UIKit/AppKit混合使用
 
 https://www.swiftbysundell.com/tips/swiftui-mix-and-match/
 

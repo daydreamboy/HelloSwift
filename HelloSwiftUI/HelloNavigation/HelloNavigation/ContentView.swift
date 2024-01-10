@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     let pageItems: [(title: String, pageType: any DemoPage.Type)] = [
         (title: "Use NavigationSplitView", pageType: UseNavigationSplitView.self),
+        (title: "Use NavigationLink", pageType: IntermediatePage.self),
     ]
     
     var body: some View {
@@ -20,7 +21,6 @@ struct ContentView: View {
                     NavigationLink(item.title, destination: AnyView(item.pageType.createPage(withTitle: .constant(item.title))).navigationBarTitle(item.title).navigationBarTitleDisplayMode(.inline))
                 }
             }
-            //.navigationTitle("Navigation Demos")
             .navigationTitle("Demos")
 
             Text("Select a demo") // A placeholder to show before selection.
