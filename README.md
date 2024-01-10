@@ -3871,6 +3871,21 @@ struct ContentView_Previews: PreviewProvider {
 
 
 
+### (8) underlying Objective-C module 'XXX' not found. failed to verify module interface of 'XXX' due to the errors above; the textual interface may be broken by project issues or a compiler bug
+
+Xcode报错，如下
+
+```shell
+underlying Objective-C module 'XXX' not found
+failed to verify module interface of 'XXX' due to the errors above; the textual interface may be broken by project issues or a compiler bug
+```
+
+问题分析：编译target XXX，生成XXX.swiftinterface文件，校验该文件没有通过。
+
+参考[这个帖子](https://github.com/apple/swift/issues/64669)，解决方法：在target XXX的Build Settings中，设置OTHER_SWIFT_FLAGS=`-no-verify-emitted-module-interface`。让Xcode跳过检查步骤。[这个帖子](https://github.com/airbnb/lottie-ios/issues/2076)也提到这个方法。
+
+
+
 
 
 TODO: static var in function

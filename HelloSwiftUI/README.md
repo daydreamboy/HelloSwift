@@ -91,6 +91,8 @@ https://developer.apple.com/tutorials/swiftui/interfacing-with-uikit
 
 ### (2) SwiftUI控件
 
+这里的SwiftUI控件，是指用于显示的View。
+
 SwiftUI控件类列表，如下
 
 | 控件类              | 作用                                         |
@@ -113,6 +115,8 @@ SwiftUI控件类列表，如下
 
 
 ### (3) SwiftUI布局
+
+这里的SwiftUI布局，是指用于布局的View，这类View通常不会视图展示。
 
 布局类，如下
 
