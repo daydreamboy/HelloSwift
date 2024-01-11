@@ -89,6 +89,17 @@ https://developer.apple.com/tutorials/swiftui/interfacing-with-uikit
 
 
 
+基础协议
+
+| 协议  | 作用 |
+| ----- | ---- |
+| View  |      |
+| Scene |      |
+
+
+
+
+
 ### (2) SwiftUI控件
 
 这里的SwiftUI控件，是指用于显示的View。
@@ -105,12 +116,12 @@ SwiftUI控件类列表，如下
 | Label               |                                              |
 | NavigationSplitView |                                              |
 | NavigationView      | iOS16.4已经废弃，推荐使用NavigationSplitView |
-| Scene               |                                              |
+| Scene               | iOS 14+引入                                  |
 | ScrollView          |                                              |
 | Text                |                                              |
 | Toggle              |                                              |
 | View                |                                              |
-| WindowGroup         |                                              |
+| WindowGroup         | iOS 14+引入                                  |
 
 
 
@@ -386,6 +397,16 @@ ViewModifier协议
 
 
 
+| 函数   | 作用                                 |
+| ------ | ------------------------------------ |
+| offset | 偏移view，但是保留原始view占据的位置 |
+
+
+
+
+
+
+
 ### (4) ViewBuilder
 
 
@@ -397,6 +418,16 @@ ViewModifier协议
 ### (1) SwiftUI和UIKit/AppKit混合使用
 
 https://www.swiftbysundell.com/tips/swiftui-mix-and-match/
+
+
+
+### (2) SwiftUI中打印日志
+
+参考[这个SO](https://stackoverflow.com/questions/56517813/how-to-print-to-xcode-console-in-swiftui)，直接使用下面代码，如下
+
+```swift
+let _ = print("hi!")
+```
 
 
 
