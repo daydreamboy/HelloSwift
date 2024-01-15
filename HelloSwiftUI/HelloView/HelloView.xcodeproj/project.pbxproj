@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		4F6A563F2B4E445100EF5C8F /* UseGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6A563E2B4E445100EF5C8F /* UseGroup.swift */; };
 		4F6A56412B4E495300EF5C8F /* DemoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6A56402B4E495300EF5C8F /* DemoPage.swift */; };
+		4F951D422B54CCE200D6AE2E /* ShowCapsuleVertically.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F951D3F2B54CCE200D6AE2E /* ShowCapsuleVertically.swift */; };
+		4F951D432B54CCE200D6AE2E /* ShowCapsuleHorizontally.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F951D402B54CCE200D6AE2E /* ShowCapsuleHorizontally.swift */; };
+		4F951D442B54CCE200D6AE2E /* ShowCapsuleAligned.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F951D412B54CCE200D6AE2E /* ShowCapsuleAligned.swift */; };
 		4F9F5BE42B4BC3FC00B18FBC /* HelloViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F5BE32B4BC3FC00B18FBC /* HelloViewApp.swift */; };
 		4F9F5BE62B4BC3FC00B18FBC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F5BE52B4BC3FC00B18FBC /* ContentView.swift */; };
 		4F9F5BE82B4BC40000B18FBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F9F5BE72B4BC40000B18FBC /* Assets.xcassets */; };
@@ -21,6 +24,9 @@
 /* Begin PBXFileReference section */
 		4F6A563E2B4E445100EF5C8F /* UseGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseGroup.swift; sourceTree = "<group>"; };
 		4F6A56402B4E495300EF5C8F /* DemoPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoPage.swift; sourceTree = "<group>"; };
+		4F951D3F2B54CCE200D6AE2E /* ShowCapsuleVertically.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowCapsuleVertically.swift; sourceTree = "<group>"; };
+		4F951D402B54CCE200D6AE2E /* ShowCapsuleHorizontally.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowCapsuleHorizontally.swift; sourceTree = "<group>"; };
+		4F951D412B54CCE200D6AE2E /* ShowCapsuleAligned.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowCapsuleAligned.swift; sourceTree = "<group>"; };
 		4F9F5BE02B4BC3FC00B18FBC /* HelloView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F9F5BE32B4BC3FC00B18FBC /* HelloViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloViewApp.swift; sourceTree = "<group>"; };
 		4F9F5BE52B4BC3FC00B18FBC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -42,6 +48,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F951D452B54CD1C00D6AE2E /* Capsules */ = {
+			isa = PBXGroup;
+			children = (
+				4F951D412B54CCE200D6AE2E /* ShowCapsuleAligned.swift */,
+				4F951D402B54CCE200D6AE2E /* ShowCapsuleHorizontally.swift */,
+				4F951D3F2B54CCE200D6AE2E /* ShowCapsuleVertically.swift */,
+			);
+			path = Capsules;
+			sourceTree = "<group>";
+		};
 		4F9F5BD72B4BC3FC00B18FBC = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +110,7 @@
 		4F9F5BF22B4BC46C00B18FBC /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				4F951D452B54CD1C00D6AE2E /* Capsules */,
 				4F9FF5AD2B4E761F00C8918D /* ControlsPage.swift */,
 			);
 			path = Controls;
@@ -179,10 +196,13 @@
 				4F9FF5AE2B4E761F00C8918D /* ControlsPage.swift in Sources */,
 				4F6A56412B4E495300EF5C8F /* DemoPage.swift in Sources */,
 				4F9F5BF52B4BC49200B18FBC /* UseOffset.swift in Sources */,
+				4F951D432B54CCE200D6AE2E /* ShowCapsuleHorizontally.swift in Sources */,
+				4F951D422B54CCE200D6AE2E /* ShowCapsuleVertically.swift in Sources */,
 				4F9FF5AC2B4E760F00C8918D /* LayoutsPage.swift in Sources */,
 				4F9F5BE62B4BC3FC00B18FBC /* ContentView.swift in Sources */,
 				4F9F5BE42B4BC3FC00B18FBC /* HelloViewApp.swift in Sources */,
 				4F6A563F2B4E445100EF5C8F /* UseGroup.swift in Sources */,
+				4F951D442B54CCE200D6AE2E /* ShowCapsuleAligned.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

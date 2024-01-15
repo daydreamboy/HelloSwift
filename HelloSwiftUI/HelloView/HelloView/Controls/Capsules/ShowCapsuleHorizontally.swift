@@ -32,6 +32,8 @@ struct ShowCapsuleHorizontally: View, DemoPage {
                 .frame(height: 50)
                 .offset(x: 0, y: 0)
         }
+        // @see https://codingwithrashid.com/how-to-add-borders-to-hstack-in-ios-swiftui/
+        .border(Color.red)
         // Note: width == height will create a circle
         Capsule()
             .fill(.pink)

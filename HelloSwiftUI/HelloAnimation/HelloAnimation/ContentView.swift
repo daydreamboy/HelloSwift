@@ -9,10 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     let pageItems: [(title: String, pageType: any DemoPage.Type)] = [
-        (title: "Show multiple Capsules vertically", pageType: ShowCapsuleVertically.self),
-        (title: "Show multiple Capsules horizontally", pageType: ShowCapsuleHorizontally.self),
-        (title: "Show GraphCapsule", pageType: ShowGraphCapsule.self),
-        (title: "Show HikeGraph", pageType: ShowHikeGraph.self),
+        (title: "Show single Capsule", pageType: ShowGraphCapsule.self),
+        (title: "Show single HikeGraph", pageType: ShowSingleHikeGraph.self),
+        (title: "Show three HikeGraphs", pageType: ShowThreeHikeGraphs.self),
         (title: "Demo3", pageType: DemoPage3.self),
     ]
     

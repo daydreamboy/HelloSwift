@@ -23,16 +23,16 @@ struct GraphCapsule: View, Equatable {
     }
     
     var body: some View {
-        let _ = print("height:\(height), heightRatio:\(heightRatio), offsetRatio:\(offsetRatio)")
+        let _ = print("index:\(index), capsuleHeight:\(height * heightRatio), y:\(height * -offsetRatio), height:\(height)")
         // Note: use negative offset y to shift view to top
-//        Capsule()
-//            .fill(color)
-//            .frame(height: height * heightRatio)
-//            .offset(x: 0, y: height * -offsetRatio)
         Capsule()
             .fill(color)
             .frame(height: height * heightRatio)
-            .offset(x: 0, y: -100)
+            .offset(x: 0, y: height * -offsetRatio)
+//        Capsule()
+//            .fill(color)
+//            .frame(height: height * heightRatio)
+//            .offset(x: 0, y: -100)
     }
 }
 
@@ -78,6 +78,7 @@ struct GraphCapsule: View, Equatable {
             range: observation[keyPath: \.elevation],
             overallRange: overallRange)
     }
+    .border(.red)
     
 //    GraphCapsule(
 //        index: 0,

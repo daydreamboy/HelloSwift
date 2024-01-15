@@ -1,15 +1,15 @@
 //
-//  ShowCapsuleAligned.swift
+//  ShowCapsuleVertically.swift
 //  HelloAnimation
 //
-//  Created by wesley_chen on 2024/1/15.
+//  Created by wesley_chen on 2024/1/11.
 //
 
 import SwiftUI
 
-struct ShowCapsuleAligned: View, DemoPage {
+struct ShowCapsuleVertically: View, DemoPage {
     var body: some View {
-        HStack(alignment: .bottom) {
+        VStack {
             Capsule()
                 .fill(.red)
                 .frame(height: 100)
@@ -27,24 +27,16 @@ struct ShowCapsuleAligned: View, DemoPage {
                 .fill(.blue)
                 .frame(height: 50)
                 .offset(x: 20, y: 0)
-            Capsule()
-                .fill(.orange)
-                .frame(height: 50)
-                .offset(x: 0, y: 0)
         }
-        // Note: width == height will create a circle
-        Capsule()
-            .fill(.pink)
-            .frame(width: 50, height: 50)
-            .offset(x: 0, y: 0)
+        .border(Color.red)
     }
     
     // MARK: DemoPage
     static func createPage(withTitle title: Binding<String>) -> some View {
-        ShowCapsuleAligned()
+        ShowCapsuleVertically()
     }
 }
 
 #Preview {
-    ShowCapsuleAligned()
+    ShowCapsuleVertically()
 }
