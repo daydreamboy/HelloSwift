@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F951D3C2B54CA0F00D6AE2E /* ShowCapsuleAligned.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F951D3B2B54CA0E00D6AE2E /* ShowCapsuleAligned.swift */; };
 		4F9F5BC72B4B9B5C00B18FBC /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F5BC62B4B9B5C00B18FBC /* ModelData.swift */; };
 		4F9F5BCA2B4B9B9500B18FBC /* hikeData.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F9F5BC92B4B9B9500B18FBC /* hikeData.json */; };
 		4F9F5BCD2B4B9BE300B18FBC /* Hike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F5BCC2B4B9BE300B18FBC /* Hike.swift */; };
@@ -16,15 +17,19 @@
 		4F9F5BD62B4BA04F00B18FBC /* GraphCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F5BD52B4BA04F00B18FBC /* GraphCapsule.swift */; };
 		4FB258C42B4B95F4005A59A2 /* DemoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB258BF2B4B95F4005A59A2 /* DemoPage.swift */; };
 		4FB258C52B4B95F4005A59A2 /* DemoPage3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB258C12B4B95F4005A59A2 /* DemoPage3.swift */; };
-		4FB258C62B4B95F4005A59A2 /* DemoPage1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB258C22B4B95F4005A59A2 /* DemoPage1.swift */; };
+		4FB258C62B4B95F4005A59A2 /* ShowHikeGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB258C22B4B95F4005A59A2 /* ShowHikeGraph.swift */; };
 		4FB258C72B4B95F4005A59A2 /* DemoPage2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB258C32B4B95F4005A59A2 /* DemoPage2.swift */; };
 		4FCF5DA82B4AE93D0062E7F4 /* HelloAnimationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCF5DA72B4AE93D0062E7F4 /* HelloAnimationApp.swift */; };
 		4FCF5DAA2B4AE93D0062E7F4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCF5DA92B4AE93D0062E7F4 /* ContentView.swift */; };
 		4FCF5DAC2B4AE9400062E7F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FCF5DAB2B4AE9400062E7F4 /* Assets.xcassets */; };
 		4FCF5DAF2B4AE9400062E7F4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FCF5DAE2B4AE9400062E7F4 /* Preview Assets.xcassets */; };
+		4FEEAB462B4FB9AE009DF0FB /* ShowGraphCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEEAB452B4FB9AE009DF0FB /* ShowGraphCapsule.swift */; };
+		4FEEAB4D2B4FE12F009DF0FB /* ShowCapsuleVertically.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEEAB4C2B4FE12E009DF0FB /* ShowCapsuleVertically.swift */; };
+		4FEEAB4F2B4FEB65009DF0FB /* ShowCapsuleHorizontally.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEEAB4E2B4FEB65009DF0FB /* ShowCapsuleHorizontally.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F951D3B2B54CA0E00D6AE2E /* ShowCapsuleAligned.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCapsuleAligned.swift; sourceTree = "<group>"; };
 		4F9F5BC62B4B9B5C00B18FBC /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		4F9F5BC92B4B9B9500B18FBC /* hikeData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = hikeData.json; sourceTree = "<group>"; };
 		4F9F5BCC2B4B9BE300B18FBC /* Hike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hike.swift; sourceTree = "<group>"; };
@@ -34,13 +39,16 @@
 		4F9F5BD52B4BA04F00B18FBC /* GraphCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphCapsule.swift; sourceTree = "<group>"; };
 		4FB258BF2B4B95F4005A59A2 /* DemoPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoPage.swift; sourceTree = "<group>"; };
 		4FB258C12B4B95F4005A59A2 /* DemoPage3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoPage3.swift; sourceTree = "<group>"; };
-		4FB258C22B4B95F4005A59A2 /* DemoPage1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoPage1.swift; sourceTree = "<group>"; };
+		4FB258C22B4B95F4005A59A2 /* ShowHikeGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowHikeGraph.swift; sourceTree = "<group>"; };
 		4FB258C32B4B95F4005A59A2 /* DemoPage2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoPage2.swift; sourceTree = "<group>"; };
 		4FCF5DA42B4AE93D0062E7F4 /* HelloAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FCF5DA72B4AE93D0062E7F4 /* HelloAnimationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloAnimationApp.swift; sourceTree = "<group>"; };
 		4FCF5DA92B4AE93D0062E7F4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4FCF5DAB2B4AE9400062E7F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4FCF5DAE2B4AE9400062E7F4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4FEEAB452B4FB9AE009DF0FB /* ShowGraphCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowGraphCapsule.swift; sourceTree = "<group>"; };
+		4FEEAB4C2B4FE12E009DF0FB /* ShowCapsuleVertically.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCapsuleVertically.swift; sourceTree = "<group>"; };
+		4FEEAB4E2B4FEB65009DF0FB /* ShowCapsuleHorizontally.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCapsuleHorizontally.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +82,11 @@
 		4F9F5BCB2B4B9BB500B18FBC /* Hikes */ = {
 			isa = PBXGroup;
 			children = (
-				4FB258C22B4B95F4005A59A2 /* DemoPage1.swift */,
+				4FEEAB4C2B4FE12E009DF0FB /* ShowCapsuleVertically.swift */,
+				4FEEAB4E2B4FEB65009DF0FB /* ShowCapsuleHorizontally.swift */,
+				4F951D3B2B54CA0E00D6AE2E /* ShowCapsuleAligned.swift */,
+				4FEEAB452B4FB9AE009DF0FB /* ShowGraphCapsule.swift */,
+				4FB258C22B4B95F4005A59A2 /* ShowHikeGraph.swift */,
 				4F9F5BD42B4B9C5700B18FBC /* Views */,
 				4F9F5BC52B4B9B4700B18FBC /* Model */,
 			);
@@ -215,13 +227,17 @@
 				4F9F5BD32B4B9C5000B18FBC /* HikeGraph.swift in Sources */,
 				4FCF5DA82B4AE93D0062E7F4 /* HelloAnimationApp.swift in Sources */,
 				4FB258C72B4B95F4005A59A2 /* DemoPage2.swift in Sources */,
-				4FB258C62B4B95F4005A59A2 /* DemoPage1.swift in Sources */,
+				4FB258C62B4B95F4005A59A2 /* ShowHikeGraph.swift in Sources */,
+				4F951D3C2B54CA0F00D6AE2E /* ShowCapsuleAligned.swift in Sources */,
 				4F9F5BCF2B4B9C3200B18FBC /* HikeView.swift in Sources */,
 				4FB258C42B4B95F4005A59A2 /* DemoPage.swift in Sources */,
+				4FEEAB462B4FB9AE009DF0FB /* ShowGraphCapsule.swift in Sources */,
 				4FB258C52B4B95F4005A59A2 /* DemoPage3.swift in Sources */,
 				4F9F5BD62B4BA04F00B18FBC /* GraphCapsule.swift in Sources */,
 				4F9F5BCD2B4B9BE300B18FBC /* Hike.swift in Sources */,
 				4F9F5BC72B4B9B5C00B18FBC /* ModelData.swift in Sources */,
+				4FEEAB4F2B4FEB65009DF0FB /* ShowCapsuleHorizontally.swift in Sources */,
+				4FEEAB4D2B4FE12F009DF0FB /* ShowCapsuleVertically.swift in Sources */,
 				4F9F5BD12B4B9C4000B18FBC /* HikeDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,7 +295,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -333,7 +349,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -351,6 +367,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HelloAnimation/Preview Content\"";
+				DEVELOPMENT_TEAM = U7337LU6F2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -379,6 +396,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HelloAnimation/Preview Content\"";
+				DEVELOPMENT_TEAM = U7337LU6F2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

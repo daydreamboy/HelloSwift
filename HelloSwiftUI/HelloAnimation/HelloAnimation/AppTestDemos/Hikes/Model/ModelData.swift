@@ -7,16 +7,17 @@
 
 import Foundation
 
-#if swift(>=5.9)
+// Note: make two same ModelData for different target OS
+// iOS 17+, use ModelDataForiOS17
+// iOS 17-, use ModelData
+@available(iOS 17.0, *)
 @Observable
-class ModelData {
+class ModelDataForiOS17 {
     var hikes: [Hike] = load("hikeData.json")
 }
-#else
 class ModelData: ObservableObject {
     var hikes: [Hike] = load("hikeData.json")
 }
-#endif
 
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data

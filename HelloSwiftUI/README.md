@@ -106,22 +106,24 @@ https://developer.apple.com/tutorials/swiftui/interfacing-with-uikit
 
 SwiftUI控件类列表，如下
 
-| 控件类              | 作用                                         |
-| ------------------- | -------------------------------------------- |
-| App                 |                                              |
-| Button              |                                              |
-| Color               | 符合View协议                                 |
-| EmptyView           |                                              |
-| Image               |                                              |
-| Label               |                                              |
-| NavigationSplitView |                                              |
-| NavigationView      | iOS16.4已经废弃，推荐使用NavigationSplitView |
-| Scene               | iOS 14+引入                                  |
-| ScrollView          |                                              |
-| Text                |                                              |
-| Toggle              |                                              |
-| View                |                                              |
-| WindowGroup         | iOS 14+引入                                  |
+| 控件类              | 作用                                                         |
+| ------------------- | ------------------------------------------------------------ |
+| App                 |                                                              |
+| Button              |                                                              |
+| Capsule             | 胶囊形状的view。width > height时，帽型在左右；height > width时，帽型在上下；width == height时，是圆形 |
+| Color               | 符合View协议                                                 |
+|                     |                                                              |
+| EmptyView           |                                                              |
+| Image               |                                                              |
+| Label               |                                                              |
+| NavigationSplitView |                                                              |
+| NavigationView      | iOS16.4已经废弃，推荐使用NavigationSplitView                 |
+| Scene               | iOS 14+引入                                                  |
+| ScrollView          |                                                              |
+| Text                |                                                              |
+| Toggle              |                                                              |
+| View                |                                                              |
+| WindowGroup         | iOS 14+引入                                                  |
 
 
 

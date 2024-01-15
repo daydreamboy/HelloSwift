@@ -33,23 +33,24 @@ struct HikeGraph: View {
     }
     
     var body: some View {
-        let data = hike.observations
+        let data2 = hike.observations
+        let data = [ data2[7], data2[8], data2[9] ]
         let overallRange = rangeOfRanges(data.lazy.map { $0[keyPath: path] })
         let maxMagnitude = data.map { magnitude(of: $0[keyPath: path]) }.max()!
         let heightRatio = 1 - CGFloat(maxMagnitude / magnitude(of: overallRange))
         
         return GeometryReader { proxy in
-            HStack(alignment: .bottom, spacing: proxy.size.width / 120) {
+            HStack(alignment: .bottom, spacing: 0/*proxy.size.width / 120*/) {
                 ForEach(Array(data.enumerated()), id: \.offset) { index, observation in
                     GraphCapsule(index: index,
                                  color: color,
                                  height: proxy.size.height,
                                  range: observation[keyPath: path],
                                  overallRange: overallRange)
-                    .animation(.ripple(index: index))
+                    //.animation(.ripple(index: index))
                 }
             }
-            .offset(x: 0, y: proxy.size.height * heightRatio)
+            //.offset(x: 0, y: proxy.size.height * heightRatio)
         }
     }
 }
@@ -70,14 +71,19 @@ func rangeOfRanges<C: Collection>(_ ranges: C) -> Range<Double> where C.Element 
 
 #if swift(>=5.9)
 #Preview {
-    let hike = ModelData().hikes[0]
-    return Group {
-        HikeGraph(hike: hike, path: \.elevation)
-            .frame(height: 200)
-        HikeGraph(hike: hike, path: \.heartRate)
-            .frame(height: 200)
-        HikeGraph(hike: hike, path: \.pace)
-            .frame(height: 200)
+    if #available(iOS 17.0, *) {
+        let hike = ModelData().hikes[0]
+        return Group {
+            HikeGraph(hike: hike, path: \.elevation)
+                .frame(height: 200)
+//            HikeGraph(hike: hike, path: \.heartRate)
+//                .frame(height: 200)
+//            HikeGraph(hike: hike, path: \.pace)
+//                .frame(height: 200)
+        }
+    } else {
+        // Fallback on earlier versions
+        return EmptyView()
     }
 }
 #else
