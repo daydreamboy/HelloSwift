@@ -2864,15 +2864,16 @@ https://stackoverflow.com/questions/25156377/what-is-the-difference-between-stat
 
 ### (1) `#`标记
 
-| `#`标记   | 作用               |
-| --------- | ------------------ |
-| #column   |                    |
-| #error    |                    |
-| #file     | 当前文件的绝对路径 |
-| #function |                    |
-| #line     |                    |
-| #selector |                    |
-| #warning  |                    |
+| `#`标记    | 作用               |
+| ---------- | ------------------ |
+| #available |                    |
+| #column    |                    |
+| #error     |                    |
+| #file      | 当前文件的绝对路径 |
+| #function  |                    |
+| #line      |                    |
+| #selector  |                    |
+| #warning   |                    |
 
 
 
@@ -2888,7 +2889,73 @@ https://stackoverflow.com/questions/25156377/what-is-the-difference-between-stat
 
 
 
+### (3) `#available`和`@available`的区别
 
+`#available`和`@available`的作用都是检查系统版本，但是存在区别，如下
+
+| `#available`      | `@available`       |
+| ----------------- | ------------------ |
+| 运行时判断        | 编译时判断         |
+| 配合if语句使用    | 直接标记类或者方法 |
+| 在API使用方则使用 | 在API供应方则使用  |
+
+参考[这篇文章](https://sarunw.com/posts/available-vs-available/)的介绍，举个例子，如下
+
+```swift
+@available(iOS 17, *)
+class Test_available_NewClass {
+    // A class that available on iOS 17 forward.
+    func newMethod() {
+        // Method that utilize iOS 17 features.
+        print("\(#function) called")
+    }
+}
+
+class Test_available_OldClass {
+    @available(iOS 17, *)
+    func newMethod() {
+        // Method that utilize iOS 17 features.
+        print("\(#function) called")
+    }
+    
+    func oldMethod() {
+        print("\(#function) called")
+    }
+}
+```
+
+
+
+* 标记类，按版本区分类的使用
+
+```swift
+func test_use_different_class() throws {
+    if #available(iOS 17, *) {
+        let newClass = Test_available_NewClass()
+        newClass.newMethod()
+    } else {
+        let oldClass = Test_available_OldClass()
+        oldClass.oldMethod()
+    }
+}
+```
+
+
+
+* 标记方法，按版本区分方法的使用
+
+```swift
+func test_use_different_method() throws {
+    let oldClass = Test_available_OldClass()
+
+    if #available(iOS 17, *) {
+        oldClass.newMethod()
+    } else {
+        // Fallback on earlier versions
+        oldClass.oldMethod()
+    }
+}
+```
 
 
 

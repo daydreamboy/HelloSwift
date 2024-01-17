@@ -62,6 +62,7 @@
 		4FC38CB92A30340B00BE5CF2 /* OCPrivateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC38CB72A30340B00BE5CF2 /* OCPrivateTool.m */; };
 		4FC38CBB2A3035BB00BE5CF2 /* Test_call_OC_method_via_runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC38CBA2A3035BB00BE5CF2 /* Test_call_OC_method_via_runtime.swift */; };
 		4FC38CBD2A30428F00BE5CF2 /* OCStaticLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC38CAA2A3033AF00BE5CF2 /* OCStaticLibrary.framework */; };
+		4FEFC6432B5772EC00ED3B8A /* Test_available.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEFC6422B5772EC00ED3B8A /* Test_available.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,6 +171,7 @@
 		4FC38CB62A30340B00BE5CF2 /* OCPrivateTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCPrivateTool.h; sourceTree = "<group>"; };
 		4FC38CB72A30340B00BE5CF2 /* OCPrivateTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCPrivateTool.m; sourceTree = "<group>"; };
 		4FC38CBA2A3035BB00BE5CF2 /* Test_call_OC_method_via_runtime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_call_OC_method_via_runtime.swift; sourceTree = "<group>"; };
+		4FEFC6422B5772EC00ED3B8A /* Test_available.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_available.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,6 +286,8 @@
 		4FA9571327E6FA970080983F /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				4FA9571427E6FA970080983F /* Test.swift */,
+				4FEFC6422B5772EC00ED3B8A /* Test_available.swift */,
 				4F6B35502B03B90B000B9606 /* Test_Any.swift */,
 				4F6B354E2B03B4C9000B9606 /* Test_AnyClass.swift */,
 				4F8AE73D2AFB228700528D9C /* Test_AnyObject.swift */,
@@ -316,7 +320,6 @@
 				4F55F80A281A8F8600F15B1F /* Test_use_Swift_class_in_OC.m */,
 				4F3F1FA927EEF105007532A2 /* Test_variable.swift */,
 				4F8AE7402AFB3A2100528D9C /* Test_WCDumpTool.swift */,
-				4FA9571427E6FA970080983F /* Test.swift */,
 				4F4BF93F281A3F95003BDEAF /* Tools */,
 			);
 			path = Test;
@@ -608,6 +611,7 @@
 				4F1BB10328879D930025ADDE /* Test_description.swift in Sources */,
 				4FA4811C284C9DF6005AB36E /* Test_property_wrapper_static_subscript.swift in Sources */,
 				4F09E220284A305F00B77CBC /* Test_property_wrapper_basic.swift in Sources */,
+				4FEFC6432B5772EC00ED3B8A /* Test_available.swift in Sources */,
 				4FA48115284C8C64005AB36E /* Test_property_wrapper_define_customized_initializer.swift in Sources */,
 				4FA9573127E7624B0080983F /* Test_generic.swift in Sources */,
 				4F55F80B281A8F8600F15B1F /* Test_use_Swift_class_in_OC.m in Sources */,
