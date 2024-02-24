@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F69E2412B8A2C7400C68871 /* UseWithAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F69E2402B8A2C7400C68871 /* UseWithAnimation.swift */; };
 		4F951D482B54E13600D6AE2E /* CommonForHike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F951D472B54E13600D6AE2E /* CommonForHike.swift */; };
 		4F951D4A2B54E1D400D6AE2E /* ShowSingleHikeGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F951D492B54E1D400D6AE2E /* ShowSingleHikeGraph.swift */; };
 		4F9F5BC72B4B9B5C00B18FBC /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F5BC62B4B9B5C00B18FBC /* ModelData.swift */; };
@@ -17,9 +18,9 @@
 		4F9F5BD32B4B9C5000B18FBC /* HikeGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F5BD22B4B9C5000B18FBC /* HikeGraph.swift */; };
 		4F9F5BD62B4BA04F00B18FBC /* GraphCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F5BD52B4BA04F00B18FBC /* GraphCapsule.swift */; };
 		4FB258C42B4B95F4005A59A2 /* DemoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB258BF2B4B95F4005A59A2 /* DemoPage.swift */; };
-		4FB258C52B4B95F4005A59A2 /* DemoPage3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB258C12B4B95F4005A59A2 /* DemoPage3.swift */; };
+		4FB258C52B4B95F4005A59A2 /* UseScaleEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB258C12B4B95F4005A59A2 /* UseScaleEffect.swift */; };
 		4FB258C62B4B95F4005A59A2 /* ShowThreeHikeGraphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB258C22B4B95F4005A59A2 /* ShowThreeHikeGraphs.swift */; };
-		4FB258C72B4B95F4005A59A2 /* DemoPage2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB258C32B4B95F4005A59A2 /* DemoPage2.swift */; };
+		4FB258C72B4B95F4005A59A2 /* UseRotationEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB258C32B4B95F4005A59A2 /* UseRotationEffect.swift */; };
 		4FCF5DA82B4AE93D0062E7F4 /* HelloAnimationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCF5DA72B4AE93D0062E7F4 /* HelloAnimationApp.swift */; };
 		4FCF5DAA2B4AE93D0062E7F4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCF5DA92B4AE93D0062E7F4 /* ContentView.swift */; };
 		4FCF5DAC2B4AE9400062E7F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FCF5DAB2B4AE9400062E7F4 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F69E2402B8A2C7400C68871 /* UseWithAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseWithAnimation.swift; sourceTree = "<group>"; };
 		4F951D472B54E13600D6AE2E /* CommonForHike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonForHike.swift; sourceTree = "<group>"; };
 		4F951D492B54E1D400D6AE2E /* ShowSingleHikeGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSingleHikeGraph.swift; sourceTree = "<group>"; };
 		4F9F5BC62B4B9B5C00B18FBC /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
@@ -38,9 +40,9 @@
 		4F9F5BD22B4B9C5000B18FBC /* HikeGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeGraph.swift; sourceTree = "<group>"; };
 		4F9F5BD52B4BA04F00B18FBC /* GraphCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphCapsule.swift; sourceTree = "<group>"; };
 		4FB258BF2B4B95F4005A59A2 /* DemoPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoPage.swift; sourceTree = "<group>"; };
-		4FB258C12B4B95F4005A59A2 /* DemoPage3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoPage3.swift; sourceTree = "<group>"; };
+		4FB258C12B4B95F4005A59A2 /* UseScaleEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseScaleEffect.swift; sourceTree = "<group>"; };
 		4FB258C22B4B95F4005A59A2 /* ShowThreeHikeGraphs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowThreeHikeGraphs.swift; sourceTree = "<group>"; };
-		4FB258C32B4B95F4005A59A2 /* DemoPage2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoPage2.swift; sourceTree = "<group>"; };
+		4FB258C32B4B95F4005A59A2 /* UseRotationEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseRotationEffect.swift; sourceTree = "<group>"; };
 		4FCF5DA42B4AE93D0062E7F4 /* HelloAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FCF5DA72B4AE93D0062E7F4 /* HelloAnimationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloAnimationApp.swift; sourceTree = "<group>"; };
 		4FCF5DA92B4AE93D0062E7F4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -105,8 +107,9 @@
 			isa = PBXGroup;
 			children = (
 				4F9F5BCB2B4B9BB500B18FBC /* Hikes */,
-				4FB258C32B4B95F4005A59A2 /* DemoPage2.swift */,
-				4FB258C12B4B95F4005A59A2 /* DemoPage3.swift */,
+				4FB258C32B4B95F4005A59A2 /* UseRotationEffect.swift */,
+				4FB258C12B4B95F4005A59A2 /* UseScaleEffect.swift */,
+				4F69E2402B8A2C7400C68871 /* UseWithAnimation.swift */,
 			);
 			path = AppTestDemos;
 			sourceTree = "<group>";
@@ -223,13 +226,14 @@
 				4FCF5DAA2B4AE93D0062E7F4 /* ContentView.swift in Sources */,
 				4F9F5BD32B4B9C5000B18FBC /* HikeGraph.swift in Sources */,
 				4FCF5DA82B4AE93D0062E7F4 /* HelloAnimationApp.swift in Sources */,
-				4FB258C72B4B95F4005A59A2 /* DemoPage2.swift in Sources */,
+				4FB258C72B4B95F4005A59A2 /* UseRotationEffect.swift in Sources */,
 				4FB258C62B4B95F4005A59A2 /* ShowThreeHikeGraphs.swift in Sources */,
 				4F9F5BCF2B4B9C3200B18FBC /* HikeView.swift in Sources */,
 				4FB258C42B4B95F4005A59A2 /* DemoPage.swift in Sources */,
 				4FEEAB462B4FB9AE009DF0FB /* ShowGraphCapsule.swift in Sources */,
-				4FB258C52B4B95F4005A59A2 /* DemoPage3.swift in Sources */,
+				4FB258C52B4B95F4005A59A2 /* UseScaleEffect.swift in Sources */,
 				4F9F5BD62B4BA04F00B18FBC /* GraphCapsule.swift in Sources */,
+				4F69E2412B8A2C7400C68871 /* UseWithAnimation.swift in Sources */,
 				4F9F5BCD2B4B9BE300B18FBC /* Hike.swift in Sources */,
 				4F9F5BC72B4B9B5C00B18FBC /* ModelData.swift in Sources */,
 				4F9F5BD12B4B9C4000B18FBC /* HikeDetail.swift in Sources */,

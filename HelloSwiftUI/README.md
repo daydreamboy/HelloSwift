@@ -181,6 +181,171 @@ TODO: https://stackoverflow.com/questions/56910854/swiftui-views-with-a-custom-i
 
 
 
+#### a. Equatable View和非Equatable View的动画
+
+Equatable View和非Equatable View在执行动画时有所区别：
+
+* Equatable View符合Equatable协议，SwiftUI根据Equatable协议判断出哪些属性变化，需要执行动画。一般使用`animation(_:)`修饰器即可。
+* 非Equatable View，需要明确使用`animation(_:value:)`修饰器，指定哪个属性的值有变化，需要执行动画。
+
+官方文档描述[^7]，如下
+
+> When you use the `animation(_:)` modifier on an equatable view, SwiftUI animates any changes to animatable properties of the view. A view’s color, opacity, rotation, size, and other properties are all animatable. When the view isn’t equatable, you can use the `animation(_:value:)` modifier to start animations when the specified value changes.
+
+
+
+#### b. 内置动画效果
+
+View提供一些修饰器方法，用于设置内置的动画效果，例如`rotationEffect(_:anchor:)`等。如果要执行动画，则需要使用`animation(_:)`或`animation(_:value:)`来执行动画。
+
+
+
+##### i. 旋转动画
+
+```swift
+func rotationEffect(_ angle: Angle, anchor: UnitPoint = .center) -> some View
+```
+
+* angle：顺时针的旋转角度
+* anchor：旋转的中心点
+
+
+
+示例代码，如下
+
+```swift
+Text("Rotation by passing an angle in degrees")
+    .rotationEffect(.degrees(22))
+    .border(Color.gray)
+```
+
+上面代码设置Text的旋转，在UI显示时已经完成旋转。如果要交互式地执行动画，则使用`animation(_:)`或`animation(_:value:)`修饰器。
+
+示例代码，如下
+
+```swift
+@Binding var title: String
+@State private var rotationAngle: Double = 0
+
+var body: some View {
+    VStack {
+        Button("Rotate") {
+            rotationAngle += 20
+        }
+
+        Text("Rotation by passing an angle in degrees")
+            .rotationEffect(.degrees(rotationAngle))
+            .border(Color.gray)
+            .animation(.easeInOut, value: rotationAngle)
+    }
+}
+```
+
+
+
+##### ii. 缩放动画
+
+```swift
+func scaleEffect(_ s: CGFloat, anchor: UnitPoint = .center) -> some View
+```
+
+* s：缩放的比例
+* anchor：缩放的中心点
+
+
+
+示例代码，如下
+
+```swift
+@State private var scale = 1.0
+
+var body: some View {
+    VStack {
+        Image(systemName: "envelope.badge.fill")
+            .resizable()
+            .frame(width: 100, height: 100, alignment: .center)
+            .foregroundColor(Color.red)
+            .scaleEffect(scale, anchor: .leading)
+            .border(Color.gray)
+            .animation(.easeIn, value: scale)
+        HStack {
+            Button("+") { scale += 0.5 }
+            Button("-") { scale -= 0.5 }
+        }
+    }
+}
+```
+
+
+
+#### c. withAnimation函数（组动画）
+
+withAnimation函数的签名，如下
+
+```swift
+@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+public func withAnimation<Result>(_ animation: Animation? = .default, _ body: () throws -> Result) rethrows -> Result
+```
+
+相比于`animation(_:)`或`animation(_:value:)`修饰器，只能应用于单个View。而执行这个函数，可以完成一组动画，在withAnimation回调中，影响任何View的animatable属性，都可以对这个View执行动画。
+
+举个例子，如下
+
+```swift
+@State private var showDetail1 = false
+@State private var showDetail2 = false
+
+var body: some View {
+    HStack {
+        Button {
+            showDetail1.toggle()
+        } label: {
+            Label("This is Button", systemImage: "chevron.right.circle")
+                .labelStyle(.iconOnly)
+                .imageScale(.large)
+                .rotationEffect(.degrees(showDetail1 ? 90 : 0))
+                .scaleEffect(showDetail1 ? 1.5 : 1)
+                .padding()
+        }
+
+        Button {
+            withAnimation {
+                showDetail2.toggle()
+            }
+        } label: {
+            Label("This is Button", systemImage: "chevron.right.circle")
+                .labelStyle(.iconOnly)
+                .imageScale(.large)
+                .rotationEffect(.degrees(showDetail2 ? 90 : 0))
+                .scaleEffect(showDetail2 ? 1.5 : 1)
+                .padding()
+        }
+    }
+}
+```
+
+上面两个按钮：第一个没有使用withAnimation函数，第二个按钮使用withAnimation函数，在该函数中执行showDetail2状态切换，任何用到showDetail2状态的属性，都会执行动画。
+
+说明
+
+> 上面代码在Canvas中是预期效果，但是在模拟器或真机上，可能第一个按钮也有动画效果。推测是SwiftUI版本不同版本，新版本使用隐式动画。
+>
+> 为了明确不使用动画，可以改成下面方式
+>
+> ```swift
+> withAnimation(nil) {
+>     showDetail1.toggle()
+> }
+> ```
+>
+> 
+
+
+
+#### d. 自定义过渡动画
+
+TODO
+
 
 
 ## 3、SwiftUI常用编程模式 
@@ -480,3 +645,5 @@ https://developer.apple.com/documentation/swiftui/migrating-from-the-observable-
 [^5]:https://developer.apple.com/documentation/swiftui/binding#
 
 [^6]:https://developer.apple.com/documentation/swiftui/stateobject#
+[^7]:https://developer.apple.com/tutorials/swiftui/animating-views-and-transitions
+

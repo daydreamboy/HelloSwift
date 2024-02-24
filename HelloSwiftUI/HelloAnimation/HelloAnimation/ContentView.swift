@@ -12,7 +12,9 @@ struct ContentView: View {
         (title: "Show single Capsule", pageType: ShowGraphCapsule.self),
         (title: "Show single HikeGraph", pageType: ShowSingleHikeGraph.self),
         (title: "Show three HikeGraphs", pageType: ShowThreeHikeGraphs.self),
-        (title: "Demo3", pageType: DemoPage3.self),
+        (title: "Rotation", pageType: UseRotationEffect.self),
+        (title: "Scale", pageType: UseScaleEffect.self),
+        (title: "Use withAnimation function", pageType: UseWithAnimation.self),
     ]
     
     var body: some View {

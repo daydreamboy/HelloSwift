@@ -72,7 +72,7 @@ func rangeOfRanges<C: Collection>(_ ranges: C) -> Range<Double> where C.Element 
 
 #if swift(>=5.9)
 #Preview {
-    let hike: Hike = getFistHike()
+    let hike: Hike = getFirstHike()
     return Group {
         // Note: only show one HikeGraph for debug
 //            HikeGraph(hike: hike, path: \.elevation)

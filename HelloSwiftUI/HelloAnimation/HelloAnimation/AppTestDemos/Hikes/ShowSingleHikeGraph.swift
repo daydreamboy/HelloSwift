@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ShowSingleHikeGraph: View, DemoPage {
     var body: some View {
-        let hike = getFistHike()
+        let hike = getFirstHike()
         Group {
             // Note: add border to debug UI
             HikeGraph(hike: hike, path: \.pace)

@@ -7,7 +7,7 @@
 
 import Foundation
 
-func getFistHike() -> Hike {
+func getFirstHike() -> Hike {
     if #available(iOS 17.0, *) {
         let _ = print("running on >= iOS17")
         return ModelDataForiOS17().hikes[0]
