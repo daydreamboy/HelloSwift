@@ -344,7 +344,33 @@ var body: some View {
 
 #### d. 自定义过渡动画
 
-TODO
+使用transition函数可以执行过度动画。它的签名，如下
+
+```swift
+func transition(_ t: AnyTransition) -> some View
+```
+
+该函数用于View显示或隐藏的过渡动画。官方文档描述，如下
+
+> When this view appears or disappears, the transition will be applied to it, allowing for animating it in and out.
+
+示例代码，如下
+
+```swift
+if isActive {
+    MyView()
+        .transition(.slide)
+}
+Button("Toggle") {
+    withAnimation {
+        isActive.toggle()
+    }
+}
+```
+
+
+
+
 
 
 

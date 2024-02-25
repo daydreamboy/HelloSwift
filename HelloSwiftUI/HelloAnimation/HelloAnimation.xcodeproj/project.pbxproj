@@ -25,6 +25,7 @@
 		4FCF5DAA2B4AE93D0062E7F4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCF5DA92B4AE93D0062E7F4 /* ContentView.swift */; };
 		4FCF5DAC2B4AE9400062E7F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FCF5DAB2B4AE9400062E7F4 /* Assets.xcassets */; };
 		4FCF5DAF2B4AE9400062E7F4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FCF5DAE2B4AE9400062E7F4 /* Preview Assets.xcassets */; };
+		4FDE99622B8B21BB002940A9 /* UseTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDE99612B8B21BB002940A9 /* UseTransition.swift */; };
 		4FEEAB462B4FB9AE009DF0FB /* ShowGraphCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEEAB452B4FB9AE009DF0FB /* ShowGraphCapsule.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		4FCF5DA92B4AE93D0062E7F4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4FCF5DAB2B4AE9400062E7F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4FCF5DAE2B4AE9400062E7F4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4FDE99612B8B21BB002940A9 /* UseTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseTransition.swift; sourceTree = "<group>"; };
 		4FEEAB452B4FB9AE009DF0FB /* ShowGraphCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowGraphCapsule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +111,7 @@
 				4F9F5BCB2B4B9BB500B18FBC /* Hikes */,
 				4FB258C32B4B95F4005A59A2 /* UseRotationEffect.swift */,
 				4FB258C12B4B95F4005A59A2 /* UseScaleEffect.swift */,
+				4FDE99612B8B21BB002940A9 /* UseTransition.swift */,
 				4F69E2402B8A2C7400C68871 /* UseWithAnimation.swift */,
 			);
 			path = AppTestDemos;
@@ -224,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FCF5DAA2B4AE93D0062E7F4 /* ContentView.swift in Sources */,
+				4FDE99622B8B21BB002940A9 /* UseTransition.swift in Sources */,
 				4F9F5BD32B4B9C5000B18FBC /* HikeGraph.swift in Sources */,
 				4FCF5DA82B4AE93D0062E7F4 /* HelloAnimationApp.swift in Sources */,
 				4FB258C72B4B95F4005A59A2 /* UseRotationEffect.swift in Sources */,

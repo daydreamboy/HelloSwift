@@ -15,6 +15,7 @@ struct ContentView: View {
         (title: "Rotation", pageType: UseRotationEffect.self),
         (title: "Scale", pageType: UseScaleEffect.self),
         (title: "Use withAnimation function", pageType: UseWithAnimation.self),
+        (title: "Use transition function", pageType: UseTransition.self),
     ]
     
     var body: some View {
