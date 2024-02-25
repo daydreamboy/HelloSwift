@@ -20,8 +20,15 @@ struct DemoPage1: View, DemoPage {
     }
 }
 
+// Xcode15+
+#if swift(>=5.9)
+#Preview {
+    DemoPage1(title: .constant("This is a demo"))
+}
+#else
 struct DemoPage1_Previews: PreviewProvider {
     static var previews: some View {
         DemoPage1(title: .constant("This is a demo"))
     }
 }
+#endif
