@@ -342,9 +342,9 @@ var body: some View {
 
 
 
-#### d. 自定义过渡动画
+#### d. 过渡动画
 
-使用transition函数可以执行过度动画。它的签名，如下
+使用transition函数可以执行过渡动画。它的签名，如下
 
 ```swift
 func transition(_ t: AnyTransition) -> some View
@@ -364,6 +364,66 @@ if isActive {
 Button("Toggle") {
     withAnimation {
         isActive.toggle()
+    }
+}
+```
+
+这里使用了AnyTransition提供slide函数，它提供slide形式的动画。其他内置动画，如下
+
+```swift
+// 移动动画
+static func move(edge: Edge) -> AnyTransition
+// 平移动画。下面两者是等价的，写法不同
+static func offset(_ offset: CGSize) -> AnyTransition
+static func offset(x: CGFloat = 0, y: CGFloat = 0) -> AnyTransition
+// 透明度动画
+static let opacity: AnyTransition
+// 移动动画加透明度动画
+static func push(from edge: Edge) -> AnyTransition
+// 缩放动画
+static var scale: AnyTransition { get }
+static func scale(scale: CGFloat, anchor: UnitPoint = .center) -> AnyTransition
+// 滑动动画
+static var slide: AnyTransition { get }
+```
+
+
+
+##### i. 自定义过渡动画
+
+使用AnyTransition提供的asymmetric函数，可以指定appear和disappear时的特定动画。
+
+使用AnyTransition提供的combined函数，可以组合动画。
+
+举个例子，如下
+
+```swift
+VStack {
+    Button("Toggle customized animation") {
+        withAnimation(.easeInOut(duration: 2)) {
+            toggleCustomized.toggle()
+        }
+    }
+    if toggleCustomized {
+        Rectangle()
+            .fill(Color.blue)
+            .frame(width: 100, height: 100)
+            .transition(.asymmetric(
+                insertion: .offset(x: -200, y: 0),
+                removal: .offset(x: 200, y: 0)
+            ))
+        Rectangle()
+            .fill(Color.orange)
+            .frame(width: 100, height: 100)
+            .transition(.asymmetric(
+                insertion: .move(edge: .trailing).combined(with: .opacity),
+                removal: .scale.combined(with: .opacity)
+            ))
+    } else {
+        Color.clear
+            .frame(height: 100)
+        Color.clear
+            .frame(height: 100)
     }
 }
 ```
