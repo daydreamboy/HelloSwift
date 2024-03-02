@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F2AED5C2B935FC50004291F /* ShowHikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2AED5B2B935FC50004291F /* ShowHikeView.swift */; };
 		4F69E2412B8A2C7400C68871 /* UseWithAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F69E2402B8A2C7400C68871 /* UseWithAnimation.swift */; };
 		4F951D482B54E13600D6AE2E /* CommonForHike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F951D472B54E13600D6AE2E /* CommonForHike.swift */; };
 		4F951D4A2B54E1D400D6AE2E /* ShowSingleHikeGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F951D492B54E1D400D6AE2E /* ShowSingleHikeGraph.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F2AED5B2B935FC50004291F /* ShowHikeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowHikeView.swift; sourceTree = "<group>"; };
 		4F69E2402B8A2C7400C68871 /* UseWithAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseWithAnimation.swift; sourceTree = "<group>"; };
 		4F951D472B54E13600D6AE2E /* CommonForHike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonForHike.swift; sourceTree = "<group>"; };
 		4F951D492B54E1D400D6AE2E /* ShowSingleHikeGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSingleHikeGraph.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				4FEEAB452B4FB9AE009DF0FB /* ShowGraphCapsule.swift */,
 				4F951D492B54E1D400D6AE2E /* ShowSingleHikeGraph.swift */,
 				4FB258C22B4B95F4005A59A2 /* ShowThreeHikeGraphs.swift */,
+				4F2AED5B2B935FC50004291F /* ShowHikeView.swift */,
 				4F9F5BD42B4B9C5700B18FBC /* Views */,
 				4F9F5BC52B4B9B4700B18FBC /* Model */,
 			);
@@ -228,6 +231,7 @@
 			files = (
 				4FCF5DAA2B4AE93D0062E7F4 /* ContentView.swift in Sources */,
 				4FDE99622B8B21BB002940A9 /* UseTransition.swift in Sources */,
+				4F2AED5C2B935FC50004291F /* ShowHikeView.swift in Sources */,
 				4F9F5BD32B4B9C5000B18FBC /* HikeGraph.swift in Sources */,
 				4FCF5DA82B4AE93D0062E7F4 /* HelloAnimationApp.swift in Sources */,
 				4FB258C72B4B95F4005A59A2 /* UseRotationEffect.swift in Sources */,

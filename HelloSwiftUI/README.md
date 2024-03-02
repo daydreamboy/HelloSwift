@@ -173,11 +173,11 @@ TODO: https://stackoverflow.com/questions/56910854/swiftui-views-with-a-custom-i
 
 ### (6) SwiftUI动画
 
-| 类        | 作用 |
-| --------- | ---- |
-| Animation |      |
-|           |      |
-|           |      |
+| 类        | 作用                                                     |
+| --------- | -------------------------------------------------------- |
+| Animation | 用于配置动画的通用参数，例如线性、弹性、缓入缓出、延迟等 |
+|           |                                                          |
+|           |                                                          |
 
 
 
@@ -192,11 +192,32 @@ Equatable View和非Equatable View在执行动画时有所区别：
 
 > When you use the `animation(_:)` modifier on an equatable view, SwiftUI animates any changes to animatable properties of the view. A view’s color, opacity, rotation, size, and other properties are all animatable. When the view isn’t equatable, you can use the `animation(_:value:)` modifier to start animations when the specified value changes.
 
+说明
+
+> 在iOS15+上，已经废弃`animation(_:)`修饰器，推荐使用`withAnimation(_:_:)`或者`animation(_:value:)` 
+
+
+
+SwiftUI动画，一般分为两个步骤：
+
+* 配置需要执行动画的属性，例如`.frame(width: 100 * scale, height: 100 * scale, alignment: .center)`、`.scaleEffect(scale, anchor: .leading)`等。通常会有一个@State变量来控制。
+* 执行动画，通过`animation(_:value:)`修饰器或者withAnimation函数来执行@State变量的变更，达到执行动画的效果
+  * `animation(_:value:)`修饰器，由于准确指定@State变量，执行动画，如果其他View也依赖这个@State变量，不会导致影响其他View也有动画
+  * withAnimation函数，执行动画，如果其他View也依赖这个@State变量，也会产生动画效果。
+
+说明
+
+> 在上面提到过Equatable View，可以使用`animation(_:)`修饰器来执行动画，SwiftUI会自动计算Equatable View的哪些属性产生变化，然后根据`animation(_:)`修饰器设置的动画效果来执行动画。
+
 
 
 #### b. 内置动画效果
 
 View提供一些修饰器方法，用于设置内置的动画效果，例如`rotationEffect(_:anchor:)`等。如果要执行动画，则需要使用`animation(_:)`或`animation(_:value:)`来执行动画。
+
+说明
+
+> 可以设置多个`animation(_:)`或`animation(_:value:)`，如果其中一个函数的animation参数是nil，则优先使用这个函数，表示禁止执行动画。
 
 
 
@@ -287,7 +308,7 @@ withAnimation函数的签名，如下
 public func withAnimation<Result>(_ animation: Animation? = .default, _ body: () throws -> Result) rethrows -> Result
 ```
 
-相比于`animation(_:)`或`animation(_:value:)`修饰器，只能应用于单个View。而执行这个函数，可以完成一组动画，在withAnimation回调中，影响任何View的animatable属性，都可以对这个View执行动画。
+相比于`animation(_:)`或`animation(_:value:)`修饰器，只能应用于单个View。而执行这个函数，可以完成一组动画，在withAnimation回调中，影响任何View（对withAnimation回调中@State变量有依赖的View）的animatable属性，都可以对这个View执行动画。
 
 举个例子，如下
 

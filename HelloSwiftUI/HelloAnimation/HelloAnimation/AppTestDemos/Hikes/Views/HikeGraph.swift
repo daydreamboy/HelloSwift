@@ -10,6 +10,7 @@ import SwiftUI
 extension Animation {
     static func ripple(index: Int) -> Animation {
         Animation.spring(dampingFraction: 0.5)
+        // Note: change speed small(e.g. 0.2) to debug animation
             .speed(2)
             .delay(0.03 * Double(index))
     }

@@ -20,6 +20,12 @@ struct UseScaleEffect: View, DemoPage {
                 .scaleEffect(scale, anchor: .leading)
                 .border(Color.gray)
                 .animation(.easeIn, value: scale)
+            Image(systemName: "envelope.badge.fill")
+                .resizable()
+                .frame(width: 100 * scale, height: 100 * scale, alignment: .center)
+                .foregroundColor(Color.red)
+                .border(Color.gray)
+                .animation(.easeIn, value: scale)
             HStack {
                 Button("+") { scale += 0.5 }
                 Button("-") { scale -= 0.5 }

@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// Note: the complier will implement `static func == (Self, Self) -> Bool` function for Equatable protocol
+// when user not provide one
 struct GraphCapsule: View, Equatable {
     var index: Int
     var color: Color
