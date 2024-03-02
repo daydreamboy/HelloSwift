@@ -87,14 +87,14 @@ https://developer.apple.com/tutorials/swiftui/interfacing-with-uikit
 
 ### (1) SwiftUI app结构
 
+#### a. 基础协议
 
-
-基础协议
-
-| 协议  | 作用 |
-| ----- | ---- |
-| View  |      |
-| Scene |      |
+| 协议        | 作用                                                |
+| ----------- | --------------------------------------------------- |
+| App         | App实际是一个协议，而不是结构体                     |
+| View        | View实际是一个协议，而不是结构体                    |
+| Scene       | iOS 14+引入。Scene实际是一个协议，而不是结构体      |
+| WindowGroup | iOS 14+引入。WindowGroup实际是一个协议，继承自Scene |
 
 
 
@@ -108,7 +108,7 @@ SwiftUI控件类列表，如下
 
 | 控件类              | 作用                                                         |
 | ------------------- | ------------------------------------------------------------ |
-| App                 |                                                              |
+|                     |                                                              |
 | Button              |                                                              |
 | Capsule             | 胶囊形状的view。width > height时，帽型在左右；height > width时，帽型在上下；width == height时，是圆形 |
 | Color               | 符合View协议                                                 |
@@ -116,14 +116,35 @@ SwiftUI控件类列表，如下
 | EmptyView           |                                                              |
 | Image               |                                                              |
 | Label               |                                                              |
+| List                |                                                              |
+| NavigationLink      |                                                              |
 | NavigationSplitView |                                                              |
-| NavigationView      | iOS16.4已经废弃，推荐使用NavigationSplitView                 |
-| Scene               | iOS 14+引入                                                  |
+| NavigationView      | iOS17.2已经废弃，推荐使用NavigationSplitView或NavigationStack |
+| Picker              |                                                              |
 | ScrollView          |                                                              |
+| Section             |                                                              |
+| TabView             |                                                              |
+| Table               | iOS16+开始支持                                               |
 | Text                |                                                              |
 | Toggle              |                                                              |
-| View                |                                                              |
-| WindowGroup         | iOS 14+引入                                                  |
+|                     |                                                              |
+|                     |                                                              |
+
+上面控件不做特殊说明，都是iOS13+开始支持，并且都实现View协议。
+
+
+
+TODO: HelloControl
+
+
+
+#### a. 控件交互
+
+custom view init
+
+TODO: https://stackoverflow.com/questions/56910854/swiftui-views-with-a-custom-init
+
+
 
 
 
@@ -135,7 +156,7 @@ SwiftUI控件类列表，如下
 
 | 布局类  | 作用                                                         |
 | ------- | ------------------------------------------------------------ |
-| ForEach |                                                              |
+| ForEach | 循环遍历容器类的数据，多次调用回调，用于批量构建视图         |
 | Group   | 组合多个View成为一个单独控件，用于统一设置ViewModifier或者包装if-else显示逻辑 |
 | HStack  |                                                              |
 | List    |                                                              |
@@ -213,23 +234,7 @@ extension ForEach where ID == Data.Element.ID, Content : View, Data.Element : Id
 
 
 
-
-
-### (4) SwiftUI交互
-
-| 类             | 作用 |
-| -------------- | ---- |
-| NavigationLink |      |
-
-
-
-custom view init
-
-TODO: https://stackoverflow.com/questions/56910854/swiftui-views-with-a-custom-init
-
-
-
-### (5) SwiftUI绘图
+### (4) SwiftUI绘图
 
 | 类             | 作用                         |
 | -------------- | ---------------------------- |
@@ -239,9 +244,13 @@ TODO: https://stackoverflow.com/questions/56910854/swiftui-views-with-a-custom-i
 
 
 
+#### a. 控件渲染属性
 
 
-### (6) SwiftUI动画
+
+
+
+### (5) SwiftUI动画
 
 | 类        | 作用                                                     |
 | --------- | -------------------------------------------------------- |

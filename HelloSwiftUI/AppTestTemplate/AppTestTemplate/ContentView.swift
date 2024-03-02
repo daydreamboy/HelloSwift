@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    let pageItems: [(title: String, pageType: any DemoPage.Type)] = [
+    let pageItems1: [(title: String, pageType: any DemoPage.Type)] = [
+        (title: "Demo1", pageType: DemoPage1.self),
+        (title: "Demo2", pageType: DemoPage2.self),
+        (title: "Demo3", pageType: DemoPage3.self),
+    ]
+    
+    let pageItems2: [(title: String, pageType: any DemoPage.Type)] = [
         (title: "Demo1", pageType: DemoPage1.self),
         (title: "Demo2", pageType: DemoPage2.self),
         (title: "Demo3", pageType: DemoPage3.self),
@@ -17,9 +23,22 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                // Note: use ForEach to traverse pageItems
-                ForEach(pageItems, id: \.title) { item in
-                    NavigationLink(item.title, destination: AnyView(item.pageType.createPage(withTitle: .constant(item.title))).navigationBarTitle(item.title).navigationBarTitleDisplayMode(.inline))
+                Section {
+                    // Note: use ForEach to traverse pageItems
+                    ForEach(pageItems1, id: \.title) { item in
+                        NavigationLink(item.title, destination: AnyView(item.pageType.createPage(withTitle: .constant(item.title))).navigationBarTitle(item.title).navigationBarTitleDisplayMode(.inline))
+                    }
+                } header: {
+                    Text("pageItems1")
+                }
+                
+                Section {
+                    // Note: use ForEach to traverse pageItems
+                    ForEach(pageItems2, id: \.title) { item in
+                        NavigationLink(item.title, destination: AnyView(item.pageType.createPage(withTitle: .constant(item.title))).navigationBarTitle(item.title).navigationBarTitleDisplayMode(.inline))
+                    }
+                } header: {
+                    Text("pageItems2")
                 }
             }
             .navigationTitle("Demos")
