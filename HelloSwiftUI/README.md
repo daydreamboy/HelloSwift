@@ -146,6 +146,8 @@ TODO: https://stackoverflow.com/questions/56910854/swiftui-views-with-a-custom-i
 
 
 
+#### b. 控件通用属性
+
 
 
 ### (3) SwiftUI布局
@@ -241,10 +243,6 @@ extension ForEach where ID == Data.Element.ID, Content : View, Data.Element : Id
 | Angle          |                              |
 | GeometryReader | 创建一个自适应屏幕的view容器 |
 | Path           |                              |
-
-
-
-#### a. 控件渲染属性
 
 
 

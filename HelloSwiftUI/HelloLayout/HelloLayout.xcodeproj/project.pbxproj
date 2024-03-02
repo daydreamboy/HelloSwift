@@ -15,6 +15,7 @@
 		4F2AED7D2B936D8F0004291F /* DemoPage3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2AED792B936D8F0004291F /* DemoPage3.swift */; };
 		4F2AED7E2B936D8F0004291F /* UseForEach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2AED7A2B936D8F0004291F /* UseForEach.swift */; };
 		4F2AED7F2B936D8F0004291F /* DemoPage2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2AED7B2B936D8F0004291F /* DemoPage2.swift */; };
+		4F2AEDAE2B937D750004291F /* UseGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2AEDAD2B937D750004291F /* UseGroup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		4F2AED792B936D8F0004291F /* DemoPage3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoPage3.swift; sourceTree = "<group>"; };
 		4F2AED7A2B936D8F0004291F /* UseForEach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseForEach.swift; sourceTree = "<group>"; };
 		4F2AED7B2B936D8F0004291F /* DemoPage2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoPage2.swift; sourceTree = "<group>"; };
+		4F2AEDAD2B937D750004291F /* UseGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseGroup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,9 +82,10 @@
 		4F2AED782B936D8F0004291F /* AppTestDemos */ = {
 			isa = PBXGroup;
 			children = (
-				4F2AED7A2B936D8F0004291F /* UseForEach.swift */,
 				4F2AED7B2B936D8F0004291F /* DemoPage2.swift */,
 				4F2AED792B936D8F0004291F /* DemoPage3.swift */,
+				4F2AED7A2B936D8F0004291F /* UseForEach.swift */,
+				4F2AEDAD2B937D750004291F /* UseGroup.swift */,
 			);
 			path = AppTestDemos;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 				4F2AED6C2B936D4F0004291F /* ContentView.swift in Sources */,
 				4F2AED6A2B936D4F0004291F /* HelloLayoutApp.swift in Sources */,
 				4F2AED7F2B936D8F0004291F /* DemoPage2.swift in Sources */,
+				4F2AEDAE2B937D750004291F /* UseGroup.swift in Sources */,
 				4F2AED7E2B936D8F0004291F /* UseForEach.swift in Sources */,
 				4F2AED7C2B936D8F0004291F /* DemoPage.swift in Sources */,
 				4F2AED7D2B936D8F0004291F /* DemoPage3.swift in Sources */,

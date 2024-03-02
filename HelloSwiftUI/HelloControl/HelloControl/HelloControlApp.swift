@@ -1,14 +1,14 @@
 //
-//  HelloViewApp.swift
-//  HelloView
+//  HelloControlApp.swift
+//  HelloControl
 //
-//  Created by wesley_chen on 2024/1/8.
+//  Created by wesley_chen on 2024/3/2.
 //
 
 import SwiftUI
 
 @main
-struct HelloViewApp: App {
+struct HelloControlApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

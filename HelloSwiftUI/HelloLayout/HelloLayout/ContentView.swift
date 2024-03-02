@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     let pageItems: [(title: String, pageType: any DemoPage.Type)] = [
         (title: "Use ForEach", pageType: UseForEach.self),
-        (title: "Demo2", pageType: DemoPage2.self),
+        (title: "Use Group", pageType: UseGroup.self),
         (title: "Demo3", pageType: DemoPage3.self),
     ]
     

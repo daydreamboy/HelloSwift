@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct UseOffset: View {
+struct UseOffset: View, DemoPage {
     var body: some View {
         // Note: offset will keep original view occupied space,
         // so the others view aligned to the original view
@@ -17,6 +17,11 @@ struct UseOffset: View {
             .border(Color.gray)
         Text("Text below the original view")
             .border(Color.red)
+    }
+    
+    // MARK: DemoPage
+    static func createPage(withTitle title: Binding<String>) -> some View {
+        UseOffset()
     }
 }
 
