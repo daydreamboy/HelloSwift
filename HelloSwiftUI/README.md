@@ -143,6 +143,76 @@ SwiftUI控件类列表，如下
 | VStack  |                                                              |
 | ZStack  |                                                              |
 
+上面的布局类都实现了View协议，可以看做是一类特殊的视图。
+
+
+
+#### a. ForEach
+
+ForEach的定义，如下
+
+```swift
+struct ForEach<Data, ID, Content> where Data : RandomAccessCollection, ID : Hashable
+```
+
+举个例子，如下
+
+```swift
+private struct NamedFont: Identifiable {
+    let name: String
+    let font: Font
+    var id: String { name }
+}
+
+private let namedFonts: [NamedFont] = [
+    NamedFont(name: "Large Title", font: .largeTitle),
+    NamedFont(name: "Title", font: .title),
+    NamedFont(name: "Headline", font: .headline),
+    NamedFont(name: "Body", font: .body),
+    NamedFont(name: "Caption", font: .caption)
+]
+
+var body: some View {
+    ForEach(namedFonts) { namedFont in
+        Text(namedFont.name)
+            .font(namedFont.font)
+    }
+}
+```
+
+这里ForEach初始化函数，用的是
+
+```swift
+@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+extension ForEach where ID == Data.Element.ID, Content : View, Data.Element : Identifiable {
+
+    /// Creates an instance that uniquely identifies and creates views across
+    /// updates based on the identity of the underlying data.
+    ///
+    /// It's important that the `id` of a data element doesn't change unless you
+    /// replace the data element with a new data element that has a new
+    /// identity. If the `id` of a data element changes, the content view
+    /// generated from that data element loses any current state and animations.
+    ///
+    /// - Parameters:
+    ///   - data: The identified data that the ``ForEach`` instance uses to
+    ///     create views dynamically.
+    ///   - content: The view builder that creates views dynamically.
+    public init(_ data: Data, @ViewBuilder content: @escaping (Data.Element) -> Content)
+}
+```
+
+它有两个参数：
+
+* data，它是Data类型，而这个类型是在定义ForEach结构体时用到的泛型类型
+* content，它是回调类型。回调的入参是Data.Element类型，回调的返回值类型是Content，这两个类型也是泛型
+
+实际上ForEach还有其他初始化函数，这里不展开介绍，可以自行查阅苹果的文档。
+
+> 示例代码，见HelloLayout/UseForEach.swift
+
+
+
 
 
 ### (4) SwiftUI交互
