@@ -2746,6 +2746,106 @@ precondition(index > 0, "Index must be greater than zero.")
 
 
 
+### (2) Swift ABI stability、Module stability和Library evolution
+
+Swift开发过程，处理编译和链接问题，会遇到三个概念：ABI stability、Module stability和Library evolution
+
+| 概念                          | 作用                                                         | 支持版本           |
+| ----------------------------- | ------------------------------------------------------------ | ------------------ |
+| ABI stability (ABI稳定性)     | 系统提供的Swift标准库和runtime库稳定，app不需要内置一份Swift标准库和runtime库 | Swift5.0/Xcode10.2 |
+| Module stability (模块稳定性) | 不同版本编译好的Swift模块，可以和app编译版本不保持一致       | Swift5.1/Xcode11.0 |
+| Library evolution (库演进)    | 同一个Swift模块的API有增量变化，不需要使用者(app/framework)重新编译 | Swift5.1/Xcode11.0 |
+
+说明
+
+> 1. ABI stability，在Swift5.0/Xcode10.2已经支持，参考官方文档，如下
+>
+> > Swift’s ABI is currently declared stable for Swift 5 on Apple platforms[^21]
+>
+> 2. Module stability和Library evolution ，在Swift5.1/Xcode11.0已经支持，参考官方文档[^22]，如下
+>
+> > Swift 5.1 shipped with two new features related to binary stability which enable binary frameworks that can be distributed and shared with others:
+> >
+> > - *Module stability* allows Swift modules built with different compiler versions to be used together in one app.
+> > - *Library evolution support* allows developers of binary frameworks to make additive changes to the API of their framework while remaining binary compatible with previous versions.
+
+
+
+
+
+#### a. ABI stability
+
+官方文档描述[^21]，如下
+
+> ABI stability for Apple OSes means that apps deploying to upcoming releases of those OSes will no longer need to embed the Swift standard library and “overlay” libraries within the app bundle, shrinking their download size; the Swift runtime and standard library will be shipped with the OS, like the Objective-C runtime.
+
+
+
+#### b. Module stability
+
+官方文档描述[^21]，如下
+
+> Swift uses an opaque archive format called “swiftmodule” to describe the interface of a library, such as a framework “MagicKit”, rather than manually-written header files. However, the “swiftmodule” format is also tied to the current version of the compiler, which means an app developer can’t `import MagicKit` if MagicKit was built with a different version of Swift. That is, the app developer and the library author have to be using the same version of the compiler.
+>
+> To remove this restriction, the library author needs a feature currently being implemented called *module stability.*
+
+这段话的意思：Swift库使用swiftmodule来描述库（例如framework）的“头文件”，这个“头文件”是一种归档格式，而且和编译器版本绑定的，因此使用者import这个库，如果当前app编译版本和库的编译版本不一致时，则会产出报错，所以有个强制要求：the app developer and the library author have to be using the same version of the compiler。
+
+为了解决这个问题，引入Module stability，它在归档格式“头文件”基础上，增加文本描述的“头文件”，这样库的使用者，不用考虑库的编译版本。
+
+官方文档描述[^21]，如下
+
+> To remove this restriction, the library author needs a feature currently being implemented called *module stability.* This involves augmenting the opaque format with a textual summary of a module, similar to what you see in Xcodeʼs “Generated Interface” view, so that clients can use a module without having to care what compiler it was built with.
+
+
+
+#### c. Library evolution
+
+官方文档描述[^21]，如下
+
+> This feature is *library evolution support:* shipping a new version of a library *without* having to recompile its clients.
+
+这个描述比较简洁，意思是库更新版本后，不需要使用者（app或者依赖这个库的库），重新编译。
+
+在没有支持Library evolution特性时，实际上，库更新后，需要app重新编译的，这样有利于性能优化、大小剪裁等。
+
+官方文档描述[^21]，如下
+
+> Today, when a Swift library changes, any apps using that library have to be recompiled. This has some advantages: because the compiler knows the exact version of the library the app is using, it can make additional assumptions that reduce code size and make the app run faster.
+
+当然，有些情况，不适合要求库的使用者重新编译，例如Apple系统更新某个系统库、app更新三方的framework。
+
+官方文档也提到这些情况[^21]，如下
+
+> This happens when Apple updates the libraries in an OS, but it’s also important when one company’s binary framework depends on another company’s binary framework.
+
+
+
+默认情况下，Library evolution特性并不会开启[^22]。
+
+> Library evolution support is turned off by default.
+
+如果要开启，按照下面的方式
+
+* Xcode
+
+Build Settings设置`BUILD_LIBRARY_FOR_DISTRIBUTION`为YES，这个选项同时开启Library evolution和Module stability。官方文档描述[^22]，如下
+
+> This setting turns on both library evolution and module stability.
+
+* swiftc命令行
+
+传递`-enable-library-evolution` 和 `-emit-module-interface`参数
+
+举个例子，如下
+
+```shell
+$ swiftc Tack.swift Barn.swift Hay.swift \
+    -module-name Horse \
+    -emit-module -emit-library -emit-module-interface \
+    -enable-library-evolution
+```
+
 
 
 
@@ -4160,4 +4260,7 @@ https://stackoverflow.com/questions/29673027/difference-between-precondition-and
 [^18]:https://www.avanderlee.com/swift/anyobject-any/
 [^19]:https://www.hackingwithswift.com/swift/5.6/existential-any
 [^20]:https://byby.dev/swift-any-types
+
+[^21]:https://www.swift.org/blog/abi-stability-and-more/
+[^22]:https://www.swift.org/blog/library-evolution/
 
