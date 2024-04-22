@@ -4070,9 +4070,9 @@ Objective-C的description方法和debugDescription方法，在Swift 5.0中变成
 description的例子[^8][^9]，如下
 
 ```swift
-    override var description: String {
-        return "<\(type(of: self)): \(Unmanaged.passUnretained(self).toOpaque()), foo = \(1)>"
-    }
+override var description: String {
+    return "<\(type(of: self)): \(Unmanaged.passUnretained(self).toOpaque()), foo = \(1)>"
+}
 ```
 
 
@@ -4080,9 +4080,9 @@ description的例子[^8][^9]，如下
 debugDescription的例子[^10]，如下
 
 ```swift
-    override var debugDescription: String {
-        return "<\(type(of: self)): \(Unmanaged.passUnretained(self).toOpaque()), foo = \(2)>"
-    }
+override var debugDescription: String {
+    return "<\(type(of: self)): \(Unmanaged.passUnretained(self).toOpaque()), foo = \(2)>"
+}
 ```
 
 说明
