@@ -3154,11 +3154,22 @@ https://nalexn.github.io/swiftui-unit-testing/
 
 
 
+## 6、Swift和其他语言混编
+
+### (1) Swift和Objective-C混编[^3]
+
+这里介绍的Swift和Objective-C混编，主要有下面4种形式：
+
+| caller    | callee      | callee头文件                                                 |
+| --------- | ----------- | ------------------------------------------------------------ |
+| Swift源码 | OC源码      | Swift API接口自动生成，但需要配置XXX-Bridging-Header.h       |
+| OC源码    | Swift源码   | OC API接口自动生成，但需要配置Swift原始API接口一定语法约束   |
+| Swift源码 | OC静态库    | Swift API接口自动生成，但需要OC静态库支持Clang Module        |
+| OC源码    | Swift静态库 | OC API接口自动生成并在framework中，但需要配置Swift原始API接口一定语法约束 |
 
 
-## 6、Swift和Objective-C混编[^3]
 
-### (1) 在Swift中使用Objective-C代码
+#### a. 在Swift中使用Objective-C代码
 
 在Swift中使用Objective-C类，需要一个bridge header文件。如果工程中没有这个文件，在第一次新建一个Objective-C类时，Xcode会提示是否需要创建这个文件。如果选择是，则按照下面的命名规则，生成一个h文件。
 
@@ -3222,7 +3233,7 @@ class Test_use_OC_class_in_Swift: XCTestCase {
 
 
 
-### (2) 在Objective-C中使用Swift代码
+#### b. 在Objective-C中使用Swift代码
 
 在Objective-C中使用Swift代码，比上面相对步骤多一些。几个步骤，如下
 
@@ -3495,7 +3506,7 @@ SWIFT_CLASS("_TtC4Test9SomeClass")
 
 
 
-### (3) Swift使用OC静态库
+#### c. Swift使用OC静态库
 
 Swift使用OC静态库，需要下面几个步骤
 
@@ -3542,7 +3553,7 @@ func test_call_OC_method_2() async throws {
 
 
 
-### (4) OC使用Swift静态库
+#### d. OC使用Swift静态库
 
 OC使用Swift静态库，需要两部分的准备：
 
@@ -3649,6 +3660,14 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 ```
 
 上面的符号，都不是自己写的Swift代码中的符号，可能编译静态库时，编译器加入了上面一些符号，但是OC工程中根本没有链接Swift相关系统库。简单的解决方法是：在OC工程新增一个Swift文件（这里命名为Dummy.swift）和XXX-Bridge-Header.h，这样在Build Settings中可以搜索到`SWIFT_VERSION`。再次编译链接，没有上面的链接错误。
+
+
+
+### (2) Swift和C混编
+
+TODO
+
+
 
 
 

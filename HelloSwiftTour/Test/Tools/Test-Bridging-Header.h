@@ -3,3 +3,4 @@
 //
 
 #import "WCSecurityTool.h"
+#import "WCCommonCTool.h"
