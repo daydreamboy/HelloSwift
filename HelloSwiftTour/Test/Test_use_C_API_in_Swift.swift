@@ -68,7 +68,18 @@ final class Test_use_C_API_in_Swift: XCTestCase {
         print("\(a) / \(b) = \(r3)")
         print("\(a) % \(b) = \(r2)")
         
-        // Case3
+        // Case 3
+        var ptr: UnsafeMutablePointer<Int32>? = nil
+        let _ = quotient(a, b, ptr)
+        // Note: ptr?.pointee return a generic type Pointee which now is Int32
+        let reminder: Int32? = ptr?.pointee
+        if let value = reminder {
+            print("Pointer value is: \(value)")
+        } else {
+            print("Pointer is nil")
+        }
+        
+        // Case4
         let p1 = createPoint2D(3, 3)
         let p2 = createPoint2D(4, 4)
         let d = distance(p1, p2)
@@ -76,13 +87,15 @@ final class Test_use_C_API_in_Swift: XCTestCase {
     }
     
     func test_use_variadic_function_vasprintf() throws {
-        print(swiftprintf(format: "√2 ≅ %g", arguments: sqrt(2.0))!) // Prints "√2 ≅ 1.41421"
+        print(use_vasprintf(format: "√2 ≅ %g", arguments: sqrt(2.0))!) // Prints "√2 ≅ 1.41421"
     }
     
-    func swiftprintf(format: String, arguments: CVarArg...) -> String? {
+    func use_vasprintf(format: String, arguments: CVarArg...) -> String? {
+        // withVaList is Swift helper function to get va_list
         return withVaList(arguments) { va_list in
             var buffer: UnsafeMutablePointer<Int8>? = nil
             return format.withCString { cString in
+                // Note: vasprintf is a C function using va_list type
                 guard vasprintf(&buffer, cString, va_list) != 0 else {
                     return nil
                 }

@@ -3667,6 +3667,40 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 
 TODO
 
+#### a. 基本类型映射
+
+
+
+
+
+#### 指针类型映射
+
+* 返回值、变量、参数
+
+| C语法          | Swift语法                    |
+| -------------- | ---------------------------- |
+| `const Type *` | `UnsafePointer<Type>`        |
+| `Type *`       | `UnsafeMutablePointer<Type>` |
+
+* 类类型，即C的结构体类型
+
+| C语法               | Swift语法                                 |
+| ------------------- | ----------------------------------------- |
+| `Type * const *`    | `UnsafePointer<Type>`                     |
+| `Type * __strong *` | `UnsafeMutablePointer<Type>`              |
+| `Type **`           | `AutoreleasingUnsafeMutablePointer<Type>` |
+
+* 任意类型指针
+
+| C语法          | Swift语法                 |
+| -------------- | ------------------------- |
+| `const void *` | `UnsafeRawPointer`        |
+| `void *`       | `UnsafeMutableRawPointer` |
+
+
+
+#### Swift调用C可变参数列表函数
+
 
 
 
