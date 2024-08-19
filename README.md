@@ -3167,6 +3167,10 @@ https://nalexn.github.io/swiftui-unit-testing/
 | Swift源码 | OC静态库    | Swift API接口自动生成，但需要OC静态库支持Clang Module        |
 | OC源码    | Swift静态库 | OC API接口自动生成并在framework中，但需要配置Swift原始API接口一定语法约束 |
 
+说明
+
+> Swift和Objective-C混编，存在一些限制，两者并不能完全相互访问代码中的全局变量、全局函数、枚举类型等。这个[SO](https://stackoverflow.com/questions/26463487/swift-globals-and-global-functions-in-objective-c)提到Swift中全局变量、全局函数，都不能被Objective-C访问。
+
 
 
 #### a. 在Swift中使用Objective-C代码
@@ -3235,7 +3239,7 @@ class Test_use_OC_class_in_Swift: XCTestCase {
 
 #### b. 在Objective-C中使用Swift代码
 
-在Objective-C中使用Swift代码，比上面相对步骤多一些。几个步骤，如下
+在Objective-C中使用Swift类，比上面相对步骤多一些。几个步骤，如下
 
 * 新建Swift类，必须继承自NSObject
   * 暴露给Objective-C的函数或属性，需要使用`@objc`标记。
@@ -3665,15 +3669,129 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 
 ### (2) Swift和C混编
 
-TODO
-
-#### a. 基本类型映射
 
 
+#### a. C的结构体和Union的映射
+
+| C语法       | Swift语法                  |
+| ----------- | -------------------------- |
+| 结构体      | 类                         |
+| 联合(Union) | 类，但是类的字段是共内存的 |
 
 
 
-#### 指针类型映射
+这篇[官方文档](https://developer.apple.com/documentation/swift/using-imported-c-structs-and-unions-in-swift)，提供C 结构体和Union对应Swift类型的几个例子，如下
+
+* C 结构体
+
+```swift
+struct Color {
+    float r, g, b;
+};
+typedef struct Color Color;
+==>
+public struct Color {
+    var r: Float
+    var g: Float
+    var b: Float
+
+    init()
+    init(r: Float, g: Float, b: Float)
+}
+```
+
+对于Struct，Swift编译器自动生成2个构造函数：无参的构造函数，和带全部参数的构造函数。
+
+* C 联合(Union)
+
+```swift
+union SchroedingersCat {
+    bool isAlive;
+    bool isDead;
+};
+==>
+struct SchroedingersCat {
+    var isAlive: Bool { get set }
+    var isDead: Bool { get set }
+
+    init(isAlive: Bool)
+    init(isDead: Bool)
+
+    init()
+}
+```
+
+对于Union，Swift编译器，为每个字段，都自动生成对应的带参数构造函数，以及一个无参的构造函数。
+
+说明
+
+> C 结构体和联合(Union)，可以声明匿名的，Swift也可以有对应的映射。这篇[官方文档](https://developer.apple.com/documentation/swift/using-imported-c-structs-and-unions-in-swift)，提供一个简单示例，并没有把完整的Swift映射接口API示例出来。
+>
+> ```swift
+> struct Cake {
+>     union {
+>         int layers;
+>         double height;
+>     };
+> 
+>     struct {
+>         bool icing;
+>         bool sprinkles;
+>     } toppings;
+> };
+> ==>
+> // 无参数的构造函数
+> var simpleCake = Cake()
+> simpleCake.layers = 5
+> print(simpleCake.toppings.icing)
+> // Prints "false"
+> 
+> // 有参数的构造函数
+> let cake = Cake(
+>     .init(layers: 2),
+>     toppings: .init(icing: true, sprinkles: false)
+> )
+> print("The cake has \(cake.layers) layers.")
+> // Prints "The cake has 2 layers."
+> print("Does it have sprinkles?", cake.toppings.sprinkles ? "Yes." : "No.")
+> ```
+>
+> 这里有参数的构造函数，实际上分别初始化内嵌的Union和Struct，直接使用`.init()`，而不是`XXX.init()`，因为这里内嵌的Union和Struct都是匿名的。
+
+
+
+#### b. C函数的映射
+
+这篇[官方文档](https://developer.apple.com/documentation/swift/using-imported-c-functions-in-swift)，介绍C函数映射到Swift函数，官方文档描述，如下
+
+> Swift imports any function declared in a C header as a Swift global function.
+
+任何C头文件声明的函数，在Swift代码中视为全局Swift函数。
+
+
+
+函数的参数类型，包括基本类型、Struct/Union类型、指针类型等。
+
+Struct/Union类型，在上面已经介绍过。
+
+
+
+##### 基本类型映射
+
+| C语法  | Swift语法 |
+| ------ | --------- |
+| int    | Int32     |
+| bool   | Bool      |
+| double | Double    |
+| float  | Float     |
+
+说明
+
+> 这些基本类型，可以通过Xcode代码提示查看Swift的映射类型。这里就不一一列举。
+
+
+
+##### 指针类型映射
 
 * 返回值、变量、参数
 
@@ -3699,9 +3817,114 @@ TODO
 
 
 
-#### Swift调用C可变参数列表函数
+##### Swift调用C可变参数列表函数
+
+这篇[官方文档](https://developer.apple.com/documentation/swift/using-imported-c-functions-in-swift)，介绍Swift调用C可变参数列表函数，但是存在限制，如下
+
+> Swift only imports C variadic functions that use a `va_list` for their arguments. C functions that use the `...` syntax for variadic arguments are not imported, and therefore can’t be called using `CVarArg` arguments.
+
+Swift仅支持带`va_list`参数的C可变参数函数，但不支持带`...`参数的C可变参数函数。
+
+举个例子，如下
+
+```c
+// Error: 'variadic_func1' is unavailable: Variadic function is unavailable
+int variadic_func1(int count, ...);
+int variadic_func_with_vaList(int count, va_list ap);
+```
+
+`variadic_func1`函数，是无法在Swift代码中调用的，只能采用`variadic_func_with_vaList`函数的形式。
+
+由于无法直接传递可变参数列表到C函数的`...`参数，因此需要构造`va_list`参数。
+
+Swift提供两种方式：
+
+* withVaList函数，回调形式。官方推荐使用这个方式。
+* getVaList函数，直接调用形式。
+
+withVaList函数的签名，如下
+
+```swift
+func withVaList<R>(_ args: [any CVarArg], _ body: (CVaListPointer) -> R) -> R
+```
+
+withVaList函数是一个泛型函数，有2个参数和返回值R，R是泛型：
+
+* args参数，CVarArg类型的数组
+* body参数，是一个回调。它的参数类型是CVaListPointer，返回值是一个泛型R
+
+举个使用withVaList函数的例子，如下
+
+```swift
+func wrappper2_for_variadic_func_with_vaList(_ count: Int32, _ arguments: CVarArg...) -> Int32 {
+    return withVaList(arguments) { va_list in
+        return variadic_func_with_vaList(count, va_list)
+    }
+}
+
+// Case 3
+let result3: Int32 = wrappper2_for_variadic_func_with_vaList(3, 4, 5, 6)
+XCTAssert(result3 == 15)
+```
+
+除了使用自定义的带`va_list`参数的C可变参数函数，还可以使用带`va_list`参数的C系统库函数。
+
+举个[官方文档](https://developer.apple.com/documentation/swift/using-imported-c-functions-in-swift)的例子，如下
+
+```swift
+func test_use_variadic_function_vasprintf() throws {
+    print(wrappper_for_vasprintf(format: "√2 ≅ %g", arguments: sqrt(2.0))!) // Prints "√2 ≅ 1.41421"
+}
+
+func wrappper_for_vasprintf(format: String, arguments: CVarArg...) -> String? {
+    // withVaList is Swift helper function to get va_list
+    return withVaList(arguments) { va_list in
+        var buffer: UnsafeMutablePointer<Int8>? = nil
+        return format.withCString { cString in
+            // Note: vasprintf is a C function using va_list type
+            guard vasprintf(&buffer, cString, va_list) != 0 else {
+                return nil
+            }
+
+            return String(validatingUTF8: buffer!)
+        }
+    }
+}
+```
+
+这里vasprintf是C系统库函数，它带一个`va_list`参数。
 
 
+
+#### c. C的宏的映射
+
+这篇[官方文档](https://developer.apple.com/documentation/swift/using-imported-c-macros-in-swift)，提到C的宏，可以被Swift使用。但是存在一些限制，如下
+
+> Swift automatically imports simple, constant-like macros, declared with the `#define` directive, as global constants. Macros are imported when they use literals for string, floating-point, or integer values, or use operators like `+`, `-`, `>`, and `==` between literals or previously defined macros.
+
+仅支持能作为常量使用的宏。官方提供几个例子，如下
+
+```swift
+#define FADE_ANIMATION_DURATION 0.35
+#define VERSION_STRING "2.2.10.0a"
+#define MAX_RESOLUTION 1268
+
+#define HALF_RESOLUTION (MAX_RESOLUTION / 2)
+#define IS_HIGH_RES (MAX_RESOLUTION > 1024)
+==>
+let FADE_ANIMATION_DURATION = 0.35
+let VERSION_STRING = "2.2.10.0a"
+let MAX_RESOLUTION = 1268
+
+let HALF_RESOLUTION = 634
+let IS_HIGH_RES = true
+```
+
+如果C的宏，是比较复杂的宏，例如有参数、替换代码，则推荐使用函数或者泛型。
+
+[官方文档](https://developer.apple.com/documentation/swift/using-imported-c-macros-in-swift)的描述，如下
+
+> You use complex macros in C and Objective-C to avoid type-checking constraints or to avoid retyping large amounts of boilerplate code. However, macros can make debugging and refactoring difficult. In Swift, you can use functions and generics to achieve the same results without any compromises.
 
 
 

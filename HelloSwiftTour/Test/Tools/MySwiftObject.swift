@@ -22,3 +22,7 @@ class MySwiftObject: NSObject {
         print("anotherFunction called")
     }
 }
+
+func MyGlobalFunc() -> Int {
+    return 10
+}

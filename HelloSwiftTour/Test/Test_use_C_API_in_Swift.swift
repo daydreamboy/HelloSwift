@@ -28,6 +28,21 @@ final class Test_use_C_API_in_Swift: XCTestCase {
         XCTAssertTrue(mittens.isAlive)
     }
     
+    func test_use_nested_struct_SmallCake() throws {
+        var simpleCake = SmallCake()
+        simpleCake.size.layers = 5
+        print(simpleCake.toppings.icing) // Prints "false"
+        XCTAssertFalse(simpleCake.toppings.icing)
+        
+        let cake = SmallCake(
+            size: U1(layers: 2),
+            toppings: .init(icing: true, sprinkles: false)
+        )
+        
+        print("The cake has \(cake.size.layers) layers.") // Prints "The cake has 2 layers."
+        print("Does it have sprinkles?", cake.toppings.sprinkles ? "Yes." : "No.") // Prints "Does it have sprinkles? No."
+    }
+    
     func test_use_unnamed_struct_Cake() throws {
         var simpleCake = Cake()
         simpleCake.layers = 5
@@ -69,7 +84,7 @@ final class Test_use_C_API_in_Swift: XCTestCase {
         print("\(a) % \(b) = \(r2)")
         
         // Case 3
-        var ptr: UnsafeMutablePointer<Int32>? = nil
+        let ptr: UnsafeMutablePointer<Int32>? = nil
         let _ = quotient(a, b, ptr)
         // Note: ptr?.pointee return a generic type Pointee which now is Int32
         let reminder: Int32? = ptr?.pointee
@@ -87,10 +102,10 @@ final class Test_use_C_API_in_Swift: XCTestCase {
     }
     
     func test_use_variadic_function_vasprintf() throws {
-        print(use_vasprintf(format: "√2 ≅ %g", arguments: sqrt(2.0))!) // Prints "√2 ≅ 1.41421"
+        print(wrappper_for_vasprintf(format: "√2 ≅ %g", arguments: sqrt(2.0))!) // Prints "√2 ≅ 1.41421"
     }
     
-    func use_vasprintf(format: String, arguments: CVarArg...) -> String? {
+    func wrappper_for_vasprintf(format: String, arguments: CVarArg...) -> String? {
         // withVaList is Swift helper function to get va_list
         return withVaList(arguments) { va_list in
             var buffer: UnsafeMutablePointer<Int8>? = nil
@@ -100,9 +115,39 @@ final class Test_use_C_API_in_Swift: XCTestCase {
                     return nil
                 }
 
-
                 return String(validatingUTF8: buffer!)
             }
+        }
+    }
+    
+    func test_use_variadic_func_with_vaList_1() throws {
+        // Error: 'variadic_func1' is unavailable: Variadic function is unavailable
+        //variadic_func1
+        
+        // Case 1
+        let count: Int32 = 3
+        let values: [Int32] = [1, 2, 3]
+        let result1: Int32 = withVaList(values) { vaListPointer in
+            return variadic_func_with_vaList(count, vaListPointer)
+        }
+        XCTAssert(result1 == 6)
+        
+        // Case 2
+        let result2: Int32 = wrappper1_for_variadic_func_with_vaList(count: 3, arguments: 1, 2, 3)
+        XCTAssert(result2 == 6)
+        
+        // Case 3
+        let result3: Int32 = wrappper2_for_variadic_func_with_vaList(3, 4, 5, 6)
+        XCTAssert(result3 == 15)
+    }
+    
+    func wrappper1_for_variadic_func_with_vaList(count: Int32, arguments: CVarArg...) -> Int32 {
+        return variadic_func_with_vaList(count, getVaList(arguments))
+    }
+    
+    func wrappper2_for_variadic_func_with_vaList(_ count: Int32, _ arguments: CVarArg...) -> Int32 {
+        return withVaList(arguments) { va_list in
+            return variadic_func_with_vaList(count, va_list)
         }
     }
 }

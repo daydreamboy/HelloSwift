@@ -45,6 +45,20 @@ union SchroedingersCat {
     bool isDead;
 };
 
+#pragma mark - Named Struct and Union
+
+struct SmallCake {
+    union U1 {
+        int layers;
+        double height;
+    } size;
+
+    struct S1 {
+        bool icing;
+        bool sprinkles;
+    } toppings;
+};
+
 #pragma mark - Unnamed Struct and Union
 
 struct Cake {
@@ -99,3 +113,17 @@ struct Point2D {
 };
 struct Point2D createPoint2D(float x, float y);
 float distance(struct Point2D from, struct Point2D to);
+
+#pragma mark - Variadic Functions
+
+/**
+ WARNING: this variadic function with ... can't be exported to Swift code
+ 
+ Apple Doc:
+ Swift only imports C variadic functions that use a va_list for their arguments. C functions that use 
+ the ... syntax for variadic arguments are not imported, and therefore can’t be called using CVarArg arguments.
+ https://developer.apple.com/documentation/swift/using-imported-c-functions-in-swift
+ */
+int variadic_func1(int count, ...);
+
+int variadic_func_with_vaList(int count, va_list ap);

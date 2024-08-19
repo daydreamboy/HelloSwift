@@ -29,6 +29,10 @@
     
     // Case 3
     //[object anotherFunction];
+    
+    // Case 4: Can't access global Swift function
+    // @see https://stackoverflow.com/questions/26463487/swift-globals-and-global-functions-in-objective-c
+    //MyGlobalFunc();
 }
 
 @end

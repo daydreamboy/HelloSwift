@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <math.h>
+#include <stdarg.h>
 
 #include "WCCommonCTool.h"
 
@@ -40,4 +41,35 @@ float distance(struct Point2D from, struct Point2D to) {
     float dy = to.y - from.y;
     
     return sqrt(dx * dx + dy * dy);
+}
+
+int variadic_func1(int count, ...) {
+    printf("variadic_func1 called\n");
+    
+    int arg;
+    int sum = 0;
+
+    va_list ap;
+    va_start(ap, count);
+    for (int i = 0; i < count; ++i) {
+        arg = va_arg(ap, int);
+        sum += arg;
+    }
+    va_end(ap);
+
+    return sum;
+}
+
+int variadic_func_with_vaList(int count, va_list ap) {
+    printf("variadic_func1 called\n");
+    
+    int arg;
+    int sum = 0;
+    
+    for (int i = 0; i < count; ++i) {
+        arg = va_arg(ap, int);
+        sum += arg;
+    }
+    
+    return sum;
 }
