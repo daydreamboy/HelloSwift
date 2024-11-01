@@ -2848,6 +2848,10 @@ $ swiftc Tack.swift Barn.swift Hay.swift \
 
 
 
+### (3) 检查二进制文件是否包含Swift代码
+
+
+
 
 
 ## 3、Swift关键词
