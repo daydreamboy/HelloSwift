@@ -1,0 +1,3 @@
+[submodule "HelloSceneKitFramework/SCNBook-code"]
+	path = HelloSceneKitFramework/SCNBook-code
+	url = git@github.com:daydreamboy/SCNBook-code.git
