@@ -2859,7 +2859,12 @@ $ swiftc Tack.swift Barn.swift Hay.swift \
 * 空Swift文件包含的符号
 * 导入Foundation库的系统符号
 
-一个正常的Swift代码，应该都带有上面的符号。所以判断是否包含这两类符号，作为是否包含Swift代码的依据。
+一个正常的Swift代码，应该都带有上面的符号。所以判断是否包含这两类符号（后面称为检测符号），作为是否包含Swift代码的依据。
+
+说明
+
+> 1. 仅验证Release和Debug下，二进制文件包含的符号是一样的。下面的分析以Release编译为准。
+> 2. 纯Objective-C的静态库和动态库，应该不能包含Swift检测符号
 
 
 
