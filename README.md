@@ -2956,13 +2956,46 @@ ImportFoundation.o:
 (undefined) weak external __swift_FORCE_LOAD_$_swiftDispatch
 (undefined) weak external __swift_FORCE_LOAD_$_swiftFoundation
 (undefined) weak external __swift_FORCE_LOAD_$_swiftObjectiveC
+(undefined) weak external __swift_FORCE_LOAD_$_swiftXPC
 ```
 
 
 
 #### b. 动态库
 
+* 空Swift文件包含的符号
 
+```shell
+$ nm -m HelloDynamicFramework 
+0000000000004048 (__TEXT,__const) external _HelloDynamicFrameworkVersionNumber
+0000000000004000 (__TEXT,__const) external _HelloDynamicFrameworkVersionString
+0000000000004050 (__TEXT,__const) non-external (was a private external) ___swift_reflection_version
+```
+
+
+
+* 导入Foundation库的系统符号
+
+```shell
+$ nm -m HelloDynamicFramework
+0000000000004048 (__TEXT,__const) external _HelloDynamicFrameworkVersionNumber
+0000000000004000 (__TEXT,__const) external _HelloDynamicFrameworkVersionString
+0000000000004050 (__TEXT,__const) non-external (was a private external) ___swift_reflection_version
+                 (undefined) weak external __swift_FORCE_LOAD_$_swiftCoreFoundation (from libswiftCoreFoundation)
+0000000000008018 (__DATA_CONST,__const) non-external (was a private external) __swift_FORCE_LOAD_$_swiftCoreFoundation_$_HelloDynamicFramework
+                 (undefined) weak external __swift_FORCE_LOAD_$_swiftDarwin (from libswiftDarwin)
+0000000000008010 (__DATA_CONST,__const) non-external (was a private external) __swift_FORCE_LOAD_$_swiftDarwin_$_HelloDynamicFramework
+                 (undefined) weak external __swift_FORCE_LOAD_$_swiftDispatch (from libswiftDispatch)
+0000000000008020 (__DATA_CONST,__const) non-external (was a private external) __swift_FORCE_LOAD_$_swiftDispatch_$_HelloDynamicFramework
+                 (undefined) weak external __swift_FORCE_LOAD_$_swiftFoundation (from Foundation)
+0000000000008000 (__DATA_CONST,__const) non-external (was a private external) __swift_FORCE_LOAD_$_swiftFoundation_$_HelloDynamicFramework
+                 (undefined) weak external __swift_FORCE_LOAD_$_swiftObjectiveC (from libswiftObjectiveC)
+0000000000008008 (__DATA_CONST,__const) non-external (was a private external) __swift_FORCE_LOAD_$_swiftObjectiveC_$_HelloDynamicFramework
+                 (undefined) weak external __swift_FORCE_LOAD_$_swiftXPC (from libswiftXPC)
+0000000000008028 (__DATA_CONST,__const) non-external (was a private external) __swift_FORCE_LOAD_$_swiftXPC_$_HelloDynamicFramework
+```
+
+可以看出和上面静态库的符号，是一样的，这里不做赘述。
 
 
 
