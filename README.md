@@ -2850,6 +2850,118 @@ $ swiftc Tack.swift Barn.swift Hay.swift \
 
 ### (3) 检查二进制文件是否包含Swift代码
 
+检查二进制文件是否包含Swift代码，主要按照静态库和动态库来分析。
+
+一般来说二进制文件包含两部分的符号：系统符号和用户符号（开发者的代码）。由于不是所有二进制文件都可以代码访问，因此这里主要检查系统符号。
+
+这里先介绍下检查系统符号的处理流程：
+
+* 空Swift文件包含的符号
+* 导入Foundation库的系统符号
+
+一个正常的Swift代码，应该都带有上面的符号。所以判断是否包含这两类符号，作为是否包含Swift代码的依据。
+
+
+
+#### a. 静态库
+
+* 空Swift文件包含的符号
+
+```shell
+$ nm -m HelloStaticFramework
+
+HelloStaticFramework_vers.o:
+0000000000000048 (__TEXT,__const) external [no dead strip] _HelloStaticFrameworkVersionNumber
+0000000000000000 (__TEXT,__const) external [no dead strip] _HelloStaticFrameworkVersionString
+0000000000000000 (__TEXT,__text) non-external ltmp0
+0000000000000000 (__TEXT,__const) non-external ltmp1
+
+Empty.o:
+0000000000000000 (__TEXT,__const) weak private external [no dead strip] ___swift_reflection_version
+0000000000000002 (__LLVM,__swift_modhash) non-external [no dead strip] l_llvm.swift_module_hash
+0000000000000000 (__TEXT,__text) non-external ltmp0
+0000000000000000 (__TEXT,__const) non-external ltmp1
+0000000000000002 (__LLVM,__swift_modhash) non-external ltmp2
+0000000000000012 (__DATA,__objc_imageinfo) non-external ltmp3
+```
+
+这里选取下面符号作为检测符号
+
+```shell
+0000000000000000 (__TEXT,__const) weak private external [no dead strip] ___swift_reflection_version
+0000000000000002 (__LLVM,__swift_modhash) non-external [no dead strip] l_llvm.swift_module_hash
+```
+
+
+
+* 导入Foundation库的系统符号
+
+```shell
+$ nm -m HelloStaticFramework
+
+HelloStaticFramework_vers.o:
+0000000000000048 (__TEXT,__const) external [no dead strip] _HelloStaticFrameworkVersionNumber
+0000000000000000 (__TEXT,__const) external [no dead strip] _HelloStaticFrameworkVersionString
+0000000000000000 (__TEXT,__text) non-external ltmp0
+0000000000000000 (__TEXT,__const) non-external ltmp1
+
+Empty.o:
+0000000000000030 (__TEXT,__const) weak private external [no dead strip] ___swift_reflection_version
+                 (undefined) weak external __swift_FORCE_LOAD_$_swiftCoreFoundation
+0000000000000018 (__DATA,__const) weak private external [no dead strip] __swift_FORCE_LOAD_$_swiftCoreFoundation_$_HelloStaticFramework
+                 (undefined) weak external __swift_FORCE_LOAD_$_swiftDarwin
+0000000000000010 (__DATA,__const) weak private external [no dead strip] __swift_FORCE_LOAD_$_swiftDarwin_$_HelloStaticFramework
+                 (undefined) weak external __swift_FORCE_LOAD_$_swiftDispatch
+0000000000000020 (__DATA,__const) weak private external [no dead strip] __swift_FORCE_LOAD_$_swiftDispatch_$_HelloStaticFramework
+                 (undefined) weak external __swift_FORCE_LOAD_$_swiftFoundation
+0000000000000000 (__DATA,__const) weak private external [no dead strip] __swift_FORCE_LOAD_$_swiftFoundation_$_HelloStaticFramework
+                 (undefined) weak external __swift_FORCE_LOAD_$_swiftObjectiveC
+0000000000000008 (__DATA,__const) weak private external [no dead strip] __swift_FORCE_LOAD_$_swiftObjectiveC_$_HelloStaticFramework
+                 (undefined) weak external __swift_FORCE_LOAD_$_swiftXPC
+0000000000000028 (__DATA,__const) weak private external [no dead strip] __swift_FORCE_LOAD_$_swiftXPC_$_HelloStaticFramework
+0000000000000032 (__LLVM,__swift_modhash) non-external [no dead strip] l_llvm.swift_module_hash
+0000000000000000 (__TEXT,__text) non-external ltmp0
+0000000000000000 (__DATA,__const) non-external ltmp1
+0000000000000030 (__TEXT,__const) non-external ltmp2
+0000000000000032 (__LLVM,__swift_modhash) non-external ltmp3
+0000000000000042 (__DATA,__objc_imageinfo) non-external ltmp4
+
+ImportFoundation.o:
+0000000000000030 (__TEXT,__const) weak private external [no dead strip] ___swift_reflection_version
+                 (undefined) weak external __swift_FORCE_LOAD_$_swiftCoreFoundation
+0000000000000018 (__DATA,__const) weak private external [no dead strip] __swift_FORCE_LOAD_$_swiftCoreFoundation_$_HelloStaticFramework
+                 (undefined) weak external __swift_FORCE_LOAD_$_swiftDarwin
+0000000000000010 (__DATA,__const) weak private external [no dead strip] __swift_FORCE_LOAD_$_swiftDarwin_$_HelloStaticFramework
+                 (undefined) weak external __swift_FORCE_LOAD_$_swiftDispatch
+0000000000000020 (__DATA,__const) weak private external [no dead strip] __swift_FORCE_LOAD_$_swiftDispatch_$_HelloStaticFramework
+                 (undefined) weak external __swift_FORCE_LOAD_$_swiftFoundation
+0000000000000000 (__DATA,__const) weak private external [no dead strip] __swift_FORCE_LOAD_$_swiftFoundation_$_HelloStaticFramework
+                 (undefined) weak external __swift_FORCE_LOAD_$_swiftObjectiveC
+0000000000000008 (__DATA,__const) weak private external [no dead strip] __swift_FORCE_LOAD_$_swiftObjectiveC_$_HelloStaticFramework
+                 (undefined) weak external __swift_FORCE_LOAD_$_swiftXPC
+0000000000000028 (__DATA,__const) weak private external [no dead strip] __swift_FORCE_LOAD_$_swiftXPC_$_HelloStaticFramework
+0000000000000032 (__LLVM,__swift_modhash) non-external [no dead strip] l_llvm.swift_module_hash
+0000000000000000 (__TEXT,__text) non-external ltmp0
+0000000000000000 (__DATA,__const) non-external ltmp1
+0000000000000030 (__TEXT,__const) non-external ltmp2
+0000000000000032 (__LLVM,__swift_modhash) non-external ltmp3
+0000000000000042 (__DATA,__objc_imageinfo) non-external ltmp4
+```
+
+除了空Swift文件包含的符号，导入Foundation库的系统符号，下面符号作为检测符号。
+
+```shell
+(undefined) weak external __swift_FORCE_LOAD_$_swiftCoreFoundation
+(undefined) weak external __swift_FORCE_LOAD_$_swiftDarwin
+(undefined) weak external __swift_FORCE_LOAD_$_swiftDispatch
+(undefined) weak external __swift_FORCE_LOAD_$_swiftFoundation
+(undefined) weak external __swift_FORCE_LOAD_$_swiftObjectiveC
+```
+
+
+
+#### b. 动态库
+
 
 
 
