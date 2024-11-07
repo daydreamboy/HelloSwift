@@ -11,6 +11,7 @@
 		18D775C522AD944300AE281E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D775C422AD944300AE281E /* ContentView.swift */; };
 		18D775C722AD944400AE281E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C622AD944400AE281E /* Assets.xcassets */; };
 		18D775D822AD963800AE281E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D775DA22AD963800AE281E /* LaunchScreen.storyboard */; };
+		4F2CF0092CCF3C3C00E85766 /* Solar Scene.scn in Resources */ = {isa = PBXBuildFile; fileRef = 4F2CF0082CCF3C3C00E85766 /* Solar Scene.scn */; };
 		8327D603264431B200CE7691 /* Planet+Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8327D602264431B200CE7691 /* Planet+Info.swift */; };
 		8327D605264435B600CE7691 /* PlanetInfoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8327D604264435B600CE7691 /* PlanetInfoRow.swift */; };
 		832C19582643D94900E2092F /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832C19572643D94900E2092F /* ColorPalette.swift */; };
@@ -27,6 +28,7 @@
 		18D775C622AD944400AE281E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18D775CE22AD944400AE281E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18D775DE22AD96B400AE281E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4F2CF0082CCF3C3C00E85766 /* Solar Scene.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = "Solar Scene.scn"; sourceTree = "<group>"; };
 		8327D602264431B200CE7691 /* Planet+Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planet+Info.swift"; sourceTree = "<group>"; };
 		8327D604264435B600CE7691 /* PlanetInfoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetInfoRow.swift; sourceTree = "<group>"; };
 		832C19572643D94900E2092F /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				18D775C622AD944400AE281E /* Assets.xcassets */,
 				18D775DA22AD963800AE281E /* LaunchScreen.storyboard */,
 				18D775CE22AD944400AE281E /* Info.plist */,
+				4F2CF0082CCF3C3C00E85766 /* Solar Scene.scn */,
 			);
 			path = SolarScenes;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F2CF0092CCF3C3C00E85766 /* Solar Scene.scn in Resources */,
 				18D775D822AD963800AE281E /* LaunchScreen.storyboard in Resources */,
 				18D775C722AD944400AE281E /* Assets.xcassets in Resources */,
 			);

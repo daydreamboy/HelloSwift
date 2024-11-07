@@ -811,9 +811,15 @@ https://developer.apple.com/documentation/swiftui/migrating-from-the-observable-
 
 
 
+TODO: 
+
+https://nalexn.github.io/swiftui-unit-testing/
 
 
 
+SwiftUI tutorial
+
+https://developer.apple.com/tutorials/swiftui/composing-complex-interfaces
 
 
 

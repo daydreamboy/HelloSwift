@@ -31,14 +31,21 @@
 /// THE SOFTWARE.
 
 import SwiftUI
+import SceneKit
 
 struct ContentView: View {
   @ObservedObject var viewModel = ViewModel()
 
+  var scene = makeScene()
   var body: some View {
     ZStack {
+      /*
       ColorPalette.secondary
         .ignoresSafeArea()
+       */
+      SceneView(scene: scene, pointOfView: setUpCamera(planet: viewModel.selectedPlanet), options: [.allowsCameraControl])
+        .background(ColorPalette.secondary)
+        .edgesIgnoringSafeArea(.all)
 
       VStack {
         if let planet = viewModel.selectedPlanet {
@@ -81,6 +88,16 @@ struct ContentView: View {
         .padding(12)
       }
     }
+  }
+  
+  static func makeScene() -> SCNScene? {
+    let scene = SCNScene(named: "Solar Scene.scn")
+    return scene
+  }
+  
+  func setUpCamera(planet: Planet?) -> SCNNode? {
+    let cameraNode = scene?.rootNode.childNode(withName: "camera", recursively: false)
+    return cameraNode
   }
 }
 
