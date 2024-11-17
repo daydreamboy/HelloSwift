@@ -9,31 +9,23 @@ import UIKit
 
 class RootViewController: UITableViewController {
     
-    var titles: Array<String>?
-    var classes: Array<Any>?
+    private lazy var classes: Array<Array<(String, Any)>> = [
+        // Property
+        [
+            ("Use stored property", UseStoredPropertyViewController.self),
+            ("Use computed property", UseComputedPropertyViewController.self),
+            ("Use lazy stored property", UseLazyStoredPropertyViewController.self),
+        ],
+    ]
+    private lazy var sectionTitles: Array<String> = [
+        "Property",
+    ]
     
     func prepareForInit() {
         self.title = "AppTest"
-        
-        self.titles = [
-            "Demo1ViewController's title",
-            "call a test method",
-        ]
-        
-        self.classes = [
-            ViewController.self,
-            "testMethod",
-        ];
-        
-        //let sel = #selector(RootViewController.testMethod)
-        
-//        let sel: Selector = Selector("testMethod") //NSSelectorFromString(objectOrClass as! String)
-//        if (self.responds(to: sel)) {
-//            self.perform(sel)
-//        }
     }
     
-    func pushViewController(objectOrClass: Any) {
+    func pushViewController(objectOrClass: Any, title: String) {
         // Runtime Error:
         /*
         let object: NSObject = objectOrClass as! NSObject
@@ -57,8 +49,7 @@ class RootViewController: UITableViewController {
                 // @see https://stackoverflow.com/a/32410277
                 let viewControllerClass: UIViewController.Type = clz as! UIViewController.Type
                 let viewController = viewControllerClass.init(nibName: nil, bundle: nil)
-                let index = self.classes?.firstIndex(where: { $0 as! AnyClass === clz })
-                viewController.title = self.titles![index!]
+                viewController.title = title
                 
                 self.navigationController?.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "a", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
                 self.navigationController?.pushViewController(viewController, animated: true)
@@ -86,11 +77,11 @@ class RootViewController: UITableViewController {
     // MARK: - UITableViewDataSource
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return self.classes.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.titles!.count
+        return self.classes[section].count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -99,15 +90,21 @@ class RootViewController: UITableViewController {
             cell = UITableViewCell.init(style: UITableViewCell.CellStyle.default, reuseIdentifier: "RootViewController")
             cell!.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
         }
-        cell!.textLabel?.text = self.titles![indexPath.row]
+        let (title, _) = self.classes[indexPath.section][indexPath.row]
+        cell!.textLabel?.text = title;
 
         return cell!
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let item: Any = self.classes?[indexPath.row] as Any
-        self.pushViewController(objectOrClass: item)
+        
+        let (title, item) = self.classes[indexPath.section][indexPath.row]
+        self.pushViewController(objectOrClass: item, title: title)
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return self.sectionTitles[section]
     }
     
     // MARK: Test Methods

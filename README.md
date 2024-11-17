@@ -1652,6 +1652,107 @@ let threeOfSpadesDescription = threeOfSpades.simpleDescription()
 
 ### (10) 属性(Properties)
 
+#### a. 计算属性
+
+计算属性，在属性调用时，进行初始化。多次调用计算属性，会进行多次初始化。
+
+举个例子，如下
+
+```swift
+class UseComputedPropertyViewController: UIViewController {
+    private var myView1: UIView {
+        var view = UIView.init(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        NSLog("create view1: \(view)")
+        return view
+    }
+    
+    override func viewDidLoad() {
+        NSLog("viewDidLoad called")
+        
+        super.viewDidLoad()
+        self.view.backgroundColor = UIColor.white
+        
+        let _ = self.myView1
+        self.view.addSubview(self.myView1)
+    }
+}
+```
+
+输出结果，如下
+
+```shell
+viewDidLoad called
+create view1: <UIView: 0x10f6184e0; frame = (0 0; 100 100); layer = <CALayer: 0x600000248a80>>
+create view1: <UIView: 0x10f6184e0; frame = (0 0; 100 100); layer = <CALayer: 0x600000249a60>>
+```
+
+这里调用两次计算属性，所以初始化两个不同的实例。
+
+
+
+#### b. 存储属性
+
+存储属性只会初始化一次，在加载这个属性就会初始化，而不是使用这个属性时初始化。初始化后会存储这个实例，在后续访问这个属性直接返回存储的实例。
+
+举个例子，如下
+
+```swift
+class UseStoredPropertyViewController: UIViewController {
+    private var myView1: UIView = {
+        var view = UIView.init(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        NSLog("create view1: \(view)")
+        return view
+    }()
+    
+    override func viewDidLoad() {
+        NSLog("viewDidLoad called")
+        
+        super.viewDidLoad()
+        self.view.backgroundColor = UIColor.white
+        
+        let _ = self.myView1
+        self.view.addSubview(self.myView1)
+    }
+}
+```
+
+输出结果，如下
+
+```shell
+create view1: <UIView: 0x10cd148f0; frame = (0 0; 100 100); layer = <CALayer: 0x600000281f80>>
+viewDidLoad called
+```
+
+这里在viewDidLoad之前就已经初始化存储属性myView1，多次调用存储属性也之后触发一次。
+
+
+
+#### c. 懒加载存储属性
+
+在上面的介绍中，知道存储属性的初始化时机很早，但是可以额外加`lazy`关键词，标记它是懒加载存储属性。这样仅在使用这个存储属性，才初始化一次。
+
+举个例子，如下
+
+```swift
+class UseLazyStoredPropertyViewController: UIViewController {
+    private lazy var myView1: UIView = {
+        var view = UIView.init(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        NSLog("create view1: \(view)")
+        return view
+    }()
+    
+    override func viewDidLoad() {
+        NSLog("viewDidLoad called")
+        
+        super.viewDidLoad()
+        self.view.backgroundColor = UIColor.white
+        
+        let _ = self.myView1
+        self.view.addSubview(self.myView1)
+    }
+}
+```
+
 
 
 ### (11) 方法(Methods)
